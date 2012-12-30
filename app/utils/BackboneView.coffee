@@ -12,53 +12,53 @@ template = require('templates/HomeViewTemplate')
 
 module.exports = class BackboneView extends View
 
-	###//--------------------------------------
-	//+ PUBLIC PROPERTIES / CONSTANTS
-	//--------------------------------------###
+  ###//--------------------------------------
+  //+ PUBLIC PROPERTIES / CONSTANTS
+  //--------------------------------------###
 
-  	#
-   	# @private
-	#
-	id: 'view'
-	#
-   	# @private
-	#
-	template: template
+  #
+  # @private
+  #
+  id: 'view'
+  #
+     # @private
+  #
+  template: template
 
-	###//--------------------------------------
-  	//+ INHERITED / OVERRIDES
-  	//--------------------------------------###
+  ###//--------------------------------------
+    //+ INHERITED / OVERRIDES
+    //--------------------------------------###
 
-	#
-   	# @private
-	#
-	initialize: ->
-		@render = _.bind( @render, @ )
+  #
+  # @private
+  #
+  initialize: ->
+    @render = _.bind( @render, @ )
 
-	#
-   	# @private
-	#
-	render: ->
-		@$el.html( @template( @getRenderData() ) )
+  #
+  # @private
+  #
+  render: ->
+    @$el.html( @template( @getRenderData() ) )
 
-		return @
+    return @
 
-	#
-   	# @private
-	#
-	getRenderData: ->
-		return {
-			content: "View Content"
-		}
+  #
+  # @private
+  #
+  getRenderData: ->
+    return {
+      content: "View Content"
+    }
 
-	###//--------------------------------------
-	//+ PUBLIC METHODS / GETTERS / SETTERS
-	//--------------------------------------###
+  ###//--------------------------------------
+  //+ PUBLIC METHODS / GETTERS / SETTERS
+  //--------------------------------------###
 
-	###//--------------------------------------
-	//+ EVENT HANDLERS
-	//--------------------------------------###
+  ###//--------------------------------------
+  //+ EVENT HANDLERS
+  //--------------------------------------###
 
-	###//--------------------------------------
-	//+ PRIVATE AND PROTECTED METHODS
-	//--------------------------------------###
+  ###//--------------------------------------
+  //+ PRIVATE AND PROTECTED METHODS
+  //--------------------------------------###

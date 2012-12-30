@@ -8,10 +8,10 @@
  ###
 
 class ApplicationConfig
-	
-	#
-	# Base URL
-	#
-	@BASE_URL = "/"
+  
+  #
+  # Base URL
+  #
+  @BASE_URL = "/"
 
 module.exports = ApplicationConfig

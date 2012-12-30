@@ -21,10 +21,10 @@
 #
 Handlebars.registerHelper( 'link', ( text, url ) ->
 
-	text = Handlebars.Utils.escapeExpression( text )
-	url  = Handlebars.Utils.escapeExpression( url )
+  text = Handlebars.Utils.escapeExpression( text )
+  url  = Handlebars.Utils.escapeExpression( url )
 
-	result = '<a href="' + url + '">' + text + '</a>'
+  result = '<a href="' + url + '">' + text + '</a>'
 
-	return new Handlebars.SafeString( result )
+  return new Handlebars.SafeString( result )
 )

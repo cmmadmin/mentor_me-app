@@ -9,9 +9,9 @@
 
 class ApplicationEvents
 
-	#
-	# @private
-	#
-	@APPLICATION_INITIALIZED = "onApplicationInitialized"
+  #
+  # @private
+  #
+  @APPLICATION_INITIALIZED = "onApplicationInitialized"
 
 module.exports = ApplicationConfig

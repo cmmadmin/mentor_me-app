@@ -10,9 +10,9 @@
 application = require('Application')
 
 $ ->
-	
-	# Initialize Application
-	application.initialize()
+  
+  # Initialize Application
+  application.initialize()
 
-	# Start Backbone router
-	Backbone.history.start()
+  # Start Backbone router
+  Backbone.history.start()

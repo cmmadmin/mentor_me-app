@@ -11,21 +11,21 @@ application = require( 'Application' )
 
 module.exports = class Router extends Backbone.Router
 
-	###//--------------------------------------
-  	//+ Routes
-  	//--------------------------------------###
-  	
-	routes:
-    		'' : 'home'
+  ###//--------------------------------------
+    //+ Routes
+    //--------------------------------------###
+    
+  routes:
+        '' : 'home'
         
   initialize: ->
     @firstPage = true
 
-	###//--------------------------------------
-	//+ Route Handlers
-	//--------------------------------------###
+  ###//--------------------------------------
+  //+ Route Handlers
+  //--------------------------------------###
 
-	home: ->
+  home: ->
     @changePage application.homePage
     
   changePage: (page) ->

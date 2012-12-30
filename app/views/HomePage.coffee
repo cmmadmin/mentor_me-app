@@ -13,55 +13,55 @@ MenteeListView = require('./MenteeListView')
 
 module.exports = class HomePage extends View
 
-	###//--------------------------------------
-	//+ PUBLIC PROPERTIES / CONSTANTS
-	//--------------------------------------###
+  ###//--------------------------------------
+  //+ PUBLIC PROPERTIES / CONSTANTS
+  //--------------------------------------###
 
-  	#
-   	# @private
-	#
-	id: 'home-page'
-	#
-   	# @private
-	#
-	template: template
+    #
+     # @private
+  #
+  id: 'home-page'
+  #
+     # @private
+  #
+  template: template
 
-	###//--------------------------------------
-  	//+ INHERITED / OVERRIDES
-  	//--------------------------------------###
+  ###//--------------------------------------
+    //+ INHERITED / OVERRIDES
+    //--------------------------------------###
 
-	#
-   	# @private
-	#
-	initialize: ->
-		@render = _.bind( @render, @ )
+  #
+  # @private
+  #
+  initialize: ->
+    @render = _.bind( @render, @ )
     #@menteeListView = new MenteeListView()
     
   #
-   	# @private
-	#
-	render: ->
-		@$el.html( @template( @getRenderData() ) )
+     # @private
+  #
+  render: ->
+    @$el.html( @template( @getRenderData() ) )
     #@$('#mentee-list').html @menteeListView.render
 
-		return @
+    return @
 
-	#
-   	# @private
-	#
-	getRenderData: ->
-		return {
-			#content: "Application Content"
-		}
+  #
+  # @private
+  #
+  getRenderData: ->
+    return {
+      #content: "Application Content"
+    }
 
-	###//--------------------------------------
-	//+ PUBLIC METHODS / GETTERS / SETTERS
-	//--------------------------------------###
+  ###//--------------------------------------
+  //+ PUBLIC METHODS / GETTERS / SETTERS
+  //--------------------------------------###
 
-	###//--------------------------------------
-	//+ EVENT HANDLERS
-	//--------------------------------------###
+  ###//--------------------------------------
+  //+ EVENT HANDLERS
+  //--------------------------------------###
 
-	###//--------------------------------------
-	//+ PRIVATE AND PROTECTED METHODS
-	//--------------------------------------###
+  ###//--------------------------------------
+  //+ PRIVATE AND PROTECTED METHODS
+  //--------------------------------------###
