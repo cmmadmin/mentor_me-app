@@ -19,3 +19,22 @@
 #home-view
   width: 1003px
   margin: 0 auto
+
+// TODO: Use media queries to restrict to touch-only devices
+*.ui-listview *.ui-btn-up-c,
+*.ui-listview *.ui-btn-down-c,
+*.ui-listview *.ui-btn-hover-c {
+  // Copy your .ui-btn-up styles here */
+  border: 1px solid     #ccc
+  background:       #eee
+  font-weight: bold
+  color:          #222
+  text-shadow: 0 1px 0 #fff 
+  background-image: linear-gradient(top, white, #f1f1f1)
+}
+
+// Performance improvements
+// TranslateZ(0) Hardware Acceleration Hack for Webkit
+.ui-page > div {
+  -webkit-transform: translateZ(0);
+} 

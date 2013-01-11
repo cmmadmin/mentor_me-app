@@ -17,6 +17,10 @@ module.exports = class Model extends Backbone.Model
   //+ INHERITED / OVERRIDES
   //--------------------------------------###
 
+  fetch: ->
+    @trigger('fetch', @)
+    super
+
   ###//--------------------------------------
   //+ PUBLIC METHODS / GETTERS / SETTERS
   //--------------------------------------###

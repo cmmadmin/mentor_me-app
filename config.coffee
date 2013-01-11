@@ -19,6 +19,7 @@ exports.config =
           'vendor/scripts/backbone-mediator.js',
           'vendor/scripts/backbone.layoutmanager.js',
           'vendor/config/jqm-routing-patch.js',
+          'vendor/config/jqm-hover-patch.js',
           'vendor/scripts/jquery.mobile-1.2.0.js'
         ]
 

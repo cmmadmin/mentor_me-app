@@ -8,8 +8,9 @@
  ###
 
 View = require('./supers/View')
-template = require('./templates/HomePageTemplate')
+template = require('./templates/HomePage')
 MenteeListView = require('./MenteeListView')
+MenteeCollection = require('models/MenteeCollection')
 
 module.exports = class HomePage extends View
 
@@ -17,14 +18,16 @@ module.exports = class HomePage extends View
   //+ PUBLIC PROPERTIES / CONSTANTS
   //--------------------------------------###
 
-    #
-     # @private
+  #
+  # @private
   #
   id: 'home-page'
   #
-     # @private
+  # @private
   #
   template: template
+
+  mentees: new MenteeCollection()
 
   ###//--------------------------------------
     //+ INHERITED / OVERRIDES
@@ -34,15 +37,15 @@ module.exports = class HomePage extends View
   # @private
   #
   initialize: ->
-    @render = _.bind( @render, @ )
-    #@menteeListView = new MenteeListView()
+    super
+    @menteeListView = new MenteeListView(collection: @mentees)
     
   #
-     # @private
+  # @private
   #
   render: ->
     @$el.html( @template( @getRenderData() ) )
-    #@$('#mentee-list').html @menteeListView.render
+    @$('#mentee-list').html @menteeListView.render().el
 
     return @
 
@@ -51,7 +54,6 @@ module.exports = class HomePage extends View
   #
   getRenderData: ->
     return {
-      #content: "Application Content"
     }
 
   ###//--------------------------------------
