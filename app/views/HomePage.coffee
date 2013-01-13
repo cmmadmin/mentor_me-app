@@ -27,17 +27,15 @@ module.exports = class HomePage extends View
   #
   template: template
 
-  mentees: new MenteeCollection()
+  mentees: null
 
   ###//--------------------------------------
     //+ INHERITED / OVERRIDES
     //--------------------------------------###
 
-  #
-  # @private
-  #
   initialize: ->
     super
+    @mentees = @options.mentees
     @menteeListView = new MenteeListView(collection: @mentees)
     
   #

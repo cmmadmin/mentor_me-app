@@ -14,19 +14,23 @@ MenteeListItemView = require('./MenteeListItemView')
 
 module.exports = class MenteeListView extends View
   tagName: 'ul'
+  attributes:
+    'data-role': 'listview'
   initialize: ->
     super
 
-    @collection.on 'reset', @render, @
-    @collection.on 'fetch', @showLoading, @
-
-    @$el.attr 'data-role', 'listview'
+    @listenTo @collection, 'reset', @render
+    @listenTo @collection, 'fetch', @showLoading
 
   render: ->
     super
     @$el.empty()
     @collection.each (mentee) =>
       @$el.append(new MenteeListItemView(model: mentee).render().el)
+
+    # @$el.trigger('create')
+    @$el.listview('refresh')
+
 
     return @
 

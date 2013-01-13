@@ -29,8 +29,19 @@ Application =
         HomePage = require('views/HomePage')
         Router = require('routers/Router')
 
+        #Import collections
+        MenteeCollection = require('models/MenteeCollection')
+
+        # Initialize collections
+        @collections = 
+          mentees: new MenteeCollection()
+
+        # TODO: Use proper server bootstrap
+        # Bootstrap initial data
+        @collections.mentees.fetch();
+
         # Initialize views
-        @homePage = new HomePage()
+        @homePage = new HomePage(mentees: @collections.mentees)
         @router = new Router()
 
         Object.freeze? this

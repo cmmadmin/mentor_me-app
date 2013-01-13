@@ -33,8 +33,8 @@ module.exports = class Router extends Backbone.Router
   //--------------------------------------###
 
   home: ->
-    @changePage application.homePage
     application.homePage.mentees.fetch()
+    @changePage application.homePage
     
 
   menteeOverview: (id) ->
@@ -48,18 +48,16 @@ module.exports = class Router extends Backbone.Router
   //---------------------------------------###
 
   loadMenteeView: (id, view) ->
-    Backbone.sync("read", application.homePage.mentees)
-    mentee = application.homePage.mentees.get(id)
+    #mentee = application.homePage.mentees.get(id)
     #mentee = new Mentee({id: id})
+    mentee = application.collections.mentees.getAndFetch(id)
     @changePage new view({model: mentee})
-    # mentee.fetch(
-    #   success: (data) =>
-    #     @changePage new view({model: data})
-    # )
+    # @changePage new view(model: mentee)
     
   changePage: (page) ->
-    $(page.el).attr('data-role', 'page')
-    page.render()
+    page.$el.attr('data-role', 'page')
+    page.$el.one 'pagebeforeshow', ->
+      page.render()
     $('body').append($(page.el))
     transition = $.mobile.defaultPageTransition
     # TODO: Optimize and fix transitions
