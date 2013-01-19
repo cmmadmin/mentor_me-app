@@ -43,7 +43,7 @@ module.exports = class HomePage extends View
   #
   render: ->
     @$el.html( @template( @getRenderData() ) )
-    @$('#mentee-list').html @menteeListView.render().el
+    @$('#mentee-list').html @menteeListView.el
 
     return @
 

@@ -12,6 +12,7 @@ module.exports = class Model extends Backbone.Model
   ###//--------------------------------------
   //+ PUBLIC PROPERTIES / CONSTANTS
   //--------------------------------------###
+  status: 0
 
   ###//--------------------------------------
   //+ INHERITED / OVERRIDES

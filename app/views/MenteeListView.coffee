@@ -28,11 +28,11 @@ module.exports = class MenteeListView extends View
     @collection.each (mentee) =>
       @$el.append(new MenteeListItemView(model: mentee).render().el)
 
-    # @$el.trigger('create')
-    @$el.listview('refresh')
-
+    # Stupid jquery mobile events don't work well
+    # Using listview call for now, until we figure out better solution
+    #@$el.listview('refresh');
+    @$el.parent().trigger('create');
 
     return @
-
   showLoading: ->
     @$el.html("<img src='images/spinner.gif'>")

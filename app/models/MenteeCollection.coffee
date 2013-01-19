@@ -7,5 +7,5 @@ module.exports = class MenteeCollection extends Collection
   url: Collection.serverUrl('mentees')
   
   initialize: ->
-    @storage = new Offline.Storage('mentees', this)
+    #@storage = new Offline.Storage('mentees', this)
     super
