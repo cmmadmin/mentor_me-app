@@ -16,6 +16,7 @@ module.exports = class MenteeListView extends View
   tagName: 'ul'
   attributes:
     'data-role': 'listview'
+    'class': 'nav nav-list'
   initialize: ->
     super
 

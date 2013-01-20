@@ -21,13 +21,16 @@ exports.config =
           'vendor/config/jqm-routing-patch.js',
           'vendor/config/jqm-hover-patch.js',
           'vendor/scripts/jquery.mobile-1.2.0.js'
+        ],
+        after: [
+          'vendor/config/rivets-config.js'
         ]
 
     stylesheets:
       defaultExtension: 'styl'
       joinTo: 'stylesheets/app.css'
       order:
-        before: ['vendor/styles/normalize.css', 'vendor/styles/jquery.mobile-1.2.0.css']
+        before: ['vendor/styles/normalize.css']
         after: ['vendor/styles/helpers.css']
 
     templates:

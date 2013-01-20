@@ -46,24 +46,31 @@ module.exports = class Router extends Backbone.Router
   //---------------------------------------###
 
   loadMenteeView: (id, view) ->
-    mentee = application.collections.mentees.getAndFetch(id)
+    mentee = application.collections.mentees.getOrFetch(id)
     @changePage new view({model: mentee})
     
   changePage: (page) ->
     page.$el.attr('data-role', 'page')
     page.$el.one 'pagebeforeshow', ->
-      page.render()
+    page.render()
       #page.$el.trigger('pagecreate');
 
-
-    $('body').append($(page.el))
-    transition = $.mobile.defaultPageTransition
+    $('body').append(page.$el)
+    #transition = $.mobile.defaultPageTransition
     # TODO: Optimize and fix transitions
-    transition = 'none'
+    #transition = 'none'
     # We don't want to slide the first page
     if @firstPage
       transition = 'none'
       @firstPage = false
+    else
+      #$.jQTouch.goTo(page.$el, 'slideleft', @currentPage?.$el)
+
+    if @currentPage
+      @currentPage.$el.remove();
+
+    @currentPage = page;
     
-    $.mobile.changePage($(page.el), {changeHash:false, transition: transition})
+    #page.$el.addClass('slideleft in current');
+    #$.mobile.changePage($(page.el), {changeHash:false, transition: transition})
     

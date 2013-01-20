@@ -4,6 +4,8 @@ MenteeListItem = require('./templates/partials/MenteeListItem')
 
 module.exports = class MenteeListItemView extends View
   tagName: 'li'
+  attributes:
+    class: 'arrow'
   template: MenteeListItem
   initialize: ->
     super

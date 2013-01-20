@@ -20,11 +20,14 @@ module.exports = class Collection extends Backbone.Collection
   //--------------------------------------###
   fetch: ->
     @trigger('fetch')
-    super
+    super(silent: false)
 
   ###//--------------------------------------
   //+ PUBLIC METHODS / GETTERS / SETTERS
   //--------------------------------------###
+  # get: (sid) ->
+  #   return @find (item) ->
+  #     return `item.get('sid') == sid`
 
   ###
   Get model by id if it exists, or fetch and add if not
@@ -41,7 +44,10 @@ module.exports = class Collection extends Backbone.Collection
   Get or add model by id, and then force fetch
   ###
   getAndFetch: (id) ->
-    model = @push(id: id)
+    model = @get(id)
+    if !model?
+      model = new @model(id: id)
+      @add model
     model.fetch()
     return model
 
