@@ -13,37 +13,59 @@
  * @since  
  ###
 
-Application = 
+MentorMe = 
 
-    ###//--------------------------------------
-    //+ PUBLIC PROPERTIES / CONSTANTS
-    //--------------------------------------###
+  ###//--------------------------------------
+  //+ PUBLIC PROPERTIES / CONSTANTS
+  //--------------------------------------###
 
-    ###//--------------------------------------
-    //+ INHERITED / OVERRIDES
-    //--------------------------------------###
+  # Event Mediator
+  vent: _.extend({}, Backbone.Events)
 
-    initialize: ->
+  currentUser: null
 
-        # Import views
-        HomePage = require('views/HomePage')
-        Router = require('routers/Router')
+  loginOpen: false
 
-        #Import collections
-        MenteeCollection = require('models/MenteeCollection')
+  ###//--------------------------------------
+  //+ INHERITED / OVERRIDES
+  //--------------------------------------###
 
-        # Initialize collections
-        @collections = 
-          mentees: new MenteeCollection()
+  initialize: ->
 
-        # TODO: Use proper server bootstrap
-        # Bootstrap initial data
-        @collections.mentees.fetch();
+    # Import views
+    HomePage = require('views/HomePage')
+    LoginPanel = require('views/LoginView')
+    Router = require('routers/Router')
 
-        # Initialize views
-        @homePage = new HomePage(mentees: @collections.mentees)
-        @router = new Router()
+    #Import collections
+    MenteeCollection = require('models/MenteeCollection')
 
-        Object.freeze? this
+    # Initialize collections
+    @collections = 
+      mentees: new MenteeCollection()
 
-module.exports = Application
+    # TODO: Use proper server bootstrap
+    # Bootstrap initial data
+    @collections.mentees.fetch();
+
+    # Initialize views
+    @homePage = new HomePage(mentees: @collections.mentees)
+    @loginPanel = new LoginPanel()
+    @router = new Router()
+
+    # TODO: Listen in better place
+    @initEvents()
+
+    Object.freeze? this
+
+  initEvents: ->
+    @vent.bind "authentication:logged_in", ->
+      MentorMe.collections.mentees.fetch()
+      MentorMe.router.navigate('/', true)
+      $('#tbModal').one 'hidden', ->
+        MentorMe.loginPanel.remove()
+        MentorMe.loginOpen = false
+      $('#tbModal').modal('hide');
+
+
+module.exports = MentorMe

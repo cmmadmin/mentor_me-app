@@ -21,6 +21,7 @@ module.exports = class MenteeListView extends View
     super
 
     @listenTo @collection, 'reset', @render
+    @listenTo @collection, 'add remove change', _.debounce(@render)
     @listenTo @collection, 'fetch', @showLoading
 
   render: ->

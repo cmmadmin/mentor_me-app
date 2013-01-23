@@ -7,7 +7,7 @@
  * @since  
  ###
 
-application = require( 'Application' )
+MM = require( 'Application' )
 
 Mentee = require('models/Mentee')
 MenteeCollection = require('models/MenteeCollection')
@@ -22,6 +22,7 @@ module.exports = class Router extends Backbone.Router
     
   routes:
         '' : 'home'
+        'login': 'login'
         'mentees/:id' : 'menteeOverview'
         'mentees/:id/edit' : 'menteeEdit'
         
@@ -33,7 +34,14 @@ module.exports = class Router extends Backbone.Router
   //--------------------------------------###
 
   home: ->
-    @changePage application.homePage
+    @changePage MM.homePage
+
+  login: ->
+    return if MM.loginOpen
+    MM.loginOpen = true
+    $('#tbModal').append(MM.loginPanel.$el)
+    MM.loginPanel.render().delegateEvents()
+    $('#tbModal').modal('show')
 
   menteeOverview: (id) ->
     @loadMenteeView id, MenteeView
@@ -46,8 +54,11 @@ module.exports = class Router extends Backbone.Router
   //---------------------------------------###
 
   loadMenteeView: (id, view) ->
-    mentee = application.collections.mentees.getOrFetch(id)
+    mentee = MM.collections.mentees.getOrFetch(id)
     @changePage new view({model: mentee})
+
+  refreshCurrentPage: ->
+    @currentPage.render()
     
   changePage: (page) ->
     page.$el.attr('data-role', 'page')
@@ -67,7 +78,7 @@ module.exports = class Router extends Backbone.Router
       #$.jQTouch.goTo(page.$el, 'slideleft', @currentPage?.$el)
 
     if @currentPage
-      @currentPage.$el.remove();
+      @currentPage.remove();
 
     @currentPage = page;
     

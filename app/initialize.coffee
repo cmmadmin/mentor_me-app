@@ -11,8 +11,7 @@ application = require('Application')
 
 $ ->
 
-
-
+  # TODO: Refactor into config file
   rivets.configure
     adapter:
       subscribe: (obj, keypath, callback) ->
@@ -25,6 +24,10 @@ $ ->
         return obj.get(keypath)
       publish: (obj, keypath, value) ->
         obj.set(keypath, value)
+
+  $(document).ajaxError (e, xhr, settings, exception) ->
+    if (xhr.status == 401)
+      application.router.login()
   
   # Initialize Application
   application.initialize()
