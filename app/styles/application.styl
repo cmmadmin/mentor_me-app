@@ -37,4 +37,19 @@
 // TranslateZ(0) Hardware Acceleration Hack for Webkit
 .ui-page > div {
   -webkit-transform: translateZ(0);
-} 
+}
+
+// Widgets
+.add-journal
+  padding-bottom: 10px
+  > button
+    float: right
+    visibility: hidden
+    opacity: 0
+    transition-property: opacity
+    transition-duration: 0.7s
+  &.selected > button
+    visibility: visible
+    opacity: 1
+    transition-property: opacity
+    transition-duration: 0.3s

@@ -66,6 +66,10 @@ MentorMe =
         MentorMe.loginPanel.remove()
         MentorMe.loginOpen = false
       $('#tbModal').modal('hide');
+    # @vent.bind 'mentee:addJournalEntry' (e, mentee, data) ->
+    #   Mentee = require 'models/Mentee'
+    #   JournalEntry = require 'models/JournalEntry'
+    #   je = new JournalEntry()
 
 
 module.exports = MentorMe

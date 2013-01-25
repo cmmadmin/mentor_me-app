@@ -13,6 +13,8 @@ Mentee = require('models/Mentee')
 MenteeCollection = require('models/MenteeCollection')
 MenteeView = require('views/MenteeView')
 EditMenteeView = require('views/EditMenteeView')
+JournalView = require('views/JournalView')
+JournalEntryCollection = require 'models/JournalEntryCollection'
 
 module.exports = class Router extends Backbone.Router
 
@@ -25,6 +27,7 @@ module.exports = class Router extends Backbone.Router
         'login': 'login'
         'mentees/:id' : 'menteeOverview'
         'mentees/:id/edit' : 'menteeEdit'
+        'mentees/:id/journal' : 'menteeJournal'
         
   initialize: ->
     @firstPage = true
@@ -48,6 +51,11 @@ module.exports = class Router extends Backbone.Router
 
   menteeEdit: (id) ->
     @loadMenteeView id, EditMenteeView
+
+  menteeJournal: (id) ->
+    col = new JournalEntryCollection(mentee_id: id)
+    col.fetch()
+    @changePage new JournalView({collection: col})
 
   ###//---------------------------------------
   //+ Utilities

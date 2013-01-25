@@ -13,6 +13,6 @@ class ApplicationConfig
   # Base URL
   #
   @BASE_URL = "/"
-  @SERVER_URL = "http://localhost:3000/"
+  @SERVER_URL = "http://mentorrails-pinkmexican.fwd.wf/"
 
 module.exports = ApplicationConfig

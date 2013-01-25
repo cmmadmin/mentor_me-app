@@ -54,6 +54,11 @@ module.exports = class HomePage extends View
     return {
     }
 
+  remove: ->
+    @$el.detach()
+    @stopListening()
+    return @
+
   ###//--------------------------------------
   //+ PUBLIC METHODS / GETTERS / SETTERS
   //--------------------------------------###
