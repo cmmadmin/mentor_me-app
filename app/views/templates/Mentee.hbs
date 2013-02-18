@@ -22,16 +22,19 @@
 
 <div class="row-fluid">
   {{#if phone}}
-  <div class="span4 pagination-centered">
+  <div class="span3 pagination-centered">
     <a href="tel:{{phone}}"><i class="icon-phone-sign icon-align-center icon-2x"></i></a>
+  </div>
+  <div class="span3 pagination-centered">
+    <a href="sms:{{phone}}?body=TEST"><i class="icon-mobile-phone icon-align-center icon-2x"></i></a>
   </div>
   {{/if}}
   {{#if email}}
-  <div class="span4 pagination-centered">
+  <div class="span3 pagination-centered">
     <a href="mailto:{{email}}"><i class="icon-envelope icon-2x"></i></a>
   </div>
   {{/if}}
-  <div class="span4 pagination-centered">
+  <div class="span3 pagination-centered">
     <i class="icon-facebook-sign icon-2x"></i>
   </div>
 
