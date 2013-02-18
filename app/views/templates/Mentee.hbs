@@ -3,21 +3,37 @@
     <a class="brand" href="#">Home</a>
   </div>
 </div>
-
-<div class="row-fluid pagination-centered">
-  <h1>{{name}}</h1>
-  
+<div id="profile-pic" class="row-fluid pagination-centered" style="margin-bottom: -0.9em">
+  {{#if profile_pic_url}}
+  <img src="{{profile_pic_url}}" />
+  {{else}}
+  <i class="img-polaroid icon-user icon-4x" style="padding: 0.2em 0.4em 0.2em 0.4em; display: inline-block"></i>
+  {{/if}}
 </div>
 <div class="row-fluid pagination-centered">
   <a class="btn" href="#mentees/{{id}}/edit">Edit</a>
 </div>
+<div class="row-fluid pagination-centered">
+  <h1>{{name}}</h1>
+</div>
+
 
 <hr>
 
 <div class="row-fluid">
-  <div class="span4 pagination-centered"><i class="icon-phone-sign icon-align-center icon-2x"></i></div>
-  <div class="span4 pagination-centered"><i class="icon-envelope icon-2x"></i></div>
-  <div class="span4 pagination-centered"><i class="icon-facebook-sign icon-2x"></i></div>
+  {{#if phone}}
+  <div class="span4 pagination-centered">
+    <a href="tel:{{phone}}"><i class="icon-phone-sign icon-align-center icon-2x"></i></a>
+  </div>
+  {{/if}}
+  {{#if email}}
+  <div class="span4 pagination-centered">
+    <a href="mailto:{{email}}"><i class="icon-envelope icon-2x"></i></a>
+  </div>
+  {{/if}}
+  <div class="span4 pagination-centered">
+    <i class="icon-facebook-sign icon-2x"></i>
+  </div>
 
 </div>
 

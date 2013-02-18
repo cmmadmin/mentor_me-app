@@ -20,7 +20,7 @@ module.exports = class JournalView extends View
     super
     @$el.empty()
     @collection.each (journalEntry) =>
-      @$el.append(new JournalItemView(model: journalEntry).render().el)
+      @$el.prepend(new JournalItemView(model: journalEntry).render().el)
 
     # Stupid jquery mobile events don't work well
     # Using listview call for now, until we figure out better solution

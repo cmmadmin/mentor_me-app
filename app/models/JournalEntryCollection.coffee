@@ -10,5 +10,4 @@ module.exports = class JournalEntryCollection extends Collection
   initialize: (attrs) ->
     #@storage = new Offline.Storage('mentees', this)
     @mentee_id = attrs.mentee_id
-    debugger
     super

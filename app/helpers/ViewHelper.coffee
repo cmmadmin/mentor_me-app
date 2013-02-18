@@ -28,3 +28,11 @@ Handlebars.registerHelper( 'link', ( text, url ) ->
 
   return new Handlebars.SafeString( result )
 )
+
+Handlebars.registerHelper('dateFormat', (context, block) ->
+  if (window.moment)
+    f = block.hash.format || "MMM Do, YYYY";
+    return moment(new Date(context)).format(f);
+  else
+    return context;   # moment plugin not available. return data as is. 
+)

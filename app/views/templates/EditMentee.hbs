@@ -12,7 +12,7 @@
   <div class="row-fluid">
     
     <input class="span6" type="text" data-value="mentee.major" placeholder="Major" />
-    <input class="span6" type="date" data-value="mentee.birth_date" />
+    <input class="span6" type="date" name="birth_date" data-value="mentee.birth_date" />
   </div>
 
   <div class="row-fluid">
@@ -22,6 +22,10 @@
 
   <div class="row-fluid">
     <input class="span12" type="tel" data-value="mentee.phone" placeholder="Phone" />
+  </div>
+
+  <div class="row-fluid">
+    <textarea class="span12" data-value="mentee.notes" placeholder="Notes" />
   </div>
 
   <button class="btn btn-primary" data-saving-text="Saving..." type="submit">Save</button>
