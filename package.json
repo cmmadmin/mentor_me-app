@@ -28,7 +28,6 @@
     "uglify-js-brunch": ">= 1.5 < 1.6",
     "clean-css-brunch": ">= 1.5 < 1.6",
 
-    // Statik for heroku hosting
     "statik": ">= 1.2.5",
     "brunch": "1.4.4"
   },
