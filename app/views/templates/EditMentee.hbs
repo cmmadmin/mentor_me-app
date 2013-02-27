@@ -10,9 +10,15 @@
   </div>
 
   <div class="row-fluid">
-    
-    <input class="span6" type="text" data-value="mentee.major" placeholder="Major" />
-    <input class="span6" type="date" name="birth_date" data-value="mentee.birth_date" />
+    <div class="controls controls-row">
+      <input class="span6" type="date" name="birth_date" data-value="mentee.birth_date" />
+      <label for="age" class="span1 text-right">Age:</label>
+      <span class="span5"><span class="uneditable-input" data-text="mentee:age < .birth_date" /></span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <input class="span12" type="text" data-value="mentee.major" placeholder="Major" />
   </div>
 
   <div class="row-fluid">
@@ -21,7 +27,7 @@
 
 
   <div class="row-fluid">
-    <input class="span12" type="tel" data-value="mentee.phone" placeholder="Phone" />
+    <input id="phone" class="span12" type="tel" data-value="mentee.phone" placeholder="Phone" />
   </div>
 
   <div class="row-fluid">

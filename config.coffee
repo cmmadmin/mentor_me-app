@@ -23,6 +23,8 @@ exports.config =
           'vendor/scripts/jquery.mobile-1.2.0.js'
         ],
         after: [
+          'vendor/scripts/bootstrap-editable.js',
+          'vendor/scripts/bootstrap-notify.js',
           'vendor/config/rivets-config.js'
         ]
 

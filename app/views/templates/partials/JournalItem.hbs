@@ -1,4 +1,11 @@
-<a href="#mentees/{{mentee_id}}/journal_entries/{{id}}">
-  <h4>{{body}}</h4>
-  <h5>{{dateFormat created_at format="MMMM Do YYYY, h:mm:ss a"}}</h5>
-</a>
+<div class="row-fluid">
+  <div class="span10">
+    <h5>{{body}}</h4>
+    <p>{{dateFormat created_at format="MMMM Do YYYY, h:mm a"}}</p>
+  </div>
+
+  <ul class="nav nav-pills pull-right">
+    <li><a class="btn btn-link" href="#mentees/{{mentee_id}}/journal_entries/{{id}}"><i class="icon-pencil"></i></a></li>
+  </ul>
+</div>
+<hr>

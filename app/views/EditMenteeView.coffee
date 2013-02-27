@@ -14,6 +14,7 @@ module.exports = class EditMenteeView extends View
   render: ->
     super
     rivets.bind(@$el, {mentee: @model})
+    @$el.find("#phone").mask("(999) 999-9999", {placeholder:" "});
     @
 
   saveMentee: (e) ->

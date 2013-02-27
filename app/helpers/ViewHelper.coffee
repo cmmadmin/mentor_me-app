@@ -36,3 +36,10 @@ Handlebars.registerHelper('dateFormat', (context, block) ->
   else
     return context;   # moment plugin not available. return data as is. 
 )
+
+Handlebars.registerHelper('currentTime', (format) ->
+  if format
+    return moment(new Date()).format(format)
+  else
+    return new Date()
+)

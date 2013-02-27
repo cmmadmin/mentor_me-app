@@ -1,0 +1,48 @@
+.navbar.navbar-inverse
+  .navbar-inner
+    a.brand href="#" Home
+
+#profile-pic.row-fluid.pagination-centered style="margin-bottom: -0.9em"
+  if profile_pic_url
+    img src=profile_pic_url
+  else
+    i.img-polaroid.icon-user.icon-4x style="padding: 0.2em 0.4em 0.2em 0.4em; display: inline-block"
+.row-fluid.pagination-centered
+  a.btn href="#mentees/{{id}}/edit" Edit
+.row-fluid.pagination-centered
+  h1 = name
+
+hr
+
+.row-fluid
+
+  if phone
+    .span3.pagination-centered
+      a href="tel:{{phone}}"
+        i.icon-phone-sign.icon-align-center.icon-2x
+    .span3.pagination-centered
+      a href="sms:{{phone}}?body=TEST"
+        i.icon-mobile-phone.icon-align-center.icon-2x
+
+  if email
+    .span3.pagination-centered
+      a href="mailto:{{email}}"
+        i.icon-envelope.icon-2x
+  .span3.pagination-centered
+    i.icon-facebook-sign.icon-2x
+
+hr
+
+.add-journal.row-fluid
+  textarea#add-journal-textarea.span12 placeholder="Tap to add a journal entry" rows="3"
+  .journal-notifications.pull-left
+  .add-journal-ctrls.row-fluid
+    .pull-right
+        button#add-journal-btn.btn.btn-primary.btn-medium
+          | Add
+          i.icon-plus-sign
+    .pull-right style="padding-right: 12px; line-height: 30px" 
+      | at 
+      a href="#" id="journaldate" data-value="{{currentTime 'MM/DD/YY HH:mm'}}"
+    
+a.btn.btn-large.btn-block href="#mentees/{{id}}/journal" View Journal
