@@ -1,7 +1,7 @@
 {
-  "author": "Your Name",
-  "name": "package-name",
-  "description": "Package description",
+  "author": "Paul Strong",
+  "name": "mentor_me",
+  "description": "Mentor Me Backbone App",
   "version": "0.0.1",
   "homepage": "",
   "repository": {
@@ -9,10 +9,11 @@
     "url": ""
   },
   "engines": {
-    "node": "~0.6.10"
+    "node": "~0.8.21"
   },
   "scripts": {
-    "start": "brunch watch --server"
+    "start": "brunch watch --server",
+    "postinstall": "brunch build --minify"
   },
   "dependencies": {
     "javascript-brunch": ">= 1.5 < 1.6",
@@ -25,7 +26,11 @@
     "emblem-brunch": "git://github.com/lapluviosilla/emblem-brunch.git",
 
     "uglify-js-brunch": ">= 1.5 < 1.6",
-    "clean-css-brunch": ">= 1.5 < 1.6"
+    "clean-css-brunch": ">= 1.5 < 1.6",
+
+    // Statik for heroku hosting
+    "statik": ">= 1.2.5",
+    "brunch": "1.4.4"
   },
   "devDependencies": {
     "mocha": ">= 1.7.4 < 1.8",
