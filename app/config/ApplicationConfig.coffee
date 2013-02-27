@@ -13,6 +13,6 @@ class ApplicationConfig
   # Base URL
   #
   @BASE_URL = "/"
-  @SERVER_URL = "http://mentorrails-pinkmexican.fwd.wf/"
+  @SERVER_URL = "http://cmtmentorme.herokuapp.com/"
 
 module.exports = ApplicationConfig
