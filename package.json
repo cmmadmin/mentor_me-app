@@ -30,10 +30,12 @@
     "clean-css-brunch": ">= 1.5 < 1.6",
 
     "statik": ">= 1.1.0",
-    "brunch": "1.4.4"
-  },
-  "devDependencies": {
+    "brunch": "1.4.4",
+
     "mocha": ">= 1.7.4 < 1.8",
     "expect.js": ">= 0.2.0"
+  },
+  "devDependencies": {
+    
   }
 }
