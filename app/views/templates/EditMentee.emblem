@@ -1,0 +1,27 @@
+#profile-pic.row-fluid.pagination-centered
+  if profile_pic_url
+    img src=profile_pic_url
+  else
+    i.img-polaroid.icon-user.icon-4x style="padding: 0.2em 0.4em 0.2em 0.4em; display: inline-block"
+.row-fluid.pagination-centered
+  h1 = name
+
+form#edit-mentee-form
+  .row-fluid
+    input.span12 data-value="mentee.name" placeholder="Name" type="text"
+  .row-fluid
+    .controls.controls-row
+      input.span6 data-value="mentee.birth_date" name="birth_date" type="date"
+      label.span1.text-right for="age" Age:
+      span.span5
+        span.uneditable-input data-text="mentee:age < .birth_date"
+  .row-fluid
+    input.span12 data-value="mentee.major" placeholder="Major" type="text"
+  .row-fluid
+    input.span12 data-value="mentee.email" placeholder="Email" type="email"
+  .row-fluid
+    input#phone.span12 data-value="mentee.phone" placeholder="Phone" type="tel"
+  .row-fluid
+    textarea.span12 data-value="mentee.notes" placeholder="Notes"
+  button.btn.btn-primary data-saving-text="Saving..." type="submit" Save
+> navigation
