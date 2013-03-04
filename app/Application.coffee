@@ -39,14 +39,23 @@ MentorMe =
 
     #Import collections
     MenteeCollection = require('models/MenteeCollection')
+    Questions = require('models/Questions')
+    SnapshotQuestions = require('models/SnapshotQuestions')
+    DevelopQuestions = require('models/DevelopQuestions')
+    LifeListQuestions = require('models/LifeListQuestions')
 
     # Initialize collections
     @collections = 
       mentees: new MenteeCollection()
+      questions: new Questions()
 
     # TODO: Use proper server bootstrap
     # Bootstrap initial data
     @collections.mentees.fetch();
+    @collections.questions.fetch();
+    @collections.snapshotQuestions = new SnapshotQuestions(@collections.questions)
+    @collections.developQuestions = new DevelopQuestions(@collections.questions)
+    @collections.lifelistQuestions = new LifeListQuestions(@collections.questions)
 
     # Initialize views
     @homePage = new HomePage(mentees: @collections.mentees)

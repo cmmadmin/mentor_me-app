@@ -1,0 +1,15 @@
+.wizard
+  a.current href="#mentees/{{mentee.id}}/snapshot" Snapshot
+  a href="#mentees/{{mentee.id}}/develop" Develop
+  a href="#mentees/{{mentee.id}}/lifelist" LifeList
+
+h1 SnapShot
+p Answer the following questions (not with your student) to get a better understanding of where your student is in their vision, character, heart, and skills so that you can better guide them to be person God created them to be.
+
+ul.unstyled
+  each questions
+    li
+      pre = body
+      textarea.input-block-level
+
+> navigation

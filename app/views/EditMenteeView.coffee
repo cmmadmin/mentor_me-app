@@ -10,12 +10,16 @@ module.exports = class EditMenteeView extends View
     'submit form': 'saveMentee'
 
   initialize: ->
+    super
     
   render: ->
     super
     rivets.bind(@$el, {mentee: @model})
     @$el.find("#phone").mask("(999) 999-9999", {placeholder:" "});
     @
+
+  getRenderData: ->
+    @model.toJSON()
 
   saveMentee: (e) ->
     # Prevent form submission

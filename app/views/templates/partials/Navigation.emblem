@@ -1,0 +1,19 @@
+.navbar.navbar-fixed-bottom
+  .navbar-inner
+    ul.nav.row-fluid style="padding-left: 30px"
+      li.span3
+        a href="#" 
+          i.icon-home
+          | Home
+      li.span3
+        a href="#" 
+          i.icon-user
+          | Contacts
+      li.span3
+        a href="#mentees/{{id}}/snapshot" 
+          i.icon-wrench
+          | Tools
+      li.span3
+        a 
+          i.icon-cog
+          | Settings
