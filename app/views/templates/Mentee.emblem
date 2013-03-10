@@ -1,6 +1,6 @@
 #profile-pic.row-fluid.pagination-centered style="margin-bottom: -0.9em"
-  if profile_pic_url
-    img src=profile_pic_url
+  if avatar_mobile_url
+    img.img-polaroid src=avatar_mobile_url
   else
     i.img-polaroid.icon-user.icon-4x style="padding: 0.2em 0.4em 0.2em 0.4em; display: inline-block"
 .row-fluid.pagination-centered

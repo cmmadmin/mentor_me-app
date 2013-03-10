@@ -1,3 +1,8 @@
 <a href="#mentees/{{id}}">
-  <h4>{{name}}</h4>
+  <h4>
+    {{#if avatar_thumb_url}}
+      <img src="{{avatar_thumb_url}}" class="img-polaroid" />
+    {{/if}}
+    {{name}}
+  </h4>
 </a>
