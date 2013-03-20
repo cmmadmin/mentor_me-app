@@ -42,9 +42,6 @@ MentorMe.addInitializer ->
   #Import collections
   MenteeCollection = require('models/MenteeCollection')
   Questions = require('models/Questions')
-  SnapshotQuestions = require('models/SnapshotQuestions')
-  DevelopQuestions = require('models/DevelopQuestions')
-  LifeListQuestions = require('models/LifeListQuestions')
   CategorizedQuestions = require('collections/CategorizedQuestions')
 
   # Initialize collections

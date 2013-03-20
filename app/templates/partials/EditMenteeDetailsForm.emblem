@@ -1,11 +1,3 @@
-#profile-pic.row-fluid.pagination-centered
-  if avatar_mobile_url
-    img.img-polaroid src=avatar_mobile_url
-  else
-    i.img-polaroid.icon-user.icon-4x style="padding: 0.2em 0.4em 0.2em 0.4em; display: inline-block"
-.row-fluid.pagination-centered
-  h1 = name
-
 form#edit-mentee-form
   .row-fluid
     input.span12 data-value="mentee.name" placeholder="Name" type="text"
@@ -23,5 +15,7 @@ form#edit-mentee-form
     input#phone.span12 data-value="mentee.phone" placeholder="Phone" type="tel"
   .row-fluid
     textarea.span12 data-value="mentee.notes" placeholder="Notes"
-  button.btn.btn-primary data-saving-text="Saving..." type="submit" Save
-> navigation
+
+  input#edit-mentee-save-btn.btn.btn-primary data-saving-text="Saving..." type="submit" value="Save"
+
+  button#edit-mentee-cancel-btn.btn type="cancel" Cancel

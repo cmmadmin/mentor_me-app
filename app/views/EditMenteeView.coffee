@@ -1,5 +1,5 @@
 MM = require('MentorMe')
-template = require('templates/EditMentee')
+template = require('templates/partials/EditMenteeDetailsForm')
 
 module.exports = class EditMenteeView extends Marionette.ItemView
   template: template
@@ -7,15 +7,11 @@ module.exports = class EditMenteeView extends Marionette.ItemView
 
   events:
     'submit form': 'saveMentee'
-
-  initialize: ->
-    super
+    'click #edit-mentee-cancel-btn': 'cancelEdit'
     
-  render: ->
-    super
+  onRender: ->
     rivets.bind(@$el, {mentee: @model})
     @$el.find("#phone").mask("(999) 999-9999", {placeholder:" "});
-    @
 
   saveMentee: (e) ->
     # Prevent form submission
@@ -26,4 +22,13 @@ module.exports = class EditMenteeView extends Marionette.ItemView
     deferred.always =>
       @$el.find('#edit-mentee-form button.btn-primary').button('reset');
     deferred.done =>
-      MM.router.navigate('#mentees/' + @model.id, true)
+      @triggerMethod('mentee:doneEditing')
+      # MM.router.navigate('#mentees/' + @model.id, true)
+
+  cancelEdit: (e) ->
+    e.preventDefault()
+    answer = confirm("Are you sure you want to cancel your changes?")
+    if(!answer) 
+      return
+    @model.restore()
+    @triggerMethod('mentee:doneEditing')

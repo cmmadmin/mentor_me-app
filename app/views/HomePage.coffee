@@ -11,7 +11,7 @@ template = require('templates/HomePage')
 MenteeListView = require('./MenteeListView')
 MenteeCollection = require('models/MenteeCollection')
 
-module.exports = class HomePage extends Marionette.ItemView
+module.exports = class HomePage extends Marionette.Layout
 
   ###//--------------------------------------
   //+ PUBLIC PROPERTIES / CONSTANTS
@@ -26,39 +26,13 @@ module.exports = class HomePage extends Marionette.ItemView
   #
   template: template
 
-  mentees: null
+  regions:
+    menteeListRegion: "#mentee-list"
 
-  ###//--------------------------------------
-    //+ INHERITED / OVERRIDES
-    //--------------------------------------###
 
-  initialize: ->
+  initialize: -> 
     super
     @mentees = @options.mentees
-    @menteeListView = new MenteeListView(collection: @mentees)
-    
-  #
-  # @private
-  #
-  render: ->
-    super
-    @$('#mentee-list').html @menteeListView.el
 
-    return @
-
-  remove: ->
-    @$el.detach()
-    @stopListening()
-    return @
-
-  ###//--------------------------------------
-  //+ PUBLIC METHODS / GETTERS / SETTERS
-  //--------------------------------------###
-
-  ###//--------------------------------------
-  //+ EVENT HANDLERS
-  //--------------------------------------###
-
-  ###//--------------------------------------
-  //+ PRIVATE AND PROTECTED METHODS
-  //--------------------------------------###
+  onRender: ->
+    @menteeListRegion.show(new MenteeListView(collection: @mentees))

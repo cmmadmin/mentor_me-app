@@ -4,6 +4,10 @@ Collection = require('./supers/Collection')
 module.exports = class Mentee extends Model
   urlRoot: Collection.serverUrl('mentees')
 
+  initialize: ->
+    @memento = new Backbone.Memento(@);
+    _.extend(@, @memento);
+
   age: ->
     birth_date = @get('birth_date')
     if birth_date
