@@ -44,5 +44,5 @@ Handlebars.registerHelper('currentTime', (format) ->
     return new Date()
 )
 
-Nav = require('/views/templates/partials/Navigation')
+Nav = require('templates/partials/Navigation')
 Handlebars.registerPartial("navigation", Nav)

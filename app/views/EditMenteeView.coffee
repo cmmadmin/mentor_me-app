@@ -1,8 +1,7 @@
-MM = require('Application')
-View = require('./supers/View')
-template = require('./templates/EditMentee')
+MM = require('MentorMe')
+template = require('templates/EditMentee')
 
-module.exports = class EditMenteeView extends View
+module.exports = class EditMenteeView extends Marionette.ItemView
   template: template
   id: 'mentee'
 
@@ -17,9 +16,6 @@ module.exports = class EditMenteeView extends View
     rivets.bind(@$el, {mentee: @model})
     @$el.find("#phone").mask("(999) 999-9999", {placeholder:" "});
     @
-
-  getRenderData: ->
-    @model.toJSON()
 
   saveMentee: (e) ->
     # Prevent form submission

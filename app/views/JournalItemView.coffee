@@ -1,8 +1,6 @@
-View = require('./supers/View')
+JournalItem = require('templates/partials/JournalItem')
 
-JournalItem = require('./templates/partials/JournalItem')
-
-module.exports = class JournalItemView extends View
+module.exports = class JournalItemView extends Marionette.ItemView
   tagName: 'li'
   attributes:
     class: 'arrow'
@@ -11,6 +9,3 @@ module.exports = class JournalItemView extends View
     super
     #rivets.bind(@$el, {status: @model})
     #@$el.attr 'data-each-mentee-list', 'test'
-
-  getRenderData: ->
-    @model.toJSON()

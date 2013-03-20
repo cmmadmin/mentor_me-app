@@ -1,14 +1,5 @@
-View = require('./supers/View')
+MenteeListItem = require('templates/partials/MenteeListItem')
 
-MenteeListItem = require('./templates/partials/MenteeListItem')
-
-module.exports = class MenteeListItemView extends View
+module.exports = class MenteeListItemView extends Marionette.ItemView
   tagName: 'li'
   template: MenteeListItem
-  initialize: ->
-    super
-    #rivets.bind(@$el, {status: @model})
-    #@$el.attr 'data-each-mentee-list', 'test'
-
-  getRenderData: ->
-    @model.toJSON()

@@ -1,10 +1,9 @@
-MM = require 'Application'
-View = require('./supers/View')
-template = require('./templates/Mentee')
+MM = require 'MentorMe'
+template = require('templates/Mentee')
 
 JournalEntry = require('models/JournalEntry')
 
-module.exports = class MenteeView extends View
+module.exports = class MenteeView extends Marionette.ItemView
   template: template
 
   events:

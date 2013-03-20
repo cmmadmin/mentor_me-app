@@ -6,18 +6,16 @@
  * @author 
  * @since  
  ###
-MM = require( 'Application' )
-View = require('./supers/View')
-Snapshot = require('./templates/Snapshot')
-Develop = require('./templates/Develop')
-LifeList = require('./templates/LifeList')
+MM = require( 'MentorMe' )
+Snapshot = require('templates/Snapshot')
+Develop = require('templates/Develop')
+LifeList = require('templates/LifeList')
 Mentee = require('models/Mentee')
 
-module.exports = class DevelopView extends View
+module.exports = class DevelopView extends Marionette.ItemView
   #template: template
 
   initialize: ->
-    super
     @collection = switch @options.type
       when "snapshot"
         @template = Snapshot
@@ -29,15 +27,13 @@ module.exports = class DevelopView extends View
         @template = LifeList
         MM.collections.lifelistQuestions
 
+    super
+
     @listenTo @collection, 'reset', @render
     @listenTo @collection, 'add remove change', _.debounce(@render)
     @listenTo @collection, 'fetch', @showLoading
 
-  render: ->
-    super
-    return @
-
-  getRenderData: ->
+  serializeData: ->
     mentee: @model
     questions: @collection.toJSON()
 

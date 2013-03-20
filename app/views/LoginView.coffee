@@ -1,9 +1,8 @@
-View = require('./supers/View')
-template = require('./templates/Login')
+template = require('templates/Login')
 
 UserSession = require('models/UserSession')
 
-module.exports = class LoginView extends View
+module.exports = class LoginView extends Marionette.ItemView
   template: template
 
   events:

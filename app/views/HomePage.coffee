@@ -7,12 +7,11 @@
  * @since  
  ###
 
-View = require('./supers/View')
-template = require('./templates/HomePage')
+template = require('templates/HomePage')
 MenteeListView = require('./MenteeListView')
 MenteeCollection = require('models/MenteeCollection')
 
-module.exports = class HomePage extends View
+module.exports = class HomePage extends Marionette.ItemView
 
   ###//--------------------------------------
   //+ PUBLIC PROPERTIES / CONSTANTS
@@ -42,17 +41,10 @@ module.exports = class HomePage extends View
   # @private
   #
   render: ->
-    @$el.html( @template( @getRenderData() ) )
+    super
     @$('#mentee-list').html @menteeListView.el
 
     return @
-
-  #
-  # @private
-  #
-  getRenderData: ->
-    return {
-    }
 
   remove: ->
     @$el.detach()
