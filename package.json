@@ -21,7 +21,7 @@
     "coffee-script-brunch": ">= 1.5 < 1.6",
 
     "css-brunch": ">= 1.5 < 1.6",
-    "stylus-brunch": ">= 1.5 < 1.6",
+    "stylus-brunch": ">= 1.6 < 1.7",
     "less-brunch": ">= 1.5.1 < 1.6",
 
     "handlebars-brunch": "git://github.com/lapluviosilla/handlebars-brunch.git",
@@ -31,7 +31,7 @@
     "clean-css-brunch": ">= 1.5 < 1.6",
 
     "statik": ">= 1.1.0",
-    "brunch": "1.5.3"
+    "brunch": "1.6.7"
   },
   "devDependencies": {
     "mocha": ">= 1.8.1"
