@@ -4,9 +4,11 @@ Mentee = require('models/Mentee')
 MenteeCollection = require('models/MenteeCollection')
 MenteeView = require('views/MenteeView')
 EditMenteeView = require('views/EditMenteeView')
+ToolsView = require('views/ToolsView')
 JournalView = require('views/JournalView')
 JournalEntryCollection = require 'models/JournalEntryCollection'
 DevelopView = require('views/DevelopView')
+SnapshotController = require('controllers/SnapshotController')
 
 module.exports = class AppController extends Marionette.Controller
 
@@ -31,9 +33,12 @@ module.exports = class AppController extends Marionette.Controller
     col.fetch()
     @changePage new JournalView({collection: col})
 
+  menteeTools: (id) ->
+    @loadMenteeView id, ToolsView
+
   menteeSnapshot: (id) ->
     mentee = MM.collections.mentees.getOrFetch(id)
-    @changePage new DevelopView(model: mentee, type: 'snapshot')
+    snapshot = new SnapshotController(model: mentee, region: MM.appLayout.mainRegion)
 
   menteeDevelop: (id) ->
     mentee = MM.collections.mentees.getOrFetch(id)
@@ -59,6 +64,7 @@ module.exports = class AppController extends Marionette.Controller
       #page.$el.trigger('pagecreate');
 
     MM.appLayout.mainRegion.show(page)
+
     #transition = $.mobile.defaultPageTransition
     # TODO: Optimize and fix transitions
     #transition = 'none'

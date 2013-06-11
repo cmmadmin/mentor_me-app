@@ -1,8 +1,3 @@
-.wizard
-  a href="#mentees/{{mentee.id}}/snapshot" Snapshot
-  a.current href="#mentees/{{mentee.id}}/develop" Develop
-  a href="#mentees/{{mentee.id}}/lifelist" LifeList
-
 h1 Develop
 p Answer the following questions after you have done the SnapShot, talk to the student about how they want to grow, and prayed for the Lord's leading.
 

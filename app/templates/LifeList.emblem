@@ -1,8 +1,3 @@
-.wizard
-  a href="#mentees/{{mentee.id}}/snapshot" Snapshot
-  a href="#mentees/{{mentee.id}}/develop" Develop
-  a.current href="#mentees/{{mentee.id}}/lifelist" LifeList
-
 h1 LifeList
 p Check the skills or converation items that would bless this student over the next several years. What would you like for them look like when they leave your ministry?
 

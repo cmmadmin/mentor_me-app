@@ -10,7 +10,7 @@
           i.icon-user
           | Contacts
       li
-        a href="#mentees/{{id}}/snapshot" 
+        a href="#mentees/{{id}}/tools" 
           i.icon-wrench
           | Tools
       li

@@ -1,0 +1,66 @@
+h3.text-center SnapShot
+h1.text-center Interactive Quiz
+
+hr
+
+.quiz-swiper.swiper-container
+  .swiper-wrapper
+    .swiper-slide
+      .assess-question
+        p.lead Physical - How would you rate your following (1-poor 10-excellent)
+
+        ul
+          li
+            | Sharpen my mind
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+          li
+            | Sharpen my body
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+          li
+            | Eat/rest well
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+          li
+            | Stress/anxiety/depression level
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+
+    .swiper-slide
+      .assess-question
+        p.lead Emotional - how much do these influence or drive you (1 - not at all, 10 - greatly)
+
+        ul
+          li
+            | Insecurities
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+          li
+            | Fears
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+          li
+            | Comfort
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+          li
+            | Control
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+
+
+    .swiper-slide
+      .assess-question
+        p.lead Finances
+
+        ul
+          li
+            | Indebtedness
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+          li
+            | Live on a Budget
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+          li
+            | Savings / Retirement
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+          li
+            | Biblical Stewardship
+            input.slide.NoSwiping type="range" min="1" max="10" step="1" value="6"
+
+      button#complete-assess-btn.btn.btn-large Complete Quiz
+
+
+.pagination-sd.pagination1

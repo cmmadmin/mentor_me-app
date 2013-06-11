@@ -31,6 +31,7 @@ module.exports = class Router extends Marionette.AppRouter
         'mentees/:id/journal' : 'menteeJournal'
         'mentees/:id/journal_entries' : 'menteeJournal'
         # 'mentees/:id/journal_entries/:journal_id' : 'editJournalEntry'
+        'mentees/:id/tools' : 'menteeTools'
         'mentees/:id/snapshot' : 'menteeSnapshot'
         'mentees/:id/develop' : 'menteeDevelop'
         'mentees/:id/lifelist' : 'menteeLifelist'
