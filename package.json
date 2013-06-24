@@ -23,6 +23,7 @@
     "css-brunch": ">= 1.5 < 1.6",
     "stylus-brunch": ">= 1.6 < 1.7",
     "less-brunch": ">= 1.5.1 < 1.6",
+    "sass-brunch": ">= 1.5.2",
 
     "handlebars-brunch": "git://github.com/lapluviosilla/handlebars-brunch.git",
     "emblem-brunch": "git://github.com/lapluviosilla/emblem-brunch.git",

@@ -1,11 +1,11 @@
-#profile-pic.row-fluid.pagination-centered style="margin-bottom: -0.9em"
+#profile-pic.row.alignc style="margin-bottom: -0.9em"
   if avatar_mobile_url
-    img#profile-pic.img-polaroid data-src="mentee.avatar_mobile_url" src=avatar_mobile_url
+    img#profile-pic.img-thumbnail data-src="mentee.avatar_mobile_url" src=avatar_mobile_url
   else
-    i.img-polaroid.icon-user.icon-4x style="padding: 0.2em 0.4em 0.2em 0.4em; display: inline-block"
-.row-fluid.pagination-centered
-  a#edit-mentee-btn.btn Edit
-.row-fluid.pagination-centered
+    i.img-thumbnail.icon-user.icon-4x style="padding: 0.2em 0.4em 0.2em 0.4em; display: inline-block"
+.row.alignc
+  a#edit-mentee-btn.btn.btn-default Edit
+.row.alignc
   h1 data-text="mentee.name" = name
 
 #mentee-action

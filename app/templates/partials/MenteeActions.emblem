@@ -1,26 +1,26 @@
 hr
 
-.row-fluid
+.row
 
   if phone
-    .span3.pagination-centered
+    .col-3.alignc
       a href="tel:{{phone}}"
         i.icon-phone-sign.icon-align-center.icon-2x
-    .span3.pagination-centered
+    .col-3.alignc
       a href="sms:{{phone}}?body=TEST"
         i.icon-mobile-phone.icon-align-center.icon-2x
 
   if email
-    .span3.pagination-centered
+    .col-3.alignc
       a href="mailto:{{email}}"
         i.icon-envelope.icon-2x
-  .span3.pagination-centered
+  .col-3.alignc
     i.icon-facebook-sign.icon-2x
 
 hr
 
-.add-journal.row-fluid
-  textarea#add-journal-textarea.span12 placeholder="Tap to add a journal entry" rows="3"
+.add-journal.row
+  textarea#add-journal-textarea.col-12 placeholder="Tap to add a journal entry" rows="3"
   .journal-notifications.pull-left
   .add-journal-ctrls.row-fluid
     .pull-right
@@ -31,4 +31,4 @@ hr
       | at 
       a href="#" id="journaldate" data-value="{{currentTime 'MM/DD/YY HH:mm'}}"
     
-a.btn.btn-large.btn-block href="#mentees/{{id}}/journal" View Journal
+a.btn.btn-default.btn-large.btn-block href="#mentees/{{id}}/journal" View Journal

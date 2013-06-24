@@ -10,9 +10,9 @@ module.exports = class MenteeDetailsView extends Marionette.ItemView
     'blur #add-journal-textarea' : 'unfocusAddJournal'
 
   onRender: ->
-    @$el.find('#journaldate').editable
-      mode: 'inline'
-      viewformat: 'M d'
+    # @$el.find('#journaldate').editable
+    #   mode: 'inline'
+    #   viewformat: 'M d'
     @$el.find('#journaldate').on 'shown', ->
       $(@).next().find('.editable-input input').mask('99/99/99 99:99', placeholder: ' ')
 

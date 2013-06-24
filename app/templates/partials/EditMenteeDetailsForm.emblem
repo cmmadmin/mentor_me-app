@@ -1,20 +1,19 @@
 form#edit-mentee-form
-  .row-fluid
-    input.span12 data-value="mentee.name" placeholder="Name" type="text"
-  .row-fluid
-    .controls.controls-row
-      input.span6 data-value="mentee.birth_date" name="birth_date" type="date"
-      label.span1.text-right for="age" Age:
-      span.span5
-        span.uneditable-input data-text="mentee:age < .birth_date"
-  .row-fluid
-    input.span12 data-value="mentee.major" placeholder="Major" type="text"
-  .row-fluid
-    input.span12 data-value="mentee.email" placeholder="Email" type="email"
-  .row-fluid
-    input#phone.span12 data-value="mentee.phone" placeholder="Phone" type="tel"
-  .row-fluid
-    textarea.span12 data-value="mentee.notes" placeholder="Notes"
+  .row
+    input.col-12 data-value="mentee.name" placeholder="Name" type="text"
+  .row
+    input.col-6 data-value="mentee.birth_date" name="birth_date" type="date"
+    label.col-1.text-right for="age" Age:
+    span.col-5
+      span.uneditable-input data-text="mentee:age < .birth_date"
+  .row
+    input.col-12 data-value="mentee.major" placeholder="Major" type="text"
+  .row
+    input.col-12 data-value="mentee.email" placeholder="Email" type="email"
+  .row
+    input#phone.col-12 data-value="mentee.phone" placeholder="Phone" type="tel"
+  .row
+    textarea.col-12 data-value="mentee.notes" placeholder="Notes"
 
   input#edit-mentee-save-btn.btn.btn-primary data-saving-text="Saving..." type="submit" value="Save"
 

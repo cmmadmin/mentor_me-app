@@ -1,19 +1,18 @@
-.navbar.navbar-fixed-bottom
-  .navbar-inner
-    ul.nav.row-fluid style="padding-left: 10px"
-      li
-        a href="#" 
-          i.icon-home
-          | Home
-      li
-        a href="#" 
-          i.icon-user
-          | Contacts
-      li
-        a href="#mentees/{{id}}/tools" 
-          i.icon-wrench
-          | Tools
-      li
-        a 
-          i.icon-cog
-          | Settings
+.navbar-fixed-bottom
+  ul.nav.nav-pills.nav-justified
+    li
+      a href="#" 
+        i.icon-home
+        | Home
+    li.active
+      a href="#" 
+        i.icon-user
+        | Contacts
+    li
+      a href="#mentees/{{id}}/tools" 
+        i.icon-wrench
+        | Tools
+    li
+      a 
+        i.icon-cog
+        | Settings
