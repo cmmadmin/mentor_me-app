@@ -1,13 +1,57 @@
-#profile-pic.row.alignc style="margin-bottom: -0.9em"
+
+.contact-head
+  / Profile pic
   if avatar_mobile_url
-    img#profile-pic.img-thumbnail data-src="mentee.avatar_mobile_url" src=avatar_mobile_url
+    img.profile-pic data-src="mentee.avatar_mobile_url" src=avatar_mobile_url
   else
-    i.img-thumbnail.icon-user.icon-4x style="padding: 0.2em 0.4em 0.2em 0.4em; display: inline-block"
-.row.alignc
-  a#edit-mentee-btn.btn.btn-default Edit
-.row.alignc
-  h1 data-text="mentee.name" = name
+    i.icon-user style="display: inline-block"
+
+  span.name data-text="mentee.name" = name
 
 #mentee-action
 
-> navigation
+#mentee-action-grid.container
+  .row
+    .col.col-1
+    .col.col-4
+      a href="#"
+        .profilebtn
+          i.icon-user.icon-3x
+          .profilebtn-title Contacts
+    .col.col-2
+    .col.col-4
+      .profilebtn
+        i.icon-pencil.icon-3x
+        .profilebtn-title Journal
+    .col.col-1
+  .row
+    .col.col-1
+    .col.col-4
+      .profilebtn
+        .icongroup
+          i.icon-star
+          i.icon-star
+          i.icon-star
+          i.icon-star-empty
+          i.icon-star-empty
+        .profilebtn-title Snapshot
+    .col.col-2
+    .col.col-4
+      .profilebtn
+        i.icon-comment.icon-3x
+        .profilebtn-title Develop
+    .col.col-1
+  .row
+    .col.col-1
+    .col.col-4
+      .profilebtn
+        span.icon-stack.icon-2x
+          i.icon-stack-base.icon-check-empty
+          i.icon-list
+        .profilebtn-title Life List
+    .col.col-2
+    .col.col-4
+      .profilebtn
+        i.icon-ellipsis-horizontal.icon-3x
+        .profilebtn-title More
+    .col.col-1

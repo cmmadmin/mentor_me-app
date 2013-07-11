@@ -10,6 +10,9 @@ EditMenteeView = require('./EditMenteeView')
 module.exports = class MenteeView extends Marionette.Layout
   template: template
 
+  attributes:
+    'style' : 'height: 100%'
+
   events:
     'click #edit-mentee-btn' : 'editMentee'
     'click #profile-pic': 'getPicture'
@@ -18,22 +21,21 @@ module.exports = class MenteeView extends Marionette.Layout
     editBtn: '#edit-mentee-btn'
 
   regions:
-    actionRegion: 
-      selector: '#mentee-action'
-      regionType: BackStackRegion
+    actionRegion: '#mentee-action'
 
   editing: false
     
   onShow: ->
-    view = new MenteeProfileView(model: @model)
-    @actionRegion.show(view)
-    rivets.bind(@$el, {mentee: @model})
+    @listenTo @model, 'change', @render
+    #view = new MenteeProfileView(model: @model)
+    #@actionRegion.show(view)
+    # rivets.bind(@$el, {mentee: @model})
 
   doneEditing: (e) =>
-    @ui.editBtn.show();
+    # @ui.editBtn.show();
     # Keep views
-    @actionRegion.show(new MenteeProfileView(model: @model), new BackStack.SlideEffect(direction: 'right'))
-    @editing = false
+    # @actionRegion.show(new MenteeProfileView(model: @model), new BackStack.SlideEffect(direction: 'right'))
+    # @editing = false
 
   editMentee: (e) =>
     # Freeze model

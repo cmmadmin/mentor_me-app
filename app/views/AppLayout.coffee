@@ -5,6 +5,5 @@ module.exports = class AppLayout extends Marionette.Layout
     headerRegion: "#pageHeader"
     mainRegion: 
       selector: "#content"
-      regionType: BackStackRegion
     footerRegion: "#pageFooter"
     modalRegion: "#modal"

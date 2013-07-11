@@ -19,6 +19,7 @@ module.exports = class SelfAssessView extends Marionette.ItemView
     mySwiper = new Swiper('.assess-swiper', 
       mode:'horizontal'
       pagination: '.pagination-sd'
+      
       moveStartThreshold:100
       preventClassNoSwiping: true
     )

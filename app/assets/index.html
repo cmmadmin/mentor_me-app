@@ -10,20 +10,31 @@
   
   <title>Mentor Me</title>
 
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <!-- Stylesheets -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="stylesheets/app.css">
 
 </head>
-<body>
-  <div id="mentor_me_app">
+<!--
+  ontouchstart: enable CSS active pseudo styles in iOS
+  http://alxgbsn.co.uk/2011/10/17/enable-css-active-pseudo-styles-in-mobile-safari/
+-->
+<body ontouchstart="">
+  <div id="mentor_me_app" class="app">
     <div id="tbModal" class="modal hide fade">
     </div>
     <div id="modal" class="modal hide fade">
     </div>
+    <div class="colorbg">
+    <div class="blackgrad">
     <header id="pageHeader"></header>
-    <section id="content"></section>
+    <section id="content" class="container"></section>
+    
+
     <footer id="pageFooter"></footer>
   </div>
 

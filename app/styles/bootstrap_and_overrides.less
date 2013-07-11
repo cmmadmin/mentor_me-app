@@ -1,7 +1,107 @@
 @import 'vendor/styles/bootstrap/_bootstrap';
 
+@font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 .assess-question {
   .slide {
     .pull-right
+  }
+}
+
+a:visited {
+  color: @link-color;
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+// ---- Contact Page ---
+.contact-head {
+  .row;
+
+  padding: 10px;
+  padding-left: 20px;
+  height: 80px;
+  width: 100%;
+
+  position: absolute;
+  left: 0;
+  top: 15px;
+
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-size: 28pt;
+  
+  background-color: rgba(255, 255, 255, 0.75);
+  // -webkit-filter: blur(5px);
+  // -moz-filter: blur(2px);
+  // -o-filter: blur(2px);
+  // -ms-filter: blur(2px);
+  // filter: blur(2px);
+
+  .profile-pic {
+    height: 60px;
+    width: 60px;
+    border: 2px solid grey;
+    border-radius: 10px;
+  }
+
+  .name {
+    vertical-align: middle;
+    margin-left: 18px;
+  }
+
+}
+#mentee-action-grid {
+  height: 100%;
+  padding-top: 100px;
+  max-width: 600px;
+  .row {
+    height: percentage(1/3);
+    .col {
+      height: 100%;
+    }
+  }
+}
+a:active .profilebtn {
+  box-shadow: inset 1px 1px 3px 2px rgba(0, 0, 0, 0.75);
+  margin-top: -45px;
+  margin-left: -45px;
+}
+.profilebtn {
+  background-color: #ee9536;
+  box-shadow: 2px 2px #c17728;
+  color: white;
+  height: 95px;
+  width: 95px;
+  position: absolute;
+  top: 50%;
+  margin-top: -47px;
+  left: 50%;
+  margin-left: -47px;
+
+  i.icon-3x, .icon-stack, .icongroup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  i.icon-3x {
+    margin-top: -22px;
+    margin-left: -18px;
+  }
+  .icon-stack {
+    margin-top: -25px;
+    margin-left: -28px;
+  }
+  .icongroup {
+    margin-top: -10px;
+    margin-left: -30px;
+  }
+  .profilebtn-title {
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    font-family: 'Open Sans';
+    font-weight: 400;
   }
 }
