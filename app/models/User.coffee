@@ -1,4 +1,4 @@
 Model = require('./supers/Model')
-Collection = require('./supers/Collection')
+Collection = require('collections/supers/Collection')
 
 module.exports = class User extends Model

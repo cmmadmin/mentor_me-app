@@ -9,14 +9,6 @@
 
 MM = require( 'MentorMe' )
 
-Mentee = require('models/Mentee')
-MenteeCollection = require('models/MenteeCollection')
-MenteeView = require('views/MenteeView')
-EditMenteeView = require('views/EditMenteeView')
-JournalView = require('views/JournalView')
-JournalEntryCollection = require 'models/JournalEntryCollection'
-DevelopView = require('views/DevelopView')
-
 module.exports = class Router extends Marionette.AppRouter
 
   ###//--------------------------------------

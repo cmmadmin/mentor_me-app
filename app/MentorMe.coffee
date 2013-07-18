@@ -40,22 +40,18 @@ MentorMe.addInitializer ->
   AppLayout = require('views/AppLayout')
 
   #Import collections
-  MenteeCollection = require('models/MenteeCollection')
-  Questions = require('models/Questions')
-  CategorizedQuestions = require('collections/CategorizedQuestions')
+  Mentees = require('collections/Mentees')
+  Questions = require('collections/Questions')
 
   # Initialize collections
   @collections = 
-    mentees: new MenteeCollection()
+    mentees: new Mentees()
     questions: new Questions()
 
   # TODO: Use proper server bootstrap
   # Bootstrap initial data
   @collections.mentees.fetch();
   @collections.questions.fetch();
-  @collections.snapshotQuestions = new CategorizedQuestions(@collections.questions, "snapshot")
-  @collections.developQuestions = new CategorizedQuestions(@collections.questions, "develop")
-  @collections.lifelistQuestions = new CategorizedQuestions(@collections.questions, "lifelist")
 
   # Initialize views
   @homePage = new HomePage(mentees: @collections.mentees)

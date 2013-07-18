@@ -1,5 +1,5 @@
 Collection = require('./supers/Collection')
-Question = require('./Question')
+Question = require('models/Question')
 
 module.exports = class Questions extends Collection
 

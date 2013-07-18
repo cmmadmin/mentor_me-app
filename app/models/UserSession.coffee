@@ -1,6 +1,6 @@
 MM = require('MentorMe')
 Model = require('./supers/Model')
-Collection = require('./supers/Collection')
+Collection = require('collections/supers/Collection')
 User = require('./User')
 
 module.exports = class UserSession extends Model

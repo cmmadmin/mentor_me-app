@@ -9,7 +9,7 @@
 
 template = require('templates/HomePage')
 MenteeListView = require('./MenteeListView')
-MenteeCollection = require('models/MenteeCollection')
+MenteeCollection = require('collections/Mentees')
 
 module.exports = class HomePage extends Marionette.Layout
 

@@ -1,5 +1,5 @@
 Collection = require('./supers/Collection')
-JournalEntry= require('./JournalEntry')
+JournalEntry= require('models/JournalEntry')
 
 module.exports = class JournalEntryCollection extends Collection
 

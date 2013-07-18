@@ -1,12 +1,12 @@
 MM = require('MentorMe')
 
 Mentee = require('models/Mentee')
-MenteeCollection = require('models/MenteeCollection')
+Mentees = require('collections/Mentees')
 MenteeView = require('views/MenteeView')
 EditMenteeView = require('views/EditMenteeView')
 ToolsView = require('views/ToolsView')
 JournalView = require('views/JournalView')
-JournalEntryCollection = require 'models/JournalEntryCollection'
+JournalEntries = require 'collections/JournalEntries'
 DevelopView = require('views/DevelopView')
 SnapshotController = require('controllers/SnapshotController')
 
@@ -29,7 +29,7 @@ module.exports = class AppController extends Marionette.Controller
     @loadMenteeView id, EditMenteeView
 
   menteeJournal: (id) ->
-    col = new JournalEntryCollection(mentee_id: id)
+    col = new JournalEntries(mentee_id: id)
     col.fetch()
     @changePage new JournalView({collection: col})
 

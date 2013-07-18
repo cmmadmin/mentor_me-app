@@ -1,7 +1,7 @@
 Collection = require('./supers/Collection')
-Mentee = require('./Mentee')
+Mentee = require('models/Mentee')
 
-module.exports = class MenteeCollection extends Collection
+module.exports = class Mentees extends Collection
 
   model: Mentee
   url: Collection.serverUrl('mentees')
