@@ -25,10 +25,10 @@
     "less-brunch": ">= 1.5.1 < 1.6",
     "sass-brunch": ">= 1.5.2",
 
-    "handlebars-brunch": "git://github.com/lapluviosilla/handlebars-brunch.git",
-    "emblem-brunch": "git://github.com/lapluviosilla/emblem-brunch.git",
+    "handlebars-brunch": "1.7.2",
+    "emblem-brunch": "0.1.1",
 
-    "uglify-js-brunch": ">= 1.5 < 1.6",
+    "uglify-js-brunch": "1.7.0",
     "clean-css-brunch": ">= 1.5 < 1.6",
 
     "statik": ">= 1.1.0",
