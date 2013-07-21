@@ -7,7 +7,7 @@
  * @since  
  ###
 
-module.exports = class Model extends Backbone.Model
+module.exports = class Model extends Supermodel.Model
 
   ###//--------------------------------------
   //+ PUBLIC PROPERTIES / CONSTANTS

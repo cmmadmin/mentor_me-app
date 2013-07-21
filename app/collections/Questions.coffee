@@ -1,10 +1,10 @@
-Collection = require('./supers/Collection')
+SuperCollection = require('./supers/SuperCollection')
 Question = require('models/Question')
 
-module.exports = class Questions extends Collection
+module.exports = class Questions extends SuperCollection
 
   model: Question
-  url: Collection.serverUrl('questions')
+  url: SuperCollection.serverUrl('questions')
   
   initialize: ->
     #@storage = new Offline.Storage('questions', this)

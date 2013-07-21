@@ -1,11 +1,11 @@
-Collection = require('./supers/Collection')
+SuperCollection = require('./supers/SuperCollection')
 JournalEntry= require('models/JournalEntry')
 
-module.exports = class JournalEntryCollection extends Collection
+module.exports = class JournalEntryCollection extends SuperCollection
 
   model: JournalEntry
   url: ->
-    Collection.serverUrl('mentees')() + '/' + @mentee_id + '/journal_entries'
+    SuperCollection.serverUrl('mentees')() + '/' + @mentee_id + '/journal_entries'
   
   initialize: (attrs) ->
     #@storage = new Offline.Storage('mentees', this)
