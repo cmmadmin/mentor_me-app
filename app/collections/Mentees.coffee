@@ -1,11 +1,14 @@
-SuperCollection = require('./supers/SuperCollection')
-Mentee = require('models/Mentee')
+Collection = require('./supers/Collection')
 
-module.exports = class Mentees extends SuperCollection
 
-  model: Mentee
-  url: SuperCollection.serverUrl('mentees')
+module.exports = class Mentees extends Collection
+
+  url: Collection.serverUrl('mentees')
   
   initialize: ->
     #@storage = new Offline.Storage('mentees', this)
     super
+
+  model: (attrs, options) ->
+    Mentee = require('models/Mentee')
+    return Mentee.create(attrs, options)

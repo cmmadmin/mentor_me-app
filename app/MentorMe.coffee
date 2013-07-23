@@ -42,16 +42,26 @@ MentorMe.addInitializer ->
   #Import collections
   Mentees = require('collections/Mentees')
   Questions = require('collections/Questions')
+  Editions = require('collections/Editions')
 
   # Initialize collections
   @collections = 
     mentees: new Mentees()
     questions: new Questions()
+    editions: new Editions()
+    bootstrap: (update) ->
+      @mentees.reset(update.mentees)
+      @editions.reset(update.editions)
 
   # TODO: Use proper server bootstrap
   # Bootstrap initial data
-  @collections.mentees.fetch();
-  @collections.questions.fetch();
+  # @collections.mentees.fetch();
+  # @collections.questions.fetch();
+  ApplicationConfig = require('config/ApplicationConfig')
+  $.ajax(
+    url: ApplicationConfig.SERVER_URL + 'users/data'
+    context: @collections
+  ).done(@collections.bootstrap, @collections)
 
   # Initialize views
   @homePage = new HomePage(mentees: @collections.mentees)

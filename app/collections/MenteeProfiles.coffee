@@ -1,7 +1,10 @@
-SuperCollection = require('./supers/SuperCollection')
-MenteeProfile = require('models/MenteeProfile')
+Collection = require('./supers/Collection')
 
-module.exports = class MenteeProfiles extends SuperCollection
 
-  model: MenteeProfile
-  url: SuperCollection.serverUrl('mentee_profiles')
+module.exports = class MenteeProfiles extends Collection
+
+  url: Collection.serverUrl('mentee_profiles')
+
+  model: (attrs, options) ->
+    MenteeProfile = require('models/MenteeProfile')
+    return MenteeProfile.create(attrs, options)

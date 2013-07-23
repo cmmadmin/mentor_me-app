@@ -1,6 +1,6 @@
 Model = require('./supers/Model')
 Collection = require('collections/supers/Collection')
-Mentee = require('models/Mentee')
+
 
 module.exports = class MenteeProfile extends Model
 
@@ -8,8 +8,15 @@ module.exports = class MenteeProfile extends Model
     Collection.serverUrl('mentees')() + '/' + @get('mentee_id') + '/journal_entries'
 
   
+Mentee = require('models/Mentee')
+Answers = require('collections/Answers')
 # relationships defined afterwards
 MenteeProfile.has().one('mentee', 
   model: Mentee
-  inverse: 'mentee_profiles'
+  inverse: 'active_profile'
 )
+MenteeProfile.has().many('answers', 
+  collection: Answers
+  inverse: 'mentee_profile'
+)
+

@@ -21,10 +21,10 @@ module.exports = class Mentee extends Model
       "Unknown"
 
 # Put at bottom to avoid circular dependency (ugly commonjs exports hack)
-MenteeProfiles = require('collections/MenteeProfiles')
+MenteeProfile = require('./MenteeProfile')
 
 # Supermodel definitions
-Mentee.has().many('mentee_profiles', 
-  collection: MenteeProfiles
+Mentee.has().one('active_profile', 
+  model: MenteeProfile
   inverse: 'mentee'
 )
