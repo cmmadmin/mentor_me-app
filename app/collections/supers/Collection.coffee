@@ -63,6 +63,5 @@ module.exports = class Collection extends Backbone.Collection
   //+ STATIC METHODS
   //--------------------------------------###
   @serverUrl: (url) ->
-    return ->
-      return ApplicationConfig.SERVER_URL + url
+    return ApplicationConfig.SERVER_URL + url
       

@@ -2,7 +2,8 @@ Collection = require('./supers/Collection')
 
 module.exports = class Questions extends Collection
 
-  url: Collection.serverUrl('questions')
+  url: ->
+    Collection.serverUrl('question_groups') + '/' + @owner.id + '/questions'
   
   initialize: ->
     #@storage = new Offline.Storage('questions', this)

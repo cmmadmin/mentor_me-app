@@ -14,22 +14,14 @@ module.exports = class Model extends Supermodel.Model
   //--------------------------------------###
   status: 0
 
-  ###//--------------------------------------
-  //+ INHERITED / OVERRIDES
-  //--------------------------------------###
-
   fetch: ->
     @trigger('fetch', @)
     super
 
-  ###//--------------------------------------
-  //+ PUBLIC METHODS / GETTERS / SETTERS
-  //--------------------------------------###
+  sync: (method, model, options) ->
+    options = options || {};
+    # Use collection url if creating instead of default shallow url
+    if (method.toLowerCase() == 'create' && model.collection?)
+      options.url = model.collection.url()
 
-  ###//--------------------------------------
-  //+ EVENT HANDLERS
-  //--------------------------------------###
-
-  ###//--------------------------------------
-  //+ PRIVATE AND PROTECTED METHODS
-  //--------------------------------------###
+    super(method, model, options);

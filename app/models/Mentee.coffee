@@ -22,9 +22,15 @@ module.exports = class Mentee extends Model
 
 # Put at bottom to avoid circular dependency (ugly commonjs exports hack)
 MenteeProfile = require('./MenteeProfile')
+JournalEntries = require('collections/JournalEntries')
 
 # Supermodel definitions
 Mentee.has().one('active_profile', 
   model: MenteeProfile
+  inverse: 'mentee'
+)
+
+Mentee.has().many('journal_entries', 
+  collection: JournalEntries
   inverse: 'mentee'
 )
