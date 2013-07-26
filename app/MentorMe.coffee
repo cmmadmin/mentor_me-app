@@ -36,6 +36,7 @@ MentorMe.addInitializer ->
   HomePage = require('views/HomePage')
   LoginPanel = require('views/LoginView')
   Router = require('routers/Router')
+  
   AppController = require('controllers/AppController')
   AppLayout = require('views/AppLayout')
 
@@ -64,7 +65,6 @@ MentorMe.addInitializer ->
   ).done(@collections.bootstrap, @collections)
 
   # Initialize views
-  @homePage = new HomePage(mentees: @collections.mentees)
   @loginPanel = new LoginPanel()
   @router = new Router(controller: new AppController())
 
