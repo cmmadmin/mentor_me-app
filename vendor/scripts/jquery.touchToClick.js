@@ -4,7 +4,7 @@
  * Binds 'touchstart' when binding $.on('click')
  * and triggers 'click' when 'touchend' happens without 'touchmove' inbetween.
  */
-(function($) {
+function disabledtoushtoclick($) {
 	if (!("ontouchstart" in window)) {
 		return;
 	}
@@ -93,5 +93,5 @@
 
 			return false;
 		}
-	};
-})(jQuery);
+	}
+}

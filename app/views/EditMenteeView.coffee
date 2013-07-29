@@ -8,21 +8,25 @@ module.exports = class EditMenteeView extends Marionette.ItemView
   events:
     'submit form': 'saveMentee'
     'click #edit-mentee-cancel-btn': 'cancelEdit'
+
+  ui:
+    saveBtn: '#edit-mentee-save-btn'
     
-  onRender: ->
+  onShow: ->
+    @model.store()
     rivets.bind(@$el, {mentee: @model})
-    @$el.find("#phone").mask("(999) 999-9999", {placeholder:" "});
+    # @$el.find("#phone").mask("(999) 999-9999", {placeholder:" "});
 
   saveMentee: (e) ->
     # Prevent form submission
     e.preventDefault()
 
-    @$el.find('#edit-mentee-form button.btn-primary').button('saving');
+    @ui.saveBtn.button('saving');
     deferred = @model.save()
     deferred.always =>
-      @$el.find('#edit-mentee-form button.btn-primary').button('reset');
+      @ui.saveBtn.button('reset');
     deferred.done =>
-      @triggerMethod('mentee:doneEditing')
+      @triggerMethod('close')
       # MM.router.navigate('#mentees/' + @model.id, true)
 
   cancelEdit: (e) ->
@@ -31,4 +35,4 @@ module.exports = class EditMenteeView extends Marionette.ItemView
     if(!answer) 
       return
     @model.restore()
-    @triggerMethod('mentee:doneEditing')
+    @triggerMethod('close')

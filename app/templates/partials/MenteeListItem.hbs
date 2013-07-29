@@ -1,8 +1,8 @@
 <a href="#mentees/{{id}}">
-  <h4>
-    {{#if avatar_thumb_url}}
-      <img src="{{avatar_thumb_url}}" class="img-thumbnail" />
-    {{/if}}
-    {{name}}
-  </h4>
+  {{#if avatar_mobile_url}}
+    <img src="{{avatar_mobile_url}}" class="mentee-thumb" />
+  {{else}}
+    <i class="icon-user" style="display: inline-block" />
+  {{/if}}
+  {{name}}
 </a>

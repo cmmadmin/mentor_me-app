@@ -1,20 +1,12 @@
-form#edit-mentee-form
-  .row
-    input.col-12 data-value="mentee.name" placeholder="Name" type="text"
-  .row
-    input.col-6 data-value="mentee.birth_date" name="birth_date" type="date"
-    label.col-1.text-right for="age" Age:
-    span.col-5
-      span.uneditable-input data-text="mentee:age < .birth_date"
-  .row
-    input.col-12 data-value="mentee.major" placeholder="Major" type="text"
-  .row
-    input.col-12 data-value="mentee.email" placeholder="Email" type="email"
-  .row
-    input#phone.col-12 data-value="mentee.phone" placeholder="Phone" type="tel"
-  .row
-    textarea.col-12 data-value="mentee.notes" placeholder="Notes"
-
-  input#edit-mentee-save-btn.btn.btn-primary data-saving-text="Saving..." type="submit" value="Save"
-
-  button#edit-mentee-cancel-btn.btn type="cancel" Cancel
+form#edit-mentee-form.full-form
+      
+    input data-value="mentee.name" placeholder="Name" type="text"
+    / label Birth Date
+    input data-value="mentee.birth_date" type="date"
+    input data-value="mentee.major" placeholder="Major" type="text"
+    input data-value="mentee.email" placeholder="Email" type="email"
+    input#phone data-value="mentee.phone" placeholder="Phone" type="tel"
+    .control-group
+      .controls.center
+        input#edit-mentee-save-btn.btn.btn-primary data-saving-text="Saving..." type="submit" value="Save"
+        button#edit-mentee-cancel-btn.btn type="cancel" Cancel

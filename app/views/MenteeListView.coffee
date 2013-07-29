@@ -22,8 +22,8 @@ module.exports = class MenteeListView extends Marionette.CollectionView
     super
 
     #@listenTo @collection, 'reset', @render
-    #listenTo @collection, 'add remove change', _.debounce(@render)
-    @listenTo @collection, 'fetch', @showLoading
+    # @listenTo @collection, 'add remove change', _.debounce(@render)
+    # @listenTo @collection, 'fetch', @showLoading
 
   showLoading: ->
     @$el.html("<img src='images/spinner.gif'>")

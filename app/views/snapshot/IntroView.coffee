@@ -13,4 +13,4 @@ module.exports = class IntroView extends Marionette.ItemView
   template: template
 
   triggers:
-    'click #start-snapshot-btn' : 'start'
+    'click #start-snapshot-btn' : 'snapshot:intro:start:clicked'

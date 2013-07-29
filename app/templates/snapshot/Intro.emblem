@@ -1,18 +1,31 @@
-h2 SnapShot
-p Welcome to Snapshot, an easy way to evaluate your mentee at a point in time and discover how you can best develop them to be more of the person God created them to be.
+.snapshot-intro style="text-align: center;"
+  .promo style="margin-top: 60px; font-weight: 800"
+    h1 Help
+    h1 me 
+    h1 Know
+    h1 You!
 
-p There are 3 parts to SnapShot: 
-ul
-  li A self assessment the mentee performs
-  li An interactive part you do together
-  li An ongoing observation part that allows you to note new things as you learn them.
+  .snapshot-intro-buttons.container
+    p
+      button#start-snapshot-btn.btn.btn-large.btn-primary Start Self Assess
+    p
+      a#go-back-btn.btn.btn-large.btn-default href="#mentees/{{id}}" Go Back
 
-p Complete each section as completely in as little time as possible. 2-3 meeting should allow you to fill out most information.
 
-p After you have filled in the information, you can view your results on the SnapShot Summary quickly and easily to help you remember key information about your mentee. We would recommend doing this before each meeting the first month or two.
+.info style="display: none"
+  h2 SnapShot
+  p Welcome to Snapshot, an easy way to evaluate your mentee at a point in time and discover how you can best develop them to be more of the person God created them to be.
 
-p This information will feed your Develop Plan in the next section. You now have a SnapShot of your mentee. Update this at least once per year.
+  p There are 3 parts to SnapShot: 
+  ul
+    li A self assessment the mentee performs
+    li An interactive part you do together
+    li An ongoing observation part that allows you to note new things as you learn them.
 
-h3 Now hand your device over to your student and have them take the self assessment
+  p Complete each section as completely in as little time as possible. 2-3 meeting should allow you to fill out most information.
 
-button#start-snapshot-btn.btn.btn-large.btn-primary.btn-block Start Self Assess
+  p After you have filled in the information, you can view your results on the SnapShot Summary quickly and easily to help you remember key information about your mentee. We would recommend doing this before each meeting the first month or two.
+
+  p This information will feed your Develop Plan in the next section. You now have a SnapShot of your mentee. Update this at least once per year.
+
+  h3 Now hand your device over to your student and have them take the self assessment

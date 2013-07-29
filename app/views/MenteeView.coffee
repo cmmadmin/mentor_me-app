@@ -6,6 +6,7 @@ BackStackRegion = require('lib/ui/BackStackRegion')
 
 MenteeProfileView = require('./MenteeProfileView')
 EditMenteeView = require('./EditMenteeView')
+ProfileButtonView = require('./ProfileButtonView')
 
 module.exports = class MenteeView extends Marionette.Layout
   template: template
@@ -14,37 +15,55 @@ module.exports = class MenteeView extends Marionette.Layout
     'style' : 'height: 100%'
 
   events:
-    'click #edit-mentee-btn' : 'editMentee'
     'click #profile-pic': 'getPicture'
-
-  ui:
-    editBtn: '#edit-mentee-btn'
+    'click .details': 'openHeader'
 
   regions:
-    actionRegion: '#mentee-action'
+    contactsBtn: '#contactsBtn'
+    journalBtn: '#journalBtn'
+    snapshotBtn: '#snapshotBtn'
+    developBtn: '#developBtn'
+    lifelistBtn: '#lifelistBtn'
+    moreBtn: '#moreBtn'
+    editMentee: '#edit-mentee'
+
+  buttonViews: {}
 
   editing: false
+
+  initialize: ->
+    super
+    @initButtonViews();
+
+  initButtonViews: ->
+    @buttonViews.contactsBtn = new ProfileButtonView(title: "Contacts", icon: 'user', href: '#')
+    @buttonViews.journalBtn = new ProfileButtonView(title: "Journal", icon: 'pencil', href: '#journal')
+    @buttonViews.snapshotBtn = new ProfileButtonView(title: "Snapshot", icon: 'camera-retro', href: "#mentees/#{@model.id}/snapshot", state: 'snapshot')
+    @buttonViews.developBtn = new ProfileButtonView(title: "Develop", icon: 'comment', href: "#mentees/#{@model.id}/develop", state: 'develop')
+    @buttonViews.lifelistBtn = new ProfileButtonView(title: "Life List", icon: 'list', href: "#mentees/#{@model.id}/lifelist", state: 'lifelist')
+    @buttonViews.moreBtn = new ProfileButtonView(title: "More", icon: 'ellipsis-horizontal', href: '#more')
     
   onShow: ->
-    @listenTo @model, 'change', @render
+    # @listenTo @model, 'change', @render
+    _.each(@regions, (region) =>
+      if(region.slice(-3) == 'Btn')
+        regionName = region.substr(1)
+        @[regionName].show(@buttonViews[regionName])
+    )
     #view = new MenteeProfileView(model: @model)
     #@actionRegion.show(view)
     # rivets.bind(@$el, {mentee: @model})
-
-  doneEditing: (e) =>
-    # @ui.editBtn.show();
-    # Keep views
-    # @actionRegion.show(new MenteeProfileView(model: @model), new BackStack.SlideEffect(direction: 'right'))
-    # @editing = false
-
-  editMentee: (e) =>
-    # Freeze model
-    @model.store()
-    @ui.editBtn.hide();
+    # 
+  openHeader: (e) ->
+    $('.contact-head').addClass('overcome')
+    $('.details').hide();
     editView = new EditMenteeView(model: @model)
-    editView.on 'mentee:doneEditing', @doneEditing
-    @actionRegion.pushView(editView)
-    @editing = true
+    @editMentee.show(editView)
+    editView.on 'close', =>
+      @editMentee.close();
+      @$el.find('.contact-head').removeClass('overcome')
+      $('.details').show();
+
 
   getPicture: (e) =>
     navigator.camera.getPicture(@cameraSuccess, @cameraFail, 

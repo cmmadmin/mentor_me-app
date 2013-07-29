@@ -48,9 +48,9 @@ MentorMe.addInitializer ->
   # Initialize collections
   @collections = 
     mentees: new Mentees()
-    questions: new Questions()
     editions: new Editions()
     bootstrap: (update) ->
+      MentorMe.vent.trigger('bootstrap:loaded')
       @mentees.reset(update.mentees)
       @editions.reset(update.editions)
 
@@ -59,10 +59,12 @@ MentorMe.addInitializer ->
   # @collections.mentees.fetch();
   # @collections.questions.fetch();
   ApplicationConfig = require('config/ApplicationConfig')
-  $.ajax(
+  sync = $.ajax(
     url: ApplicationConfig.SERVER_URL + 'users/data'
     context: @collections
-  ).done(@collections.bootstrap, @collections)
+  )
+  sync.done(@collections.bootstrap, @collections)
+  @collections._fetch = sync
 
   # Initialize views
   @loginPanel = new LoginPanel()
@@ -83,5 +85,9 @@ MentorMe.addInitializer ->
   $(document).ajaxError (e, xhr, settings, exception) ->
     if (xhr.status == 401)
       application.router.login()
+
+  $(->
+    FastClick.attach(document.body);
+  )
 
 module.exports = MentorMe
