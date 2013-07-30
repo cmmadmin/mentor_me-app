@@ -2,21 +2,34 @@ ToolFsm = require('./ToolFsm')
 
 module.exports = SnapshotFsm = ToolFsm.extend
 
+  # eventListeners:
+  #   onTransition: (trans) ->
+  #     @profile.set('snapshot_state', trans.toState)
+  #     
+
   updateProgress: ->
-    # @progressCache = @profile.snapshotProgress()
-    @progressCache = Math.floor(Math.random() * 101)
+    @progressCache = @profile.snapshotProgress()
+    @validateState()
+    @progressCache
+    # @progressCache = Math.floor(Math.random() * 101)
 
   initialState: 'untapped'
   states:
     untapped:
-      start: =>
+      start: ->
         @transition 'active:selfassess'
     'active:selfassess':
-      advance: =>
+      advance: ->
         @transition 'active:pre:interactivequiz'
     'active:pre:interactivequiz':
-      advance: =>
+      advance: ->
         @transition 'active:interactivequiz'
     'active:interactivequiz':
-      advance: =>
+      advance: ->
         @transition 'active'
+    'active:post:interactivequiz':{}
+    complete:
+      _onEnter: ->
+        @profile.state.develop.handle('enable') if @profile.state.develop
+
+

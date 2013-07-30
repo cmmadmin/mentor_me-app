@@ -1,6 +1,7 @@
 .survey
-  h3.text-center SnapShot
-  h1.text-center Interactive Quiz
+  div.text-center style="font-size: 3rem"
+    i class="icon icon-{{icon}} text-center"
+    span style="margin: 0 10px" {{title}}
 
   hr
 

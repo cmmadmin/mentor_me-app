@@ -2,12 +2,13 @@ MM = require('MentorMe')
 IntroView = require('views/snapshot/IntroView')
 SelfAssessView = require('views/snapshot/SelfAssessView')
 SurveyView = require('views/survey/SurveyView')
+PreInteractiveQuizView = require('views/snapshot/PreInteractiveQuizView')
 InteractiveQuizView = require('views/snapshot/InteractiveQuizView')
+PostInteractiveQuizView = require('views/snapshot/PostInteractiveQuizView')
 ToolLayout = require('views/ToolLayout')
 SnapshotFsm = require('models/state_machines/SnapshotFsm')
+SnapshotViewFsm = require('models/state_machines/SnapshotViewFsm')
 Controller = require('./supers/Controller')
-
-class SnapshotViewFsm
 
 module.exports = class SnapshotController extends Controller
 
@@ -25,22 +26,63 @@ module.exports = class SnapshotController extends Controller
       @startWorkflow(@state.state)
 
     @show @layout
-
-
-  startInteractiveQuiz: ->
-    view = new InteractiveQuizView(@model)
-    @region.show(view)
+  
 
   showUntapped: ->
     view = new IntroView(model: @model)
     @listenTo view, "snapshot:intro:start:clicked", ->
       @workflow.handle('start')
 
-    @region.show(view)
+    @layout.mainRegion.show(view)
 
   showActiveSelfassess: ->
-    view = new SurveyView(survey: @model.edition().snapshotSelfAssessmentSurvey(), grouped: true);
-    @region.show(view)
+    view = new SurveyView
+      survey: @model.edition().snapshotSelfAssessmentSurvey()
+      grouped: true
+      title: "Snapshot"
+      icon: "camera-retro"
+      showLastSlide: true
+    @listenTo view, 'complete', @completeSurvey
+    @listenTo view, 'savenclose', @saveAndCloseSurvey
+
+    @layout.mainRegion.show(view)
+
+  showActivePreInteractivequiz: ->
+    view = new PreInteractiveQuizView(model: @model)
+    @listenTo view, "snapshot:preinteractive:start:clicked", ->
+      @workflow.handle('advance')
+    @layout.mainRegion.show view
+
+  showActiveInteractivequiz: ->
+    view = new SurveyView
+      survey: @model.edition().snapshotInteractiveSurvey()
+      title: "Q&A"
+      icon: "camera-retro"
+    @listenTo view, 'complete', @completeSurvey
+    @listenTo view, 'savenclose', @saveAndCloseSurvey
+    @layout.mainRegion.show(view)
+
+  showActivePostInteractivequiz: ->
+    view = new PostInteractiveQuizView(model: @model)
+    @listenTo view, "snapshot:postinteractive:confirm:clicked", ->
+      @workflow.handle('advance')
+    @layout.mainRegion.show view
+
+  showActive: ->
+    view = new SurveyActiveView(model: @model)
+
+
+
+  saveAndCloseSurvey: =>
+    profile = MM.request "get:current:profile"
+    profile.save()
+    Backbone.history.navigate('mentees/' + @model.get('mentee_id'), trigger: true)
+
+  completeSurvey: =>
+    profile = MM.request "get:current:profile"
+    @workflow.handle('advance')
+    profile.save()
+
 
   getLayoutView: ->
     new ToolLayout()
@@ -48,28 +90,14 @@ module.exports = class SnapshotController extends Controller
   buildWorkflow: ->
     @workflow = new SnapshotViewFsm()
     @listenTo @workflow, 'transition', (transition) =>
-      @['show' + $.camelCase('pre-' + transition.toState.replace(':','-')).substr(3)]();
+      @['show' + $.camelCase('pre-' + transition.toState.split(':').join('-')).substr(3)]();
    
-    @listenTo @state, 'transition', (transition) => @workflow.transition transition
+    # @listenTo @state, 'transition', (transition) => @workflow.transition transition
   
   startWorkflow: (state) ->
     @workflow.transition state
 
-SnapshotViewFsm = SnapshotFsm.extend
-  initialState: 'uninitialized'
-  states:
-    uninitialized: {}
-    'untapped':
-      start: ->
-        @transition 'active:selfassess'
-        MM.vent.trigger('current:snapshot:handle', 'start')
-    'active:selfassess':
-      advance: -> 
-        @transition 'active:post:selfassess'
-        MM.vent.trigger('current:snapshot:handle', 'advance')
-    'active:post:selfassess':
-      confirm: -> @transition 'active:pre:interactivequiz'
-    'active:interactivequiz':
-      advance: -> 
-        @transition 'active:post:interactivequiz'
-        MM.vent.trigger('current:snapshot:handle', 'advance')
+  onClose: ->
+    delete @workflow
+    delete @layout
+    delete @state

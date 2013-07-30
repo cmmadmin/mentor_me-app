@@ -12,3 +12,6 @@ module.exports = class Mentees extends Collection
   model: (attrs, options) ->
     Mentee = require('models/Mentee')
     return Mentee.create(attrs, options)
+
+  comparator: (mentee) ->
+    return mentee.get('name')

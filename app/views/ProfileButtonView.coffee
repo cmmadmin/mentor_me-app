@@ -46,7 +46,7 @@ module.exports = class ProfileButtonView extends Marionette.ItemView
     # For now we only care if button is disabled
     if @options.state == 'disabled'
       e.preventDefault();
-      alert("Please start previous tools before using this one")
+      alert("Please complete previous tools before using this one")
 
 
   # Utility method for button colors

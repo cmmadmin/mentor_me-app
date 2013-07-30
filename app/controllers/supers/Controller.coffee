@@ -4,11 +4,12 @@ module.exports = class Controller extends Marionette.Controller
       @region = options.region or App.request "default:region"
       super options
     
-    close: (args...) ->
-      delete @region
-      delete @options
-      super args
-    
-    show: (view) ->
-      @listenTo view, "close", @close
-      @region.show view
+  close: (args...) ->
+    console.log "Closing controller"
+    delete @region
+    delete @options
+    super args
+  
+  show: (view) ->
+    @listenTo view, "close", @close
+    @region.show view

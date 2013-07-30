@@ -10,20 +10,22 @@ module.exports = class SurveyPageView extends Marionette.ItemView
   getTemplate: ->
     (if @options.grouped then GroupedPage else SinglePage)
 
-  events:
-    'click #complete-assess-btn' : 'complete'
-
   initialize: (options) ->
     _.defaults options,
       grouped: false;
 
     super
 
+  onShow: ->
+    @deserializeForm()
+
   serializeData: ->
     result = super
     _.extend(result, questions: @model.questions().toJSON()) if @options.grouped
     return result
 
-  complete: ->
-    # TODO: save assessment here
-    @trigger 'complete'
+  serializeForm: ->
+    Backbone.Syphon.serialize(@)
+
+  deserializeForm: ->
+    Backbone.Syphon.deserialize(@, @options.data)

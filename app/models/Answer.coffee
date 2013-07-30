@@ -6,7 +6,10 @@ module.exports = class Answer extends Model
   urlRoot: Collection.serverUrl('answers')
 
   value: ->
-    question() && @.get(question.get('question_type') + '_value')
+    @get(@question().get('question_type') + '_value')
+
+  setValue: (val) ->
+    @question() && @.set(@question().get('question_type') + '_value', val)
 
 
 MenteeProfile = require('./MenteeProfile')

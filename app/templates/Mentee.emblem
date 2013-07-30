@@ -18,12 +18,12 @@
     .col.col-6
       #snapshotBtn
     .col.col-6
-      #journalBtn
+      #developBtn
   .row
     .col.col-6
-      #developBtn
-    .col.col-6
       #lifelistBtn
+    .col.col-6
+      #journalBtn
   .row
     .col.col-6
       #contactsBtn

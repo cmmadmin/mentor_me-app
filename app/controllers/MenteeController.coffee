@@ -18,12 +18,13 @@ module.exports = class MenteeController extends Marionette.Controller
     @changePage new HomePage(mentees: MM.collections.mentees)
 
   menteeOverview: (id) ->
-    @loadMenteeView(id, MenteeView, actions: @getActions())
+    @loadMenteeView(id, MenteeView)
 
   menteeJournal: (id) ->
-    col = new JournalEntries(mentee_id: id)
-    col.fetch()
-    @changePage new JournalView({collection: col})
+    mentee = MM.collections.mentees.getOrFetch(id)
+    journal_entries = mentee.journal_entries()
+    journal_entries.fetch()
+    @changePage new JournalView({collection: journal_entries})
 
   menteeSnapshot: (id) ->
     mentee = MM.collections.mentees.getOrFetch(id)

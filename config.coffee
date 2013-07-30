@@ -29,6 +29,7 @@ exports.config =
           'vendor/scripts/bootstrap-editable.js',
           'vendor/scripts/bootstrap-notify.js',
           'vendor/config/rivets-config.js',
+          'vendor/config/backbone.syphon-config.js',
           'test/vendor/scripts/test-helper.js'
         ]
 

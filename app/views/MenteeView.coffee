@@ -37,7 +37,7 @@ module.exports = class MenteeView extends Marionette.Layout
 
   initButtonViews: ->
     @buttonViews.contactsBtn = new ProfileButtonView(title: "Contacts", icon: 'user', href: '#')
-    @buttonViews.journalBtn = new ProfileButtonView(title: "Journal", icon: 'pencil', href: '#journal')
+    @buttonViews.journalBtn = new ProfileButtonView(title: "Journal", icon: 'pencil', href: "#mentees/#{@model.id}/journal")
     @buttonViews.snapshotBtn = new ProfileButtonView(title: "Snapshot", icon: 'camera-retro', href: "#mentees/#{@model.id}/snapshot", state: 'snapshot')
     @buttonViews.developBtn = new ProfileButtonView(title: "Develop", icon: 'comment', href: "#mentees/#{@model.id}/develop", state: 'develop')
     @buttonViews.lifelistBtn = new ProfileButtonView(title: "Life List", icon: 'list', href: "#mentees/#{@model.id}/lifelist", state: 'lifelist')
@@ -50,6 +50,7 @@ module.exports = class MenteeView extends Marionette.Layout
         regionName = region.substr(1)
         @[regionName].show(@buttonViews[regionName])
     )
+    rivets.bind(@$el, {mentee: @model})
     #view = new MenteeProfileView(model: @model)
     #@actionRegion.show(view)
     # rivets.bind(@$el, {mentee: @model})

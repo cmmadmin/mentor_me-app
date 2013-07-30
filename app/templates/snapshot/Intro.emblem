@@ -1,15 +1,11 @@
-.snapshot-intro style="text-align: center;"
-  .promo style="margin-top: 60px; font-weight: 800"
-    h1 Help
-    h1 me 
-    h1 Know
-    h1 You!
+.snapshot-intro
+  / .promo style="margin-top: 60px; font-weight: 800"
 
-  .snapshot-intro-buttons.container
+  .snapshot-intro-buttons.containera
     p
-      button#start-snapshot-btn.btn.btn-large.btn-primary Start Self Assess
+      button#start-snapshot-btn.btn.btn-large.btn-primary Start my Self Assessment
     p
-      a#go-back-btn.btn.btn-large.btn-default href="#mentees/{{id}}" Go Back
+      a#go-back-btn.btn.btn-large.btn-default href="#mentees/{{mentee_id}}" Go Back
 
 
 .info style="display: none"

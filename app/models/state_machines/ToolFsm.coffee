@@ -1,5 +1,5 @@
 # Base Fsm for all tools (Snapshot, Develop, Life List)
-module.exports = class ToolFsm extends machina.Fsm
+module.exports = ToolFsm = machina.Fsm.extend
   initialize: ->
 
   # Returns a cached progress percentage
@@ -10,6 +10,10 @@ module.exports = class ToolFsm extends machina.Fsm
   updateProgress: ->
     console.error "Must be overriden in sub fsm" # We should never get here
     @progressCache = Math.floor(Math.random() * 101)
+
+  validateState: ->
+    if @progress() == 100
+      @transition 'complete'
     
 
   # Used by buttons to get basic states (without in between states, snapshot in particular)
@@ -20,14 +24,14 @@ module.exports = class ToolFsm extends machina.Fsm
   initialState: 'disabled'
   states: 
     disabled:
-      enable: =>
+      enable: ->
         @transition 'untapped'
     untapped:
-      start: =>
+      start: ->
         @transition 'active'
-      complete: =>
+      complete: ->
         @transition 'complete'
     active:
-      complete: =>
+      complete: ->
         @transition 'complete'
     complete: {}

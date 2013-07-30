@@ -29,12 +29,29 @@ module.exports = class MenteeProfile extends Model
       tool.close()
       @state[key] = null
 
+  validate: ->
+    @state.snapshot.validateState() if @state.snapshot != null
+    @state.develop.validateState() if @state.develop != null
+    @state.lifelist.validateState() if @state.lifelist != null
+
   snapshotProgress: ->
     scores = @edition().snapshotSurveys().map (survey) =>
       survey.profileProgress @
     answeredCount = _.reduce scores, (memo, score) -> (if memo.answers? then memo.answers else memo) + score.answers
     questionCount = _.reduce(scores, (memo, score) -> (if memo.questions? then memo.questions else memo) + score.questions)
     return Math.round(100 * answeredCount / questionCount);
+
+  saveAnswer: (question_id, value) ->
+    Answer = require('./Answer')
+    answer = @answers().findWhere(question_id: parseInt(question_id))
+    if(answer)
+      answer.setValue(value) if(answer.value().toString() != value) # We don't want to trigger a sync if value is the same
+    else
+      answer = Answer.create(question_id: question_id, mentee_profile_id: @.id)
+      answer.setValue(value)
+
+    answer.save() if answer.hasChanged()
+        
 
   
 Mentee = require('models/Mentee')
