@@ -29,5 +29,4 @@ tmp/
 # Temporary ignores
 vendor/styles/cssflow
 app/styles/cssflow_and_overrides.scss
-vendor/scripts/machina.js
 vendor/scripts/prefixfree.min.js
