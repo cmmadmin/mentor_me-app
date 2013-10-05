@@ -5,6 +5,7 @@ SurveyView = require('views/survey/SurveyView')
 PreInteractiveQuizView = require('views/snapshot/PreInteractiveQuizView')
 InteractiveQuizView = require('views/snapshot/InteractiveQuizView')
 PostInteractiveQuizView = require('views/snapshot/PostInteractiveQuizView')
+ActiveSnapshotView = require('views/snapshot/ActiveSnapshotView')
 ToolLayout = require('views/ToolLayout')
 SnapshotFsm = require('models/state_machines/SnapshotFsm')
 SnapshotViewFsm = require('models/state_machines/SnapshotViewFsm')
@@ -41,7 +42,8 @@ module.exports = class SnapshotController extends Controller
       grouped: true
       title: "Snapshot"
       icon: "camera-retro"
-      showLastSlide: true
+      showLastSlide: !@isActive()
+      showCompleteBtn: !@isActive()
     @listenTo view, 'complete', @completeSurvey
     @listenTo view, 'savenclose', @saveAndCloseSurvey
 
@@ -58,6 +60,7 @@ module.exports = class SnapshotController extends Controller
       survey: @model.edition().snapshotInteractiveSurvey()
       title: "Q&A"
       icon: "camera-retro"
+      showCompleteBtn: !@isActive()
     @listenTo view, 'complete', @completeSurvey
     @listenTo view, 'savenclose', @saveAndCloseSurvey
     @layout.mainRegion.show(view)
@@ -68,9 +71,27 @@ module.exports = class SnapshotController extends Controller
       @workflow.handle('advance')
     @layout.mainRegion.show view
 
-  showActive: ->
-    view = new SurveyActiveView(model: @model)
+  showActiveObserve: ->
+    view = new SurveyView
+      survey: @model.edition().snapshotObservationsSurvey()
+      title: "Observe"
+      icon: "camera-retro"
+      showCompleteBtn: !@isActive()
+    @listenTo view, 'savenclose', @saveAndCloseSurvey
+    @layout.mainRegion.show(view)
 
+  showActive: ->
+    view = new ActiveSnapshotView(model: @model)
+    @listenTo view, 'snapshot:selfassess:clicked', ->
+      @showActiveSelfassess()
+    @listenTo view, 'snapshot:explore:clicked', ->
+      @showActiveInteractivequiz()
+    @listenTo view, 'snapshot:observe:clicked', ->
+      @showActiveObserve()
+    @layout.mainRegion.show view
+
+  showComplete: ->
+    @showActive()
 
 
   saveAndCloseSurvey: =>
@@ -88,14 +109,18 @@ module.exports = class SnapshotController extends Controller
     new ToolLayout()
 
   buildWorkflow: ->
+    profile = MM.request "get:current:profile"
     @workflow = new SnapshotViewFsm()
     @listenTo @workflow, 'transition', (transition) =>
-      @['show' + $.camelCase('pre-' + transition.toState.split(':').join('-')).substr(3)]();
+      @['show' + $.camelCase('pre-' + transition.toState.split(':').join('-')).substr(3)]()
    
     # @listenTo @state, 'transition', (transition) => @workflow.transition transition
   
   startWorkflow: (state) ->
     @workflow.transition state
+
+  isActive: ->
+    @workflow.state == "active"
 
   onClose: ->
     delete @workflow

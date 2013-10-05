@@ -8,6 +8,7 @@ JournalView = require('views/JournalView')
 JournalEntries = require 'collections/JournalEntries'
 DevelopView = require('views/DevelopView')
 SnapshotController = require('controllers/SnapshotController')
+DevelopController = require('controllers/DevelopController')
 ProfileController = require('controllers/ProfileController')
 HomePage = require('views/HomePage')
 
@@ -35,7 +36,8 @@ module.exports = class MenteeController extends Marionette.Controller
   menteeDevelop: (id) ->
     mentee = MM.collections.mentees.getOrFetch(id)
     @updateProfile mentee
-    @changePage new DevelopView(model: mentee, type: 'develop')
+    profile = MM.request 'get:current:profile'
+    develop = new DevelopController(model: profile, region: MM.appLayout.mainRegion)
 
   menteeLifelist: (id) ->
     mentee = MM.collections.mentees.getOrFetch(id)

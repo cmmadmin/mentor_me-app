@@ -12,6 +12,7 @@ module.exports = ToolFsm = machina.Fsm.extend
     @progressCache = Math.floor(Math.random() * 101)
 
   validateState: ->
+    @updateProgress()
     if @progress() == 100
       @transition 'complete'
     

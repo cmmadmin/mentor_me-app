@@ -1,0 +1,8 @@
+.develop-intro
+  / .promo style="margin-top: 60px; font-weight: 800"
+
+  .snapshot-intro-buttons.containera
+    p
+      button#start-develop-btn.btn.btn-large.btn-primary Start Develop
+    p
+      a#go-back-btn.btn.btn-large.btn-default href="#mentees/{{mentee_id}}" Go Back

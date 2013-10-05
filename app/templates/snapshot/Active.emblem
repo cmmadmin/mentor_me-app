@@ -1,0 +1,15 @@
+.snapshot-active
+  .surveys
+    #self-assess-btn.survey-progress-btn 
+      .progress
+      span Self Assessment
+    #explore-btn.survey-progress-btn
+      .progress
+      span Explore
+    #observe-btn.survey-progress-btn 
+      .progress
+      span Observe
+
+  .snapshot-intro-buttons.container
+    p
+      a#go-back-btn.btn.btn-large.btn-primary href="#mentees/{{mentee_id}}" Go Back

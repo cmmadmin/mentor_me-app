@@ -22,6 +22,7 @@ module.exports = class SurveyView extends Marionette.CompositeView
   initialize: (options) ->
     _.defaults options,
       grouped: false
+      showCompleteBtn: true
     @survey = options.survey
 
     @setCollection()
@@ -63,6 +64,7 @@ module.exports = class SurveyView extends Marionette.CompositeView
     @swiper.destroy(true)
 
   onSlideChange: (swiper) =>
+    return unless @options.showCompleteBtn
     lastIdx = swiper.getLastSlide().index()
     if swiper.activeIndex == lastIdx
       @ui.saveBtn.text('Done').addClass('btn-success')
@@ -87,7 +89,7 @@ module.exports = class SurveyView extends Marionette.CompositeView
     for question_id, answer of answers
       profile.saveAnswer question_id, answer
 
-    if @swiper.activeIndex == @swiper.getLastSlide().index()
+    if @options.showCompleteBtn && @swiper.activeIndex == @swiper.getLastSlide().index()
       @trigger 'complete'
     else
       @trigger 'savenclose'

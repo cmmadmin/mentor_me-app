@@ -8,8 +8,9 @@ module.exports = SnapshotFsm = ToolFsm.extend
   #     
 
   updateProgress: ->
+    # validate = @progressCache?
     @progressCache = @profile.snapshotProgress()
-    @validateState()
+    # @validateState()
     @progressCache
     # @progressCache = Math.floor(Math.random() * 101)
 
@@ -30,6 +31,6 @@ module.exports = SnapshotFsm = ToolFsm.extend
     'active:post:interactivequiz':{}
     complete:
       _onEnter: ->
-        @profile.state.develop.handle('enable') if @profile.state.develop
+        @profile.state.develop.handle('enable') if @profile && @profile.state.develop
 
 

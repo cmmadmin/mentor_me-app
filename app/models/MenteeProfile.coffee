@@ -41,6 +41,10 @@ module.exports = class MenteeProfile extends Model
     questionCount = _.reduce(scores, (memo, score) -> (if memo.questions? then memo.questions else memo) + score.questions)
     return Math.round(100 * answeredCount / questionCount);
 
+  developProgress: ->
+    survey = @edition().developSurvey()
+    return survey.profileProgress(@).percentage
+
   saveAnswer: (question_id, value) ->
     Answer = require('./Answer')
     answer = @answers().findWhere(question_id: parseInt(question_id))
