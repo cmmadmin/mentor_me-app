@@ -44,15 +44,21 @@ MentorMe.addInitializer ->
   Mentees = require('collections/Mentees')
   Questions = require('collections/Questions')
   Editions = require('collections/Editions')
+  Lifelists = require('collections/Lifelists')
+  LifelistCategories = require('collections/LifelistCategories')
 
   # Initialize collections
   @collections = 
     mentees: new Mentees()
     editions: new Editions()
+    lifelist_categories: new LifelistCategories()
+    lifelists: new Lifelists()
     bootstrap: (update) ->
       MentorMe.vent.trigger('bootstrap:loaded')
       @mentees.reset(update.mentees)
       @editions.reset(update.editions)
+      @lifelist_categories.reset(update.lifelist_categories)
+      @lifelists.reset(update.lifelists)
 
   # TODO: Use proper server bootstrap
   # Bootstrap initial data

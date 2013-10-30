@@ -20,6 +20,7 @@ module.exports = class Edition extends Model
 # Put at bottom to avoid circular dependency (ugly commonjs exports hack)
 MenteeProfiles = require('collections/MenteeProfiles')
 Surveys = require('collections/Surveys')
+Lifelist = require('./Lifelist')
 
 # Supermodel definitions
 Edition.has().many('mentee_profiles', 
@@ -29,5 +30,9 @@ Edition.has().many('mentee_profiles',
 
 Edition.has().many('surveys', 
   collection: Surveys
+  inverse: 'edition'
+)
+Edition.has().one('lifelist',
+  model: Lifelist
   inverse: 'edition'
 )
