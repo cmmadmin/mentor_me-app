@@ -10,6 +10,7 @@ DevelopView = require('views/DevelopView')
 SnapshotController = require('controllers/SnapshotController')
 DevelopController = require('controllers/DevelopController')
 ProfileController = require('controllers/ProfileController')
+LifelistController = require('controllers/LifelistController')
 HomePage = require('views/HomePage')
 
 module.exports = class MenteeController extends Marionette.Controller
@@ -42,7 +43,8 @@ module.exports = class MenteeController extends Marionette.Controller
   menteeLifelist: (id) ->
     mentee = MM.collections.mentees.getOrFetch(id)
     @updateProfile mentee
-    @changePage new DevelopView(model: mentee, type: 'lifelist')
+    profile = MM.request 'get:current:profile'
+    develop = new LifelistController(model: profile, region: MM.appLayout.mainRegion)
 
 
   loadMenteeView: (id, view, options = {}) ->

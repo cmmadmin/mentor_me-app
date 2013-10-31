@@ -1,0 +1,6 @@
+div.text-center style="font-size: 3rem"
+    i class="icon icon-list text-center"
+    span style="margin: 0 10px" Lifelist
+.lifelistItems
+
+button#save-lifelist.btn-large.btn-primary Save Lifelist

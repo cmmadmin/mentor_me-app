@@ -8,3 +8,5 @@ module.exports = class LifelistItems extends Collection
   model: (attrs, options) ->
     LifelistItem = require('models/LifelistItem')
     return LifelistItem.create(attrs, options)
+  comparator: (item) ->
+    item.get('title')

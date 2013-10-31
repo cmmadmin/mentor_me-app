@@ -17,6 +17,7 @@ module.exports = class MenteeProfile extends Model
     snapshot: null
     develop: null
     lifelist: null
+    lifelist: null
 
   initStateMachines: ->
     _.defaults()
@@ -55,12 +56,22 @@ module.exports = class MenteeProfile extends Model
       answer.setValue(value)
 
     answer.save() if answer.hasChanged()
-        
 
+  pickLifelistItem: (item) ->
+    if !@lifelist_picks().getItems().contains(item)
+      LifelistPick = require('./LifelistPick')
+      pick = new LifelistPick(mentee_profile_id: @get('id'), lifelist_item_id: item.get('id'))
+      pick.save()
+  unpickLifelistItem: (item) ->
+    picks = @lifelist_picks()
+    if picks.getItems().contains(item)
+      pick = picks.findWhere(lifelist_item_id: item.get('id'))
+      pick.destroy() if pick
   
 Mentee = require('models/Mentee')
 Edition = require('models/Edition')
 Answers = require('collections/Answers')
+LifelistPicks = require('collections/LifelistPicks')
 # relationships defined afterwards
 MenteeProfile.has().one('mentee', 
   model: Mentee
@@ -72,6 +83,10 @@ MenteeProfile.has().one('edition',
 )
 MenteeProfile.has().many('answers', 
   collection: Answers
+  inverse: 'mentee_profile'
+)
+MenteeProfile.has().many('lifelist_picks',
+  collection: LifelistPicks
   inverse: 'mentee_profile'
 )
 
