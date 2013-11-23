@@ -9,6 +9,7 @@ module.exports = class JournalView extends Marionette.CompositeView
 
   events:
     'click #add-journal-btn' : 'addJournalEntry'
+    'click #go-back-btn' : 'goBack'
 
 
   tagName: 'ul'
@@ -24,7 +25,15 @@ module.exports = class JournalView extends Marionette.CompositeView
     #
   addJournalEntry: ->
     content = $('#add-journal-textarea').val()
+    datetime = $('#add-journal-datetime').val()
 
-    je = JournalEntry.create(mentee_id: @collection.owner.id, body: content)
+    je = JournalEntry.create(mentee_id: @collection.owner.id, body: content, logged_at: datetime)
     je.save().done ->
       $('#add-journal-textarea').val('').parent().removeClass 'selected'
+
+  goBack: ->
+    doIt = true;
+    if $('#add-journal-textarea').val()
+      doIt = confirm('Are you sure? You will lose what you have written in the journal box')
+    if (doIt)
+      Backbone.history.navigate('mentees/' + @collection.owner.id, trigger: true)

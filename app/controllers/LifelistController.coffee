@@ -22,9 +22,9 @@ module.exports = class LifelistController extends Controller
     @show @layout
 
   showUntapped: ->
-    items = new LifelistItems(LifelistItem.all().models)
+    lifelist = @model.edition().lifelist()
     selectedItems = @model.lifelist_picks().getItems()
-    view = new EditView(model: @model, collection: items, selectedItems: selectedItems)
+    view = new EditView(model: lifelist, profile: @model, collection: lifelist.lifelist_items(), selectedItems: selectedItems)
     @listenTo view, "lifelist:edit:confirm:clicked", ->
       @workflow.handle('complete')
       @model.save()

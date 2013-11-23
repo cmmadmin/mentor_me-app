@@ -1,28 +1,35 @@
 MM = require( 'MentorMe' )
 template = require('templates/lifelist/Edit')
-EditItemView = require('./EditItemView')
+EditCategoryView = require('./EditCategoryView')
+LifelistCategories = require('collections/LifelistCategories')
 
 module.exports = class EditView extends Marionette.CompositeView
   template: template
   className: 'lifelist-edit'
 
-  itemView: EditItemView
-  itemViewContainer: '.lifelistItems'
+  itemView: EditCategoryView
+  itemViewContainer: '.lifelistCategories'
   
   events:
     'click #save-lifelist' : 'saveItems'
 
   initialize: (options) ->
     @selectedItems = options.selectedItems
+    @items = @collection
+    @profile = options.profile
+    categories = options.collection.map (item) ->
+      item.lifelist_category()
+    @collection = new LifelistCategories(categories)
 
   saveItems: ->
-    @collection.each (item) =>
+    @items.each (item) =>
       if !item.get('selected') && @selectedItems.contains(item)
-        @model.unpickLifelistItem item
+        @profile.unpickLifelistItem item
       else if item.get('selected') && !@selectedItems.contains(item)
-        @model.pickLifelistItem item
+        @profile.pickLifelistItem item
     @trigger('lifelist:edit:confirm:clicked')
-    Backbone.history.navigate('mentees/' + @model.get('id'), true)
+    Backbone.history.navigate('mentees/' + @profile.get('id'), true)
 
   itemViewOptions: (model, index) ->
-    selected: @selectedItems.contains(model)
+    selectedItems: @selectedItems
+    lifelist: @model

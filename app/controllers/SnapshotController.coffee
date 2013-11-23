@@ -40,7 +40,7 @@ module.exports = class SnapshotController extends Controller
     view = new SurveyView
       survey: @model.edition().snapshotSelfAssessmentSurvey()
       grouped: true
-      title: "Snapshot"
+      title: "Assess"
       icon: "camera-retro"
       showLastSlide: !@isActive()
       showCompleteBtn: !@isActive()
@@ -58,7 +58,7 @@ module.exports = class SnapshotController extends Controller
   showActiveInteractivequiz: ->
     view = new SurveyView
       survey: @model.edition().snapshotInteractiveSurvey()
-      title: "Q&A"
+      title: "Explore"
       icon: "camera-retro"
       showCompleteBtn: !@isActive()
     @listenTo view, 'complete', @completeSurvey
@@ -97,7 +97,11 @@ module.exports = class SnapshotController extends Controller
   saveAndCloseSurvey: =>
     profile = MM.request "get:current:profile"
     profile.save()
-    Backbone.history.navigate('mentees/' + @model.get('mentee_id'), trigger: true)
+    if(@state.state == 'active' || @state.state == 'complete')
+      @showActive()
+    else
+      Backbone.history.navigate('mentees/' + @model.get('mentee_id'), trigger: true)
+    
 
   completeSurvey: =>
     profile = MM.request "get:current:profile"

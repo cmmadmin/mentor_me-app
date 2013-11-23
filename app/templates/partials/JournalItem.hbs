@@ -1,11 +1,9 @@
-<div class="row-fluid">
-  <div class="span10">
+<div>
+  <div>
     <h5>{{body}}</h4>
-    <p>{{dateFormat created_at format="MMMM Do YYYY, h:mm a"}}</p>
+    <p>{{dateFormat logged_at format="MMMM Do YYYY, h:mm a"}}</p>
   </div>
 
-  <ul class="nav nav-pills pull-right">
-    <li><a class="btn btn-link" href="#mentees/{{mentee_id}}/journal_entries/{{id}}"><i class="icon-pencil"></i></a></li>
-  </ul>
+  <a class="btn btn-link" href="#mentees/{{mentee_id}}/journal_entries/{{id}}">Edit</a>
 </div>
 <hr>

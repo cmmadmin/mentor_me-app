@@ -17,5 +17,5 @@ LifelistItem.has().one('lifelist',
 
 LifelistItem.has().one('lifelist_category', 
   model: LifelistCategory
-  inverse: 'lifelist'
+  inverse: 'lifelist_items'
 )

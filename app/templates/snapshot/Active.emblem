@@ -2,7 +2,7 @@
   .surveys
     #self-assess-btn.survey-progress-btn 
       .progress
-      span Self Assessment
+      span Assess
     #explore-btn.survey-progress-btn
       .progress
       span Explore
