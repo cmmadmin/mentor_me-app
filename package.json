@@ -23,7 +23,7 @@
     "css-brunch": ">= 1.5 < 1.6",
     "stylus-brunch": ">= 1.6 < 1.7",
     "less-brunch": ">= 1.5.1 < 1.6",
-    "sass-brunch": ">= 1.5.2",
+    "sass-brunch": ">= 1.5.2 < 1.6",
 
     "handlebars-brunch": "1.7.2",
     "emblem-brunch": "0.1.1",
