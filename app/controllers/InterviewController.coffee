@@ -1,27 +1,9 @@
-MM = require('MentorMe')
+SnapshotController = require('controllers/SnapshotController')
 SurveyView = require('views/survey/SurveyView')
-ToolLayout = require('views/ToolLayout')
-Controller = require('./supers/Controller')
 
-module.exports = class InterviewController extends Controller
+module.exports = class InterviewController extends SnapshotController
 
-  initialize: (options) ->
-    console.log 'InterviewController:Controller:initialize'
-    @region = options.region
-    @model = options.model
-
-    #@state = MM.request "get:profile:state", "interview"
-
-    @layout = @getLayoutView()
-    @show @layout
-    @showActiveInteractivequiz()
-
-    console.log 'end InterviewController:Controller:initialize'
-
-  getLayoutView: ->
-    new ToolLayout()
-
-  showActiveInteractivequiz: ->
+  showActive: ->
     console.log 'InterviewController:showActiveInteractivequiz'
     view = new SurveyView
       survey: @model.edition().snapshotInteractiveSurvey()
@@ -32,15 +14,14 @@ module.exports = class InterviewController extends Controller
     @listenTo view, 'savenclose', @saveAndCloseSurvey
     @layout.mainRegion.show(view)
 
-  saveAndCloseSurvey: =>
-    profile = MM.request "get:current:profile"
-    profile.save()
-    #if(@state.state == 'active' || @state.state == 'complete')
-    #  @showActive()
-    #else
-    Backbone.history.navigate('mentees/' + @model.get('mentee_id'), trigger: true)
+  showActivePreInteractivequiz: ->
+    view = new PreInteractiveQuizView(model: @model)
+    @listenTo view, "snapshot:preinteractive:start:clicked", ->
+      @workflow.handle('advance')
+    @layout.mainRegion.show view
 
-  completeSurvey: =>
-    profile = MM.request "get:current:profile"
-    #@workflow.handle('advance')
-    profile.save()
+  showActivePostInteractivequiz: ->
+    view = new PostInteractiveQuizView(model: @model)
+    @listenTo view, "snapshot:postinteractive:confirm:clicked", ->
+      @workflow.handle('advance')
+    @layout.mainRegion.show view
