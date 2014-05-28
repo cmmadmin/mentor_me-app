@@ -19,12 +19,15 @@ module.exports = class MenteeView extends Marionette.Layout
     'click .details': 'openHeader'
 
   regions:
-    contactsBtn: '#contactsBtn'
-    journalBtn: '#journalBtn'
     snapshotBtn: '#snapshotBtn'
+    selfassessBtn: '#selfassessBtn'
+    interviewBtn: '#interviewBtn'
+    observationsBtn: '#observationsBtn'
     developBtn: '#developBtn'
     lifelistBtn: '#lifelistBtn'
-    moreBtn: '#moreBtn'
+    planBtn: '#planBtn'
+    journalBtn: '#journalBtn'
+    contactsBtn: '#contactsBtn'
     editMentee: '#edit-mentee'
 
   buttonViews: {}
@@ -36,13 +39,18 @@ module.exports = class MenteeView extends Marionette.Layout
     @initButtonViews();
 
   initButtonViews: ->
-    @buttonViews.contactsBtn = new ProfileButtonView(title: "Contacts", icon: 'user', href: '#')
-    @buttonViews.journalBtn = new ProfileButtonView(title: "Journal", icon: 'pencil', href: "#mentees/#{@model.id}/journal")
     @buttonViews.snapshotBtn = new ProfileButtonView(title: "Snapshot", icon: 'camera-retro', href: "#mentees/#{@model.id}/snapshot", state: 'snapshot')
+    @buttonViews.selfassessBtn = new ProfileButtonView(title: "Self Assessment", icon: 'camera-retro', href: "#mentees/#{@model.id}/selfassess", state: 'selfassess')
+    @buttonViews.interviewBtn = new ProfileButtonView(title: "Interview", icon: 'camera-retro', href: "#mentees/#{@model.id}/interview", state: 'snapshot')
+    @buttonViews.observationsBtn = new ProfileButtonView(title: "Long Term Observations", icon: 'camera-retro', href: "#mentees/#{@model.id}/observations", state: 'snapshot')
+
     @buttonViews.developBtn = new ProfileButtonView(title: "Develop", icon: 'comment', href: "#mentees/#{@model.id}/develop", state: 'develop')
     @buttonViews.lifelistBtn = new ProfileButtonView(title: "Life List", icon: 'list', href: "#mentees/#{@model.id}/lifelist", state: 'lifelist')
-    @buttonViews.moreBtn = new ProfileButtonView(title: "More", icon: 'ellipsis-horizontal', href: '#more')
-    
+    @buttonViews.planBtn = new ProfileButtonView(title: "Plan", icon: 'list', href: "#mentees/#{@model.id}/develop", state: 'develop')
+
+    @buttonViews.journalBtn = new ProfileButtonView(title: "Journal", icon: 'pencil', href: "#mentees/#{@model.id}/journal")
+    @buttonViews.contactsBtn = new ProfileButtonView(title: "Contacts", icon: 'user', href: '#')
+
   onShow: ->
     # @listenTo @model, 'change', @render
     _.each(@regions, (region) =>

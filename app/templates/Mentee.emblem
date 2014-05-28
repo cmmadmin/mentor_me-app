@@ -15,17 +15,29 @@
 
 #mentee-action-grid.container
   .row
-    .col.col-6
+    .col.col-1
       #snapshotBtn
-    .col.col-6
+  .row
+    .col.col-1
+      #selfassessBtn
+  .row
+    .col.col-1
+      #interviewBtn
+  .row
+    .col.col-1
+      #observationsBtn
+  .row
+    .col.col-1
       #developBtn
   .row
-    .col.col-6
+    .col.col-1
       #lifelistBtn
-    .col.col-6
+  .row
+    .col.col-1
+      #planBtn
+  .row
+    .col.col-1
       #journalBtn
   .row
-    .col.col-6
+    .col.col-1
       #contactsBtn
-    .col.col-6
-      #moreBtn
