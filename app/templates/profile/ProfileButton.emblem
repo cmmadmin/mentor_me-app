@@ -1,9 +1,0 @@
-a href="{{href}}" class="profilebtn {{stateClass}}"
-  .mainicon
-    i class="icon-3x icon-{{icon}}"
-  .profilebtn-title = title
-  if ribbon
-    .ribbon = ribbon
-  if progress
-    .progressbar
-      .fill
