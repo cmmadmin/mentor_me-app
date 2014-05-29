@@ -1,0 +1,84 @@
+<div class="survey">
+  <div class="text-center" style="font-size: 3rem">
+    <i class="icon icon-{{icon}} text-center">
+        <span style="margin: 0 10px">{{title}}</span>
+    </i>
+  </div>
+  <hr>
+
+  <div class="survey-swiper.swiper-container">
+    <div class="swiper-wrapper"></div>
+  </div>
+
+  <div class="pagination-sd pagination1"></div>
+
+  <div class="survey-footer">
+    <button class="save-n-close-btn btn btn-primary btn-large">Save & Close</button>
+  </div>
+</div>
+
+<div class="info" style="display: none">
+  <div class="swiper-slide">
+    <div class="assess-question">
+      <p class="lead">Physical - How would you rate your following (1-poor 10-excellent)</p>
+
+      <ul>
+        <li>Sharpen my mind
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+        <li>Sharpen my body
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+        <li>Eat/rest well
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+        <li>Stress/anxiety/depression level
+          <input class="input slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="swiper-slide">
+    <div class="assess-question">
+      <p class="lead">Emotional - how much do these influence or drive you (1 - not at all, 10 - greatly)</p>
+
+      <ul>
+        <li>Insecurities
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+        <li>Fears
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+        <li>Comfort
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+        <li>Control
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="swiper-slide">
+    <div class="assess-question">
+      <p class="lead">Finances</p>
+
+      <ul>
+        <li>Indebtedness
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">3
+        </li>
+        <li>Live on a Budget
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+        <li>Savings / Retirement
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+        <li>Biblical Stewardship
+          <input class="slide NoSwiping" type="range" min="1" max="10" step="1" value="6">
+        </li>
+      </ul>
+    </div>
+    <button id="complete-assess-btn" class="btn btn-large">Complete Quiz</button>
+  </div>
+</div>
