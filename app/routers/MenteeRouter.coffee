@@ -8,7 +8,6 @@ module.exports = class MenteeRouter extends Marionette.AppRouter
     'mentees/:id/journal' : 'menteeJournal'
     # 'mentees/:id/journal_entries/:journal_id' : 'editJournalEntry'
 
-    'mentees/:id/snapshot' : 'menteeSnapshot'
     'mentees/:id/selfassess' : 'menteeSelfAssess'
     'mentees/:id/interview' : 'menteeInterview'
     'mentees/:id/observations' : 'menteeObservations'

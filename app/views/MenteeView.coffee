@@ -39,7 +39,7 @@ module.exports = class MenteeView extends Marionette.Layout
     @initButtonViews();
 
   initButtonViews: ->
-    @buttonViews.snapshotBtn = new ProfileButtonView(title: "Snapshot", icon: 'camera-retro', href: "#mentees/#{@model.id}/snapshot", state: 'snapshot')
+    @buttonViews.snapshotBtn = new ProfileButtonView(title: "Snapshot", icon: 'camera-retro', href: "#mentees/#{@model.id}/selfassess", state: 'snapshot')
     @buttonViews.selfassessBtn = new ProfileButtonView(title: "Self Assessment", icon: 'camera-retro', href: "#mentees/#{@model.id}/selfassess", state: 'selfassess')
     @buttonViews.interviewBtn = new ProfileButtonView(title: "Interview", icon: 'camera-retro', href: "#mentees/#{@model.id}/interview", state: 'snapshot')
     @buttonViews.observationsBtn = new ProfileButtonView(title: "Long Term Observations", icon: 'camera-retro', href: "#mentees/#{@model.id}/observations", state: 'snapshot')

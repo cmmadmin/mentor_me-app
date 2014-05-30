@@ -6,7 +6,6 @@ MenteeView = require('views/MenteeView')
 EditMenteeView = require('views/EditMenteeView')
 JournalView = require('views/JournalView')
 JournalEntries = require 'collections/JournalEntries'
-DevelopView = require('views/DevelopView')
 SnapshotController = require('controllers/SnapshotController')
 SelfAssessController = require('controllers/SelfAssessController')
 InterviewController = require('controllers/InterviewController')

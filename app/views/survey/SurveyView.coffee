@@ -50,6 +50,7 @@ module.exports = class SurveyView extends Marionette.CompositeView
         </div>")
 
   onShow: ->
+    console.log("SurveyView:onShow")
     @swiper = new Swiper('.survey-swiper', 
       mode:'horizontal'
       pagination: '.pagination-sd'
@@ -61,6 +62,7 @@ module.exports = class SurveyView extends Marionette.CompositeView
     )
 
   onClose: ->
+    console.log("SurveyView:onClose")
     @swiper.destroy(true)
 
   onSlideChange: (swiper) =>

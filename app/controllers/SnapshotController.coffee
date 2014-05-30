@@ -28,6 +28,7 @@ module.exports = class SnapshotController extends Controller
     @show @layout
     @showActive()
 
+  showActive: -> throw Error "unimplemented function: showActive"
 
   ###showUntapped: ->
     view = new IntroView(model: @model)
