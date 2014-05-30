@@ -26,7 +26,6 @@
     "sass-brunch": ">= 1.5.2 < 1.6",
 
     "handlebars-brunch": "1.7.2",
-    "emblem-brunch": "0.1.1",
 
     "uglify-js-brunch": "1.7.0",
     "clean-css-brunch": ">= 1.5 < 1.6",

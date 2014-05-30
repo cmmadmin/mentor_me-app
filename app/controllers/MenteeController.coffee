@@ -6,8 +6,10 @@ MenteeView = require('views/MenteeView')
 EditMenteeView = require('views/EditMenteeView')
 JournalView = require('views/JournalView')
 JournalEntries = require 'collections/JournalEntries'
-DevelopView = require('views/DevelopView')
 SnapshotController = require('controllers/SnapshotController')
+SelfAssessController = require('controllers/SelfAssessController')
+InterviewController = require('controllers/InterviewController')
+ObservationsController = require('controllers/ObservationsController')
 DevelopController = require('controllers/DevelopController')
 ProfileController = require('controllers/ProfileController')
 LifelistController = require('controllers/LifelistController')
@@ -33,6 +35,24 @@ module.exports = class MenteeController extends Marionette.Controller
     @updateProfile mentee
     profile = MM.request 'get:current:profile'
     snapshot = new SnapshotController(model: profile, region: MM.appLayout.mainRegion)
+
+  menteeSelfAssess: (id) ->
+    mentee = MM.collections.mentees.getOrFetch(id)
+    @updateProfile mentee
+    profile = MM.request 'get:current:profile'
+    snapshot = new SelfAssessController(model: profile, region: MM.appLayout.mainRegion)
+
+  menteeInterview: (id) ->
+    mentee = MM.collections.mentees.getOrFetch(id)
+    @updateProfile mentee
+    profile = MM.request 'get:current:profile'
+    snapshot = new InterviewController(model: profile, region: MM.appLayout.mainRegion)
+
+  menteeObservations: (id) ->
+    mentee = MM.collections.mentees.getOrFetch(id)
+    @updateProfile mentee
+    profile = MM.request 'get:current:profile'
+    snapshot = new ObservationsController(model: profile, region: MM.appLayout.mainRegion)
 
   menteeDevelop: (id) ->
     mentee = MM.collections.mentees.getOrFetch(id)
