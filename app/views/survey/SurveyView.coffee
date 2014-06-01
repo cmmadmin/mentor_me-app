@@ -20,7 +20,7 @@ module.exports = class SurveyView extends Marionette.CompositeView
     saveBtn: '.save-n-close-btn'
 
   initialize: (options) ->
-    _.defaults options,
+    @options = _.defaults options,
       grouped: false
       showCompleteBtn: true
     @survey = options.survey

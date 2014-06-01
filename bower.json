@@ -1,0 +1,35 @@
+{
+  "name": "mentor_me-app",
+  "version": "0.0.1",
+  "homepage": "none",
+  "authors": [
+    "Paul Strong <lapluviosilla@gmail.com>"
+  ],
+  "description": "Mentor Me Mobile App",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "underscore": "~1.6.0",
+    "backbone": "~1.0.0",
+    "marionette": "~1.8.6",
+    "rivets": "~0.6.8",
+    "rivets-backbone-adapter": "~1.1.0",
+    "backbone.syphon": "lapluviosilla/backbone.syphon#v0.5",
+    "machina": "541bbe7b43f18f4f079599d29df14fb8b063924f",
+    "moment": "~2.6.0"
+  },
+  "overrides": {
+    "backbone": {
+      "main": "backbone.js",
+      "underscore": "~1.6.0",
+      "jquery": "~2.1.0"
+    }
+  }
+}

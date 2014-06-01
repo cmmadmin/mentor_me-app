@@ -22,11 +22,12 @@ module.exports = class SnapshotController extends Controller
     @layout = @getLayoutView()
 
     #@buildWorkflow()
-    #@listenTo @layout, "show", =>
+    #
     #  @startWorkflow(@state.state)
-
+    @listenTo @layout, "show", =>
+      @showActive()
     @show @layout
-    @showActive()
+    
 
   showActive: -> throw Error "unimplemented function: showActive"
 

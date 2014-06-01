@@ -8,7 +8,7 @@ Backbone.sync = (method, entity, options = {}) ->
     entity._fetch = sync
   return sync
 
-MM.commands.addHandler "when:fetched", (entities, callback) ->
+MM.commands.setHandler "when:fetched", (entities, callback) ->
   xhrs = _.chain([entities]).flatten().pluck("_fetch").value()
 
   # if _.isArray(entities)

@@ -10,25 +10,23 @@ exports.config =
       defaultExtension: 'coffee'
       joinTo:
         'javascripts/app.js': /^app/
-        'javascripts/vendor.js': /^vendor/
+        'javascripts/vendor.js': /^(bower_components|vendor)/
         'test/javascripts/test.js': /^test[\\/](?!vendor)/
         'test/javascripts/test-vendor.js': /^test[\\/](?=vendor)/
       order:
         before: [
+          'bower_components/jquery/**/*',
+          'bower_components/underscore/**/*',
+          'bower_components/**/*',
           'vendor/scripts/console-helper.js',
-          'vendor/scripts/jquery-1.8.3.js',
-          'vendor/scripts/underscore-1.5.1.js',
-          'vendor/scripts/backbone-1.0.0.js',
           'vendor/scripts/backbone-mediator.js',
           'vendor/scripts/backbone.layoutmanager-0.7.5.js',
           'vendor/config/jqm-routing-patch.js',
           'vendor/config/jqm-hover-patch.js',
-          'vendor/scripts/jquery.mobile-1.2.0.js'
         ],
         after: [
           'vendor/scripts/bootstrap-editable.js',
           'vendor/scripts/bootstrap-notify.js',
-          'vendor/config/rivets-config.js',
           'vendor/config/backbone.syphon-config.js',
           'test/vendor/scripts/test-helper.js'
         ]
@@ -45,11 +43,6 @@ exports.config =
     templates:
       defaultExtension: 'hbs'
       joinTo: 'javascripts/templates.js'
-      paths:
-        # If you don't specify jquery and ember there,
-        # raw (non-Emberized) Handlebars templates will be compiled.
-        handlebars: 'vendor/handlebars.js'
-        emblem: 'vendor/emblem.js'
 
   modules:
     definition: (path, data) ->

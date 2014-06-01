@@ -34,10 +34,10 @@ module.exports = class ProfileController extends Marionette.Controller
       @profile.set('lifelist_state', trans.toState)
 
   initHandlers: ->
-    MM.reqres.addHandler 'get:current:profile', =>
+    MM.reqres.setHandler 'get:current:profile', =>
       return @profile
 
-    MM.reqres.addHandler 'get:profile:state', (tool) =>
+    MM.reqres.setHandler 'get:profile:state', (tool) =>
       return @profile.state[tool]
 
 
