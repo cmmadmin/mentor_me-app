@@ -32,12 +32,11 @@ exports.config =
         ]
 
     stylesheets:
-      defaultExtension: 'styl'
+      defaultExtension: 'scss'
       joinTo: 
         'stylesheets/app.css': /^(app|vendor)/
         'test/stylesheets/test.css': /^test/
       order:
-        before: ['vendor/styles/normalize.css', 'app/styles/bootstrap_and_overrides.less']
         after: ['vendor/styles/helpers.css']
 
     templates:

@@ -1,23 +1,218 @@
-/**
- * Primary Application Stylesheet
- * 
- * @langversion JavaScript
- * 
- * @author Christopher Pappas
- * @since  Month 00, 2012
- */
+@import "bower_components/bourbon/dist/bourbon";
+@import "bower_components/ionic/scss/ionic";
 
-// nib is a powerful lib for stylus that provides cross-browser css3 mixins.
-// No more vendor prefixes. http://visionmedia.github.com/nib/
-@import 'nib'
+$font-stack: $helvetica;
+body{
+  font: 100% $font-stack;
+}
 
 // Apply a natural box layout model to all elements.
 // http://paulirish.com/2012/box-sizing-border-box-ftw/
-*
+* {
   box-sizing: border-box
+}
 
-#home-view
+.assess-question {
+  .slide {
+    float: right;
+  }
+}
+a {
+  color: inherit;
+}
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+#home-page {
+  height: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+}
+// ---- Contact Page ---
+.contact-head {
+
+  vertical-align: middle;
+  i { vertical-align: middle; }
+
+  // transition: all 0.4s linear;
+  
+  transition: height 0.4s ease, top 0.2s linear;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0, 0, 0);
+
+  // padding: 10px;
+  // padding-left: 20px;
+  padding-right: 10px;
+  height: 80px;
+  // line-height: 56px;
+  width: 100%;
+
+  position: absolute;
+  left: 0;
+  top: 15px;
+
+  background-color: rgba(255, 255, 255, 0.75);
+
+  .bar {
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-size: 20pt;
+    font-size: 2.8rem;
+    line-height: 73px;
+    .icon-user {padding-left: 10px;}
+  }
+  
+  
+  
+  // -webkit-filter: blur(5px);
+  // -moz-filter: blur(2px);
+  // -o-filter: blur(2px);
+  // -ms-filter: blur(2px);
+  // filter: blur(2px);
+
+  .profile-pic {
+    height: 80px;
+    width: 80px;
+    // border: 2px solid grey;
+    // border-radius: 10px;
+  }
+
+  .name {
+    vertical-align: middle;
+    margin-left: 18px;
+  }
+
+  .details {
+    line-height: 80px;
+  }
+
+}
+#mentee-action-grid {
+  height: 100%;
+  padding-top: 100px;
+  max-width: 600px;
+  .row {
+    height: 100px;
+    .col {
+      height: 100%;
+    }
+  }
+}
+a.profilebtn {
+  background-color: #ee9536;
+  box-shadow: 2px 2px #c17728;
+  color: white;
+  height: 95px;
+  width: 95px;
+  position: absolute;
+  top: 50%;
+  margin-top: -47px;
+  left: 50%;
+  margin-left: -47px;
+
+  transition: background-color 0.9s ease 0.3s;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+
+  * {
+    pointer-events: none;
+  }
+
+  .mainicon {
+    line-height: 95px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    i {line-height: 95px;}
+    .icon-stack {position: static;}
+  }
+  .profilebtn-title {
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    font-family: 'Open Sans';
+    font-weight: 400;
+  }
+
+  .ribbon {
+    width: 100%;
+    background-color: green;
+    box-shadow: 2px 0px #006500;
+    padding: 3px;
+    position: absolute;
+    font-weight: 600;
+  }
+  .progressbar {
+    background-color: white;
+    height: 100%;
+    width: 5px;
+    right: -2px;
+    // box-shadow: 2px 2px rgba(255, 255, 255, 0.6);
+    position: absolute;
+
+    .fill {
+      transition: height 0.9s ease .3s;
+      transform: translate3d(0, 0, 0);
+      width: 5px;
+      background-color: #3fa1e0;
+      // box-shadow: 2px 2px rgba(63, 161, 224, 0.5);
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+// #journalBtn a.profilebtn { 
+//   background-color: #333333;
+//   box-shadow: 2px 2px #222222;
+// }
+a.profilebtn.untapped, a.profilebtn.active, a.profilebtn.active-selfassess, 
+a.profilebtn.active-pre-interactivequiz, a.profilebtn.active-interactivequiz {
+  background-color: #333333;
+  box-shadow: 2px 2px #222222;
+}
+a.profilebtn.disabled {
+  // pointer-events: none;
+  background-color: #333333;
+  box-shadow: 2px 2px #222222;
+  opacity: 0.9;
+}
+a.profilebtn:active {
+  box-shadow: none;
+  margin-top: -45px;
+  margin-left: -45px;
+  .progressbar {right: 0px;}
+  .ribbon {box-shadow: none;}
+}
+// Button inset shadow
+a.profilebtn:active:before {
+  content: '';
+  display: block;
+  box-shadow: inset 1px 1px 3px 2px rgba(0, 0, 0, 0.75);
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// Stylus styles
+#home-view {
   margin: 0 auto
+}
 
 html, body, .app, #content {
   height: 100%;
@@ -38,7 +233,7 @@ h1, h2, h3, h4 {
   top: 0;
   z-index: 1;
   padding-right: 0;
-  background-color: rgba(255, 255, 255, .90)
+  background-color: rgba(255, 255, 255, .90);
   .bar { background-color: rgba(255, 255, 255, 0.4)}
   // z-index: 30
 }
@@ -121,12 +316,12 @@ hr {
 *.ui-listview *.ui-btn-down-c,
 *.ui-listview *.ui-btn-hover-c {
   // Copy your .ui-btn-up styles here */
-  border: 1px solid     #ccc
-  background:       #eee
-  font-weight: bold
-  color:          #222
-  text-shadow: 0 1px 0 #fff 
-  background-image: linear-gradient(top, white, #f1f1f1)
+  border: 1px solid     #ccc;
+  background:       #eee;
+  font-weight: bold;
+  color:          #222;
+  text-shadow: 0 1px 0 #fff;
+  background-image: linear-gradient(top, white, #f1f1f1);
 }
 
 .fingerpaint {
@@ -147,22 +342,26 @@ body > div {
 }
 
 // Widgets
-.add-journal
-  padding-bottom: 10px
-  > .add-journal-ctrls
-    visibility: hidden
-    opacity: 0
-    transition-property: opacity
-    transition-duration: 0.7s
-  &.selected > .add-journal-ctrls
-    visibility: visible
-    opacity: 1
-    transition-property: opacity
-    transition-duration: 0.3s
+.add-journal {
+  padding-bottom: 10px;
+  > .add-journal-ctrls {
+    visibility: hidden;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.7s;
+  }
+  &.selected > .add-journal-ctrls {
+    visibility: visible;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+  }
+}
 
-.journal-notifications .alert
+.journal-notifications .alert {
   margin-bottom: 0;
   position: relative;
+}
 
 .wizard a {
     padding: 10px 12px 10px 30px;
@@ -235,7 +434,7 @@ body > div {
 .snapshot-intro {
   background-color: #242424;
   // h1 { color: #d4d4d4}
-  background-image: url("../images/helpmeknowyou.jpg")
+  background-image: url("../images/helpmeknowyou.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
   border-radius: 15px;
@@ -253,7 +452,7 @@ body > div {
 .snapshot-preinteractive {
   background-color: #242424;
   // h1 { color: #d4d4d4}
-  background-image: url("http://www.mobilization.org/wp-content/uploads/2012/08/Slider1.jpg")
+  background-image: url("http://www.mobilization.org/wp-content/uploads/2012/08/Slider1.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
   border-radius: 15px;
@@ -287,7 +486,7 @@ body > div {
 .snapshot-post-interactive {
   background-color: #242424;
   // h1 { color: #d4d4d4}
-  background-image: url("http://www.campusministrytoolbox.org/wp-content/uploads/2013/07/iStock_SI_Candle_000000153399_1-615x190.jpg")
+  background-image: url("http://www.campusministrytoolbox.org/wp-content/uploads/2013/07/iStock_SI_Candle_000000153399_1-615x190.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
   border-radius: 15px;
@@ -319,7 +518,7 @@ body > div {
 .snapshot-active {
   background-color: #242424;
   // h1 { color: #d4d4d4}
-  background-image: url("http://www.campusministrytoolbox.org/wp-content/uploads/2010/08/Producing-Disciples-is-No-Substitute-for-Reproducing-Disciples.png")
+  background-image: url("http://www.campusministrytoolbox.org/wp-content/uploads/2010/08/Producing-Disciples-is-No-Substitute-for-Reproducing-Disciples.png");
   background-size: 100% auto;
   background-repeat: no-repeat;
   border-radius: 15px;
@@ -347,7 +546,7 @@ body > div {
   height: 6em;
   width: 100%;
   background-color: #d2d2d2;
-  position: relative
+  position: relative;
   margin-top: 25px;
   .progress {
     position: absolute;
@@ -356,7 +555,7 @@ body > div {
     opacity: .9;
     // width: 50%;
     background-color: #357ebd;
-    background-image: url("../images/progress_texture.png")
+    background-image: url("../images/progress_texture.png");
   }
   span {
     line-height: 6em;
@@ -367,7 +566,7 @@ body > div {
 .develop-intro {
   background-color: #242424;
   // h1 { color: #d4d4d4}
-  background-image: url("http://www.campusministrytoolbox.org/wp-content/uploads/2013/06/cover-pic-615x313.jpg")
+  background-image: url("http://www.campusministrytoolbox.org/wp-content/uploads/2013/06/cover-pic-615x313.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
   border-radius: 15px;
@@ -412,7 +611,7 @@ body > div {
   }
 }
 .assess-question {
-  margin: auto
+  margin: auto;
   width: 80%;
   .slide {
     //float: right;
