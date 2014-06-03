@@ -19,6 +19,7 @@
 .idea
 nbproject
 Thumbs.db
+.cordova
 
 # NPM packages folder.
 node_modules/
