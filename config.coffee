@@ -3,8 +3,7 @@ exports.config =
 
   # Application build path.  Default is public
   #buildPath: ''
-  #
-
+  
   files:
     javascripts:
       defaultExtension: 'coffee'
@@ -23,6 +22,7 @@ exports.config =
           'vendor/scripts/backbone.layoutmanager-0.7.5.js',
           'vendor/config/jqm-routing-patch.js',
           'vendor/config/jqm-hover-patch.js',
+          /^app\/lib/
         ],
         after: [
           'vendor/scripts/bootstrap-editable.js',
@@ -44,7 +44,15 @@ exports.config =
       defaultExtension: 'hbs'
       joinTo: 'javascripts/templates.js'
 
+  plugins:
+    handlebars:
+      namespace: 'JST'
+      pathReplace: /^.*app\//
+    coffeescript:
+      bare: false
+
   modules:
+    wrapper: false
     definition: (path, data) ->
       """
       (function(/*! Brunch !*/) {

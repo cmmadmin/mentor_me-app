@@ -1,9 +1,3 @@
-###//CoffeeScript///////////////////////////////////////////////////////////////////
-// 
-// Copyright 2012 
-// 
-/////////////////////////////////////////////////////////////////////////////////###
-
 ###
  * Application Bootstrapper
  * 
@@ -12,88 +6,98 @@
  * @author 
  * @since  
  ###
-MentorMe = new Marionette.Application
+@MM = do (Backbone, Marionette) ->
 
-  currentUser: null
+  MentorMe = new Marionette.Application
 
-  loginOpen: false
+    currentUser: null
 
-  initEvents: ->
-    @vent.bind "authentication:logged_in", ->
-      MentorMe.collections.mentees.fetch()
-      MentorMe.router.navigate('/', true)
-      $('#tbModal').one 'hidden', ->
-        MentorMe.loginPanel.remove()
-        MentorMe.loginOpen = false
-      $('#tbModal').modal('hide');
-    # @vent.bind 'mentee:addJournalEntry' (e, mentee, data) ->
-    #   Mentee = require 'models/Mentee'
-    #   JournalEntry = require 'models/JournalEntry'
-    #   je = new JournalEntry()
+    loginOpen: false
 
-MentorMe.addInitializer ->
-  # Import views
-  HomePage = require('views/HomePage')
-  LoginPanel = require('views/LoginView')
-  Router = require('routers/Router')
-  
-  AppController = require('controllers/AppController')
-  AppLayout = require('views/AppLayout')
+    initEvents: ->
+      @vent.bind "authentication:logged_in", ->
+        MentorMe.collections.mentees.fetch()
+        MentorMe.router.navigate('/', true)
+        $('#tbModal').one 'hidden', ->
+          MentorMe.loginPanel.remove()
+          MentorMe.loginOpen = false
+        $('#tbModal').modal('hide');
+      # @vent.bind 'mentee:addJournalEntry' (e, mentee, data) ->
+      #   Mentee = require 'models/Mentee'
+      #   JournalEntry = require 'models/JournalEntry'
+      #   je = new JournalEntry()
+      #   
+  MentorMe.rootRoute = "#mentees"
 
-  #Import collections
-  Mentees = require('collections/Mentees')
-  Questions = require('collections/Questions')
-  Editions = require('collections/Editions')
-  Lifelists = require('collections/Lifelists')
-  LifelistCategories = require('collections/LifelistCategories')
+  MentorMe.addInitializer ->
+    # Import views
+    HomePage = require('views/HomePage')
+    LoginPanel = require('views/LoginView')
+    Router = require('routers/Router')
+    
+    AppController = require('controllers/AppController')
+    AppLayout = require('views/AppLayout')
 
-  # Initialize collections
-  @collections = 
-    mentees: new Mentees()
-    editions: new Editions()
-    lifelist_categories: new LifelistCategories()
-    lifelists: new Lifelists()
-    bootstrap: (update) ->
-      MentorMe.vent.trigger('bootstrap:loaded')
-      @mentees.reset(update.mentees)
-      @editions.reset(update.editions)
-      @lifelist_categories.reset(update.lifelist_categories)
-      @lifelists.reset(update.lifelists)
+    #Import collections
+    Mentees = require('collections/Mentees')
+    Questions = require('collections/Questions')
+    Editions = require('collections/Editions')
+    Lifelists = require('collections/Lifelists')
+    LifelistCategories = require('collections/LifelistCategories')
 
-  # TODO: Use proper server bootstrap
-  # Bootstrap initial data
-  # @collections.mentees.fetch();
-  # @collections.questions.fetch();
-  ApplicationConfig = require('config/ApplicationConfig')
-  sync = $.ajax(
-    url: ApplicationConfig.SERVER_URL + 'users/data'
-    context: @collections
-  )
-  sync.done(@collections.bootstrap, @collections)
-  @collections._fetch = sync
+    # Initialize collections
+    @collections = 
+      mentees: new Mentees()
+      editions: new Editions()
+      lifelist_categories: new LifelistCategories()
+      lifelists: new Lifelists()
+      bootstrap: (update) ->
+        MentorMe.vent.trigger('bootstrap:loaded')
+        @mentees.reset(update.mentees)
+        @editions.reset(update.editions)
+        @lifelist_categories.reset(update.lifelist_categories)
+        @lifelists.reset(update.lifelists)
 
-  # Initialize views
-  @loginPanel = new LoginPanel()
-  @router = new Router(controller: new AppController())
+    # TODO: Use proper server bootstrap
+    # Bootstrap initial data
+    # @collections.mentees.fetch();
+    # @collections.questions.fetch();
+    ApplicationConfig = require('config/ApplicationConfig')
+    sync = $.ajax(
+      url: ApplicationConfig.SERVER_URL + 'users/data'
+      context: @collections
+    )
+    sync.done(@collections.bootstrap, @collections)
+    @collections._fetch = sync
 
-  @appLayout = new AppLayout(el: "#mentor_me_app")
-  # @appLayout.on "render", ->
-  #   @mainRegion.show(MentorMe.homePage)
+    # Initialize views
+    @loginPanel = new LoginPanel()
+    @router = new Router(controller: new AppController())
 
-  # TODO: Listen in better place
-  @initEvents()
+    @appLayout = new AppLayout(el: "#mentor_me_app")
+    # @appLayout.on "render", ->
+    #   @mainRegion.show(MentorMe.homePage)
 
-  Object.freeze? this
-MentorMe.addInitializer ->
-  # Load helper for use in views
-  require('helpers/ViewHelper')
+    # TODO: Listen in better place
+    @initEvents()
 
-  $(document).ajaxError (e, xhr, settings, exception) ->
-    if (xhr.status == 401)
-      application.router.login()
+    Object.freeze? this
+  MentorMe.addInitializer ->
+    # Load helper for use in views
+    require('helpers/ViewHelper')
 
-  $(->
-    FastClick.attach(document.body);
-  )
+    $(document).ajaxError (e, xhr, settings, exception) ->
+      if (xhr.status == 401)
+        application.router.login()
 
-module.exports = MentorMe
+    $(->
+      FastClick.attach(document.body);
+    )
+
+  MentorMe.on "initialize:after", ->
+    # Start Backbone router after bootstrap
+    MentorMe.execute "when:fetched", MentorMe.collections, =>
+      @startHistory()
+      @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
+
+  MentorMe
