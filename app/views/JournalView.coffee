@@ -1,9 +1,9 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
-  JournalEntry = App.Models.JournalEntry
-  JournalItemView = Views.JournalItemView
 
   class Views.JournalView extends Marionette.CompositeView
-    itemView: JournalItemView
+    Models = App.Models
+
+    itemView: Views.JournalItemView
     itemViewContainer: ".items"
     template: 'templates/Journal'
 
@@ -27,7 +27,7 @@
       content = $('#add-journal-textarea').val()
       datetime = $('#add-journal-datetime').val()
 
-      je = JournalEntry.create(mentee_id: @collection.owner.id, body: content, logged_at: datetime)
+      je = Models.JournalEntry.create(mentee_id: @collection.owner.id, body: content, logged_at: datetime)
       je.save().done ->
         $('#add-journal-textarea').val('').parent().removeClass 'selected'
 

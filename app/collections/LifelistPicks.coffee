@@ -8,7 +8,7 @@
       Collection.serverUrl('mentee_profiles') + '/' + @owner.id + '/lifelist_picks'
 
     model: (attrs, options) ->
-      LifelistPick = require('models/LifelistPick')
+      LifelistPick = App.Models.LifelistPick
       return LifelistPick.create(attrs, options)
     getItems: ->
       items = @map (pick) ->

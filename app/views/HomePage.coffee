@@ -8,8 +8,6 @@
  ###
 
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
-  MenteeListView = Views.MenteeListView
-  MenteeCollection = App.Collections.Mentees
 
   class Views.HomePage extends Marionette.Layout
 
@@ -35,4 +33,4 @@
       @mentees = @options.mentees
 
     onRender: ->
-      @menteeListRegion.show(new MenteeListView(collection: @mentees))
+      @menteeListRegion.show(new Views.MenteeListView(collection: @mentees))

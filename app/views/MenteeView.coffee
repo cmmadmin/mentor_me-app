@@ -2,7 +2,6 @@
   JournalEntry = App.Models.JournalEntry
   MenteeProfileView = Views.MenteeProfileView
   EditMenteeView = Views.EditMenteeView
-  ProfileButtonView = Views.ProfileButtonView
 
   class Views.MenteeView extends Marionette.Layout
     template: 'templates/Mentee'
@@ -35,6 +34,7 @@
       @initButtonViews();
 
     initButtonViews: ->
+      ProfileButtonView = Views.ProfileButtonView
       @buttonViews.snapshotBtn = new ProfileButtonView(title: "Snapshot", icon: 'camera-retro', href: "#mentees/#{@model.id}/selfassess", state: 'snapshot')
       @buttonViews.selfassessBtn = new ProfileButtonView(title: "Self Assessment", icon: 'camera-retro', href: "#mentees/#{@model.id}/selfassess", state: 'selfassess')
       @buttonViews.interviewBtn = new ProfileButtonView(title: "Interview", icon: 'camera-retro', href: "#mentees/#{@model.id}/interview", state: 'snapshot')

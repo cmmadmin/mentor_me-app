@@ -1,7 +1,7 @@
 ###
  * Handlebars Template Helpers
  ###
-@MM.module "Helpers", (Helpers, App, Backbone, Marionette, Handlebars, $, _) ->
+@MM.module "Helpers", (Helpers, App, Backbone, Marionette, $, _) ->
   Handlebars.registerHelper( 'link', ( text, url ) ->
 
     text = Handlebars.Utils.escapeExpression( text )

@@ -8,7 +8,6 @@
  ###
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
   application = App.MentorMe
-  #template = require('./templates/MenteeListTemplate')
   Mentee = App.Models/Mentee
   MenteeListItemView = Views.MenteeListItemView
 

@@ -21,17 +21,15 @@
       else
         "Unknown"
 
-  # Put at bottom to avoid circular dependency (ugly commonjs exports hack)
-  MenteeProfile = require('./MenteeProfile')
-  JournalEntries = require('collections/JournalEntries')
+  App.on "initialize:before", ->
+    # Supermodel definitions
+    Models.Mentee.has().one('active_profile', 
+      model: Models.MenteeProfile
+      inverse: 'mentee'
+    )
 
-  # Supermodel definitions
-  Mentee.has().one('active_profile', 
-    model: MenteeProfile
-    inverse: 'mentee'
-  )
-
-  Mentee.has().many('journal_entries', 
-    collection: JournalEntries
-    inverse: 'mentee'
-  )
+    Models.Mentee.has().many('journal_entries', 
+      collection: App.Collections.JournalEntries
+      inverse: 'mentee'
+    )
+    

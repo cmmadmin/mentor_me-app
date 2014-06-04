@@ -6,5 +6,5 @@
     url: Collection.serverUrl('lifelist_categories')
 
     model: (attrs, options) ->
-      LifelistCategory = require('models/LifelistCategory')
+      LifelistCategory = App.Models.LifelistCategory
       return LifelistCategory.create(attrs, options)

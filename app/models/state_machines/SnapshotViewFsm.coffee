@@ -1,6 +1,6 @@
 @MM.module "Models.StateMachines", (StateMachines, App, Backbone, Marionette, $, _) ->
 
-  StateMachines.SnapshotViewFsm = Models.SnapshotFsm.extend
+  StateMachines.SnapshotViewFsm = StateMachines.SnapshotFsm.extend
     initialState: 'uninitialized'
     states:
       uninitialized: {}

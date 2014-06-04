@@ -12,17 +12,15 @@
       serialized[@id] = answer.value() if answer
       return serialized
 
-  # Put at bottom to avoid circular dependency (ugly commonjs exports hack)
-  Answers = require('collections/Answers')
-  QuestionGroup = require('./QuestionGroup')
 
-  Question.has().many('answers', 
-    collection: Answers
-    inverse: 'question'
-  )
+  App.on "initialize:before", ->
+    Models.Question.has().many('answers', 
+      collection: App.Collections.Answers
+      inverse: 'question'
+    )
 
-  Question.has().one('question_group', 
-    model: QuestionGroup
-    inverse: 'questions'
-  )
-
+    Models.Question.has().one('question_group', 
+      model: Models.QuestionGroup
+      inverse: 'questions'
+    )
+    

@@ -6,5 +6,5 @@
     url: Collection.serverUrl('lifelists')
 
     model: (attrs, options) ->
-      Lifelist = require('models/Lifelist')
+      Lifelist = App.Models.Lifelist
       return Lifelist.create(attrs, options)

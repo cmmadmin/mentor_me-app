@@ -26,21 +26,13 @@
       progress.percentage = Math.round(100 * progress.answers / progress.questions)
       return progress
 
+  App.on "initialize:before", ->
+    Models.Survey.has().one('edition', 
+      model: Models.Edition
+      inverse: 'surveys'
+    )
 
-
-  # Put at bottom to avoid circular dependency (ugly commonjs exports hack)
-  QuestionGroups = require('collections/QuestionGroups')
-  Edition = require('./Edition')
-  QuestionGroup = require('./QuestionGroup')
-  Question = require('./Question')
-
-  # relationships defined afterwards
-  Survey.has().one('edition', 
-    model: Edition
-    inverse: 'surveys'
-  )
-
-  Survey.has().many('question_groups', 
-    collection: QuestionGroups
-    inverse: 'survey'
-  )
+    Models.Survey.has().many('question_groups', 
+      collection: App.Collections.QuestionGroups
+      inverse: 'survey'
+    )

@@ -5,18 +5,15 @@
 
   class Models.Lifelist extends Model
     urlRoot: Collection.serverUrl('lifelists')
+  
+  App.on "initialize:before", ->
+    # Supermodel definitions
+    Models.Lifelist.has().one('edition', 
+      model: Models.Edition
+      inverse: 'lifelist'
+    )
 
-  # Put at bottom to avoid circular dependency (ugly commonjs exports hack)
-  Edition = require('./Edition')
-  LifelistItems = require('collections/LifelistItems')
-
-  # Supermodel definitions
-  Lifelist.has().one('edition', 
-    model: Edition
-    inverse: 'lifelist'
-  )
-
-  Lifelist.has().many('lifelist_items', 
-    collection: LifelistItems
-    inverse: 'lifelist'
-  )
+    Models.Lifelist.has().many('lifelist_items', 
+      collection: App.Collections.LifelistItems
+      inverse: 'lifelist'
+    )

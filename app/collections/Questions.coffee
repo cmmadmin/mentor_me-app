@@ -11,5 +11,5 @@
       super
 
     model: (attrs, options) ->
-      Question = require('models/Question')
+      Question = App.Models.Question
       return Question.create(attrs, options)

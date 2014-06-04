@@ -1,11 +1,9 @@
 @MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
-  ToolLayout = App.Views.ToolLayout
-  IntroView = App.Views.Develop.IntroView
-  SurveyView = App.Views.SurveyView
+
   Controller = Controllers.Supers.Controller
   
   class Controllers.DevelopController extends Controller
-
+    Views = App.Views
     initialize: (options) ->
       console.log 'DevelopModule:Controller:initialize'
       @region = options.region
@@ -23,14 +21,14 @@
     
 
     showUntapped: ->
-      view = new IntroView(model: @model)
+      view = new Views.Develop.IntroView(model: @model)
       @listenTo view, "develop:intro:start:clicked", ->
         @workflow.handle('start')
 
       @layout.mainRegion.show(view)
 
     showActive: ->
-      view = new SurveyView
+      view = new Views.Survey.SurveyView
         survey: @model.edition().developSurvey()
         title: "Develop"
         icon: "comment"
@@ -54,7 +52,7 @@
       profile.save()
 
     getLayoutView: ->
-      new ToolLayout()
+      new Views.ToolLayout()
 
     buildWorkflow: ->
       profile = MM.request "get:current:profile"

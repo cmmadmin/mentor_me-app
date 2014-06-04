@@ -31,19 +31,19 @@
 
   MentorMe.addInitializer ->
     # Import views
-    HomePage = require('views/HomePage')
-    LoginPanel = require('views/LoginView')
-    Router = require('routers/Router')
+    HomePage = MentorMe.Views.HomePage
+    LoginPanel = MentorMe.Views.LoginView
+    Router = MentorMe.Routers.Router
     
-    AppController = require('controllers/AppController')
-    AppLayout = require('views/AppLayout')
+    AppController = MentorMe.Controllers.AppController
+    AppLayout = MentorMe.Views.AppLayout
 
     #Import collections
-    Mentees = require('collections/Mentees')
-    Questions = require('collections/Questions')
-    Editions = require('collections/Editions')
-    Lifelists = require('collections/Lifelists')
-    LifelistCategories = require('collections/LifelistCategories')
+    Mentees = MentorMe.Collections.Mentees
+    Questions = MentorMe.Collections.Questions
+    Editions = MentorMe.Collections.Editions
+    Lifelists = MentorMe.Collections.Lifelists
+    LifelistCategories = MentorMe.Collections.LifelistCategories
 
     # Initialize collections
     @collections = 
@@ -62,7 +62,7 @@
     # Bootstrap initial data
     # @collections.mentees.fetch();
     # @collections.questions.fetch();
-    ApplicationConfig = require('config/ApplicationConfig')
+    ApplicationConfig = MentorMe.Config.ApplicationConfig
     sync = $.ajax(
       url: ApplicationConfig.SERVER_URL + 'users/data'
       context: @collections
@@ -84,7 +84,7 @@
     Object.freeze? this
   MentorMe.addInitializer ->
     # Load helper for use in views
-    require('helpers/ViewHelper')
+    MentorMe.Helpers.ViewHelper
 
     $(document).ajaxError (e, xhr, settings, exception) ->
       if (xhr.status == 401)

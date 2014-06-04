@@ -12,17 +12,14 @@
         _.extend(serialized, question.serializeAnswer(profile))
       return serialized
 
-  # Put at bottom to avoid circular dependency (ugly commonjs exports hack)
-  Questions = require('collections/Questions')
-  Survey = require('./Survey')
+  App.on "initialize:before", ->
+    Models.QuestionGroup.has().one('survey', 
+      model: Models.Survey
+      inverse: 'question_groups'
+    )
 
-  QuestionGroup.has().one('survey', 
-    model: Survey
-    inverse: 'question_groups'
-  )
-
-  QuestionGroup.has().many('questions', 
-    collection: Questions
-    inverse: 'question_group'
-  )
+    Models.QuestionGroup.has().many('questions', 
+      collection: App.Collections.Questions
+      inverse: 'question_group'
+    )
 

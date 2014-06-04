@@ -6,17 +6,14 @@
   class Models.LifelistPick extends Model
     urlRoot: Collection.serverUrl('lifelist_picks')
 
-  # Put at bottom to avoid circular dependency (ugly commonjs exports hack)
-  MenteeProfile = require('./MenteeProfile')
-  LifelistItem = require('./LifelistItem')
+  App.on "initialize:before", ->
+    # Supermodel definitions
+    Models.LifelistPick.has().one('mentee_profile', 
+      model: Models.MenteeProfile
+      inverse: 'lifelist_picks'
+    )
 
-  # Supermodel definitions
-  LifelistPick.has().one('mentee_profile', 
-    model: MenteeProfile
-    inverse: 'lifelist_picks'
-  )
-
-  LifelistPick.has().one('lifelist_item', 
-    model: LifelistItem
-    inverse: 'lifelist_picks'
-  )
+    Models.LifelistPick.has().one('lifelist_item', 
+      model: Models.LifelistItem
+      inverse: 'lifelist_picks'
+    )

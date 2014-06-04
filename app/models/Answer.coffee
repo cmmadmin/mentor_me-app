@@ -2,7 +2,7 @@
   Model = Models.Supers.Model
   Collection = App.Collections.Supers.Collection
 
-  module.exports = class Models.Answer extends Model
+  class Models.Answer extends Model
     urlRoot: Collection.serverUrl('answers')
 
     value: ->
@@ -13,12 +13,12 @@
       
   App.on "initialize:before", ->
     # Supermodel definitions
-    Answer.has().one('mentee_profile',
+    Models.Answer.has().one('mentee_profile',
       model: Models.MenteeProfile
       inverse: 'answers'
     )
 
-    Answer.has().one('question',
+    Models.Answer.has().one('question',
       model: Models.Question
       inverse: 'answers'
     )

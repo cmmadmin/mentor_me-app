@@ -6,7 +6,7 @@
     url: Collection.serverUrl('lifelist_items')
 
     model: (attrs, options) ->
-      LifelistItem = require('models/LifelistItem')
+      LifelistItem = App.Models.LifelistItem
       return LifelistItem.create(attrs, options)
     comparator: (item) ->
       item.get('title')

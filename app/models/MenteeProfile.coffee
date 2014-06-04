@@ -48,7 +48,7 @@
       return survey.profileProgress(@).percentage
 
     saveAnswer: (question_id, value) ->
-      Answer = require('./Answer')
+      Answer = Models.Answer
       answer = @answers().findWhere(question_id: parseInt(question_id))
       if(answer)
         answer.setValue(value) if(answer.value().toString() != value) # We don't want to trigger a sync if value is the same
@@ -60,7 +60,7 @@
 
     pickLifelistItem: (item) ->
       if !@lifelist_picks().getItems().contains(item)
-        LifelistPick = require('./LifelistPick')
+        LifelistPick = Models.LifelistPick
         pick = new LifelistPick(mentee_profile_id: @get('id'), lifelist_item_id: item.get('id'))
         pick.save()
     unpickLifelistItem: (item) ->
@@ -69,25 +69,21 @@
         pick = picks.findWhere(lifelist_item_id: item.get('id'))
         pick.destroy() if pick
     
-  Mentee = require('models/Mentee')
-  Edition = require('models/Edition')
-  Answers = require('collections/Answers')
-  LifelistPicks = require('collections/LifelistPicks')
-  # relationships defined afterwards
-  MenteeProfile.has().one('mentee', 
-    model: Mentee
-    inverse: 'active_profile'
-  )
-  MenteeProfile.has().one('edition', 
-    model: Edition
-    inverse: 'mentee_profiles'
-  )
-  MenteeProfile.has().many('answers', 
-    collection: Answers
-    inverse: 'mentee_profile'
-  )
-  MenteeProfile.has().many('lifelist_picks',
-    collection: LifelistPicks
-    inverse: 'mentee_profile'
-  )
+  App.on "initialize:before", ->
+    Models.MenteeProfile.has().one('mentee', 
+      model: Models.Mentee
+      inverse: 'active_profile'
+    )
+    Models.MenteeProfile.has().one('edition', 
+      model: Models.Edition
+      inverse: 'mentee_profiles'
+    )
+    Models.MenteeProfile.has().many('answers', 
+      collection: App.Collections.Answers
+      inverse: 'mentee_profile'
+    )
+    Models.MenteeProfile.has().many('lifelist_picks',
+      collection: App.Collections.LifelistPicks
+      inverse: 'mentee_profile'
+    )
 

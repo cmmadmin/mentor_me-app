@@ -1,6 +1,6 @@
 @MM.module "Models.StateMachines", (StateMachines, App, Backbone, Marionette, $, _) ->
 
-  StateMachines.DevelopFsm = Models.ToolFsm.extend
+  StateMachines.DevelopFsm = StateMachines.ToolFsm.extend
 
     # eventListeners:
     #   onTransition: (trans) ->

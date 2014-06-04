@@ -7,5 +7,5 @@
       Collection.serverUrl('mentees') + '/' + @owner.id + '/mentee_profiles'
 
     model: (attrs, options) ->
-      MenteeProfile = require('models/MenteeProfile')
+      MenteeProfile = App.Models.MenteeProfile
       return MenteeProfile.create(attrs, options)

@@ -7,5 +7,5 @@
       Collection.serverUrl('surveys') + '/' + @owner.id + '/question_groups'
 
     model: (attrs, options) ->
-      QuestionGroup = require('models/QuestionGroup')
+      QuestionGroup = App.Models.QuestionGroup
       return QuestionGroup.create(attrs, options)

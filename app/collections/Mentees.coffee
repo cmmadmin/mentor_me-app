@@ -10,7 +10,7 @@
       super
 
     model: (attrs, options) ->
-      Mentee = require('models/Mentee')
+      Mentee = App.Models.Mentee
       return Mentee.create(attrs, options)
 
     comparator: (mentee) ->

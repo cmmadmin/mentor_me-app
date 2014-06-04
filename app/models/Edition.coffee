@@ -19,22 +19,18 @@
       new Backbone.Collection([@snapshotSelfAssessmentSurvey(), @snapshotInteractiveSurvey(),
         @snapshotObservationsSurvey()]);
 
-  # Put at bottom to avoid circular dependency (ugly commonjs exports hack)
-  MenteeProfiles = require('collections/MenteeProfiles')
-  Surveys = require('collections/Surveys')
-  Lifelist = require('./Lifelist')
+  App.on "initialize:before", ->
+    # Supermodel definitions
+    Models.Edition.has().many('mentee_profiles', 
+      collection: App.Collections.MenteeProfiles
+      inverse: 'edition'
+    )
 
-  # Supermodel definitions
-  Edition.has().many('mentee_profiles', 
-    collection: MenteeProfiles
-    inverse: 'edition'
-  )
-
-  Edition.has().many('surveys', 
-    collection: Surveys
-    inverse: 'edition'
-  )
-  Edition.has().one('lifelist',
-    model: Lifelist
-    inverse: 'edition'
-  )
+    Models.Edition.has().many('surveys', 
+      collection: App.Collections.Surveys
+      inverse: 'edition'
+    )
+    Models.Edition.has().one('lifelist',
+      model: Models.Lifelist
+      inverse: 'edition'
+    )
