@@ -1,4 +1,4 @@
-@PE.module "Utilities", (Utilities, App, Backbone, Marionette, $, _) ->
+@MM.module "Utilities", (Utilities, App, Backbone, Marionette, $, _) ->
 
 _.extend Marionette.Renderer,
 
