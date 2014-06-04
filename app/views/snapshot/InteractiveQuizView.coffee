@@ -6,23 +6,22 @@
  * @author 
  * @since  
  ###
-MM = require( 'MentorMe' )
-template = require('templates/snapshot/InteractiveQuiz')
+@MM.module "Views.Snapshot", (Snapshot, App, Backbone, Marionette, $, _) ->
 
-module.exports = class InteractiveQuizView extends Marionette.ItemView
-  template: template
+  class Snapshot.InteractiveQuizView extends Marionette.ItemView
+    template: 'templates/snapshot/InteractiveQuiz'
 
-  events:
-    'click #complete-assess-btn' : 'complete'
+    events:
+      'click #complete-assess-btn' : 'complete'
 
-  onShow: ->
-    mySwiper = new Swiper('.quiz-swiper', 
-      mode:'horizontal'
-      pagination: '.pagination-sd'
-      moveStartThreshold:100
-      preventClassNoSwiping: true
-    )
+    onShow: ->
+      mySwiper = new Swiper('.quiz-swiper',
+        mode:'horizontal'
+        pagination: '.pagination-sd'
+        moveStartThreshold:100
+        preventClassNoSwiping: true
+      )
 
-  complete: ->
-    # TODO: save assessment here
-    @trigger 'complete'
+    complete: ->
+      # TODO: save assessment here
+      @trigger 'complete'

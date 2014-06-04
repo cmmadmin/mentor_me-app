@@ -1,26 +1,25 @@
-template = require('templates/Login')
+@MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
+  UserSession = App.Models.UserSession
 
-UserSession = require('models/UserSession')
+  class LoginView extends Marionette.ItemView
+    template: 'templates/Login'
 
-module.exports = class LoginView extends Marionette.ItemView
-  template: template
+    events:
+      'submit form': 'login'
 
-  events:
-    'submit form': 'login'
+    initialize: ->
+      @model = new UserSession()
 
-  initialize: ->
-    @model = new UserSession()
-    
-  render: ->
-    super
-    rivets.bind(@$el, {userSession: @model})
-    return @
+    render: ->
+      super
+      rivets.bind(@$el, {userSession: @model})
+      return @
 
-  login: (e) ->
-    # Prevent form submission
-    e.preventDefault()
+    login: (e) ->
+      # Prevent form submission
+      e.preventDefault()
 
-    @$el.find('#login-form button.btn-primary').button('loading');
+      @$el.find('#login-form button.btn-primary').button('loading');
 
-    @model.login().always =>
-      @$el.find('#login-form button.btn-primary').button('reset');
+      @model.login().always =>
+        @$el.find('#login-form button.btn-primary').button('reset');

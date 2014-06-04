@@ -24,8 +24,9 @@ exports.config =
           'vendor/config/jqm-hover-patch.js',
           'app/MentorMe.coffee',
           /^app\/lib/,
-          'app/config/*',
-          'app/*/supers/*' # include base classes in 'super' directory before the rest
+          'app/config/*', # include config before everything
+          'app/*/supers/*', # include base classes in 'super' directory before the rest
+          'app/views/**/*' # include views before controllers
         ],
         after: [
           'vendor/scripts/bootstrap-editable.js',

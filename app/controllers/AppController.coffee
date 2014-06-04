@@ -1,11 +1,4 @@
 @MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
-  Mentee = App.Models.Mentee
-  Mentees = App.Collections.Mentees
-  MenteeView = App.Views.MenteeView
-  EditMenteeView = App.Views.EditMenteeView
-  JournalView = App.Views.JournalView
-  JournalEntries = App.Collections.JournalEntries
-  SnapshotController = App.Controllers.SnapshotController
 
   class AppController extends Marionette.Controller
 
