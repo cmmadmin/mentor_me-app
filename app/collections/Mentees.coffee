@@ -1,17 +1,17 @@
-Collection = require('./supers/Collection')
+@MM.module "Collections", (Collections, App, Backbone, Marionette, $, _) ->
+  Collection = Collections.Supers.Collection
 
+  class Mentees extends Collection
 
-module.exports = class Mentees extends Collection
+    url: Collection.serverUrl('mentees')
 
-  url: Collection.serverUrl('mentees')
-  
-  initialize: ->
-    #@storage = new Offline.Storage('mentees', this)
-    super
+    initialize: ->
+      #@storage = new Offline.Storage('mentees', this)
+      super
 
-  model: (attrs, options) ->
-    Mentee = require('models/Mentee')
-    return Mentee.create(attrs, options)
+    model: (attrs, options) ->
+      Mentee = require('models/Mentee')
+      return Mentee.create(attrs, options)
 
-  comparator: (mentee) ->
-    return mentee.get('name')
+    comparator: (mentee) ->
+      return mentee.get('name')

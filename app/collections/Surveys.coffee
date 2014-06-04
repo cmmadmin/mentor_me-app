@@ -1,10 +1,11 @@
-Collection = require('./supers/Collection')
-Survey = require('models/Survey')
+@MM.module "Collections", (Collections, App, Backbone, Marionette, $, _) ->
+  Collection = Collections.Supers.Collection
+  Survey = App.Models.Survey
 
-module.exports = class Surveys extends Collection
+  class Surveys extends Collection
 
-  url: ->
-    Collection.serverUrl('editions') + '/' + @owner.id + '/surveys'
+    url: ->
+      Collection.serverUrl('editions') + '/' + @owner.id + '/surveys'
 
-  model: (attrs, options) ->
-    return Survey.create(attrs, options)
+    model: (attrs, options) ->
+      return Survey.create(attrs, options)

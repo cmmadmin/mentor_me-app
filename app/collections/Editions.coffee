@@ -1,9 +1,10 @@
-Collection = require('./supers/Collection')
-Edition = require('models/Edition')
+@MM.module "Collections", (Collections, App, Backbone, Marionette, $, _) ->
+  Collection = Collections.Supers.Collection
+  Edition = App.Models.Edition
 
-module.exports = class Editions extends Collection
+  class Editions extends Collection
 
-  url: Collection.serverUrl('editions')
+    url: Collection.serverUrl('editions')
 
-  model: (attrs, options) ->
-    return Edition.create(attrs, options)
+    model: (attrs, options) ->
+      return Edition.create(attrs, options)

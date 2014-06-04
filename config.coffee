@@ -23,7 +23,9 @@ exports.config =
           'vendor/config/jqm-routing-patch.js',
           'vendor/config/jqm-hover-patch.js',
           'app/MentorMe.coffee',
-          /^app\/lib/
+          /^app\/lib/,
+          'app/config/*',
+          'app/*/supers/*' # include base classes in 'super' directory before the rest
         ],
         after: [
           'vendor/scripts/bootstrap-editable.js',

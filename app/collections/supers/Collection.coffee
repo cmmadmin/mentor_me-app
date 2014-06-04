@@ -7,61 +7,61 @@
  * @since  
  ###
 
-ApplicationConfig = require('config/ApplicationConfig')
+@MM.module "Collections.Supers", (Supers, App, Backbone, Marionette, $, _) ->
 
-module.exports = class Collection extends Backbone.Collection
+  class Supers.Collection extends Backbone.Collection
 
-  ###//--------------------------------------
-  //+ PUBLIC PROPERTIES / CONSTANTS
-  //--------------------------------------###
+    ###//--------------------------------------
+    //+ PUBLIC PROPERTIES / CONSTANTS
+    //--------------------------------------###
 
-  ###//--------------------------------------
-  //+ INHERITED / OVERRIDES
-  //--------------------------------------###
-  fetch: ->
-    @trigger('fetch')
-    super(silent: false)
+    ###//--------------------------------------
+    //+ INHERITED / OVERRIDES
+    //--------------------------------------###
+    fetch: ->
+      @trigger('fetch')
+      super(silent: false)
 
-  ###//--------------------------------------
-  //+ PUBLIC METHODS / GETTERS / SETTERS
-  //--------------------------------------###
-  # get: (sid) ->
-  #   return @find (item) ->
-  #     return `item.get('sid') == sid`
+    ###//--------------------------------------
+    //+ PUBLIC METHODS / GETTERS / SETTERS
+    //--------------------------------------###
+    # get: (sid) ->
+    #   return @find (item) ->
+    #     return `item.get('sid') == sid`
 
-  ###
-  Get model by id if it exists, or fetch and add if not
-  ###
-  getOrFetch: (id) ->
-    model = @get(id)
-    if !model?
-      model = new @model(id: id)
-      @add model
+    ###
+    Get model by id if it exists, or fetch and add if not
+    ###
+    getOrFetch: (id) ->
+      model = @get(id)
+      if !model?
+        model = new @model(id: id)
+        @add model
+        model.fetch()
+      return model
+
+    ###
+    Get or add model by id, and then force fetch
+    ###
+    getAndFetch: (id) ->
+      model = @get(id)
+      if !model?
+        model = new @model(id: id)
+        @add model
       model.fetch()
-    return model
+      return model
 
-  ###
-  Get or add model by id, and then force fetch
-  ###
-  getAndFetch: (id) ->
-    model = @get(id)
-    if !model?
-      model = new @model(id: id)
-      @add model
-    model.fetch()
-    return model
+    ###//--------------------------------------
+    //+ EVENT HANDLERS
+    //--------------------------------------###
 
-  ###//--------------------------------------
-  //+ EVENT HANDLERS
-  //--------------------------------------###
+    ###//--------------------------------------
+    //+ PRIVATE AND PROTECTED METHODS
+    //--------------------------------------###
 
-  ###//--------------------------------------
-  //+ PRIVATE AND PROTECTED METHODS
-  //--------------------------------------###
-
-  ###//--------------------------------------
-  //+ STATIC METHODS
-  //--------------------------------------###
-  @serverUrl: (url) ->
-    return ApplicationConfig.SERVER_URL + url
+    ###//--------------------------------------
+    //+ STATIC METHODS
+    //--------------------------------------###
+    @serverUrl: (url) ->
+      return App.Config.ApplicationConfig.SERVER_URL + url
       

@@ -1,8 +1,8 @@
-MM = require( 'MentorMe' )
-SinglePage = require('templates/survey/SinglePage')
-GroupedPage = require('templates/survey/GroupedPage')
+@MM.module "Views.Survey", (Survey, App, Backbone, Marionette, $, _) ->
 
-module.exports = class SurveyPageView extends Marionette.ItemView
+class Survey.SurveyPageView extends Marionette.ItemView
+  SinglePage = require('templates/survey/SinglePage')
+  GroupedPage = require('templates/survey/GroupedPage')
 
   attributes:
     class: 'swiper-slide'
