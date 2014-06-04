@@ -1,6 +1,6 @@
 # This is more of a "module" than a controller, but we'll use this for now.
 @MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
-  class ProfileController extends Marionette.Controller
+  class Controllers.ProfileController extends Marionette.Controller
 
     initialize: (opts) ->
       @setProfile opts.profile

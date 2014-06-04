@@ -1,6 +1,6 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-  class JournalItemView extends Marionette.ItemView
+  class Views.JournalItemView extends Marionette.ItemView
     tagName: 'li'
     attributes:
       class: 'arrow'

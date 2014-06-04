@@ -26,7 +26,8 @@ exports.config =
           /^app\/lib/,
           'app/config/*', # include config before everything
           'app/*/supers/*', # include base classes in 'super' directory before the rest
-          'app/views/**/*' # include views before controllers
+          'app/views/**/*', # include views before controllers
+          'app/controllers/SnapshotController.coffee'
         ],
         after: [
           'vendor/scripts/bootstrap-editable.js',

@@ -11,7 +11,7 @@
   MenteeListView = Views.MenteeListView
   MenteeCollection = App.Collections.Mentees
 
-  class HomePage extends Marionette.Layout
+  class Views.HomePage extends Marionette.Layout
 
     ###//--------------------------------------
     //+ PUBLIC PROPERTIES / CONSTANTS

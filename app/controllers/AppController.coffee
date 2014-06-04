@@ -1,6 +1,6 @@
 @MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
 
-  class AppController extends Marionette.Controller
+  class Controllers.AppController extends Marionette.Controller
 
     home: ->
       Backbone.history.navigate('mentees', trigger: true, replace: true)

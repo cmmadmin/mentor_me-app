@@ -2,7 +2,7 @@
   Collection = Collections.Supers.Collection
   JournalEntry = App.Models.JournalEntry
 
-  class JournalEntryCollection extends Collection
+  class Collections.JournalEntryCollection extends Collection
 
     url: ->
       Collection.serverUrl('mentees') + '/' + @owner.id + '/journal_entries'

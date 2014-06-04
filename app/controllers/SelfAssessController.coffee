@@ -2,7 +2,7 @@
   SnapshotController = Controllers.SnapshotController
   SurveyView = App.Views.Survey.SurveyView
 
-  class SelfAssessController extends SnapshotController
+  class Controllers.SelfAssessController extends SnapshotController
 
     showActive: ->
       console.log 'SelfAssessController:showActiveSelfassess'

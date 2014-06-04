@@ -2,7 +2,7 @@
   Collection = Collections.Supers.Collection
   LifelistItems = Collections.LifelistItems
 
-  class LifelistPicks extends Collection
+  class Collections.LifelistPicks extends Collection
 
     url: ->
       Collection.serverUrl('mentee_profiles') + '/' + @owner.id + '/lifelist_picks'

@@ -2,7 +2,7 @@
   Collection = Collections.Supers.Collection
   Edition = App.Models.Edition
 
-  class Editions extends Collection
+  class Collections.Editions extends Collection
 
     url: Collection.serverUrl('editions')
 

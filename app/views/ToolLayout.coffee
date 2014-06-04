@@ -1,6 +1,6 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-  class ToolLayout extends Marionette.Layout
+  class Views.ToolLayout extends Marionette.Layout
     template: 'templates/ToolLayout'
     attributes:
       class: 'fullpage'

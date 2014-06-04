@@ -12,7 +12,7 @@
   Mentee = App.Models/Mentee
   MenteeListItemView = Views.MenteeListItemView
 
-  class MenteeListView extends Marionette.CollectionView
+  class Views.MenteeListView extends Marionette.CollectionView
     itemView: MenteeListItemView
 
     tagName: 'ul'

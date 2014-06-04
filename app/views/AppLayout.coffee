@@ -1,6 +1,6 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-  class AppLayout extends Marionette.Layout
+  class Views.AppLayout extends Marionette.Layout
     regions:
       headerRegion: "#pageHeader"
       mainRegion:

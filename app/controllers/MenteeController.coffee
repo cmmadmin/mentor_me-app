@@ -14,7 +14,7 @@
   LifelistController = App.Controllers.LifelistController
   HomePage = App.Views.HomePage
 
-  class MenteeController extends Marionette.Controller
+  class Controllers.MenteeController extends Marionette.Controller
 
     mentees: ->
       @closeProfile();

@@ -1,7 +1,7 @@
 @MM.module "Collections", (Collections, App, Backbone, Marionette, $, _) ->
   Collection = Collections.Supers.Collection
 
-  class Lifelists extends Collection
+  class Collections.Lifelists extends Collection
 
     url: Collection.serverUrl('lifelists')
 

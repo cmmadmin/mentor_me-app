@@ -2,7 +2,7 @@
   Collection = Collections.Supers.Collection
   Survey = App.Models.Survey
 
-  class Surveys extends Collection
+  class Collections.Surveys extends Collection
 
     url: ->
       Collection.serverUrl('editions') + '/' + @owner.id + '/surveys'

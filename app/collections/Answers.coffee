@@ -1,7 +1,7 @@
 @MM.module "Collections", (Collections, App, Backbone, Marionette, $, _) ->
 #  Collection = Collections.Supers.Collection
 
-  class Answers extends Collections.Supers.Collection
+  class Collections.Answers extends Collections.Supers.Collection
 
     url: ->
       Collection.serverUrl('mentee_profiles') + '/' + @owner.id + '/answers'

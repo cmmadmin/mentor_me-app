@@ -2,7 +2,7 @@
   SnapshotController = App.Controllers.SnapshotController
   SurveyView = App.Views.Survey.SurveyView
 
-  class ObservationsController extends SnapshotController
+  class Controllers.ObservationsController extends SnapshotController
 
     showActive: ->
       view = new SurveyView

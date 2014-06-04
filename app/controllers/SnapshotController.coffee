@@ -1,5 +1,5 @@
 @MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
-  ToolLayout = App.View.ToolLayout
+  ToolLayout = App.Views.ToolLayout
   Controller = Controllers.Supers.Controller
 
   class Controllers.SnapshotController extends Controller

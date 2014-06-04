@@ -1,6 +1,6 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-  class EditMenteeView extends Marionette.ItemView
+  class Views.EditMenteeView extends Marionette.ItemView
     template: 'templates/partials/EditMenteeDetailsForm'
     id: 'mentee'
 

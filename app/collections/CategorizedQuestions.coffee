@@ -1,7 +1,7 @@
 @MM.module "Collections", (Collections, App, Backbone, Marionette, $, _) ->
   Questions = App.Models.Questions
 
-  class CategorizedQuestions extends Backbone.Subset
+  class Collections.CategorizedQuestions extends Backbone.Subset
     constructor: (@questions, @develop_category) ->
       super
 

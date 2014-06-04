@@ -2,7 +2,7 @@
   JournalEntry = App.Models.JournalEntry
   JournalItemView = Views.JournalItemView
 
-  class JournalView extends Marionette.CompositeView
+  class Views.JournalView extends Marionette.CompositeView
     itemView: JournalItemView
     itemViewContainer: ".items"
     template: 'templates/Journal'

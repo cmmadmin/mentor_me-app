@@ -1,6 +1,6 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-  class ProfileButtonView extends Marionette.ItemView
+  class Views.ProfileButtonView extends Marionette.ItemView
     template: 'templates/profile/ProfileButton'
 
     inactiveColor: '#313131'

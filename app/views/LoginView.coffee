@@ -1,7 +1,7 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
   UserSession = App.Models.UserSession
 
-  class LoginView extends Marionette.ItemView
+  class Views.LoginView extends Marionette.ItemView
     template: 'templates/Login'
 
     events:

@@ -5,7 +5,7 @@
   LifelistItem = App.Models/LifelistItem
   LifelistItems = App.Collections/LifelistItems
   
-  class LifelistController extends Controller
+  class Controllers.LifelistController extends Controller
     initialize: (options) ->
       console.log 'LifelistModule:Controller:initialize'
       @region = options.region

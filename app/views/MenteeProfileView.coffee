@@ -1,7 +1,7 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
   JournalEntry = App.Models.JournalEntry
 
-  class MenteeDetailsView extends Marionette.ItemView
+  class Views.MenteeDetailsView extends Marionette.ItemView
 
     template: 'templates/partials/MenteeActions'
 

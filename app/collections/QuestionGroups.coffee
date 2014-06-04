@@ -1,7 +1,7 @@
 @MM.module "Collections", (Collections, App, Backbone, Marionette, $, _) ->
   Collection = Collections.Supers.Collection
 
-  class QuestionGroups extends Collection
+  class Collections.QuestionGroups extends Collection
 
     url: ->
       Collection.serverUrl('surveys') + '/' + @owner.id + '/question_groups'

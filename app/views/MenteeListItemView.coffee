@@ -1,6 +1,6 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-  class MenteeListItemView extends Marionette.ItemView
+  class Views.MenteeListItemView extends Marionette.ItemView
     tagName: 'li'
     template: 'templates/partials/MenteeListItem'
 

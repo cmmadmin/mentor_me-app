@@ -4,7 +4,7 @@
   EditMenteeView = Views.EditMenteeView
   ProfileButtonView = Views.ProfileButtonView
 
-  class MenteeView extends Marionette.Layout
+  class Views.MenteeView extends Marionette.Layout
     template: 'templates/Mentee'
 
     attributes:

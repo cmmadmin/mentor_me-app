@@ -1,8 +1,7 @@
 @MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
-  SnapshotController = Controllers.SnapshotController
   SurveyView = App.Views.Survey.SurveyView
 
-  class Controllers.InterviewController extends SnapshotController
+  class Controllers.InterviewController extends Controllers.SnapshotController
 
     showActive: ->
       console.log 'InterviewController:showActiveInteractivequiz'
