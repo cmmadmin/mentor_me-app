@@ -1,0 +1,19 @@
+###
+ * Application Configuration
+ * 
+ * @langversion CoffeeScript
+ * 
+ * @author 
+ * @since  
+ ###
+
+@MM.module "Config", (Config, App, Backbone, Marionette, $, _) ->
+
+  class Config.ApplicationConfig
+
+    #
+    # Base URL
+    #
+    @BASE_URL = "/"
+    @SERVER_URL = "http://cmtmentorme.herokuapp.com/"
+    #@SERVER_URL = "http://localhost:3000/"
