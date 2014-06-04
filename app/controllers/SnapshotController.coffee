@@ -1,77 +1,69 @@
-MM = require('MentorMe')
-#IntroView = require('views/snapshot/IntroView')
-#SelfAssessView = require('views/snapshot/SelfAssessView')
-#PreInteractiveQuizView = require('views/snapshot/PreInteractiveQuizView')
-#InteractiveQuizView = require('views/snapshot/InteractiveQuizView')
-#PostInteractiveQuizView = require('views/snapshot/PostInteractiveQuizView')
-#ActiveSnapshotView = require('views/snapshot/ActiveSnapshotView')
-ToolLayout = require('views/ToolLayout')
-#SnapshotFsm = require('models/state_machines/SnapshotFsm')
-#SnapshotViewFsm = require('models/state_machines/SnapshotViewFsm')
-Controller = require('./supers/Controller')
+@MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
+  ToolLayout = App.View.ToolLayout
+  Controller = Controllers.Supers.Controller
 
-module.exports = class SnapshotController extends Controller
+  class Controllers.SnapshotController extends Controller
 
-  initialize: (options) ->
-    console.log 'SnapshotModule:Controller:initialize'
-    @region = options.region
-    @model = options.model
+    initialize: (options) ->
+      console.log 'SnapshotModule:Controller:initialize'
+      @region = options.region
+      @model = options.model
 
-    #@state = MM.request "get:profile:state", "snapshot"
+      #@state = MM.request "get:profile:state", "snapshot"
 
-    @layout = @getLayoutView()
+      @layout = @getLayoutView()
 
-    #@buildWorkflow()
-    #
-    #  @startWorkflow(@state.state)
-    @listenTo @layout, "show", =>
+      #@buildWorkflow()
+      #
+      #  @startWorkflow(@state.state)
+      @listenTo @layout, "show", =>
+        @showActive()
+      @show @layout
+
+
+    showActive: -> throw Error "unimplemented function: showActive"
+
+    ###showUntapped: ->
+      view = new IntroView(model: @model)
+      @listenTo view, "snapshot:intro:start:clicked", ->
+        @workflow.handle('start')
+
+      @layout.mainRegion.show(view)###
+
+    showComplete: ->
       @showActive()
-    @show @layout
-    
 
-  showActive: -> throw Error "unimplemented function: showActive"
+    saveAndCloseSurvey: =>
+      profile = MM.request "get:current:profile"
+      profile.save()
+      #if(@state.state == 'active' || @state.state == 'complete')
+      #  @showActive()
+      #else
+      Backbone.history.navigate('mentees/' + @model.get('mentee_id'), trigger: true)
 
-  ###showUntapped: ->
-    view = new IntroView(model: @model)
-    @listenTo view, "snapshot:intro:start:clicked", ->
-      @workflow.handle('start')
+    completeSurvey: =>
+      profile = MM.request "get:current:profile"
+      #@workflow.handle('advance')
+      profile.save()
 
-    @layout.mainRegion.show(view)###
+    getLayoutView: ->
+      new ToolLayout()
 
-  showComplete: ->
-    @showActive()
+    ###buildWorkflow: ->
+      profile = MM.request "get:current:profile"
+      @workflow = new SnapshotViewFsm()
+      @listenTo @workflow, 'transition', (transition) =>
+        @['show' + $.camelCase('pre-' + transition.toState.split(':').join('-')).substr(3)]()
 
-  saveAndCloseSurvey: =>
-    profile = MM.request "get:current:profile"
-    profile.save()
-    #if(@state.state == 'active' || @state.state == 'complete')
-    #  @showActive()
-    #else
-    Backbone.history.navigate('mentees/' + @model.get('mentee_id'), trigger: true)
+      # @listenTo @state, 'transition', (transition) => @workflow.transition transition
 
-  completeSurvey: =>
-    profile = MM.request "get:current:profile"
-    #@workflow.handle('advance')
-    profile.save()
+    startWorkflow: (state) ->
+      @workflow.transition state
 
-  getLayoutView: ->
-    new ToolLayout()
+    isActive: ->
+      @workflow.state == "active"###
 
-  ###buildWorkflow: ->
-    profile = MM.request "get:current:profile"
-    @workflow = new SnapshotViewFsm()
-    @listenTo @workflow, 'transition', (transition) =>
-      @['show' + $.camelCase('pre-' + transition.toState.split(':').join('-')).substr(3)]()
-   
-    # @listenTo @state, 'transition', (transition) => @workflow.transition transition
-  
-  startWorkflow: (state) ->
-    @workflow.transition state
-
-  isActive: ->
-    @workflow.state == "active"###
-
-  onClose: ->
-#    delete @workflow
-    delete @layout
-#    delete @state
+    onClose: ->
+  #    delete @workflow
+      delete @layout
+  #    delete @state
