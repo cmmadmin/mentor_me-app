@@ -1,4 +1,3 @@
-BackStackRegion = require('lib/ui/BackStackRegion')
 
 module.exports = class AppLayout extends Marionette.Layout
   regions:

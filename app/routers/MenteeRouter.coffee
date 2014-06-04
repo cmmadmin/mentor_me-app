@@ -1,7 +1,7 @@
-MM = require( 'MentorMe' )
-MenteeController = require('controllers/MenteeController')
+@MM.module "Routers", (Routers, App, Backbone, Marionette, $, _) ->
+MenteeController = App.Controllers.MenteeController
 
-module.exports = class MenteeRouter extends Marionette.AppRouter
+class Routers.MenteeRouter extends Marionette.AppRouter
   appRoutes:
     'mentees' : 'mentees'
     'mentees/:id' : 'menteeOverview'
@@ -15,6 +15,6 @@ module.exports = class MenteeRouter extends Marionette.AppRouter
     'mentees/:id/lifelist' : 'menteeLifelist'
     'mentees/:id/develop' : 'menteeDevelop'
 
-MM.addInitializer ->
+App.addInitializer ->
   console.log "router created"
-  new MenteeRouter(controller: new MenteeController())
+  new Routers.MenteeRouter(controller: new MenteeController())

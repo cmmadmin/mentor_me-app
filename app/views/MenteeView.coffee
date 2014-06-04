@@ -2,7 +2,6 @@ MM = require 'MentorMe'
 template = require('templates/Mentee')
 
 JournalEntry = require('models/JournalEntry')
-BackStackRegion = require('lib/ui/BackStackRegion')
 
 MenteeProfileView = require('./MenteeProfileView')
 EditMenteeView = require('./EditMenteeView')
