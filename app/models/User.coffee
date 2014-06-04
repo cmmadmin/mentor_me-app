@@ -1,4 +1,5 @@
-Model = require('./supers/Model')
-Collection = require('collections/supers/Collection')
+@MM.module "Models", (Models, App, Backbone, Marionette, $, _) ->
 
-module.exports = class User extends Model
+  Model = Models.Supers.Model
+
+  class Models.User extends Model

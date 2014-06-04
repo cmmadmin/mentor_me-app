@@ -1,38 +1,41 @@
 # Base Fsm for all tools (Snapshot, Develop, Life List)
-module.exports = ToolFsm = machina.Fsm.extend
-  initialize: ->
+# 
+@MM.module "Models.StateMachines", (StateMachines, App, Backbone, Marionette, $, _) ->
 
-  # Returns a cached progress percentage
-  progress: ->
-    @progressCache or @updateProgress()
+  StateMachines.ToolFsm = machina.Fsm.extend
+    initialize: ->
 
-  ## This method should be overriden by sub fsms
-  updateProgress: ->
-    console.error "Must be overriden in sub fsm" # We should never get here
-    @progressCache = Math.floor(Math.random() * 101)
+    # Returns a cached progress percentage
+    progress: ->
+      @progressCache or @updateProgress()
 
-  validateState: ->
-    @updateProgress()
-    if @progress() == 100
-      @transition 'complete'
-    
+    ## This method should be overriden by sub fsms
+    updateProgress: ->
+      console.error "Must be overriden in sub fsm" # We should never get here
+      @progressCache = Math.floor(Math.random() * 101)
 
-  # Used by buttons to get basic states (without in between states, snapshot in particular)
-  getFacadeFsm: ->
-
-  close: ->
-
-  initialState: 'disabled'
-  states: 
-    disabled:
-      enable: ->
-        @transition 'untapped'
-    untapped:
-      start: ->
-        @transition 'active'
-      complete: ->
+    validateState: ->
+      @updateProgress()
+      if @progress() == 100
         @transition 'complete'
-    active:
-      complete: ->
-        @transition 'complete'
-    complete: {}
+      
+
+    # Used by buttons to get basic states (without in between states, snapshot in particular)
+    getFacadeFsm: ->
+
+    close: ->
+
+    initialState: 'disabled'
+    states: 
+      disabled:
+        enable: ->
+          @transition 'untapped'
+      untapped:
+        start: ->
+          @transition 'active'
+        complete: ->
+          @transition 'complete'
+      active:
+        complete: ->
+          @transition 'complete'
+      complete: {}

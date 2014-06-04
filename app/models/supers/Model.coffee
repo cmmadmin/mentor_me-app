@@ -6,9 +6,9 @@
  * @author 
  * @since  
  ###
-@MM.module "Models", (Models, App, Backbone, Marionette, $, _) ->
-
-  class Model extends Supermodel.Model
+@MM.module "Models.Supers", (Supers, App, Backbone, Marionette, $, _) ->
+  
+  class Supers.Model extends Supermodel.Model
 
     ###//--------------------------------------
     //+ PUBLIC PROPERTIES / CONSTANTS
