@@ -1,0 +1,40 @@
+#home-page {
+  height: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+}
+
+// ---- Home Page ---
+#mentee-list {
+  color: #428bca;
+  font-weight: 300;
+  font-size: 18pt;
+  font-size: 2.5rem;
+  flex: 1;
+  overflow-y: auto;
+  li {
+    background-color: rgba(0, 0, 0, 0.85);
+    margin: 5px 0px 5px 0px;
+    a {
+      padding: 0;
+      height: 80px;
+      line-height: 75px;
+      img { margin-right: 8px; }
+    }
+    a:focus { background-color: inherit }
+  }
+  .mentee-thumb { height: 80px; width: 80px;}
+  .icon-user { width: 80px; display: inline-block; line-height: inherit; text-align: center}
+}
+
+.fingerpaint {
+  font-family: 'Londrina Shadow', cursive;
+}
+
+.logo {
+  text-align: center;
+  color: #62abea;
+  font-size: 60px;
+  font-size: 18vw;
+}

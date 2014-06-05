@@ -1,0 +1,187 @@
+// ---- Contact Page ---
+.contact-head {
+  vertical-align: middle;
+  i { vertical-align: middle; }
+
+  // transition: all 0.4s linear;
+
+  transition: height 0.4s ease, top 0.2s linear;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0, 0, 0);
+
+  // padding: 10px;
+  // padding-left: 20px;
+  padding-right: 10px;
+  height: 80px;
+  // line-height: 56px;
+  width: 100%;
+
+  position: absolute;
+  left: 0;
+  top: 15px;
+
+  background-color: rgba(255, 255, 255, 0.75);
+
+
+  .bar {
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-size: 20pt;
+    font-size: 2.8rem;
+    line-height: 73px;
+    .icon-user {padding-left: 10px;}
+  }
+
+
+
+  // -webkit-filter: blur(5px);
+  // -moz-filter: blur(2px);
+  // -o-filter: blur(2px);
+  // -ms-filter: blur(2px);
+  // filter: blur(2px);
+
+  .profile-pic {
+    height: 80px;
+    width: 80px;
+    // border: 2px solid grey;
+    // border-radius: 10px;
+  }
+
+  .name {
+    vertical-align: middle;
+    margin-left: 18px;
+  }
+
+  .details {
+    line-height: 80px;
+  }
+
+}
+
+#mentee-action-list {
+  height: 100%;
+  .row {
+    height: 100px;
+    .col {
+      height: 100%;
+    }
+  }
+  .item {
+    @extend .item;
+    height: 85px;
+  }
+}
+
+a.profilebtn {
+  background-color: #ee9536;
+  box-shadow: 2px 2px #c17728;
+  color: white;
+  height: 95px;
+  width: 95px;
+  position: absolute;
+  top: 50%;
+  margin-top: -47px;
+  left: 50%;
+  margin-left: -47px;
+
+  transition: background-color 0.9s ease 0.3s;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+
+  * {
+    pointer-events: none;
+  }
+
+  .mainicon {
+    line-height: 95px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    i {line-height: 95px;}
+    .icon-stack {position: static;}
+  }
+  .profilebtn-title {
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    font-family: 'Open Sans';
+    font-weight: 400;
+  }
+
+  .ribbon {
+    width: 100%;
+    background-color: green;
+    box-shadow: 2px 0px #006500;
+    padding: 3px;
+    position: absolute;
+    font-weight: 600;
+  }
+  .progressbar {
+    background-color: white;
+    height: 100%;
+    width: 5px;
+    right: -2px;
+    // box-shadow: 2px 2px rgba(255, 255, 255, 0.6);
+    position: absolute;
+
+    .fill {
+      transition: height 0.9s ease .3s;
+      transform: translate3d(0, 0, 0);
+      width: 5px;
+      background-color: #3fa1e0;
+      // box-shadow: 2px 2px rgba(63, 161, 224, 0.5);
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+// #journalBtn a.profilebtn {
+//   background-color: #333333;
+//   box-shadow: 2px 2px #222222;
+// }
+a.profilebtn.untapped, a.profilebtn.active, a.profilebtn.active-selfassess,
+a.profilebtn.active-pre-interactivequiz, a.profilebtn.active-interactivequiz {
+  background-color: #333333;
+  box-shadow: 2px 2px #222222;
+}
+a.profilebtn.disabled {
+  // pointer-events: none;
+  background-color: #333333;
+  box-shadow: 2px 2px #222222;
+  opacity: 0.9;
+}
+a.profilebtn:active {
+  box-shadow: none;
+  margin-top: -45px;
+  margin-left: -45px;
+  .progressbar {right: 0px;}
+  .ribbon {box-shadow: none;}
+}
+// Button inset shadow
+a.profilebtn:active:before {
+  content: '';
+  display: block;
+  box-shadow: inset 1px 1px 3px 2px rgba(0, 0, 0, 0.75);
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.overcome {
+  height: 100%;
+  top: 0;
+  z-index: 3;
+  padding-right: 0;
+  background-color: rgba(255, 255, 255, .90);
+  .bar { background-color: rgba(255, 255, 255, 0.4)}
+  // z-index: 30
+}
+

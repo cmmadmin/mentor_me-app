@@ -1,0 +1,29 @@
+.items {
+  list-style: none;
+}
+
+// Widgets
+.add-journal {
+  padding-bottom: 10px;
+  > .add-journal-ctrls {
+    visibility: hidden;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.7s;
+  }
+  &.selected > .add-journal-ctrls {
+    visibility: visible;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+  }
+}
+
+.journal-notifications .alert {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.journal {
+  background-color: rgba(255,255,255,0.9)
+}
