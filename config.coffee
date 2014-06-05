@@ -39,7 +39,7 @@ exports.config =
     stylesheets:
       defaultExtension: 'scss'
       joinTo: 
-        'stylesheets/app.css': /^app/
+        'stylesheets/app.css': 'app/styles/app.scss'
         'stylesheets/vendor.css': /^vendor/
         'test/stylesheets/test.css': /^test/
       order:
