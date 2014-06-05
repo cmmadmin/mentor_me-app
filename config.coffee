@@ -4,6 +4,11 @@ exports.config =
   # Application build path.  Default is public
   #buildPath: ''
   #
+  conventions:
+    ignored: [
+      /bower_components\/angular/,
+      'bower_components/ionic/release/js/ionic-angular.js'
+    ]
 
   files:
     javascripts:
@@ -32,12 +37,12 @@ exports.config =
         ]
 
     stylesheets:
-      defaultExtension: 'styl'
+      defaultExtension: 'scss'
       joinTo: 
-        'stylesheets/app.css': /^(app|vendor)/
+        'stylesheets/app.css': 'app/styles/app.scss'
+        'stylesheets/vendor.css': /^vendor/
         'test/stylesheets/test.css': /^test/
       order:
-        before: ['vendor/styles/normalize.css', 'app/styles/bootstrap_and_overrides.less']
         after: ['vendor/styles/helpers.css']
 
     templates:

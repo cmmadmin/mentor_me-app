@@ -1,0 +1,63 @@
+/* === SURVEY === */
+
+.fullpage {
+  height: 100%;
+}
+
+#surveyMain { height: 100%; }
+.survey {
+  background-color: rgba(235, 235, 235, 0.9);
+  height: 100%;
+  padding: 20px 0;
+  padding-bottom: 80px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  .survey-swiper {
+    flex: 1
+  }
+  .pagination-sd { flex: 1 }
+  .survey-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    button { width: 180px; }
+  }
+}
+
+.assess-question {
+  margin: auto;
+  width: 80%;
+  .slide {
+    //float: right;
+  }
+}
+
+.swiper-container, .swiper-slide {
+  width: 100%;
+  height: 85%;
+  // height: 60%;
+}
+.survey-page {
+  background-color: white;
+  padding: 15px 10px;
+  margin: 10px 20px;
+  box-shadow: 2px 2px grey;
+}
+
+.pagination-sd {
+  text-align: center;
+}
+.pagination-sd .swiper-pagination-switch {
+  border-radius: 10px;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin: 0 3px;
+  background: #aaa;
+}
+.pagination-sd .swiper-active-switch {
+  background: #333;
+}

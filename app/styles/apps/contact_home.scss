@@ -1,42 +1,11 @@
-@import 'vendor/styles/bootstrap/_bootstrap';
+/* === CONTACT HOME === */
 
-@font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-// @link-color: white;
-html {
-  // font-size: 14px;
-}
-.assess-question {
-  .slide {
-    .pull-right
-  }
-}
-a {
-  color: inherit;
-}
-a:visited {
-  color: inherit;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: none;
-}
-a:active {
-  text-decoration: none;
-}
-#home-page {
-  height: 100%;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  box-orient: vertical;
-}
-// ---- Contact Page ---
 .contact-head {
-
   vertical-align: middle;
   i { vertical-align: middle; }
 
   // transition: all 0.4s linear;
-  
+
   transition: height 0.4s ease, top 0.2s linear;
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
@@ -56,6 +25,7 @@ a:active {
 
   background-color: rgba(255, 255, 255, 0.75);
 
+
   .bar {
     font-family: 'Open Sans';
     font-weight: 300;
@@ -64,9 +34,9 @@ a:active {
     line-height: 73px;
     .icon-user {padding-left: 10px;}
   }
-  
-  
-  
+
+
+
   // -webkit-filter: blur(5px);
   // -moz-filter: blur(2px);
   // -o-filter: blur(2px);
@@ -90,17 +60,21 @@ a:active {
   }
 
 }
-#mentee-action-grid {
+
+#mentee-action-list {
   height: 100%;
-  padding-top: 100px;
-  max-width: 600px;
   .row {
     height: 100px;
     .col {
       height: 100%;
     }
   }
+  .item {
+    @extend .item;
+    height: 85px;
+  }
 }
+
 a.profilebtn {
   background-color: #ee9536;
   box-shadow: 2px 2px #c17728;
@@ -166,11 +140,11 @@ a.profilebtn {
     }
   }
 }
-// #journalBtn a.profilebtn { 
+// #journalBtn a.profilebtn {
 //   background-color: #333333;
 //   box-shadow: 2px 2px #222222;
 // }
-a.profilebtn.untapped, a.profilebtn.active, a.profilebtn.active-selfassess, 
+a.profilebtn.untapped, a.profilebtn.active, a.profilebtn.active-selfassess,
 a.profilebtn.active-pre-interactivequiz, a.profilebtn.active-interactivequiz {
   background-color: #333333;
   box-shadow: 2px 2px #222222;
@@ -200,4 +174,15 @@ a.profilebtn:active:before {
   left: 0;
   width: 100%;
   height: 100%;
-};
+}
+
+.overcome {
+  height: 100%;
+  top: 0;
+  z-index: 3;
+  padding-right: 0;
+  background-color: rgba(255, 255, 255, .90);
+  .bar { background-color: rgba(255, 255, 255, 0.4)}
+  // z-index: 30
+}
+

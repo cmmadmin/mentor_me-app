@@ -1,0 +1,106 @@
+/* === SHARED STYLES === */
+
+$font-stack: $helvetica;
+body{
+  font: 100% $font-stack;
+}
+
+html, body, .app, #content {
+  height: 100%;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+hr {
+  margin: 0;
+  border-top: none;
+  border-bottom: 2px solid rgba(255,255,255,0.5)
+}
+
+// Apply a natural box layout model to all elements.
+// http://paulirish.com/2012/box-sizing-border-box-ftw/
+* {
+  box-sizing: border-box
+}
+
+.assess-question {
+  .slide {
+    float: right;
+  }
+}
+a {
+  color: inherit;
+}
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+
+.app {
+  background-color: white;
+}
+
+.colorbg {
+  height: auto !important;
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0.5;
+  background: url(../images/colored_wooden_wall-wide.jpg) no-repeat center bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.blackgrad {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: linear-gradient(top, 25% rgba(0,0,0,.6), 75% rgba(0,0,0,0));
+}
+
+.full-form input, textarea, button {
+  margin-bottom:10px;
+  width:100%;
+}
+
+// Performance improvements
+// TranslateZ(0) Hardware Acceleration Hack for Webkit
+body > div {
+  // -webkit-transform: translateZ(0);
+  // -webkit-transform: translate3d(0, 0, 0);
+}
+
+.alignc {
+  text-align: center;
+}
+
+.snapshot-intro {
+  background-color: #242424;
+  // h1 { color: #d4d4d4}
+  background-image: url("../images/helpmeknowyou.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  .snapshot-intro-buttons {
+    position: absolute; left: 10px; right: 10px; bottom: 0;
+    button, a { width: 100% }
+  }
+}
