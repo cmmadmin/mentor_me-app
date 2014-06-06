@@ -26,7 +26,7 @@
       progress.percentage = Math.round(100 * progress.answers / progress.questions)
       return progress
 
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     Models.Survey.has().one('edition', 
       model: Models.Edition
       inverse: 'surveys'

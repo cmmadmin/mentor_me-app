@@ -10,7 +10,7 @@
       LifelistItems = App.Collections.LifelistItems
       new LifelistItems(@lifelist_items().where({lifelist_id: lifelist.id}))
 
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     Models.LifelistCategory.has().many('lifelist_items', 
       collection: App.Collections.LifelistItems
       inverse: 'lifelist_category'

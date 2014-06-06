@@ -6,7 +6,7 @@
   class Models.LifelistItem extends Model
     urlRoot: Collection.serverUrl('lifelist_items')
 
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     # Supermodel definitions
     Models.LifelistItem.has().one('lifelist', 
       model: Models.Lifelist

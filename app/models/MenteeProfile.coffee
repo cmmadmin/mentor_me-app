@@ -69,7 +69,7 @@
         pick = picks.findWhere(lifelist_item_id: item.get('id'))
         pick.destroy() if pick
     
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     Models.MenteeProfile.has().one('mentee', 
       model: Models.Mentee
       inverse: 'active_profile'

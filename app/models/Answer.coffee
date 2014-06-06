@@ -11,7 +11,7 @@
     setValue: (val) ->
       @question() && @.set(@question().get('question_type') + '_value', val)
       
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     # Supermodel definitions
     Models.Answer.has().one('mentee_profile',
       model: Models.MenteeProfile

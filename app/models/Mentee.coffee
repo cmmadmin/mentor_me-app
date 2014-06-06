@@ -21,7 +21,7 @@
       else
         "Unknown"
 
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     # Supermodel definitions
     Models.Mentee.has().one('active_profile', 
       model: Models.MenteeProfile

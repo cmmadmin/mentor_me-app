@@ -6,7 +6,7 @@
   class Models.LifelistPick extends Model
     urlRoot: Collection.serverUrl('lifelist_picks')
 
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     # Supermodel definitions
     Models.LifelistPick.has().one('mentee_profile', 
       model: Models.MenteeProfile

@@ -12,7 +12,7 @@
         _.extend(serialized, question.serializeAnswer(profile))
       return serialized
 
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     Models.QuestionGroup.has().one('survey', 
       model: Models.Survey
       inverse: 'question_groups'

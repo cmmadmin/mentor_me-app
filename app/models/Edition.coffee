@@ -19,7 +19,7 @@
       new Backbone.Collection([@snapshotSelfAssessmentSurvey(), @snapshotInteractiveSurvey(),
         @snapshotObservationsSurvey()]);
 
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     # Supermodel definitions
     Models.Edition.has().many('mentee_profiles', 
       collection: App.Collections.MenteeProfiles

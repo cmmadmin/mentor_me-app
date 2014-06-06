@@ -13,7 +13,7 @@
       return serialized
 
 
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     Models.Question.has().many('answers', 
       collection: App.Collections.Answers
       inverse: 'question'

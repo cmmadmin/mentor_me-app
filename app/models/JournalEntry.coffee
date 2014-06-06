@@ -11,7 +11,7 @@
     mentee: ->
       return App.collections.getOrFetch(@get('mentee_id'))
 
-  App.on "initialize:before", ->
+  Models.on "before:start", ->
     Models.JournalEntry.has().one('mentee', 
       model: Models.Mentee
       inverse: 'journal_entries'
