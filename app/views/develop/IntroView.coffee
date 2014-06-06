@@ -1,8 +1,7 @@
-MM = require( 'MentorMe' )
-template = require('templates/develop/Intro')
+@MM.module "Views.Develop", (Develop, App, Backbone, Marionette, $, _) ->
 
-module.exports = class IntroView extends Marionette.ItemView
-  template: template
+  class Develop.IntroView extends Marionette.ItemView
+    template: 'templates/develop/Intro'
 
-  triggers:
-    'click #start-develop-btn' : 'develop:intro:start:clicked'
+    triggers:
+      'click #start-develop-btn' : 'develop:intro:start:clicked'

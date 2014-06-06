@@ -1,12 +1,11 @@
-MM = require( 'MentorMe' )
-template = require('templates/snapshot/Active')
+@MM.module "Views.Snapshot", (Snapshot, App, Backbone, Marionette, $, _) ->
 
-module.exports = class IntroView extends Marionette.ItemView
-  template: template
+  class Snapshot.IntroView extends Marionette.ItemView
+    template: 'templates/snapshot/Active'
 
-  triggers:
-    'click #self-assess-btn' : 'snapshot:selfassess:clicked'
-    'click #explore-btn' : 'snapshot:explore:clicked'
-    'click #observe-btn' : 'snapshot:observe:clicked'
+    triggers:
+      'click #self-assess-btn' : 'snapshot:selfassess:clicked'
+      'click #explore-btn' : 'snapshot:explore:clicked'
+      'click #observe-btn' : 'snapshot:observe:clicked'
 
 

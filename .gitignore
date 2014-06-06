@@ -33,3 +33,4 @@ tmp/
 vendor/styles/cssflow
 app/styles/cssflow_and_overrides.scss
 vendor/scripts/prefixfree.min.js
+app/config/ApplicationConfig.coffee

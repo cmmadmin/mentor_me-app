@@ -6,11 +6,10 @@
  * @author 
  * @since  
  ###
-MM = require( 'MentorMe' )
-template = require('templates/snapshot/PostInteractiveQuiz')
+@MM.module "Views.Snapshot", (Snapshot, App, Backbone, Marionette, $, _) ->
 
-module.exports = class PostInteractiveQuizView extends Marionette.ItemView
-  template: template
+  class Snapshot.PostInteractiveQuizView extends Marionette.ItemView
+    template: 'templates/snapshot/PostInteractiveQuiz'
 
-  triggers:
-    'click #start-snapshot-btn' : 'snapshot:postinteractivequiz:confirm:clicked'
+    triggers:
+      'click #start-snapshot-btn' : 'snapshot:postinteractivequiz:confirm:clicked'

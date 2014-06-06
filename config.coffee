@@ -28,6 +28,15 @@ exports.config =
           'vendor/scripts/backbone.layoutmanager-0.7.5.js',
           'vendor/config/jqm-routing-patch.js',
           'vendor/config/jqm-hover-patch.js',
+          'app/MentorMe.coffee',
+          /^app\/lib/,
+          'app/config/*', # include config before everything
+          'app/*/supers/*', # include base classes in 'super' directory before the rest
+          'app/models/UserSession.coffee'
+          'app/views/**/*', # include views before controllers
+          'app/controllers/SnapshotController.coffee',
+          'app/models/state_machines/*',
+          'app/models/**/*'
         ],
         after: [
           'vendor/scripts/bootstrap-editable.js',
@@ -49,7 +58,15 @@ exports.config =
       defaultExtension: 'hbs'
       joinTo: 'javascripts/templates.js'
 
+  plugins:
+    handlebars:
+      namespace: 'JST'
+      pathReplace: /^.*app\//
+    coffeescript:
+      bare: false
+
   modules:
+    wrapper: false
     definition: (path, data) ->
       """
       (function(/*! Brunch !*/) {

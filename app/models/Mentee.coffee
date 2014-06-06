@@ -1,36 +1,48 @@
-Model = require('./supers/Model')
-Collection = require('collections/supers/Collection')
+@MM.module "Models", (Models, App, Backbone, Marionette, $, _) ->
 
+  Model = Models.Supers.Model
+  Collection = App.Collections.Supers.Collection
 
-module.exports = class Mentee extends Model
-  urlRoot: Collection.serverUrl('mentees')
+  class Models.Mentee extends Model
+    urlRoot: Collection.serverUrl('mentees')
 
-  initialize: ->
-    super
-    @memento = new Backbone.Memento(@);
-    _.extend(@, @memento);
+    initialize: ->
+      super
+      @memento = new Backbone.Memento(@);
+      _.extend(@, @memento);
 
-  age: ->
-    birth_date = @get('birth_date')
-    if birth_date
-      ageMS = (new Date()) - new Date(birth_date)
-      age = new Date()
-      age.setTime(ageMS);
-      ageYear = age.getFullYear() - 1970; 
-    else
-      "Unknown"
+    age: ->
+      birth_date = @get('birth_date')
+      if birth_date
+        ageMS = (new Date()) - new Date(birth_date)
+        age = new Date()
+        age.setTime(ageMS);
+        ageYear = age.getFullYear() - 1970; 
+      else
+        "Unknown"
 
-# Put at bottom to avoid circular dependency (ugly commonjs exports hack)
-MenteeProfile = require('./MenteeProfile')
-JournalEntries = require('collections/JournalEntries')
+  Models.on "before:start", ->
+    # Supermodel definitions
+    Models.Mentee.has().one('active_profile', 
+      model: Models.MenteeProfile
+      inverse: 'mentee'
+    )
 
-# Supermodel definitions
-Mentee.has().one('active_profile', 
-  model: MenteeProfile
-  inverse: 'mentee'
-)
+    Models.Mentee.has().many('journal_entries', 
+      collection: App.Collections.JournalEntries
+      inverse: 'mentee'
+    )
+    
+  API =
+    getMentees: ->
+      #TODO: Is this really the best way of doing this?
+      App.collections.mentees
 
-Mentee.has().many('journal_entries', 
-  collection: JournalEntries
-  inverse: 'mentee'
-)
+    getMentee: (id) ->
+      App.collections.mentees.getOrFetch(id)
+
+  App.reqres.setHandler "mentees:entities", ->
+    API.getMentees()
+
+  App.reqres.setHandler "mentees:entity", (id) ->
+    API.getMentee id

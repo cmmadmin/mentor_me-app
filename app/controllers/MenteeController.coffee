@@ -1,90 +1,77 @@
-MM = require('MentorMe')
+@MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
+  Mentee = App.Models.Mentee
+  Mentees = App.Collections.Mentees
 
-Mentee = require('models/Mentee')
-Mentees = require('collections/Mentees')
-MenteeView = require('views/MenteeView')
-EditMenteeView = require('views/EditMenteeView')
-JournalView = require('views/JournalView')
-JournalEntries = require 'collections/JournalEntries'
-SnapshotController = require('controllers/SnapshotController')
-SelfAssessController = require('controllers/SelfAssessController')
-InterviewController = require('controllers/InterviewController')
-ObservationsController = require('controllers/ObservationsController')
-DevelopController = require('controllers/DevelopController')
-ProfileController = require('controllers/ProfileController')
-LifelistController = require('controllers/LifelistController')
-HomePage = require('views/HomePage')
+  class Controllers.MenteeController extends Marionette.Controller
+    Views = App.Views
+    mentees: ->
+      @closeProfile();
+      @changePage new Views.HomePage(mentees: MM.collections.mentees)
 
-module.exports = class MenteeController extends Marionette.Controller
+    menteeOverview: (id) ->
+      @loadMenteeView(id, Views.MenteeView)
 
-  mentees: ->
-    @closeProfile();
-    @changePage new HomePage(mentees: MM.collections.mentees)
+    menteeJournal: (id) ->
+      mentee = MM.collections.mentees.getOrFetch(id)
+      journal_entries = mentee.journal_entries()
+      journal_entries.fetch()
+      @changePage new Views.JournalView({collection: journal_entries})
 
-  menteeOverview: (id) ->
-    @loadMenteeView(id, MenteeView)
+    menteeSnapshot: (id) ->
+      mentee = MM.collections.mentees.getOrFetch(id)
+      @updateProfile mentee
+      profile = MM.request 'get:current:profile'
+      snapshot = new Controllers.SnapshotController(model: profile, region: MM.appLayout.mainRegion)
 
-  menteeJournal: (id) ->
-    mentee = MM.collections.mentees.getOrFetch(id)
-    journal_entries = mentee.journal_entries()
-    journal_entries.fetch()
-    @changePage new JournalView({collection: journal_entries})
+    menteeSelfAssess: (id) ->
+      mentee = MM.collections.mentees.getOrFetch(id)
+      @updateProfile mentee
+      profile = MM.request 'get:current:profile'
+      snapshot = new Controllers.SelfAssessController(model: profile, region: MM.appLayout.mainRegion)
 
-  menteeSnapshot: (id) ->
-    mentee = MM.collections.mentees.getOrFetch(id)
-    @updateProfile mentee
-    profile = MM.request 'get:current:profile'
-    snapshot = new SnapshotController(model: profile, region: MM.appLayout.mainRegion)
+    menteeInterview: (id) ->
+      mentee = MM.collections.mentees.getOrFetch(id)
+      @updateProfile mentee
+      profile = MM.request 'get:current:profile'
+      snapshot = new Controllers.InterviewController(model: profile, region: MM.appLayout.mainRegion)
 
-  menteeSelfAssess: (id) ->
-    mentee = MM.collections.mentees.getOrFetch(id)
-    @updateProfile mentee
-    profile = MM.request 'get:current:profile'
-    snapshot = new SelfAssessController(model: profile, region: MM.appLayout.mainRegion)
+    menteeObservations: (id) ->
+      mentee = MM.collections.mentees.getOrFetch(id)
+      @updateProfile mentee
+      profile = MM.request 'get:current:profile'
+      snapshot = new Controllers.ObservationsController(model: profile, region: MM.appLayout.mainRegion)
 
-  menteeInterview: (id) ->
-    mentee = MM.collections.mentees.getOrFetch(id)
-    @updateProfile mentee
-    profile = MM.request 'get:current:profile'
-    snapshot = new InterviewController(model: profile, region: MM.appLayout.mainRegion)
+    menteeDevelop: (id) ->
+      mentee = MM.collections.mentees.getOrFetch(id)
+      @updateProfile mentee
+      profile = MM.request 'get:current:profile'
+      develop = new Controllers.DevelopController(model: profile, region: MM.appLayout.mainRegion)
 
-  menteeObservations: (id) ->
-    mentee = MM.collections.mentees.getOrFetch(id)
-    @updateProfile mentee
-    profile = MM.request 'get:current:profile'
-    snapshot = new ObservationsController(model: profile, region: MM.appLayout.mainRegion)
-
-  menteeDevelop: (id) ->
-    mentee = MM.collections.mentees.getOrFetch(id)
-    @updateProfile mentee
-    profile = MM.request 'get:current:profile'
-    develop = new DevelopController(model: profile, region: MM.appLayout.mainRegion)
-
-  menteeLifelist: (id) ->
-    mentee = MM.collections.mentees.getOrFetch(id)
-    @updateProfile mentee
-    profile = MM.request 'get:current:profile'
-    develop = new LifelistController(model: profile, region: MM.appLayout.mainRegion)
+    menteeLifelist: (id) ->
+      mentee = MM.collections.mentees.getOrFetch(id)
+      @updateProfile mentee
+      profile = MM.request 'get:current:profile'
+      develop = new Controllers.LifelistController(model: profile, region: MM.appLayout.mainRegion)
 
 
-  loadMenteeView: (id, view, options = {}) ->
-    mentee = MM.collections.mentees.getOrFetch(id)
-    @updateProfile mentee
-    @changePage new view(_.extend({model: mentee}, options))
-    
-  changePage: (page) ->
-    MM.appLayout.mainRegion.show(page)
-    
-  updateProfile: (mentee) ->
-    if profile = mentee.active_profile()
-      @profileController or= new ProfileController(profile: profile)
-      @profileController.setProfile(profile)
-    else
-      console.error("Data error: Mentee is missing an active profile")
+    loadMenteeView: (id, view, options = {}) ->
+      mentee = MM.collections.mentees.getOrFetch(id)
+      @updateProfile mentee
+      @changePage new view(_.extend({model: mentee}, options))
 
-  closeProfile: ->
-    if @profileController
-      @profileController.close();
-      @profileController = null;
+    changePage: (page) ->
+      MM.appLayout.mainRegion.show(page)
 
-  getActions: ->
+    updateProfile: (mentee) ->
+      if profile = mentee.active_profile()
+        @profileController or= new Controllers.ProfileController(profile: profile)
+        @profileController.setProfile(profile)
+      else
+        console.error("Data error: Mentee is missing an active profile")
+
+    closeProfile: ->
+      if @profileController
+        @profileController.close();
+        @profileController = null;
+
+    getActions: ->

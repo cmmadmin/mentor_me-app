@@ -1,22 +1,21 @@
-MM = require( 'MentorMe' )
-template = require('templates/lifelist/EditItem')
+@MM.module "Views.Lifelist", (Lifelist, App, Backbone, Marionette, $, _) ->
 
-module.exports = class EditItemView extends Marionette.ItemView
-  template: template
+  class Lifelist.EditItemView extends Marionette.ItemView
+    template: 'templates/lifelist/EditItem'
 
-  itemView: EditItemView
+    itemView: EditItemView
 
-  ui:
-    checkbox: 'label.checkbox input'
+    ui:
+      checkbox: 'label.checkbox input'
 
 
-  initialize: (options) ->
-    @selected = options.selected
-    @model.set('selected', @selected)
+    initialize: (options) ->
+      @selected = options.selected
+      @model.set('selected', @selected)
 
-  onShow: ->
-    @binding = rivets.bind @$el,
-      item: @model
-    
-    # if @selected
-    #   @ui.checkbox.attr('checked', 'checked')
+    onShow: ->
+      @binding = rivets.bind @$el,
+        item: @model
+
+      # if @selected
+      #   @ui.checkbox.attr('checked', 'checked')

@@ -1,38 +1,36 @@
-Model = require('./supers/Model')
-Collection = require('collections/supers/Collection')
+@MM.module "Models", (Models, App, Backbone, Marionette, $, _) ->
 
-module.exports = class Edition extends Model
-  urlRoot: Collection.serverUrl('editions')
+  Model = Models.Supers.Model
+  Collection = App.Collections.Supers.Collection
 
-  snapshotSelfAssessmentSurvey: ->
-    @surveys().get(@get('snapshot_self_assessment_survey_id'))
-  snapshotInteractiveSurvey: ->
-    @surveys().get(@get('snapshot_interactive_survey_id'))
-  snapshotObservationsSurvey: ->
-    @surveys().get(@get('snapshot_observations_survey_id'))
-  developSurvey: ->
-    @surveys().get(@get('develop_survey_id'))
+  class Models.Edition extends Model
+    urlRoot: Collection.serverUrl('editions')
 
-  snapshotSurveys: ->
-    new Backbone.Collection([@snapshotSelfAssessmentSurvey(), @snapshotInteractiveSurvey(),
-      @snapshotObservationsSurvey()]);
+    snapshotSelfAssessmentSurvey: ->
+      @surveys().get(@get('snapshot_self_assessment_survey_id'))
+    snapshotInteractiveSurvey: ->
+      @surveys().get(@get('snapshot_interactive_survey_id'))
+    snapshotObservationsSurvey: ->
+      @surveys().get(@get('snapshot_observations_survey_id'))
+    developSurvey: ->
+      @surveys().get(@get('develop_survey_id'))
 
-# Put at bottom to avoid circular dependency (ugly commonjs exports hack)
-MenteeProfiles = require('collections/MenteeProfiles')
-Surveys = require('collections/Surveys')
-Lifelist = require('./Lifelist')
+    snapshotSurveys: ->
+      new Backbone.Collection([@snapshotSelfAssessmentSurvey(), @snapshotInteractiveSurvey(),
+        @snapshotObservationsSurvey()]);
 
-# Supermodel definitions
-Edition.has().many('mentee_profiles', 
-  collection: MenteeProfiles
-  inverse: 'edition'
-)
+  Models.on "before:start", ->
+    # Supermodel definitions
+    Models.Edition.has().many('mentee_profiles', 
+      collection: App.Collections.MenteeProfiles
+      inverse: 'edition'
+    )
 
-Edition.has().many('surveys', 
-  collection: Surveys
-  inverse: 'edition'
-)
-Edition.has().one('lifelist',
-  model: Lifelist
-  inverse: 'edition'
-)
+    Models.Edition.has().many('surveys', 
+      collection: App.Collections.Surveys
+      inverse: 'edition'
+    )
+    Models.Edition.has().one('lifelist',
+      model: Models.Lifelist
+      inverse: 'edition'
+    )

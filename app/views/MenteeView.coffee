@@ -1,87 +1,83 @@
-MM = require 'MentorMe'
-template = require('templates/Mentee')
+@MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
+  JournalEntry = App.Models.JournalEntry
+  MenteeProfileView = Views.MenteeProfileView
+  EditMenteeView = Views.EditMenteeView
 
-JournalEntry = require('models/JournalEntry')
-BackStackRegion = require('lib/ui/BackStackRegion')
+  class Views.MenteeView extends Marionette.Layout
+    template: 'templates/Mentee'
 
-MenteeProfileView = require('./MenteeProfileView')
-EditMenteeView = require('./EditMenteeView')
-ProfileButtonView = require('./ProfileButtonView')
+    attributes:
+      'style' : 'height: 100%'
 
-module.exports = class MenteeView extends Marionette.Layout
-  template: template
+    events:
+      'click #profile-pic': 'getPicture'
+      'click .details': 'openHeader'
 
-  attributes:
-    'style' : 'height: 100%'
+    regions:
+      snapshotBtn: '#snapshotBtn'
+      selfassessBtn: '#selfassessBtn'
+      interviewBtn: '#interviewBtn'
+      observationsBtn: '#observationsBtn'
+      developBtn: '#developBtn'
+      lifelistBtn: '#lifelistBtn'
+      planBtn: '#planBtn'
+      journalBtn: '#journalBtn'
+      contactsBtn: '#contactsBtn'
+      editMentee: '#edit-mentee'
 
-  events:
-    'click #profile-pic': 'getPicture'
-    'click .details': 'openHeader'
+    buttonViews: {}
 
-  regions:
-    snapshotBtn: '#snapshotBtn'
-    selfassessBtn: '#selfassessBtn'
-    interviewBtn: '#interviewBtn'
-    observationsBtn: '#observationsBtn'
-    developBtn: '#developBtn'
-    lifelistBtn: '#lifelistBtn'
-    planBtn: '#planBtn'
-    journalBtn: '#journalBtn'
-    contactsBtn: '#contactsBtn'
-    editMentee: '#edit-mentee'
+    editing: false
 
-  buttonViews: {}
+    initialize: ->
+      super
+      @initButtonViews();
 
-  editing: false
+    initButtonViews: ->
+      ProfileButtonView = Views.ProfileButtonView
+      @buttonViews.snapshotBtn = new ProfileButtonView(title: "Snapshot", icon: 'camera-retro', href: "#mentees/#{@model.id}/selfassess", state: 'snapshot')
+      @buttonViews.selfassessBtn = new ProfileButtonView(title: "Self Assessment", icon: 'camera-retro', href: "#mentees/#{@model.id}/selfassess", state: 'selfassess')
+      @buttonViews.interviewBtn = new ProfileButtonView(title: "Interview", icon: 'camera-retro', href: "#mentees/#{@model.id}/interview", state: 'snapshot')
+      @buttonViews.observationsBtn = new ProfileButtonView(title: "Long Term Observations", icon: 'camera-retro', href: "#mentees/#{@model.id}/observations", state: 'snapshot')
 
-  initialize: ->
-    super
-    @initButtonViews();
+      @buttonViews.developBtn = new ProfileButtonView(title: "Develop", icon: 'comment', href: "#mentees/#{@model.id}/develop", state: 'develop')
+      @buttonViews.lifelistBtn = new ProfileButtonView(title: "Life List", icon: 'list', href: "#mentees/#{@model.id}/lifelist", state: 'lifelist')
+      @buttonViews.planBtn = new ProfileButtonView(title: "Plan", icon: 'list', href: "#mentees/#{@model.id}/develop", state: 'develop')
 
-  initButtonViews: ->
-    @buttonViews.snapshotBtn = new ProfileButtonView(title: "Snapshot", icon: 'camera-retro', href: "#mentees/#{@model.id}/selfassess", state: 'snapshot')
-    @buttonViews.selfassessBtn = new ProfileButtonView(title: "Self Assessment", icon: 'camera-retro', href: "#mentees/#{@model.id}/selfassess", state: 'selfassess')
-    @buttonViews.interviewBtn = new ProfileButtonView(title: "Interview", icon: 'camera-retro', href: "#mentees/#{@model.id}/interview", state: 'snapshot')
-    @buttonViews.observationsBtn = new ProfileButtonView(title: "Long Term Observations", icon: 'camera-retro', href: "#mentees/#{@model.id}/observations", state: 'snapshot')
+      @buttonViews.journalBtn = new ProfileButtonView(title: "Journal", icon: 'pencil', href: "#mentees/#{@model.id}/journal")
+      @buttonViews.contactsBtn = new ProfileButtonView(title: "Contacts", icon: 'user', href: '#')
 
-    @buttonViews.developBtn = new ProfileButtonView(title: "Develop", icon: 'comment', href: "#mentees/#{@model.id}/develop", state: 'develop')
-    @buttonViews.lifelistBtn = new ProfileButtonView(title: "Life List", icon: 'list', href: "#mentees/#{@model.id}/lifelist", state: 'lifelist')
-    @buttonViews.planBtn = new ProfileButtonView(title: "Plan", icon: 'list', href: "#mentees/#{@model.id}/develop", state: 'develop')
-
-    @buttonViews.journalBtn = new ProfileButtonView(title: "Journal", icon: 'pencil', href: "#mentees/#{@model.id}/journal")
-    @buttonViews.contactsBtn = new ProfileButtonView(title: "Contacts", icon: 'user', href: '#')
-
-  onShow: ->
-    # @listenTo @model, 'change', @render
-    _.each(@regions, (region) =>
-      if(region.slice(-3) == 'Btn')
-        regionName = region.substr(1)
-        @[regionName].show(@buttonViews[regionName])
-    )
-    rivets.bind(@$el, {mentee: @model})
-    #view = new MenteeProfileView(model: @model)
-    #@actionRegion.show(view)
-    # rivets.bind(@$el, {mentee: @model})
-    # 
-  openHeader: (e) ->
-    $('.contact-head').addClass('overcome')
-    $('.details').hide();
-    editView = new EditMenteeView(model: @model)
-    @editMentee.show(editView)
-    editView.on 'close', =>
-      @editMentee.close();
-      @$el.find('.contact-head').removeClass('overcome')
-      $('.details').show();
+    onShow: ->
+      # @listenTo @model, 'change', @render
+      _.each(@regions, (region) =>
+        if(region.slice(-3) == 'Btn')
+          regionName = region.substr(1)
+          @[regionName].show(@buttonViews[regionName])
+      )
+      rivets.bind(@$el, {mentee: @model})
+      #view = new MenteeProfileView(model: @model)
+      #@actionRegion.show(view)
+      # rivets.bind(@$el, {mentee: @model})
+      #
+    openHeader: (e) ->
+      $('.contact-head').addClass('overcome')
+      $('.details').hide();
+      editView = new EditMenteeView(model: @model)
+      @editMentee.show(editView)
+      editView.on 'close', =>
+        @editMentee.close();
+        @$el.find('.contact-head').removeClass('overcome')
+        $('.details').show();
 
 
-  getPicture: (e) =>
-    navigator.camera.getPicture(@cameraSuccess, @cameraFail, 
-      destinationType: Camera.DestinationType.FILE_URI 
-    )
-  
-  cameraSuccess: (imageURI) ->
-    console.log(imageURI);
-    $('#profile-pic').src = imageURI;
-    console.log(imageURI);
-  cameraFail: (e) ->
-    console.log(e);
+    getPicture: (e) =>
+      navigator.camera.getPicture(@cameraSuccess, @cameraFail,
+        destinationType: Camera.DestinationType.FILE_URI
+      )
+
+    cameraSuccess: (imageURI) ->
+      console.log(imageURI);
+      $('#profile-pic').src = imageURI;
+      console.log(imageURI);
+    cameraFail: (e) ->
+      console.log(e);

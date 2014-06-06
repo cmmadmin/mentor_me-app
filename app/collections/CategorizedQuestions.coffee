@@ -1,11 +1,12 @@
-Questions = require('models/Questions')
+@MM.module "Collections", (Collections, App, Backbone, Marionette, $, _) ->
+  Questions = App.Models.Questions
 
-module.exports = class CategorizedQuestions extends Backbone.Subset
-  constructor: (@questions, @develop_category) ->
-    super
+  class Collections.CategorizedQuestions extends Backbone.Subset
+    constructor: (@questions, @develop_category) ->
+      super
 
-  parent: ->
-    return @questions
+    parent: ->
+      return @questions
 
-  sieve: (question) ->
-    return question.get('develop_category') == @develop_category
+    sieve: (question) ->
+      return question.get('develop_category') == @develop_category

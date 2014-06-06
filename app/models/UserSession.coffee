@@ -1,34 +1,35 @@
-MM = require('MentorMe')
-Model = require('./supers/Model')
-Collection = require('collections/supers/Collection')
-User = require('./User')
+@MM.module "Models", (Models, App, Backbone, Marionette, $, _) ->
 
-module.exports = class UserSession extends Model
-  urlRoot: Collection.serverUrl('users/sign_in.json')
-  paramRoot: 'user'
+  Model = Models.Supers.Model
+  Collection = App.Collections.Supers.Collection
+  User = Models.User
 
-  defaults:
-    "email": ""
-    "password": ""
+  class Models.UserSession extends Model
+    urlRoot: Collection.serverUrl('users/sign_in.json')
+    paramRoot: 'user'
 
-  login: ->
-    deferred = @save()
+    defaults:
+      "email": ""
+      "password": ""
 
-    deferred.then(
-      # success
-      (user) -> 
-        
-        # TODO: Possibly move this to external handler
-        MM.currentUser = new User(user)
-        MM.vent.trigger("authentication:logged_in", MM.currentUser)
-      # error
-      (xhr) ->
-        MM.vent.trigger("authentication:logged_in_failed", xhr)
-    )
+    login: ->
+      deferred = @save()
 
-    return deferred
+      deferred.then(
+        # success
+        (user) -> 
+          
+          # TODO: Possibly move this to external handler
+          App.currentUser = new User(user)
+          App.vent.trigger("authentication:logged_in", App.currentUser)
+        # error
+        (xhr) ->
+          App.vent.trigger("authentication:logged_in_failed", xhr)
+      )
 
-  toJSON: ->
-    data = {}
-    data[@paramRoot] = super
-    return data
+      return deferred
+
+    toJSON: ->
+      data = {}
+      data[@paramRoot] = super
+      return data

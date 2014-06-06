@@ -1,23 +1,22 @@
-MM = require('MentorMe')
-SnapshotFsm = require('./SnapshotFsm')
+@MM.module "Models.StateMachines", (StateMachines, App, Backbone, Marionette, $, _) ->
 
-module.exports = SnapshotViewFsm = SnapshotFsm.extend
-  initialState: 'uninitialized'
-  states:
-    uninitialized: {}
-    'untapped':
-      start: ->
-        @transition 'active:selfassess'
-        MM.vent.trigger('current:snapshot:handle', 'start')
-    'active:selfassess':
-      advance: -> 
-        @transition 'active:pre:interactivequiz'
-        MM.vent.trigger('current:snapshot:handle', 'advance')
-    'active:pre:interactivequiz':
-      advance: ->
-        @transition 'active:interactivequiz'
-        MM.vent.trigger('current:snapshot:handle', 'advance')
-    'active:interactivequiz':
-      advance: -> 
-        @transition 'active:post:interactivequiz'
-        MM.vent.trigger('current:snapshot:handle', 'advance')
+  StateMachines.SnapshotViewFsm = StateMachines.SnapshotFsm.extend
+    initialState: 'uninitialized'
+    states:
+      uninitialized: {}
+      'untapped':
+        start: ->
+          @transition 'active:selfassess'
+          App.vent.trigger('current:snapshot:handle', 'start')
+      'active:selfassess':
+        advance: -> 
+          @transition 'active:pre:interactivequiz'
+          App.vent.trigger('current:snapshot:handle', 'advance')
+      'active:pre:interactivequiz':
+        advance: ->
+          @transition 'active:interactivequiz'
+          App.vent.trigger('current:snapshot:handle', 'advance')
+      'active:interactivequiz':
+        advance: -> 
+          @transition 'active:post:interactivequiz'
+          App.vent.trigger('current:snapshot:handle', 'advance')

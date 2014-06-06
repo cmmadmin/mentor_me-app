@@ -1,14 +1,15 @@
-Collection = require('./supers/Collection')
+@MM.module "Collections", (Collections, App, Backbone, Marionette, $, _) ->
+  Collection = Collections.Supers.Collection
 
-module.exports = class Questions extends Collection
+  class Collections.Questions extends Collection
 
-  url: ->
-    Collection.serverUrl('question_groups') + '/' + @owner.id + '/questions'
-  
-  initialize: ->
-    #@storage = new Offline.Storage('questions', this)
-    super
+    url: ->
+      Collection.serverUrl('question_groups') + '/' + @owner.id + '/questions'
 
-  model: (attrs, options) ->
-    Question = require('models/Question')
-    return Question.create(attrs, options)
+    initialize: ->
+      #@storage = new Offline.Storage('questions', this)
+      super
+
+    model: (attrs, options) ->
+      Question = App.Models.Question
+      return Question.create(attrs, options)

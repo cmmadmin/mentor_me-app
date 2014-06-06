@@ -1,8 +1,8 @@
-template = require('templates/ToolLayout')
+@MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-module.exports = class ToolLayout extends Marionette.Layout
-  template: template
-  attributes:
-    class: 'fullpage'
-  regions:
-    mainRegion: '#surveyMain'
+  class Views.ToolLayout extends Marionette.Layout
+    template: 'templates/ToolLayout'
+    attributes:
+      class: 'fullpage'
+    regions:
+      mainRegion: '#surveyMain'

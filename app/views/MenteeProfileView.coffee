@@ -1,43 +1,44 @@
-template = require('templates/partials/MenteeActions')
-JournalEntry = require('models/JournalEntry')
-module.exports = class MenteeDetailsView extends Marionette.ItemView
+@MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
+  JournalEntry = App.Models.JournalEntry
 
-  template: template
+  class Views.MenteeDetailsView extends Marionette.ItemView
 
-  events:
-    'click #add-journal-btn' : 'addJournalEntry'
-    'focus #add-journal-textarea' : 'focusAddJournal'
-    'blur #add-journal-textarea' : 'unfocusAddJournal'
+    template: 'templates/partials/MenteeActions'
 
-  onRender: ->
-    # @$el.find('#journaldate').editable
-    #   mode: 'inline'
-    #   viewformat: 'M d'
-    @$el.find('#journaldate').on 'shown', ->
-      $(@).next().find('.editable-input input').mask('99/99/99 99:99', placeholder: ' ')
+    events:
+      'click #add-journal-btn' : 'addJournalEntry'
+      'focus #add-journal-textarea' : 'focusAddJournal'
+      'blur #add-journal-textarea' : 'unfocusAddJournal'
 
-  onShow: ->
-    @listenTo @model, 'change', @render
-    @listenTo @model, 'reset', @render
+    onRender: ->
+      # @$el.find('#journaldate').editable
+      #   mode: 'inline'
+      #   viewformat: 'M d'
+      @$el.find('#journaldate').on 'shown', ->
+        $(@).next().find('.editable-input input').mask('99/99/99 99:99', placeholder: ' ')
 
-  addJournalEntry: ->
-    content = $('#add-journal-textarea').val()
-    timestamp = new Date($('#journaldate').text());
+    onShow: ->
+      @listenTo @model, 'change', @render
+      @listenTo @model, 'reset', @render
 
-    je = new JournalEntry(mentee_id: @model.id, body: content, created_at: timestamp)
-    je.save().done ->
-      $('#add-journal-textarea').val('').parent().removeClass 'selected'
-      $('.journal-notifications').notify(
-        message: { text: 'Journal Entry added' }
-        closable: false
-        fadeOut: { enabled: true, delay: 3000 }
-      ).show();
+    addJournalEntry: ->
+      content = $('#add-journal-textarea').val()
+      timestamp = new Date($('#journaldate').text());
 
-  # Style helpers
-  focusAddJournal: (e) ->
-    $(e.target).parent().addClass 'selected'
+      je = new JournalEntry(mentee_id: @model.id, body: content, created_at: timestamp)
+      je.save().done ->
+        $('#add-journal-textarea').val('').parent().removeClass 'selected'
+        $('.journal-notifications').notify(
+          message: { text: 'Journal Entry added' }
+          closable: false
+          fadeOut: { enabled: true, delay: 3000 }
+        ).show();
 
-  unfocusAddJournal: (e) ->
-    $targ = $(e.target)
-    if !$targ.val()
-      $targ.parent().removeClass 'selected'
+    # Style helpers
+    focusAddJournal: (e) ->
+      $(e.target).parent().addClass 'selected'
+
+    unfocusAddJournal: (e) ->
+      $targ = $(e.target)
+      if !$targ.val()
+        $targ.parent().removeClass 'selected'

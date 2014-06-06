@@ -1,11 +1,10 @@
-Collection = require('./supers/Collection')
+@MM.module "Collections", (Collections, App, Backbone, Marionette, $, _) ->
+ # Collection = Collections.Supers.Collection
 
+  class Collections.Answers extends Collections.Supers.Collection
 
-module.exports = class Answers extends Collection
+    url: ->
+      Collections.Supers.Collection.serverUrl('mentee_profiles') + '/' + @owner.id + '/answers'
 
-  url: ->
-    Collection.serverUrl('mentee_profiles') + '/' + @owner.id + '/answers'
-
-  model: (attrs, options) ->
-    Answer = require('models/Answer')
-    return Answer.create(attrs, options)
+    model: (attrs, options) ->
+      return App.Models.Answer.create(attrs, options)

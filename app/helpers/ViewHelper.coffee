@@ -1,48 +1,31 @@
 ###
  * Handlebars Template Helpers
- * 
- * @langversion CoffeeScript
- * 
- * @author 
- * @since  
  ###
+@MM.module "Helpers", (Helpers, App, Backbone, Marionette, $, _) ->
+  Handlebars.registerHelper( 'link', ( text, url ) ->
 
+    text = Handlebars.Utils.escapeExpression( text )
+    url  = Handlebars.Utils.escapeExpression( url )
 
-###//--------------------------------------
-//+ PUBLIC PROPERTIES / CONSTANTS
-//--------------------------------------###
+    result = '<a href="' + url + '">' + text + '</a>'
 
-###//--------------------------------------
-//+ PUBLIC METHODS / GETTERS / SETTERS
-//--------------------------------------###
+    return new Handlebars.SafeString( result )
+  )
 
-#
-# @return String
-#
-Handlebars.registerHelper( 'link', ( text, url ) ->
+  Handlebars.registerHelper('dateFormat', (context, block) ->
+    if (window.moment)
+      f = block.hash.format || "MMM Do, YYYY";
+      return moment(new Date(context)).format(f);
+    else
+      return context;   # moment plugin not available. return data as is. 
+  )
 
-  text = Handlebars.Utils.escapeExpression( text )
-  url  = Handlebars.Utils.escapeExpression( url )
+  Handlebars.registerHelper('currentTime', (format) ->
+    if format
+      return moment(new Date()).format(format)
+    else
+      return new Date()
+  )
 
-  result = '<a href="' + url + '">' + text + '</a>'
-
-  return new Handlebars.SafeString( result )
-)
-
-Handlebars.registerHelper('dateFormat', (context, block) ->
-  if (window.moment)
-    f = block.hash.format || "MMM Do, YYYY";
-    return moment(new Date(context)).format(f);
-  else
-    return context;   # moment plugin not available. return data as is. 
-)
-
-Handlebars.registerHelper('currentTime', (format) ->
-  if format
-    return moment(new Date()).format(format)
-  else
-    return new Date()
-)
-
-Nav = require('templates/partials/Navigation')
-Handlebars.registerPartial("navigation", Nav)
+  Nav = JST['templates/partials/Navigation']
+  Handlebars.registerPartial("navigation", Nav)

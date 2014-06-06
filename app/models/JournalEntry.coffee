@@ -1,18 +1,18 @@
-MM = require 'MentorMe'
-Model = require('./supers/Model')
-Collection = require('collections/supers/Collection')
+@MM.module "Models", (Models, App, Backbone, Marionette, $, _) ->
 
-module.exports = class JournalEntry extends Model
-  urlRoot: ->
-    Collection.serverUrl('mentees') + '/' + @get('mentee_id') + '/journal_entries'
+  Model = Models.Supers.Model
+  Collection = App.Collections.Supers.Collection
 
-  # TODO: Replace with backbone relational
-  mentee: ->
-    return MM.collections.getOrFetch(@get('mentee_id'))
+  class Models.JournalEntry extends Model
+    urlRoot: ->
+      Collection.serverUrl('mentees') + '/' + @get('mentee_id') + '/journal_entries'
 
-Mentee = require('./Mentee')
+    # TODO: Replace with backbone relational
+    mentee: ->
+      return App.collections.getOrFetch(@get('mentee_id'))
 
-JournalEntry.has().one('mentee', 
-  model: Mentee
-  inverse: 'journal_entries'
-)
+  Models.on "before:start", ->
+    Models.JournalEntry.has().one('mentee', 
+      model: Models.Mentee
+      inverse: 'journal_entries'
+    )
