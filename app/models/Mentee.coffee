@@ -33,3 +33,16 @@
       inverse: 'mentee'
     )
     
+  API =
+    getMentees: ->
+      #TODO: Is this really the best way of doing this?
+      App.collections.mentees
+
+    getMentee: (id) ->
+      App.collections.mentees.getOrFetch(id)
+
+  App.reqres.setHandler "mentees:entities", ->
+    API.getMentees()
+
+  App.reqres.setHandler "mentees:entity", (id) ->
+    API.getMentee id

@@ -29,6 +29,15 @@
       #   
   MentorMe.rootRoute = "#mentees"
 
+  MentorMe.addRegions
+    headerRegion: "#pageHeader"
+    mainRegion:    "#content"
+    footerRegion: "#pageFooter"
+    modalRegion: "#modal"
+
+  MentorMe.on "initialize:before", (options) ->
+    MentorMe.environment = options.environment
+
   MentorMe.addInitializer ->
     # Import views
     HomePage = MentorMe.Views.HomePage
@@ -81,7 +90,7 @@
     # TODO: Listen in better place
     @initEvents()
 
-    Object.freeze? this
+    # Object.freeze? this
   MentorMe.addInitializer ->
     # Load helper for use in views
     MentorMe.Helpers.ViewHelper
@@ -93,6 +102,8 @@
     $(->
       FastClick.attach(document.body);
     )
+
+  MentorMe.reqres.setHandler "default:region", -> MentorMe.mainRegion
 
   MentorMe.on "initialize:after", ->
     # Start Backbone router after bootstrap
