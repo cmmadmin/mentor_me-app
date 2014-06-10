@@ -15,8 +15,10 @@
 
       # @listenTo menteesView, "childview:mentee:clicked", (child, args) ->
       #   App.vent.trigger "mentee:clicked"
+      #   
+      scrollComp = App.request "ion:scroll:component", menteesView
 
-      @show menteesView, region: @layout.menteesRegion
+      @show scrollComp, region: @layout.menteesRegion
 
     getMenteesView: (mentees) ->
       new List.Mentees

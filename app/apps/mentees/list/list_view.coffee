@@ -10,18 +10,25 @@
 
   class List.Empty extends App.Views.ItemView
     template: "mentees/list/empty"
-    tagName: "li"
+    tagName: "a"
     className: "item"
 
   class List.Mentee extends App.Views.ItemView
     template: "mentees/list/mentee"
-    tagName: "li"
-    className: "mentee item"
+    tagName: "a"
+    className: "mentee item item-dark item-thumbnail-left"
+    attributes: ->
+      href: "#mentees/" + @model.id
+    events:
+      "click": "activateClass"
+    activateClass: ->
+      @$el.addClass('active')
 
-  class List.Mentees extends App.Views.CollectionView
+  class List.Mentees extends App.Views.CompositeView
+    template: "mentees/list/mentees"
     itemView: List.Mentee
     emptyView: List.Empty
-    tagName: "ul"
+    tagName: "div"
     className: "list"
     # itemViewContainer: "ul"
 

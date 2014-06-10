@@ -1,42 +1,44 @@
 /* === CONTACT LIST === */
 
-#home-page {
-  height: 100%;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  box-orient: vertical;
-}
-
 // ---- Home Page ---
 #mentee-list {
-  color: #428bca;
-  font-weight: 300;
-  font-size: 18pt;
-  font-size: 2.5rem;
-  flex: 1;
-  overflow-y: auto;
-  li {
-    background-color: rgba(0, 0, 0, 0.85);
-    margin: 5px 0px 5px 0px;
-    a {
-      padding: 0;
-      height: 80px;
-      line-height: 75px;
-      img { margin-right: 8px; }
-    }
-    a:focus { background-color: inherit }
+  div.list { 
+    margin: 0 rem(12) 0 rem(12);
   }
-  .mentee-thumb { height: 80px; width: 80px;}
-  .icon-user { width: 80px; display: inline-block; line-height: inherit; text-align: center}
+  a.mentee {
+    padding-top: rem(10);
+    padding-bottom: rem(10);
+    border: 0;
+    border-bottom: rem(1) #333 solid;
+
+    h2, p {color: white;}
+
+    &:last-child { border: 0 }
+  }
+  .icon-user { 
+    @extend .item-image;
+    line-height: rem(80);
+    font-size: rem(48);
+  }
+  .icon-user, img {
+    border: rem(1) white solid;
+  }
+
+  // Refactor to use header variable heights
+  .scroll-content {
+    top: rem(45);
+  }
 }
 
-.fingerpaint {
-  font-family: 'Londrina Shadow', cursive;
-}
-
+// Refactor into header
 .logo {
-  text-align: center;
-  color: #62abea;
-  font-size: 60px;
-  font-size: 18vw;
+  height: rem(45);
+  line-height: rem(45);
+  margin: 0 rem(12) 0 rem(12);
+
+  color: white;
+  font-size: rem(12);
+  border-bottom: rem(2) #333333 solid;
+  i { font-size: rem(28); color: white; padding-left: 20px; }
+  i:hover { color: #00ACD6; }
 }

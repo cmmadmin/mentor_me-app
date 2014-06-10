@@ -12,7 +12,10 @@ html, body, .app, #content {
 
 h1, h2, h3, h4 {
   margin: 0;
+  color: white;
 }
+
+h1{ font-weight: 300; }
 
 hr {
   margin: 0;
@@ -54,8 +57,8 @@ a:active {
   min-height: 100%;
   width: 100%;
   position: absolute;
-  opacity: 0.5;
-  background: url(../images/colored_wooden_wall-wide.jpg) no-repeat center bottom fixed;
+  // opacity: 0.5;
+  background: url(../images/background.png) no-repeat center bottom fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
