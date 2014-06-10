@@ -29,6 +29,7 @@ exports.config =
           'vendor/config/jqm-routing-patch.js',
           'vendor/config/jqm-hover-patch.js',
           'app/MentorMe.coffee',
+          /^app\/lib\/(controllers|views)/,
           /^app\/lib/,
           'app/config/*', # include config before everything
           'app/*/supers/*', # include base classes in 'super' directory before the rest
