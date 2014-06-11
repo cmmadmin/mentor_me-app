@@ -19,10 +19,6 @@
     className: "mentee item item-dark item-thumbnail-left"
     attributes: ->
       href: "#mentees/" + @model.id
-    events:
-      "click": "activateClass"
-    activateClass: ->
-      @$el.addClass('active')
 
   class List.Mentees extends App.Views.CompositeView
     template: "mentees/list/mentees"
