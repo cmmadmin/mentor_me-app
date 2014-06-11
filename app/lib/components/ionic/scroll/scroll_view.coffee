@@ -2,7 +2,7 @@
 
   class Scroll.ScrollLayout extends App.Views.Layout
     template: 'ionic/scroll/scroll'
-    className: "scroll-content"
+    className: "scroll-content ionic-scroll"
 
     regions:
       scrollContentRegion: '#scroll-content-region'
