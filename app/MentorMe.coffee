@@ -98,11 +98,7 @@
     $(document).ajaxError (e, xhr, settings, exception) ->
       if (xhr.status == 401)
         application.router.login()
-
-    $(->
-      FastClick.attach(document.body);
-    )
-
+        
   MentorMe.reqres.setHandler "default:region", -> MentorMe.mainRegion
 
   MentorMe.on "initialize:after", ->
