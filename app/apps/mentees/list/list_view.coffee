@@ -24,7 +24,6 @@
     template: "mentees/list/mentees"
     itemView: List.Mentee
     emptyView: List.Empty
-    tagName: "div"
     className: "list"
     # itemViewContainer: "ul"
 

@@ -5,8 +5,8 @@
   class Entities.MenusCollection extends App.Collections.Supers.Collection
     model: Entities.Menu
 
-    chooseByName: (menu) ->
-      @choose (@findWhere(name: menu) or @first())
+    #chooseByName: (menu) ->
+    #  @choose (@findWhere(name: menu) or @first())
 
     #@include "SingleChooser"
 

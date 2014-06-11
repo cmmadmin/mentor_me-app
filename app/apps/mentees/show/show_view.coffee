@@ -15,9 +15,17 @@
 
   class Show.MenuCategory extends App.Views.ItemView
     template: "mentees/show/show_menucategory"
+    className: "menucategory item item-dark item-icon-left"
 
   class Show.MenteeMenu extends App.Views.CompositeView
     template: "mentees/show/show_menteemenu"
     itemView: Show.MenuCategory
-    tagName: "div"
+    className: "list"
+
+  class Show.MenuItem extends App.Views.ItemView
+    template: "mentees/show/show_menuitem"
+    className: "menucategory item item-dark item-icon-left"
+
+  class Show.SnapshotMenu extends App.Views.CollectionView
+    itemView: Show.MenuItem
     className: "list"
