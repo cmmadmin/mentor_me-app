@@ -1,4 +1,15 @@
-/* === CONTACT HOME === */
+/* === MENTEE HOME === */
+
+#menu-region {
+  div.list {
+    margin: 0 rem(12) 0 rem(12);
+  }
+
+  // Refactor to use header variable heights
+  .scroll-content {
+    top: rem(145);
+  }
+}
 
 .contact-head {
   vertical-align: middle;

@@ -4,7 +4,7 @@
   class Routers.MenteeRouter extends Marionette.AppRouter
     appRoutes:
       # 'mentees' : 'mentees'
-      'mentees/:id' : 'menteeOverview'
+      #'mentees/:id' : 'menteeOverview'
       'mentees/:id/journal' : 'menteeJournal'
       # 'mentees/:id/journal_entries/:journal_id' : 'editJournalEntry'
 
