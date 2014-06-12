@@ -13,19 +13,39 @@
     modelEvents:
       "updated" : "render"
 
-  class Show.MenuCategory extends App.Views.ItemView
-    template: "mentees/show/show_menucategory"
-    className: "menucategory item item-dark item-icon-left"
+  # Menu
 
-  class Show.MenteeMenu extends App.Views.CompositeView
-    template: "mentees/show/show_menteemenu"
-    itemView: Show.MenuCategory
-    className: "list"
+  ###class Show.SnapshotMenu extends App.Views.CollectionView
+    itemView: Show.MenuItem
+    className: "list"###
 
+  #VillainView
   class Show.MenuItem extends App.Views.ItemView
     template: "mentees/show/show_menuitem"
-    className: "menucategory item item-dark item-icon-left"
+    className: "menuitem item item-dark item-icon-left"
+    #tagName: "li"
 
-  class Show.SnapshotMenu extends App.Views.CollectionView
+  #HeroView
+  class Show.MenuCategory extends App.Views.CompositeView
+    template: "mentees/show/show_menucategory"
+    className: "menucategory accordion-group item item-dark item-icon-left" # TODO: bootstrap class
     itemView: Show.MenuItem
-    className: "list"
+    itemViewContainer: "ul"
+    events:
+      "click": "logInfoUrl"
+
+    logInfoUrl: ->
+      console.log("hello")
+      @model.choose()
+    #console.log(this.model.get('info_url'))
+    #@$el.addClass('active')
+
+    initialize: ->
+      @collection = @model.items
+      #@collection = @model.get('items');
+
+  #AccordionView
+  class Show.MenteeMenu extends App.Views.CollectionView
+    template: "mentees/show/show_menteemenu"
+    itemView: Show.MenuCategory
+    className: "list accordion" # TODO: bootstrap class
