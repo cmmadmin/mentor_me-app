@@ -37,7 +37,8 @@ exports.config =
           'app/views/**/*', # include views before controllers
           'app/controllers/SnapshotController.coffee',
           'app/models/state_machines/*',
-          'app/models/**/*'
+          'app/models/**/*',
+          'app/entities/**/*'
         ],
         after: [
           'vendor/scripts/bootstrap-editable.js',

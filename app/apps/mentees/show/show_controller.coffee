@@ -2,6 +2,14 @@
 
   class Show.Controller extends App.Controllers.Application
 
+    navItem: ->
+      leftButtons: [
+        type: 'Back'
+      ]
+      rightButtons: [        
+          type: 'Info'
+      ]
+
     initialize: (options) ->
       { mentee, id } = options
       mentee or= App.request "mentees:entity", id

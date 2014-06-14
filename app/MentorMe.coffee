@@ -30,7 +30,7 @@
   MentorMe.rootRoute = "#mentees"
 
   MentorMe.addRegions
-    headerRegion: "#pageHeader"
+    headerRegion: "#header-region"
     mainRegion:    "#content"
     footerRegion: "#pageFooter"
     modalRegion: "#modal"
@@ -98,6 +98,9 @@
     $(document).ajaxError (e, xhr, settings, exception) ->
       if (xhr.status == 401)
         application.router.login()
+
+  MentorMe.addInitializer ->
+    MentorMe.module("HeaderApp").start()
         
   MentorMe.reqres.setHandler "default:region", -> MentorMe.mainRegion
 
@@ -106,5 +109,12 @@
     MentorMe.execute "when:fetched", MentorMe.collections, =>
       @startHistory()
       @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
+
+  MentorMe.vent.on "header:shown", ->
+    _.defer ->
+      MentorMe.mainRegion.$el.addClass('with-header')
+  MentorMe.vent.on "header:hidden", ->
+    _.defer ->
+      MentorMe.mainRegion.$el.removeClass('with-header')
 
   MentorMe

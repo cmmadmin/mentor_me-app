@@ -4,6 +4,8 @@
 
     constructor: (options = {}) ->
       @region = options.region or App.request "default:region"
+      # Set Nav Bar Item if any
+      @_manageNavItem()
       super options
       @_instance_id = _.uniqueId("controller")
       App.execute "register:instance", @, @_instance_id
@@ -46,6 +48,15 @@
         App.execute "show:loading", view, options
       else
         options.region.show view
+
+    _manageNavItem: ->
+      # If a nav item is set then tell navigation controller to use it, otherwise do nothing
+      if @navItem?
+        navItem = _.result(@, 'navItem')
+        if _.isObject(navItem) and not (navItem instanceof App.Entities.NavItem)
+          navItem = new App.Entities.NavItem navItem
+        App.commands.execute "header:set:navItem", navItem
+
 
     mergeDefaultsInto: (obj) ->
       obj = if _.isObject(obj) then obj else {}
