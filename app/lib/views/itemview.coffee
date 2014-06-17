@@ -17,7 +17,7 @@
 
       # This _.each block is what we're adding
       _.each templateHelpers, (helper, index) ->
-          if _.isFunction(helper))
+          if _.isFunction(helper)
             result[index] = helper.call(self)
           else
             result[index] = helper
