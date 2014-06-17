@@ -5,7 +5,7 @@
     # For reference see: http://mikefowler.me/2014/02/20/template-helpers-handlebars-backbone-marionette/
     # A better solution would be to create native handlebars helpers, but this simple solution works for now
     # It basically evaluates any functions in template helpers and merges the results into serializeData
-    mixinTemplateHelpers: ->
+    mixinTemplateHelpers: (target) ->
       self = @
       templateHelpers = Marionette.getOption(self, "templateHelpers")
       result = {}
