@@ -16,5 +16,3 @@
       App.vent.trigger "header:shown"
       API.show navItem
       
-  # HeaderApp.on "start", (navs) ->
-  #   API.show()
