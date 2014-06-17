@@ -12,8 +12,6 @@
       @surveys().get(@get('snapshot_interactive_survey_id'))
     snapshotObservationsSurvey: ->
       @surveys().get(@get('snapshot_observations_survey_id'))
-    developSurvey: ->
-      @surveys().get(@get('develop_survey_id'))
 
     snapshotSurveys: ->
       new Backbone.Collection([@snapshotSelfAssessmentSurvey(), @snapshotInteractiveSurvey(),
@@ -28,9 +26,5 @@
 
     Models.Edition.has().many('surveys', 
       collection: App.Collections.Surveys
-      inverse: 'edition'
-    )
-    Models.Edition.has().one('lifelist',
-      model: Models.Lifelist
       inverse: 'edition'
     )

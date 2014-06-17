@@ -58,14 +58,15 @@
     @collections = 
       mentees: new Mentees()
       editions: new Editions()
-      lifelist_categories: new LifelistCategories()
-      lifelists: new Lifelists()
+      develop_categories: new MentorMe.Entities.DevelopCategoriesCollection()
+      curriculums: new MentorMe.Entities.DevelopCurriculumsCollection()
+
       bootstrap: (update) ->
         MentorMe.vent.trigger('bootstrap:loaded')
         @mentees.reset(update.mentees)
         @editions.reset(update.editions)
-        @lifelist_categories.reset(update.lifelist_categories)
-        @lifelists.reset(update.lifelists)
+        @develop_categories.reset(update.develop_categories)
+        @curriculums.reset(update.develop_curriculums)
 
     # TODO: Use proper server bootstrap
     # Bootstrap initial data
