@@ -41,19 +41,6 @@
       profile = MM.request 'get:current:profile'
       snapshot = new Controllers.ObservationsController(model: profile, region: MM.appLayout.mainRegion)
 
-    menteeDevelop: (id) ->
-      mentee = MM.collections.mentees.getOrFetch(id)
-      @updateProfile mentee
-      profile = MM.request 'get:current:profile'
-      develop = new Controllers.DevelopController(model: profile, region: MM.appLayout.mainRegion)
-
-    menteeLifelist: (id) ->
-      mentee = MM.collections.mentees.getOrFetch(id)
-      @updateProfile mentee
-      profile = MM.request 'get:current:profile'
-      develop = new Controllers.LifelistController(model: profile, region: MM.appLayout.mainRegion)
-
-
     loadMenteeView: (id, view, options = {}) ->
       mentee = MM.collections.mentees.getOrFetch(id)
       @updateProfile mentee

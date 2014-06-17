@@ -11,8 +11,6 @@
 
     defaults:
       snapshot_state: 'untapped'
-      develop_state: 'disabled'
-      lifelist_state: 'disabled'
 
     state:
       snapshot: null
@@ -23,8 +21,6 @@
     initStateMachines: ->
       _.defaults()
       @state.snapshot = new SnapshotFsm(profile: @, initialState: @get('snapshot_state') || 'untapped')
-      @state.develop = new DevelopFsm(profile: @, initialState: @get('develop_state') || 'disabled')
-      @state.lifelist = new LifeListFsm(profile: @, initialState: @get('lifelist_state') || 'disabled')
 
     cleanup: ->
       _.each @state, (tool, key) =>
@@ -33,8 +29,6 @@
 
     validate: ->
       @state.snapshot.validateState() if @state.snapshot != null
-      @state.develop.validateState() if @state.develop != null
-      @state.lifelist.validateState() if @state.lifelist != null
 
     snapshotProgress: ->
       scores = @edition().snapshotSurveys().map (survey) =>
@@ -42,10 +36,6 @@
       answeredCount = _.reduce scores, (memo, score) -> (if memo.answers? then memo.answers else memo) + score.answers
       questionCount = _.reduce(scores, (memo, score) -> (if memo.questions? then memo.questions else memo) + score.questions)
       return Math.round(100 * answeredCount / questionCount);
-
-    developProgress: ->
-      survey = @edition().developSurvey()
-      return survey.profileProgress(@).percentage
 
     saveAnswer: (question_id, value) ->
       Answer = Models.Answer
@@ -57,17 +47,6 @@
         answer.setValue(value)
 
       answer.save() if answer.hasChanged()
-
-    pickLifelistItem: (item) ->
-      if !@lifelist_picks().getItems().contains(item)
-        LifelistPick = Models.LifelistPick
-        pick = new LifelistPick(mentee_profile_id: @get('id'), lifelist_item_id: item.get('id'))
-        pick.save()
-    unpickLifelistItem: (item) ->
-      picks = @lifelist_picks()
-      if picks.getItems().contains(item)
-        pick = picks.findWhere(lifelist_item_id: item.get('id'))
-        pick.destroy() if pick
     
   Models.on "before:start", ->
     Models.MenteeProfile.has().one('mentee', 
@@ -82,8 +61,12 @@
       collection: App.Collections.Answers
       inverse: 'mentee_profile'
     )
-    Models.MenteeProfile.has().many('lifelist_picks',
-      collection: App.Collections.LifelistPicks
+    Models.MenteeProfile.has().many('develop_goal_picks',
+      collection: App.Entities.DevelopGoalPicksCollection
+      inverse: 'mentee_profile'
+    )
+    Models.MenteeProfile.has().many('develop_item_picks',
+      collection: App.Entities.DevelopItemPicksCollection
       inverse: 'mentee_profile'
     )
 

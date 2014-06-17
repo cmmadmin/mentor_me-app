@@ -22,16 +22,8 @@
       @profile.initStateMachines()
       @listenTo MM.vent, 'current:snapshot:handle', (e) =>
         @profile.state.snapshot.handle(e)
-      @listenTo MM.vent, 'current:develop:handle', (e) =>
-        @profile.state.develop.handle(e)
-      @listenTo MM.vent, 'current:lifelist:handle', (e) =>
-        @profile.state.lifelist.handle(e)
       @listenTo @profile.state.snapshot, 'transition', (trans) =>
         @profile.set('snapshot_state', trans.toState)
-      @listenTo @profile.state.develop, 'transition', (trans) =>
-        @profile.set('develop_state', trans.toState)
-      @listenTo @profile.state.lifelist, 'transition', (trans) =>
-        @profile.set('lifelist_state', trans.toState)
 
     initHandlers: ->
       MM.reqres.setHandler 'get:current:profile', =>

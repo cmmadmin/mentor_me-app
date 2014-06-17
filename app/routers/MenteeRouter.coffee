@@ -12,9 +12,6 @@
       'mentees/:id/interview' : 'menteeInterview'
       'mentees/:id/observations' : 'menteeObservations'
 
-      'mentees/:id/lifelist' : 'menteeLifelist'
-      'mentees/:id/develop' : 'menteeDevelop'
-
   App.addInitializer ->
     console.log "router created"
     new Routers.MenteeRouter(controller: new MenteeController())
