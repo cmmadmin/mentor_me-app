@@ -15,11 +15,11 @@
       ]
 
     initialize: ->
-      mentees = App.request "mentees:entities"
+      @mentees = App.request "mentees:entities"
       @layout = @getLayoutView()
 
       @listenTo @layout, "show", =>
-        @menteesRegion mentees
+        @menteesRegion @mentees
 
       @show @layout
 
@@ -41,7 +41,7 @@
       new List.Layout
 
     addTapped: (e) ->
-      alert 'You want to add a contact. Too bad, not implemented yet'
+      App.vent.trigger "new:mentee:clicked", @mentees
 
     signOutTapped: (e) ->
       alert "Nah, you don't want to do that"

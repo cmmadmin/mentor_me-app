@@ -13,6 +13,9 @@
     modelEvents:
       "updated" : "render"
 
+    triggers:
+      "click #edit-button" : "edit:mentee:clicked"
+
   # Menu
 
   ###class Show.SnapshotMenu extends App.Views.CollectionView

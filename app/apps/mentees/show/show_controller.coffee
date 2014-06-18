@@ -25,6 +25,10 @@
 
     bannerRegion: (mentee) ->
       bannerView = @getTitleView mentee
+
+      @listenTo bannerView, "edit:mentee:clicked", (args) ->
+        App.vent.trigger "edit:mentee:clicked", args.model
+
       @show bannerView, region: @layout.bannerRegion
 
     menuRegion: (menus) ->
