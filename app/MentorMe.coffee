@@ -104,6 +104,7 @@
     MentorMe.module("HeaderApp").start()
         
   MentorMe.reqres.setHandler "default:region", -> MentorMe.mainRegion
+  MentorMe.reqres.setHandler "concern", (concern) -> MentorMe.Concerns[concern]
 
   MentorMe.on "initialize:after", ->
     # Start Backbone router after bootstrap
