@@ -1,6 +1,6 @@
-@MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
+@MM.module "MenteesApp.Explore", (Explore, App, Backbone, Marionette, $, _) ->
 
-  class Controllers.InterviewController extends Controllers.SnapshotController
+  class Explore.Controller extends App.Controllers.SnapshotController
 
     showActive: ->
       console.log 'InterviewController:showActiveInteractivequiz'

@@ -1,7 +1,6 @@
-@MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
-  SnapshotController = App.Controllers.SnapshotController
+@MM.module "MenteesApp.Observe", (Observe, App, Backbone, Marionette, $, _) ->
 
-  class Controllers.ObservationsController extends SnapshotController
+  class Observe.Controller extends App.Controllers.SnapshotController
 
     showActive: ->
       view = new App.Views.SurveyView

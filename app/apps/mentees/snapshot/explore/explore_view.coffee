@@ -1,15 +1,7 @@
-###
- * View Description
- * 
- * @langversion CoffeeScript
- * 
- * @author 
- * @since  
- ###
-@MM.module "Views.Snapshot", (Snapshot, App, Backbone, Marionette, $, _) ->
+@MM.module "MenteesApp.Explore", (Explore, App, Backbone, Marionette, $, _) ->
 
-  class Snapshot.InteractiveQuizView extends Marionette.ItemView
-    template: 'templates/snapshot/InteractiveQuiz'
+  class Explore.ExploreView extends App.Views.ItemView
+    template: 'templates/explore/explore'
 
     events:
       'click #complete-assess-btn' : 'complete'
