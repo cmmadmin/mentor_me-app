@@ -1,11 +1,10 @@
 @MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
-  SurveyView = App.Views.Survey.SurveyView
 
   class Controllers.InterviewController extends Controllers.SnapshotController
 
     showActive: ->
       console.log 'InterviewController:showActiveInteractivequiz'
-      view = new SurveyView
+      view = new App.Views.SurveyView
         survey: @model.edition().snapshotInteractiveSurvey()
         title: "Interview"
         icon: "camera-retro"

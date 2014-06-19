@@ -49,16 +49,6 @@
     changePage: (page) ->
       MM.appLayout.mainRegion.show(page)
 
-    updateProfile: (mentee) ->
-      if profile = mentee.active_profile()
-        @profileController or= new Controllers.ProfileController(profile: profile)
-        @profileController.setProfile(profile)
-      else
-        console.error("Data error: Mentee is missing an active profile")
 
-    closeProfile: ->
-      if @profileController
-        @profileController.close();
-        @profileController = null;
 
     getActions: ->

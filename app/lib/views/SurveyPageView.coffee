@@ -1,6 +1,6 @@
-@MM.module "Views.Survey", (Survey, App, Backbone, Marionette, $, _) ->
+@MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-  class Survey.SurveyPageView extends Marionette.ItemView
+  class Views.SurveyPageView extends Marionette.ItemView
     SinglePage = 'templates/survey/SinglePage'
     GroupedPage = 'templates/survey/GroupedPage'
 

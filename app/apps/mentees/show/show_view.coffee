@@ -19,15 +19,12 @@
   # Menu
   class Show.MenuItem extends App.Views.ItemView
     template: "mentees/show/show_menuitem"
-    className: "menuitem"
-    tagName: "li"
-
 
   class Show.MenuCategory extends App.Views.CompositeView
     template: "mentees/show/show_menucategory"
     className: "menucategory accordion-group"
     itemView: Show.MenuItem
-    itemViewContainer: "ul"
+    itemViewContainer: ".accordion-inner"
     events:
       "click .accordion-heading" : "toggleChoose"
 
@@ -47,3 +44,8 @@
     template: "mentees/show/show_menteemenu"
     itemView: Show.MenuCategory
     className: "accordion"
+
+    triggers:
+      'click #Assess' : 'snapshot:assess:clicked'
+      'click #Explore' : 'snapshot:explore:clicked'
+      'click #Observe' : 'snapshot:observe:clicked'

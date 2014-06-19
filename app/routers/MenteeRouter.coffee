@@ -8,7 +8,7 @@
       'mentees/:id/journal' : 'menteeJournal'
       # 'mentees/:id/journal_entries/:journal_id' : 'editJournalEntry'
 
-      'mentees/:id/selfassess' : 'menteeSelfAssess'
+      #'mentees/:id/selfassess' : 'menteeSelfAssess'
       'mentees/:id/interview' : 'menteeInterview'
       'mentees/:id/observations' : 'menteeObservations'
 

@@ -1,15 +1,7 @@
-###
- * View Description
- * 
- * @langversion CoffeeScript
- * 
- * @author 
- * @since  
- ###
-@MM.module "Views.Snapshot", (Snapshot, App, Backbone, Marionette, $, _) ->
+@MM.module "MenteesApp.Assess", (Assess, App, Backbone, Marionette, $, _) ->
 
-  class Snapshot.SelfAssessView extends Marionette.ItemView
-    template: 'templates/snapshot/SelfAssess'
+  class Assess.SelfAssessView extends App.Views.ItemView
+    template: "mentees/assess/assess"
 
     events:
       'click #complete-assess-btn' : 'complete'

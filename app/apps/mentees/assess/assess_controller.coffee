@@ -1,12 +1,10 @@
-@MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
-  SnapshotController = Controllers.SnapshotController
-  SurveyView = App.Views.Survey.SurveyView
+@MM.module "MenteesApp.Assess", (Assess, App, Backbone, Marionette, $, _) ->
 
-  class Controllers.SelfAssessController extends SnapshotController
+  class Assess.Controller extends App.Controllers.SnapshotController
 
     showActive: ->
       console.log 'SelfAssessController:showActiveSelfassess'
-      view = new SurveyView
+      view = new App.Views.SurveyView
         survey: @model.edition().snapshotSelfAssessmentSurvey()
         grouped: true
         title: "Self Assessment"

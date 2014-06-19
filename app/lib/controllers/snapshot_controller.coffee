@@ -1,13 +1,17 @@
 @MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
-  ToolLayout = App.Views.ToolLayout
-  Controller = Controllers.Supers.Controller
 
-  class Controllers.SnapshotController extends Controller
+  class Controllers.SnapshotController extends App.Controllers.Application
 
     initialize: (options) ->
+      { mentee, id } = options
+      mentee or= App.request "mentees:entity", id
+
       console.log 'SnapshotModule:Controller:initialize'
+
       @region = options.region
-      @model = options.model
+
+      @updateProfile mentee
+      @model = App.request 'get:current:profile'
 
       #@state = MM.request "get:profile:state", "snapshot"
 
@@ -47,7 +51,7 @@
       profile.save()
 
     getLayoutView: ->
-      new ToolLayout()
+      new App.Views.ToolLayout()
 
     ###buildWorkflow: ->
       profile = MM.request "get:current:profile"
@@ -64,6 +68,18 @@
       @workflow.state == "active"###
 
     onClose: ->
-  #    delete @workflow
+      #    delete @workflow
       delete @layout
-  #    delete @state
+#    delete @state
+
+    updateProfile: (mentee) ->
+      if profile = mentee.active_profile()
+        @profileController or= new Controllers.ProfileController(profile: profile)
+        @profileController.setProfile(profile)
+      else
+        console.error("Data error: Mentee is missing an active profile")
+
+    closeProfile: ->
+      if @profileController
+        @profileController.close();
+        @profileController = null;

@@ -1,10 +1,16 @@
-@MM.module "Views.Survey", (Survey, App, Backbone, Marionette, $, _) ->
-  SurveyPageView = Survey.SurveyPageView
+@MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-  class Survey.SurveyView extends Marionette.CompositeView
+  class Views.ToolLayout extends Marionette.Layout
+    template: 'templates/ToolLayout'
+    attributes:
+      class: 'fullpage'
+    regions:
+      mainRegion: '#surveyMain'
+
+  class Views.SurveyView extends Marionette.CompositeView
     template: 'templates/survey/Survey'
 
-    itemView: SurveyPageView
+    itemView: Views.SurveyPageView
     itemViewContainer: ".swiper-wrapper"
 
     attributes:
@@ -34,18 +40,18 @@
       if @options.showLastSlide
         @ui.surveySwiper.find('.swiper-wrapper').append(
           "<div class='swiper-slide'>
-            <div class='survey-page'>
-              <p class='lead'>Comfortable with your answers?</p>
-              <p>Ok, now you can either:<p>
-              <p><ul>
-                <li>Awkwardly and silently start browsing the internet on your mentor's phone</li>
-                <li>Make a run for it (and get a free phone!)</li>
-                <li>.... or hand it back to your mentor</li>
-              </ul></p>
-              <br/>
-              <p>Ok, just hand it over...</p>
-            </div>
-          </div>")
+                      <div class='survey-page'>
+                        <p class='lead'>Comfortable with your answers?</p>
+                        <p>Ok, now you can either:<p>
+                        <p><ul>
+                          <li>Awkwardly and silently start browsing the internet on your mentor's phone</li>
+                          <li>Make a run for it (and get a free phone!)</li>
+                          <li>.... or hand it back to your mentor</li>
+                        </ul></p>
+                        <br/>
+                        <p>Ok, just hand it over...</p>
+                      </div>
+                    </div>")
 
     onShow: ->
       console.log("SurveyView:onShow")
@@ -53,7 +59,7 @@
         mode:'horizontal'
         pagination: '.pagination-sd'
         moveStartThreshold:100
-        # preventClassNoSwiping: true
+      # preventClassNoSwiping: true
         autoResize: true
         releaseFormElements: true
         onSlideChangeEnd: @onSlideChange

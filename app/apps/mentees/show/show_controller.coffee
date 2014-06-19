@@ -19,7 +19,7 @@
 
       @listenTo @layout, "show", =>
         @bannerRegion mentee
-        @menuRegion menus
+        @menuRegion menus, mentee
 
       @show @layout
 
@@ -31,8 +31,17 @@
 
       @show bannerView, region: @layout.bannerRegion
 
-    menuRegion: (menus) ->
+    menuRegion: (menus, mentee) ->
       showView = @getShowView menus
+
+      @listenTo showView, "snapshot:assess:clicked", (args) ->
+        App.vent.trigger "snapshot:assess:clicked", mentee
+
+      @listenTo showView, "snapshot:explore:clicked", (args) ->
+        App.vent.trigger "snapshot:explore:clicked", mentee
+
+      @listenTo showView, "snapshot:observe:clicked", (args) ->
+        App.vent.trigger "snapshot:observe:clicked", mentee
 
       scrollComp = App.request "ion:scroll:component", showView
 

@@ -1,11 +1,10 @@
 @MM.module "Controllers", (Controllers, App, Backbone, Marionette, $, _) ->
   SnapshotController = App.Controllers.SnapshotController
-  SurveyView = App.Views.Survey.SurveyView
 
   class Controllers.ObservationsController extends SnapshotController
 
     showActive: ->
-      view = new SurveyView
+      view = new App.Views.SurveyView
         survey: @model.edition().snapshotObservationsSurvey()
         title: "Long Term Observations"
         icon: "camera-retro"
