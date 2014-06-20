@@ -14,4 +14,8 @@
       @listenTo view, 'complete', @completeSurvey
       @listenTo view, 'savenclose', @saveAndCloseSurvey
 
-      @layout.mainRegion.show(view)
+      scrollComp = App.request "ion:scroll:component", view
+      @show scrollComp, region: @region
+
+
+

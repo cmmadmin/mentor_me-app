@@ -23,4 +23,4 @@
 
   class Show.NavButtons extends App.Views.CollectionView
     itemView: Show.NavButton
-    className: 'buttons'
+    className: "buttons"
