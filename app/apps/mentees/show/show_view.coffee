@@ -40,12 +40,13 @@
       @collection = @model.items
       #@collection = @model.get('items');
 
-  class Show.MenteeMenu extends App.Views.CollectionView
+  class Show.MenteeMenu extends App.Views.CompositeView
     template: "mentees/show/show_menteemenu"
     itemView: Show.MenuCategory
-    className: "accordion"
+    itemViewContainer: ".accordion"
 
     triggers:
       'click #Assess' : 'snapshot:assess:clicked'
       'click #Explore' : 'snapshot:explore:clicked'
       'click #Observe' : 'snapshot:observe:clicked'
+      'click #Journal' : 'journal:clicked'

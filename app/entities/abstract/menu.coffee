@@ -34,8 +34,6 @@
           { name: "Suggested Steps", url: "", description: "Choose cans", progress: "40%" }
           { name: "Plan", url: "", description: "View your plan and add custom cans", progress: "40%" }
         ] }
-        { name: "Journal", icon: "icon ion-android-book", items: [
-        ] }
       ]
 
   App.reqres.setHandler "menu:entities", ->

@@ -1,16 +1,36 @@
-@MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
+@MM.module "MenteesApp.Journal", (Journal, App, Backbone, Marionette, $, _) ->
 
-  class Views.JournalView extends Marionette.CompositeView
-    Models = App.Models
+  class Journal.Layout extends App.Views.Layout
+    template: "mentees/journal/journal_layout"
 
-    itemView: Views.JournalItemView
+    regions:
+      bannerRegion:  "#banner-region"
+      mainRegion:   "#main-region"
+
+  class Journal.Banner extends App.Views.ItemView
+    template: "mentees/journal/journal_banner"
+
+    modelEvents:
+      "updated" : "render"
+
+  class Journal.JournalItemView extends App.Views.ItemView
+    template: "mentees/journal/journal_item"
+    tagName: 'li'
+    attributes:
+      class: 'arrow'
+    initialize: ->
+      super
+  #rivets.bind(@$el, {status: @model})
+  #@$el.attr 'data-each-mentee-list', 'test'
+
+  class Journal.JournalView extends App.Views.CompositeView
+    template: "mentees/journal/journal"
+    itemView: Journal.JournalItemView
     itemViewContainer: ".items"
-    template: 'templates/Journal'
 
     events:
       'click #add-journal-btn' : 'addJournalEntry'
       'click #go-back-btn' : 'goBack'
-
 
     tagName: 'ul'
     attributes:
@@ -27,7 +47,7 @@
       content = $('#add-journal-textarea').val()
       datetime = $('#add-journal-datetime').val()
 
-      je = Models.JournalEntry.create(mentee_id: @collection.owner.id, body: content, logged_at: datetime)
+      je = App.Models.JournalEntry.create(mentee_id: @collection.owner.id, body: content, logged_at: datetime)
       je.save().done ->
         $('#add-journal-textarea').val('').parent().removeClass 'selected'
 
