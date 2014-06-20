@@ -30,7 +30,6 @@
       #   App.vent.trigger "mentee:clicked"
       #   
       scrollComp = App.request "ion:scroll:component", menteesView
-
       @show scrollComp, region: @layout.menteesRegion
 
     getMenteesView: (mentees) ->

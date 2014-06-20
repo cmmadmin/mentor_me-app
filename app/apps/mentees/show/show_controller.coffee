@@ -47,9 +47,7 @@
         App.vent.trigger "journal:clicked", mentee
 
       scrollComp = App.request "ion:scroll:component", showView
-
       @show scrollComp, region: @layout.menuRegion
-      #@show showView, region: @layout.menuRegion
 
     getTitleView: (mentee) ->
       new Show.Banner

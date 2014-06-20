@@ -28,7 +28,6 @@
       journalView = @getJournalView journal_entries
 
       scrollComp = App.request "ion:scroll:component", journalView
-
       @show scrollComp, region: @layout.mainRegion
 
     getLayoutView: (mentee) ->
