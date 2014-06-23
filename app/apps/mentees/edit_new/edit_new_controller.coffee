@@ -15,20 +15,18 @@
       mentee ?= App.request "mentees:entity", id if id?
       mentee ?= new App.Models.Mentee
       @layout = @getLayoutView(mentee)
-      @listenTo @layout, "form:submit", @formSubmit mentee
+      @listenTo @layout, "form:submit", =>
+        @formSubmit mentee, mentees
       @show @layout
-
-    createListeners: ->
-      @listenTo @layout, "form:submit", @formSubmit mentee
 
     getLayoutView: (mentee) ->
       new EditNew.ItemView
         model: mentee
 
-    formSubmit: (mentee) ->
+    formSubmit: (mentee, mentees) ->
       data = Backbone.Syphon.serialize @layout
-
-      @model.save data
-
-    getCollection: (options) ->
-      options.collection or @contentView.collection
+      mentee.save data, 
+        wait: true
+        collection: mentees
+        success: ->
+          Backbone.history.navigate('mentees', trigger: true)

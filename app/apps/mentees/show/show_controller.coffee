@@ -29,6 +29,14 @@
       @listenTo bannerView, "edit:mentee:clicked", (args) ->
         App.vent.trigger "edit:mentee:clicked", args.model
 
+      @listenTo bannerView, "delete:mentee:clicked", (args) ->
+        { model } = args
+        if confirm "Are you sure you want to delete: #{model.get("name")}" then model.destroy
+            success: ->
+              Backbone.history.navigate('mentees', trigger: true)
+        else 
+          false
+
       @show bannerView, region: @layout.bannerRegion
 
     menuRegion: (menus, mentee) ->

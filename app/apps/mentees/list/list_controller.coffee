@@ -40,7 +40,7 @@
     getLayoutView: ->
       new List.Layout
 
-    addTapped: (e) ->
+    addTapped: (e) =>
       App.vent.trigger "new:mentee:clicked", @mentees
 
     signOutTapped: (e) ->

@@ -14,7 +14,8 @@
       "updated" : "render"
 
     triggers:
-      "click #edit-button" : "edit:mentee:clicked"
+      "click #edit-button"   : "edit:mentee:clicked"
+      "click #delete-button" : "delete:mentee:clicked"
 
   # Menu
   class Show.MenuItem extends App.Views.ItemView

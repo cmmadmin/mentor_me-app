@@ -3,6 +3,8 @@
   class EditNew.ItemView extends App.Views.ItemView
     template: "mentees/edit_new/edit_new_layout"
 
+    tagName: "form"
+
     onRender: ->
       @binder = rivets.bind @$el, model: @model
 
@@ -15,5 +17,4 @@
         (if @model.isNew() then "New" else "Edit") + " Contact"
 
     triggers:
-      "click .submit"                       : "form:submit"
-      "click [data-form-button='cancel']" : "form:cancel"
+      "click button" : "form:submit"

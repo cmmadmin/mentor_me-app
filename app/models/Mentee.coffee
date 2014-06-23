@@ -35,8 +35,10 @@
     
   API =
     getMentees: ->
-      #TODO: Is this really the best way of doing this?
-      App.collections.mentees
+      mentees = new App.Collections.Mentees
+      mentees.fetch
+        reset: true
+      mentees
 
     getMentee: (id) ->
       App.collections.mentees.getOrFetch(id)
