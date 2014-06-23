@@ -1,0 +1,28 @@
+<h2 class="title">{{ pageTitle }}</h2>
+<div class="list">
+  <div class="name-image item-thumbnail-left">
+    {{#if avatar_mobile_url}}
+        <img src="{{avatar_mobile_url}}" />
+    {{else}}
+        <i class="icon-user" style="display: inline-block"></i>
+    {{/if}}
+    <label class="item item-input">
+      <input type="text" name="name" rv-value="model:name" placeholder="Full Name">
+    </label>
+  </div>
+	<label class="item item-input">
+		<input type="text" name="phone" rv-value="model:phone">
+	</label>
+	<label class="item item-input">
+		<input type="text" name="email" rv-value="model:email" placeholder="Email">
+	</label>
+  <label class="item item-input">
+    <input type="text" name="date" rv-value="model:birth_date" placeholder="Birthday">
+  </label>
+  <label class="item item-input">
+    <input type="text" name="major" rv-value="model:major" placeholder="Major">
+  </label>
+</div>
+<div>
+  <button class="button button-block" type="submit">Submit</button>
+</div>
