@@ -23,7 +23,7 @@
 
   class Show.MenuCategory extends App.Views.CompositeView
     template: "mentees/show/show_menucategory"
-    className: "menucategory accordion-group"
+    className: "accordion-group"
     itemView: Show.MenuItem
     itemViewContainer: ".accordion-inner"
     events:

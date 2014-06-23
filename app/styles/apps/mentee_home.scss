@@ -1,6 +1,5 @@
 /* === MENTEE HOME === */
 
-
 // Accordian
 .accordion {
   margin-bottom: 20px;
@@ -46,6 +45,11 @@
   height: auto;
 }
 
+.menucategory { background-color: black; }
+
+#banner {
+  top: rem(44);
+}
 
 #menu-region {
   div.list {

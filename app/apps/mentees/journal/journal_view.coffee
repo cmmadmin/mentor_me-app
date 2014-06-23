@@ -4,14 +4,7 @@
     template: "mentees/journal/journal_layout"
 
     regions:
-      bannerRegion:  "#banner-region"
-      mainRegion:   "#main-region"
-
-  class Journal.Banner extends App.Views.ItemView
-    template: "mentees/journal/journal_banner"
-
-    modelEvents:
-      "updated" : "render"
+      mainRegion:   "#journal-region"
 
   class Journal.JournalItemView extends App.Views.ItemView
     template: "mentees/journal/journal_item"

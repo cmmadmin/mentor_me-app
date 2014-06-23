@@ -9,6 +9,7 @@
       "mentees/:id/assess" : "assess"
       "mentees/:id/explore" : "explore"
       "mentees/:id/observe" : "observe"
+      "mentees/:id/journal" : "journal"
 
   API =
     list: ->

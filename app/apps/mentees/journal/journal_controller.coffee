@@ -20,26 +20,15 @@
       @layout = @getLayoutView mentee
 
       @listenTo @layout, "show", =>
-        @bannerRegion mentee
         @mainRegion journal_entries, mentee
 
       @show @layout
-
-    bannerRegion: (mentee) ->
-      bannerView = @getTitleView mentee
-
-      @show bannerView, region: @layout.bannerRegion
 
     mainRegion: (journal_entries, mentee) ->
       journalView = @getJournalView journal_entries
 
       scrollComp = App.request "ion:scroll:component", journalView
-
       @show scrollComp, region: @layout.mainRegion
-
-    getTitleView: (mentee) ->
-      new Journal.Banner
-        model: mentee
 
     getLayoutView: (mentee) ->
       new Journal.Layout

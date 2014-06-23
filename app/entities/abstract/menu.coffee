@@ -24,15 +24,15 @@
   API =
     getMenus: ->
       new Entities.MenusCollection [
-        { name: "Snap Shot", icon: "icon ion-camera", items: [
-          { name: "Assess", url: "selfassess", description: "Self assessment performed by the mentee.", progress: "100%" }
-          { name: "Explore", url: "interview", description: "Conversation ideas to explore together.", progress: "40%" }
-          { name: "Observe", url: "observations", description: "Record long-term observations about the mentee here.", progress: "20%" }
+        { name: "Snap Shot", icon: "icon ion-camera-empty icon-left", items: [
+          { name: "Assess", description: "Self assessment performed by the mentee.", progress: "100%" }
+          { name: "Explore", description: "Conversation ideas to explore together.", progress: "40%" }
+          { name: "Observe", description: "Record long-term observations about the mentee here.", progress: "20%" }
         ] }
         { name: "Develop", icon: "icon ion-android-note", items: [
-          { name: "Life List", url: "", description: "Choose aisles and shelves", progress: "40%" }
-          { name: "Suggested Steps", url: "", description: "Choose cans", progress: "40%" }
-          { name: "Plan", url: "", description: "View your plan and add custom cans", progress: "40%" }
+          { name: "Life List", description: "Choose aisles and shelves", progress: "40%" }
+          { name: "Suggested Steps", description: "Choose cans", progress: "40%" }
+          { name: "Plan", description: "View your plan and add custom cans", progress: "40%" }
         ] }
       ]
 
