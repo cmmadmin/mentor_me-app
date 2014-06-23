@@ -1,0 +1,20 @@
+.item {
+	border-color: #000;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	::-webkit-input-placeholder { color:#FFF; }
+	::-moz-placeholder { color:#FFF; } 
+	:-ms-input-placeholder { color:#FFF; }
+	input:-moz-placeholder { color:#FFF; }
+}
+
+.item input {
+	color: #FFF;
+}
+
+.submit {
+	width: 33%;
+	margin-right: auto;
+	margin-left: auto;
+}

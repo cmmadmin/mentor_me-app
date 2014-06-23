@@ -17,4 +17,4 @@
         (if @model.isNew() then "New" else "Edit") + " Contact"
 
     triggers:
-      "click button" : "form:submit"
+      "click .submit" : "form:submit"
