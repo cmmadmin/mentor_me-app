@@ -5,8 +5,7 @@
     showActive: ->
       view = new App.Views.SurveyView
         survey: @model.edition().snapshotObservationsSurvey()
-        title: "Long Term Observations"
-        icon: "camera-retro"
+        title: "Observe"
         showCompleteBtn: false
       @listenTo view, 'savenclose', @saveAndCloseSurvey
       @layout.mainRegion.show(view)

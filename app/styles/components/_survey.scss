@@ -6,7 +6,6 @@
 
 #surveyMain { height: 100%; }
 .survey {
-  background-color: rgba(235, 235, 235, 0.9);
   height: 100%;
   padding: 20px 0;
   padding-bottom: 80px;
@@ -40,11 +39,13 @@
   height: 85%;
   // height: 60%;
 }
+
 .survey-page {
-  background-color: white;
-  padding: 15px 10px;
-  margin: 10px 20px;
-  box-shadow: 2px 2px grey;
+  margin: rem(10) rem(12);
+}
+
+.survey-page form {
+  padding: rem(15) rem(10);
 }
 
 .pagination-sd {

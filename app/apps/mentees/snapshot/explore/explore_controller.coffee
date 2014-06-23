@@ -6,8 +6,7 @@
       console.log 'InterviewController:showActiveInteractivequiz'
       view = new App.Views.SurveyView
         survey: @model.edition().snapshotInteractiveSurvey()
-        title: "Interview"
-        icon: "camera-retro"
+        title: "Explore"
         showCompleteBtn: false
       @listenTo view, 'complete', @completeSurvey
       @listenTo view, 'savenclose', @saveAndCloseSurvey

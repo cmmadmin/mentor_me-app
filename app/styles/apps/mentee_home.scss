@@ -37,7 +37,8 @@
   padding: rem(10);
 }
 
-.menucategory { background-color: black; }
+$section-bkgrnd-color: black;
+.menucategory { background-color: $section-bkgrnd-color; }
 
 // #banner {
 //   top: rem(44);

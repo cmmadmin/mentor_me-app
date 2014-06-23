@@ -2,10 +2,15 @@
   <p class="lead">{{title}}</p>
   {{! Form required for backbone.syphon serialization }}
   <form>
-  <ul>
-  {{#each questions}}
-    <li>{{body}} <input type="range" min="1" max="10" step="1" name="questions[{{id}}]"></li>
-  {{/each}}
-  </ul>
+      <ul>
+      {{#each questions}}
+        <li>
+            <p>{{body}}</p>
+            <span>1</span>
+            <input type="range" min="1" max="10" step="1" name="questions[{{id}}]">
+            <span>10</span>
+        </li>
+      {{/each}}
+      </ul>
   </form>
 </div>

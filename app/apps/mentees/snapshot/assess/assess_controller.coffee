@@ -7,8 +7,7 @@
       view = new App.Views.SurveyView
         survey: @model.edition().snapshotSelfAssessmentSurvey()
         grouped: true
-        title: "Self Assessment"
-        icon: "camera-retro"
+        title: "Assess"
         showLastSlide: false
         showCompleteBtn: false
       @listenTo view, 'complete', @completeSurvey

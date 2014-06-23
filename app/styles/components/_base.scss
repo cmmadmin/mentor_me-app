@@ -1,8 +1,10 @@
 /* === SHARED STYLES === */
 
 $font-stack: $helvetica;
+$text-color: white;
 body{
   font: 100% $font-stack;
+  color: $text-color;
 }
 
 html, body, .app, #content {
@@ -12,7 +14,7 @@ html, body, .app, #content {
 
 h1, h2, h3, h4, p {
   margin: 0;
-  color: white;
+  color: $text-color;
 }
 
 h1{ font-weight: 300; }
