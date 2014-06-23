@@ -13,8 +13,6 @@
   border: 0;
   border-bottom: rem(1) #333 solid;
 
-  h2, p {color: white;}
-
   &:last-child { border: 0 }
 }
 .icon-user {
@@ -22,6 +20,6 @@
   line-height: rem(80);
   font-size: rem(48);
 }
-.icon-user, img {
+.icon-user, .item-thumbnail-left img {
   border: rem(1) white solid;
 }

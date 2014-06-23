@@ -45,6 +45,7 @@
     template: "mentees/show/show_menteemenu"
     itemView: Show.MenuCategory
     itemViewContainer: ".accordion"
+    id: "menu-inner"
 
     triggers:
       'click #Assess' : 'snapshot:assess:clicked'
