@@ -36,6 +36,7 @@
     explore: (id) ->
       new MenteesApp.Explore.Controller
         id: id
+        region: App.appLayout.mainRegion
 
     observe: (id) ->
       new MenteesApp.Observe.Controller
