@@ -26,5 +26,4 @@
     emptyView: List.Empty
     className: "list"
     # itemViewContainer: "ul"
-
-
+    

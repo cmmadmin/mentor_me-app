@@ -65,7 +65,7 @@ a:active {
 }
 
 .full-form input, textarea, button {
-  margin-bottom:10px;
+  margin-bottom: rem(10);
   width:100%;
 }
 
@@ -86,22 +86,22 @@ body > div {
   background-image: url("../images/helpmeknowyou.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
-  border-radius: 15px;
-  padding: 10px;
+  border-radius: rem(15);
+  padding: rem(10);
   position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
+  top: rem(10);
+  left: rem(10);
+  right: rem(10);
+  bottom: rem(10);
   .snapshot-intro-buttons {
-    position: absolute; left: 10px; right: 10px; bottom: 0;
+    position: absolute; left: rem(10); right: rem(10); bottom: 0;
     button, a { width: 100% }
   }
 }
 
 .with-header {
-  margin-top: 2.75rem;
-  padding: 0 1rem;
+  margin-top: rem(48);
+  padding: 0 rem(12);
 }
 
 .button-pink {

@@ -1,5 +1,13 @@
 .item {
-  h2 { font-size: rem(20); font-weight: 400 }
-  p { font-size: rem(12); }
+  h2 { 
+  	font-size: rem(20); font-weight: 400 
+  }
+  p { 
+  	font-size: rem(12); 
+  }
   background-color: transparent;
+}
+
+.item-thumbnail-left .icon-user {
+	left: rem(1);
 }

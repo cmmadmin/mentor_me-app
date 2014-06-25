@@ -1,16 +1,19 @@
 <div id="banner" class="list">
-    <div class="mentee item item-dark item-thumbnail-left">
-        {{#if avatar_mobile_url}}
-            <img src="{{avatar_mobile_url}}" />
-        {{else}}
-            <i class="icon-user" style="display: inline-block"></i>
-        {{/if}}
-        <h2>{{name}}</h2>
-        <p>{{major}}</p>
-        <i class="icon ion-ios7-telephone"></i>
-        <i class="icon ion-ios7-chatbubble"></i>
-        <p id="edit-button" style="float: right">Edit</p>
-        <p id="delete-button" style="float: right">Delete</p>
+  <div class="mentee item item-dark item-thumbnail-left">
+    <div class="mentee-info">
+      {{#if avatar_mobile_url}}
+          <img src="{{avatar_mobile_url}}" />
+      {{else}}
+          <i class="icon-user" style="display: inline-block"></i>
+      {{/if}}
+      <h2>{{name}}</h2>
+      <p>{{major}}</p>
+      <i class="icon ion-ios7-telephone"></i>
+      <i class="icon ion-ios7-chatbubble"></i>
     </div>
-
+    <div class="edit-delete-buttons">
+      <p id="delete-button" style="float: right">Delete</p>
+      <p id="edit-button" style="float: right">Edit</p>
+    </div>
+  </div>
 </div>
