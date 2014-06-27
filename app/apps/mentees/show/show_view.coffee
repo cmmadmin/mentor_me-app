@@ -2,7 +2,8 @@
 
   class Show.Layout extends App.Views.Layout
     template: "mentees/show/show_layout"
-
+    className: "with-banner"
+      
     regions:
       bannerRegion:  "#banner-region"
       menuRegion:   "#menu-region"

@@ -2,9 +2,34 @@
 
 $font-stack: $helvetica;
 $text-color: white;
+
+/*
+This CSS resource incorporates links to font software which is the valuable copyrighted
+property of Monotype Imaging and/or its suppliers. You may not attempt to copy, install,
+redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
+Imaging with any questions regarding Web Fonts:  http://webfonts.fonts.com
+*/
+@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=6d7e9655-4cf5-4c62-b8db-59d583cbaddf");
+@font-face{
+font-family:"Helvetica W02 Roman";
+src:url("../fonts/helvetica/e4bd4516-4480-43df-aa6e-4e9b9029f53e.eot?#iefix");
+src:url("../fonts/helvetica/e4bd4516-4480-43df-aa6e-4e9b9029f53e.eot?#iefix") format("eot"),url("../fonts/helvetica/b56b944e-bbe0-4450-a241-de2125d3e682.woff") format("woff"),url("../fonts/helvetica/7da02f05-ae8b-43a1-aeb9-83b3c0527c06.ttf") format("truetype"),url("../fonts/helvetica/66cac56e-d017-4544-9d0c-f7d978f0c5c2.svg#66cac56e-d017-4544-9d0c-f7d978f0c5c2") format("svg");
+}
+@font-face{
+font-family:"Helvetica W01 Bold";
+src:url("../fonts/helvetica/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix");
+src:url("../fonts/helvetica/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix") format("eot"),url("../fonts/helvetica/c5749443-93da-4592-b794-42f28d62ef72.woff") format("woff"),url("../fonts/helvetica/73805f15-38e4-4fb7-8a08-d56bf29b483b.ttf") format("truetype"),url("../fonts/helvetica/874bbc4a-0091-49f0-93ef-ea4e69c3cc7a.svg#874bbc4a-0091-49f0-93ef-ea4e69c3cc7a") format("svg");
+}
+@font-face{
+font-family:"Helvetica W01 Light";
+src:url("../fonts/helvetica/717f8140-20c9-4892-9815-38b48f14ce2b.eot?#iefix");
+src:url("../fonts/helvetica/717f8140-20c9-4892-9815-38b48f14ce2b.eot?#iefix") format("eot"),url("../fonts/helvetica/03805817-4611-4dbc-8c65-0f73031c3973.woff") format("woff"),url("../fonts/helvetica/d5f9f72d-afb7-4c57-8348-b4bdac42edbb.ttf") format("truetype"),url("../fonts/helvetica/05ad458f-263b-413f-b054-6001a987ff3e.svg#05ad458f-263b-413f-b054-6001a987ff3e") format("svg");
+}
+
 body{
   font: 100% $font-stack;
   color: $text-color;
+  font-family: "Helvetica W02 Roman";
 }
 
 html, body, .app, #content {
@@ -17,7 +42,9 @@ h1, h2, h3, h4, p {
   color: $text-color;
 }
 
-h1{ font-weight: 300; }
+h1, h2 {
+  font-family: "Helvetica W01 Light";
+}
 
 hr {
   margin: 0;
