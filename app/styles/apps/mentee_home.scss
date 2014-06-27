@@ -1,11 +1,28 @@
 /* === MENTEE HOME === */
 
+#show-mentees-layout {
+  h2 {
+    font-weight: 300;
+  }
+}
+
 // Top Banner
 #banner {
   .mentee {
     p {
       color: #FFF;
     }
+  }
+
+  .mentee-info {
+    width: rem(150);
+    float: left;
+  }
+
+  .edit-delete-buttons {
+    float: right;
+    width: rem(50);
+    text-align: right;
   }
 }
 
@@ -27,6 +44,7 @@
   .accordion-toggle {
     display: block;
     padding-left: rem(18);
+    font-weight: 300;
   }
   img {
     max-width: rem(38);
@@ -35,19 +53,18 @@
 }
 
 .accordion-inner {
-  > div {
-    height: rem(62);
-  }
 
   .menuitem.row {
     .col {
       padding-left: 0;
     }
 
-    padding-left: 0;
+    padding-left: rem(77);
+
+    border-bottom: 1px solid #000;
   }
 
-  padding: rem(9) rem(15) rem(9) rem(77);
+  padding: rem(0) rem(15) rem(9) rem(0);
 }
 
 .accordion-body {
@@ -67,6 +84,8 @@
 .progress {
   border: 1px solid #e5e5e5;
   padding: rem(10);
+  width: rem(80);
+  float: right;
 }
 
 $section-bkgrnd-color: black;
@@ -79,7 +98,7 @@ $section-bkgrnd-color: black;
 #menu-region {
   // Refactor to use header variable heights
   .scroll-content {
-    top: rem(145);
+    top: rem(144);
   }
 }
 
