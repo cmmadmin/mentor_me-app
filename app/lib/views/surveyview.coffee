@@ -1,13 +1,13 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
-  class Views.ToolLayout extends App.Views.Layout
+  class Views.ToolLayout extends Marionette.Layout
     template: 'templates/ToolLayout'
     attributes:
       class: 'fullpage'
     regions:
       mainRegion: '#surveyMain'
 
-  class Views.SurveyView extends App.Views.CompositeView
+  class Views.SurveyView extends Marionette.CompositeView
     template: 'templates/survey/Survey'
 
     itemView: Views.SurveyPageView
@@ -56,9 +56,9 @@
     onShow: ->
       console.log("SurveyView:onShow")
       @swiper = new Swiper('.survey-swiper',
-        mode: 'horizontal'
+        mode:'horizontal'
         pagination: '.pagination-sd'
-        moveStartThreshold: 100
+        moveStartThreshold:100
       # preventClassNoSwiping: true
         autoResize: true
         releaseFormElements: true
