@@ -100,7 +100,5 @@
       else
         @trigger 'savenclose'
 
-
-
     setCollection: ->
       @collection = (if @options.grouped then @survey.question_groups() else @survey.default_question_group().questions())

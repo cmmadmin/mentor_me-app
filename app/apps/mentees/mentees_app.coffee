@@ -62,7 +62,7 @@
 
   App.vent.on "snapshot:assess:clicked", (mentee) ->
     App.navigate "mentees/#{mentee.id}/assess"
-    API.assess mentee
+    API.assess mentee.id
 
   App.vent.on "snapshot:explore:clicked", (mentee) ->
     App.navigate "mentees/#{mentee.id}/explore"

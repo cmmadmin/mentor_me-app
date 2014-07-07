@@ -7,8 +7,7 @@
 #surveyMain { height: 100%; }
 .survey {
   height: 100%;
-  padding: 20px 0;
-  padding-bottom: 80px;
+  padding-bottom: rem(55);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   box-orient: vertical;
@@ -16,13 +15,23 @@
     flex: 1
   }
   .pagination-sd { flex: 1 }
-  .survey-footer {
+  .survey-bottom {
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
-    height: 50px;
-    text-align: center;
-    button { width: 180px; }
+    height: rem(50);
+  }
+  .survey-footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    button { 
+      width: 180px; 
+      margin: 0 auto;
+      display: block;
+    }
   }
 }
 
@@ -44,10 +53,6 @@
   margin: rem(10) rem(12);
 }
 
-.survey-page form {
-  padding: rem(15) rem(10);
-}
-
 .pagination-sd {
   text-align: center;
 }
@@ -60,5 +65,5 @@
   background: #aaa;
 }
 .pagination-sd .swiper-active-switch {
-  background: #333;
+  background: #EC008C;
 }

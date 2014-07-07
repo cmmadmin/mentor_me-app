@@ -43,6 +43,10 @@
     height: rem(62);
     padding-left: rem(22);
     padding-top: rem(12);
+
+    h2 {
+      width: rem(200);
+    }
   }
   .accordion-toggle {
     display: block;
@@ -62,6 +66,21 @@
       padding-left: 0;
     }
 
+    .heading {
+      width: rem(170);
+    }
+
+    .mentee-info {
+      width: rem(208);
+    }
+
+    .progress {
+      width: rem(50);
+      border: 1px solid #e5e5e5;
+      padding: rem(10);
+      float: right;
+    }
+
     img {
       height: rem(6);
       margin-top: rem(30);
@@ -73,7 +92,7 @@
     border-bottom: 1px solid #000;
   }
 
-  padding: rem(0) rem(15) rem(9) rem(0);
+  padding-bottom: rem(9);
 }
 
 .accordion-body {
@@ -90,25 +109,11 @@
   height: auto;
 }
 
-.progress {
-  border: 1px solid #e5e5e5;
-  padding: rem(10);
-  width: rem(80);
-  float: right;
-}
-
 $section-bkgrnd-color: black;
 .menucategory { background-color: $section-bkgrnd-color; }
 
 #menu-inner {
   margin: 0 rem(12) 0 rem(12);
-}
-
-#menu-region {
-  // Refactor to use header variable heights
-  .scroll-content {
-    top: rem(144);
-  }
 }
 
 .contact-head {
