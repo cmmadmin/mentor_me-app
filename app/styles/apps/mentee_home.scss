@@ -26,6 +26,16 @@
     float: right;
     width: rem(50);
     text-align: right;
+    position: absolute;
+    bottom: rem(10);
+    right: 0;
+  }
+
+  .icon {
+    &.ion-ios7-telephone {
+      margin-right: 15px;
+    }
+    font-size: 30px;
   }
 }
 
@@ -87,7 +97,9 @@
       margin-right: rem(17);
     }
 
+    height: rem(75);
     padding-left: rem(55);
+    padding-top: rem(6);
 
     border-bottom: 1px solid #000;
   }

@@ -2,7 +2,7 @@
 
 input[type="range"] {
 	-webkit-appearance: none;
-  width: 90%;
+  width: 88%;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00ACD6), color-stop(100%, #00ACD6));
   background-size: 99% rem(2);
 }
@@ -39,9 +39,11 @@ input[type="range"]::-webkit-slider-thumb:after {
   }
 }
 
-.lead {
-  background-color: $section-bkgrnd-color;
-  padding: rem(10);
+.Assess {
+  .lead {
+    background-color: $section-bkgrnd-color;
+    padding: rem(10);
+  }
 }
 
 .snapshot-preinteractive {

@@ -4,23 +4,29 @@
   height: 100%;
 }
 
-#surveyMain { height: 100%; }
+#surveyMain { 
+  height: 100%; 
+}
+
 .survey {
   height: 100%;
-  padding-bottom: rem(55);
+  padding-bottom: rem(60);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   box-orient: vertical;
   .survey-swiper {
     flex: 1
   }
-  .pagination-sd { flex: 1 }
+  .pagination-sd { 
+    flex: 1 
+  }
   .survey-bottom {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: rem(50);
+    height: rem(60);
+    padding-top: rem(10);
   }
   .survey-footer {
     margin-left: auto;
@@ -28,10 +34,20 @@
     width: 100%;
 
     button { 
-      width: 180px; 
+      width: rem(165); 
       margin: 0 auto;
       display: block;
+      min-height: rem(35);
+      height: rem(35);
+      line-height: rem(34);
+      border-radius: rem(0);
     }
+  }
+  .item-input {
+    padding: rem(5);
+  }
+  textarea {
+    height: rem(110);
   }
 }
 
@@ -49,19 +65,15 @@
   // height: 60%;
 }
 
-.survey-page {
-  margin: rem(10) rem(12);
-}
-
 .pagination-sd {
   text-align: center;
 }
 .pagination-sd .swiper-pagination-switch {
-  border-radius: 10px;
-  width: 10px;
-  height: 10px;
+  border-radius: rem(5);
+  width: rem(5);
+  height: rem(5);
   display: inline-block;
-  margin: 0 3px;
+  margin: 0 rem(5);
   background: #aaa;
 }
 .pagination-sd .swiper-active-switch {
