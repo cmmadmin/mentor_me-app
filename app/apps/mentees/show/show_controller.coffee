@@ -8,6 +8,7 @@
       ]
       rightButtons: [        
           type: 'Info'
+          promptId: 'contact_home'
       ]
 
     initialize: (options) ->

@@ -33,11 +33,10 @@
     defaults: 
       type: 'Info'
       className: 'button-icon icon ion-ios7-information-outline'
-      page_id: ''
-    tap: (page_id) ->
-      # TODO: Trigger event to open prompt
-      console.log "Showing prompt"
-      App.commands.execute "show:prompt", page_id
+      promptId: null
+    tap: ->
+      if @get('promptId')?
+        App.commands.execute "show:prompt", @get('promptId')
 
   class Entities.NavButtonsCollection extends App.Collections.Supers.Collection
     model: (attrs, options) ->

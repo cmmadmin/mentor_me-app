@@ -29,3 +29,9 @@
 
   Nav = JST['templates/partials/Navigation']
   Handlebars.registerPartial("navigation", Nav)
+
+  Handlebars.registerHelper 'breaklines', (text) ->
+    text = Handlebars.Utils.escapeExpression(text)
+    text = text.toString()
+    text = text.replace(/(\r\n|\n|\r)/gm, '<br>')
+    return new Handlebars.SafeString(text)

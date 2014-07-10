@@ -2,11 +2,11 @@ MM.module "PromptApp.Show", (Show, App, Backbone, Marionette, $, _) ->
 
   class Show.Controller extends App.Controllers.Application
     initialize: (options) ->
-      { page_id } = options 
-      prompt = App.Config.Prompts["contact_home"]
+      { promptId } = options 
+      prompt = App.Config.Prompts[promptId]
 
-      if prompt
-        promptModel = new App.Entities.Prompt(prompt)
+      throw Error("Invalid promptId") unless prompt
+      promptModel = new App.Entities.Prompt(prompt)
 
       @layout = @getPromptView promptModel
 
