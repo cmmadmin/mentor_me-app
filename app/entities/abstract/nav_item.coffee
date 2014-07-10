@@ -33,8 +33,10 @@
     defaults: 
       type: 'Info'
       className: 'button-icon icon ion-ios7-information-outline'
-    tap: ->
+    tap: (id) ->
       # TODO: Trigger event to open prompt
+      console.log "Showing prompt"
+      App.commands.execute "show:prompt", id
 
   class Entities.NavButtonsCollection extends App.Collections.Supers.Collection
     model: (attrs, options) ->
