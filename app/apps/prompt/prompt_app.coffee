@@ -2,10 +2,10 @@
   @startWithParent = false
 
   API =
-    show: (id) ->
+    show: (page_id) ->
       new PromptApp.Show.Controller
         region: App.promptRegion
-        id: id
+        page_id: page_id
 
-  App.commands.setHandler "show:prompt", (id) ->
-    API.show id
+  App.commands.setHandler "show:prompt", (page_id) ->
+    API.show page_id

@@ -12,6 +12,7 @@
           tap: @addTapped
         ,
           type: 'Info'
+          page_id: 'contact_list'
       ]
 
     initialize: ->
