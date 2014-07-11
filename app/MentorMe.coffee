@@ -33,7 +33,7 @@
     headerRegion: "#header-region"
     mainRegion:    "#content"
     footerRegion: "#pageFooter"
-    promptRegion: "#info"
+    promptRegion: "#prompt-region"
 
   MentorMe.on "initialize:before", (options) ->
     MentorMe.environment = options.environment

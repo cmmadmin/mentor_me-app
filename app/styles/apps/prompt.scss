@@ -1,0 +1,15 @@
+#prompt-region {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.87);
+  z-index: 10;
+  display: none;
+
+  .prompt {
+    padding: rem(95) rem(20) rem(20);
+    height: 100%;
+  }
+}

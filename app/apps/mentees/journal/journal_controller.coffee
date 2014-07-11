@@ -8,6 +8,7 @@
       ]
       rightButtons: [
         type: 'Info'
+        promptId: 'journal'
       ]
 
     initialize: (options) ->

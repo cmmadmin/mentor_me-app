@@ -37,6 +37,7 @@
     tap: ->
       if @get('promptId')?
         App.commands.execute "show:prompt", @get('promptId')
+      $('#prompt-region').show()
 
   class Entities.NavButtonsCollection extends App.Collections.Supers.Collection
     model: (attrs, options) ->
