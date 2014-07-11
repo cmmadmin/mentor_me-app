@@ -8,4 +8,4 @@
       'click': 'hideInfo'
 
     hideInfo: (e) ->
-      $('#prompt-region').hide()
+      $('#prompt-region').addClass('hidden-visibility')

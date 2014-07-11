@@ -37,7 +37,7 @@
     tap: ->
       if @get('promptId')?
         App.commands.execute "show:prompt", @get('promptId')
-      $('#prompt-region').show()
+      $('#prompt-region').removeClass('hidden-visibility')
 
   class Entities.NavButtonsCollection extends App.Collections.Supers.Collection
     model: (attrs, options) ->
