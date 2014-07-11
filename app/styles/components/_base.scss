@@ -146,7 +146,13 @@ body > div {
   background-color: #EC008C;
   border-color: #FFF;
   color: $text-color;
-  width: rem(165);
+  width: rem(165); 
+  margin: 0 auto;
+  display: block;
+  min-height: rem(35);
+  height: rem(35);
+  line-height: rem(34);
+  border-radius: rem(0);
 }
 
 /* Clearfix */
