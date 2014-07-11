@@ -9,4 +9,4 @@
 
     hidePrompt: (e) =>
       $('#prompt-region').addClass('hidden-visibility')
-      App.vent.trigger "prompt:hidden", @
+      @triggerMethod 'close'

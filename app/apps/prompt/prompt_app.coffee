@@ -10,8 +10,3 @@
   App.commands.setHandler "show:prompt", (promptId) ->
     if promptId?
       API.show promptId
-
-  App.vent.on "prompt:hidden", (view) ->
-  	view.remove()
-  	view.unbind()
-  	view.views = []
