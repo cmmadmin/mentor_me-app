@@ -5,7 +5,8 @@
     className: "prompt"
 
     events: 
-      'click': 'hideInfo'
+      'click': 'hidePrompt'
 
-    hideInfo: (e) ->
+    hidePrompt: (e) =>
       $('#prompt-region').addClass('hidden-visibility')
+      App.vent.trigger "prompt:hidden", @
