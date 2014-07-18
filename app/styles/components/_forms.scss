@@ -4,3 +4,7 @@
   padding: 0 10px;
   margin-top: 60px;
 }
+
+/* -- Form Components -- */
+.checkbox input:checked:after, input:checked + .checkbox-icon:after { opacity: 0; }
+.checkbox input:checked:before, input:checked + .checkbox-icon:before { border-width: $checkbox-border-width }

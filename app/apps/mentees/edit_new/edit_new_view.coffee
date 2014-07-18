@@ -4,6 +4,7 @@
     template: "mentees/edit_new/edit_new_layout"
 
     tagName: "form"
+    className: "padded-page"
 
     onRender: ->
       @binder = rivets.bind @$el, mentee: @model

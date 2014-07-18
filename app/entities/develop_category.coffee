@@ -15,3 +15,10 @@
         collection: Entities.DevelopGoalsCollection
         inverse: 'develop_category'
     )
+
+  API =
+    getCategories: ->
+      Entities.DevelopCategory.all()
+
+  App.reqres.setHandler "develop_category:entities", ->
+    API.getCategories()
