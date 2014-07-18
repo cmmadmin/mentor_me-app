@@ -2,9 +2,9 @@
 
   class JournalApp.Router extends Marionette.AppRouter
     appRoutes:
-      "mentees/:id/journal" : "list"
-      "mentees/:id/journal/new" : "_new"
-      "mentees/:id/journal/edit" : "edit"
+      "mentees/:mentee_id/journal" : "list"
+      "mentees/:mentee_id/journal/new" : "_new"
+      "mentees/:mentee_id/journal/:id" : "edit"
 
   API =
     list: (mentee) ->
@@ -12,11 +12,11 @@
         mentee: mentee
 
     _new: (journalEntries) ->
-      new JournalApp.EditNew.Controller
+      new JournalApp.New.Controller
         journalEntries: journalEntries
 
     edit: (journalEntry) ->
-      new JournalApp.EditNew.Controller
+      new JournalApp.Edit.Controller
         journalEntry: journalEntry
 
   App.vent.on "new:journalentry:clicked", (journalEntries) ->
@@ -24,7 +24,7 @@
     API._new journalEntries
 
   App.vent.on "edit:journalentry:clicked", (journalEntry) ->
-    App.navigate "mentees/#{journalEntry.owner.id}/journal/edit"
+    App.navigate "mentees/#{journalEntry.get('mentee_id')}/journal/#{journalEntry.id}"
     API.edit journalEntry
 
   App.vent.on "journal:clicked", (mentee) ->

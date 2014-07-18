@@ -12,26 +12,35 @@
 
     initialize: (options) ->
       { mentee } = options
-      # journal_entries = App.request "journal:entities", mentee
 
-      journal_entries = mentee.journal_entries()
-      journal_entries.fetch()
+      # If the mentee is actually an ID and not a model, then get the mentee from ID.
+      # This has only happened when navigating back from editing a journal entry.
+      if !(mentee instanceof Backbone.Model)
+        mentee = App.request "mentees:entity", mentee
+
+      journalEntries = App.request "journal:entities", mentee
 
       @layout = @getLayoutView()
 
       @listenTo @layout, "show", =>
-        @mainRegion journal_entries, mentee
+        @mainRegion journalEntries, mentee
 
       @show @layout
 
-    mainRegion: (journal_entries, mentee) ->
-      journalView = @getJournalView journal_entries
+    mainRegion: (journalEntries) ->
+      journalView = @getJournalView journalEntries
 
       @listenTo journalView, "new:journalentry:clicked", (args) ->
-        App.vent.trigger "new:journalentry:clicked", args.collection
+        { collection } = args
+        App.vent.trigger "new:journalentry:clicked", collection
 
-      @listenTo journalView, "edit:journalentry:clicked", (args) ->
-        App.vent.trigger "edit:journalentry:clicked", args.model
+      @listenTo journalView, "childview:edit:journalentry:clicked", (args) ->
+        { model } = args
+        App.vent.trigger "edit:journalentry:clicked", model
+
+      @listenTo journalView, "childview:delete:journalentry:clicked", (args) ->
+        { model } = args
+        if confirm "Are you sure you want to delete this journal entry?" then model.destroy() else false
 
       scrollComp = App.request "ion:scroll:component", journalView
       @show scrollComp, region: @layout.mainRegion
@@ -39,6 +48,6 @@
     getLayoutView: ->
       new List.Layout
 
-    getJournalView: (journal_entries) ->
+    getJournalView: (journalEntries) ->
       new List.Journal
-        collection: journal_entries
+        collection: journalEntries

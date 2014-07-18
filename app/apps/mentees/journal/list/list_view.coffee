@@ -11,6 +11,11 @@
     tagName: 'li'
     attributes:
       class: 'arrow'
+      
+    triggers: 
+      "click #delete-entry" : "delete:journalentry:clicked"
+      "click #edit-entry" : "edit:journalentry:clicked"
+
     initialize: ->
       super
   #rivets.bind(@$el, {status: @model})
@@ -28,12 +33,12 @@
 
     triggers: 
       'click #new-entry' : 'new:journalentry:clicked'
-      'click #edit-entry' : 'edit:journalentry:clicked'
 
     events:
       'click #go-back-btn' : 'goBack'
 
     tagName: 'ul'
+
     attributes:
       'data-role': 'listview'
       'class': 'nav nav-list journal'
