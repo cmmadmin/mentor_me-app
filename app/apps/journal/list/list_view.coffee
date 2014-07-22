@@ -1,7 +1,7 @@
 @MM.module "JournalApp.List", (List, App, Backbone, Marionette, $, _) ->
 
   class List.Layout extends App.Views.Layout
-    template: "mentees/journal/list/list_layout"
+    template: "journal/list/list_layout"
 
     id: 'journal-list'
 
@@ -9,12 +9,12 @@
       mainRegion: "#journal-region"
 
   class List.Empty extends App.Views.ItemView
-    template: "mentees/journal/list/empty"
+    template: "journal/list/empty"
     tagName: "a"
     className: "item"
 
   class List.ItemView extends App.Views.ItemView
-    template: "mentees/journal/list/list_item"
+    template: "journal/list/list_item"
     tagName: 'a'
     className: "item item-dark"
     attributes: ->
@@ -25,7 +25,7 @@
       "click #edit-entry" : "edit:journalentry:clicked"
 
   class List.Journal extends App.Views.CompositeView
-    template: "mentees/journal/list/journal"
+    template: "journal/list/journal"
     itemView: List.ItemView
     itemViewContainer: "#entry-container"
     emptyView: List.Empty

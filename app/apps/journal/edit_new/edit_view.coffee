@@ -1,7 +1,7 @@
 @MM.module "JournalApp.EditNew", (EditNew, App, Backbone, Marionette, $, _) ->
 
   class EditNew.ItemView extends App.Views.ItemView
-    template: "mentees/journal/edit_new/edit_new_layout"
+    template: "journal/edit_new/edit_new_layout"
 
     tagName: "form"
 
