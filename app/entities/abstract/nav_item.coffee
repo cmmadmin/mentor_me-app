@@ -34,8 +34,11 @@
     defaults: 
       type: 'Info'
       className: 'button-icon icon ion-ios7-information-outline'
+      promptId: null
     tap: ->
-      # TODO: Trigger event to open prompt
+      if @get('promptId')?
+        App.commands.execute "show:prompt", @get('promptId')
+      $('#prompt-region').removeClass('hidden-visibility')
 
   class Entities.NavButtonsCollection extends App.Collections.Supers.Collection
     model: (attrs, options) ->

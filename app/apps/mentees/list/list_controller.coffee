@@ -12,6 +12,7 @@
           tap: @addTapped
         ,
           type: 'Info'
+          promptId: 'contact_list'
       ]
 
     initialize: ->
