@@ -12,20 +12,16 @@
         mentee: mentee
 
     _new: (journalEntries) ->
-      new JournalApp.New.Controller
+      new JournalApp.EditNew.Controller
         journalEntries: journalEntries
 
-    edit: (journalEntry) ->
-      new JournalApp.Edit.Controller
-        journalEntry: journalEntry
+    edit: (mentee_id, id) ->
+      new JournalApp.EditNew.Controller
+        id: id
 
   App.vent.on "new:journalentry:clicked", (journalEntries) ->
     App.navigate "mentees/#{journalEntries.owner.id}/journal/new"
     API._new journalEntries
-
-  App.vent.on "edit:journalentry:clicked", (journalEntry) ->
-    App.navigate "mentees/#{journalEntry.get('mentee_id')}/journal/#{journalEntry.id}"
-    API.edit journalEntry
 
   App.vent.on "journal:clicked", (mentee) ->
     App.navigate "mentees/#{mentee.id}/journal"

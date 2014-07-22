@@ -3,33 +3,33 @@
   class List.Layout extends App.Views.Layout
     template: "mentees/journal/list/list_layout"
 
+    id: 'journal-list'
+
     regions:
       mainRegion: "#journal-region"
 
+  class List.Empty extends App.Views.ItemView
+    template: "mentees/journal/list/empty"
+    tagName: "a"
+    className: "item"
+
   class List.ItemView extends App.Views.ItemView
     template: "mentees/journal/list/list_item"
-    tagName: 'li'
-    attributes:
-      class: 'arrow'
+    tagName: 'a'
+    className: "item item-dark"
+    attributes: ->
+      href: "#mentees/" + @model.get('mentee_id') + "/journal/" + @model.id
       
     triggers: 
       "click #delete-entry" : "delete:journalentry:clicked"
       "click #edit-entry" : "edit:journalentry:clicked"
 
-    initialize: ->
-      super
-  #rivets.bind(@$el, {status: @model})
-  #@$el.attr 'data-each-mentee-list', 'test'
-
-  class List.Empty extends App.Views.ItemView
-    template: "mentees/journal/list/empty"
-    tagName: "li"
-
   class List.Journal extends App.Views.CompositeView
     template: "mentees/journal/list/journal"
     itemView: List.ItemView
+    itemViewContainer: "#entry-container"
     emptyView: List.Empty
-    itemViewContainer: ".items"
+    className: 'list'
 
     triggers: 
       'click #new-entry' : 'new:journalentry:clicked'
@@ -37,26 +37,9 @@
     events:
       'click #go-back-btn' : 'goBack'
 
-    tagName: 'ul'
-
-    attributes:
-      'data-role': 'listview'
-      'class': 'nav nav-list journal'
-
-    initialize: ->
-      super
-
-      #@listenTo @collection, 'reset', @render
-      #@listenTo @collection, 'add remove change', _.debounce(@render)
-      #@listenTo @collection, 'fetch', @showLoading
-      #
-    # newJournalEntry: (e) =>
-      # content = $('#add-journal-textarea').val()
-      # datetime = $('#add-journal-datetime').val()
-
-      # je = App.Entities.JournalEntry.create(mentee_id: @collection.owner.id, body: content, logged_at: datetime)
-      # je.save().done ->
-      #   $('#add-journal-textarea').val('').parent().removeClass 'selected'
+    # attributes:
+    #   'data-role': 'listview'
+    #   'class': 'nav nav-list journal'
 
     goBack: ->
       doIt = true;

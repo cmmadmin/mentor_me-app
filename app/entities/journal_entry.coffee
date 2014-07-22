@@ -25,18 +25,18 @@
         reset: true
       journalEntries
 
-    getJournalEntry: (mentee, id) ->
-      journalEntries = API.getJournalEntries mentee
-      journalEntries.getOrFetch(id)
+    getJournalEntry: (id) ->
+      journalEntry = App.Entities.JournalEntry._all.get(id)
+      journalEntry
 
-    # newJournalEntry: ->
-    #   new Entities.JournalEntry
+    newJournalEntry: ->
+      new Entities.JournalEntry
 
   App.reqres.setHandler "journal:entities", (mentee) ->
     API.getJournalEntries mentee
 
-  App.reqres.setHandler "journal:entity", (mentee, id) ->
-    API.getJournalEntry mentee, id
+  App.reqres.setHandler "journal:entity", (id) ->
+    API.getJournalEntry id
 
   # App.reqres.setHandler "new:journal:entity", ->
   #   API.newJournalEntry()
