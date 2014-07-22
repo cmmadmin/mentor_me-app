@@ -28,6 +28,7 @@
     # TODO: Replace with proper history management and rewriting
     tap: ->
       window.history.back();
+      # Backbone.history.history.back()
 
   class Entities.NavInfoButton extends Entities.NavButton
     defaults: 

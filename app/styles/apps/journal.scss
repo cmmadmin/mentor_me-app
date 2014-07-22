@@ -1,7 +1,51 @@
 /* === JOURNAL === */
 
-.items {
-  list-style: none;
+#journal-region .list {
+  margin-left: rem(10);
+  margin-right: rem(10);
+
+  color: #FFF;
+
+  .item {
+    border: 0;
+    border-bottom: rem(1) #333 solid;
+    padding: 0;
+
+    .entry-container {
+      float: left;
+    }
+
+    #delete-entry {
+      margin: 0;
+      float: right;
+      border: 0;
+      width: rem(75);
+      height: 100%;
+    }
+  }
+  .journal-bottom {
+    position: absolute;
+    bottom: 1;
+    left: 0;
+    width: 100%;
+    height: rem(60);
+    padding-top: rem(10);
+  }
+  .journal-footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    button { 
+      width: rem(165); 
+      margin: 0 auto;
+      display: block;
+      min-height: rem(35);
+      height: rem(35);
+      line-height: rem(34);
+      border-radius: rem(0);
+    }
+  }
 }
 
 // Widgets
@@ -24,8 +68,4 @@
 .journal-notifications .alert {
   margin-bottom: 0;
   position: relative;
-}
-
-.journal {
-  background-color: rgba(255,255,255,0.9)
 }

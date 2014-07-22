@@ -29,7 +29,7 @@
     )
 
     Models.Mentee.has().many('journal_entries', 
-      collection: App.Collections.JournalEntries
+      collection: App.Entities.JournalEntryCollection
       inverse: 'mentee'
     )
     
