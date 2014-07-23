@@ -16,4 +16,4 @@
       @show @layout
 
     getLayoutView: ->
-      new Login.Layout
+      new Login.View

@@ -1,12 +1,14 @@
 <h2 class="title">Login</h2>
-<div class="list">
-  <label class="item item-input">
-    <input type="text" name="email" placeholder="Email">
-  </label>
-  <label class="item item-input">
-    <input type="text" name="password"  placeholder="Password">
-  </label>
-</div>
-<div class="submit">
-  <button class="button button-pink">Login</button>
-</div>
+<form>
+  <div class="list">
+    <label class="item item-input">
+      <input type="text" name="email" rv-value="userSession:email" placeholder="Email">
+    </label>
+    <label class="item item-input">
+      <input type="text" name="password" rv-value="userSession:password" placeholder="Password">
+    </label>
+  </div>
+  <div class="submit">
+    <button class="button button-pink" type="submit">Login</button>
+  </div>
+</form>

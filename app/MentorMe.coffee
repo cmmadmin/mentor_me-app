@@ -16,12 +16,7 @@
 
     initEvents: ->
       @vent.bind "authentication:logged_in", ->
-        MentorMe.collections.mentees.fetch()
-        MentorMe.router.navigate('/', true)
-        $('#tbModal').one 'hidden', ->
-          MentorMe.loginPanel.remove()
-          MentorMe.loginOpen = false
-        $('#tbModal').modal('hide');
+        MentorMe.navigate('/', true)
       # @vent.bind 'mentee:addJournalEntry' (e, mentee, data) ->
       #   Mentee = require 'models/Mentee'
       #   JournalEntry = require 'models/JournalEntry'
