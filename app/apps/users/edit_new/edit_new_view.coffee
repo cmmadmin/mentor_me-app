@@ -4,3 +4,9 @@
     template: "users/edit_new/edit_new_layout"
 
     tagName: "form"
+
+    triggers:
+      "click button" : "registerClicked"
+
+    registerClicked: ->
+      App.vent.trigger "user:register:clicked"

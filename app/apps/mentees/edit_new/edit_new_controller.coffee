@@ -7,7 +7,7 @@
       ]
       rightButtons: [        
         type: 'Info'
-        promptId: 'edit_new'
+        promptId: 'edit_new_mentee'
       ]
 
     initialize: (options) ->

@@ -7,10 +7,12 @@
       ]
       rightButtons: [        
         type: 'Info'
-        promptId: 'edit_new'
+        promptId: 'edit_new_user'
       ]
 
-    initialize: ->
+    initialize: (options) ->
+      { id } = options
+
       @layout = @getLayoutView()
       @show @layout
 
