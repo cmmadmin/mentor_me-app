@@ -1,12 +1,23 @@
 @MM.module "UsersApp.EditNew", (EditNew, App, Backbone, Marionette, $, _) ->
 
-  class EditNew.ItemView extends Marionette.ItemView
+  class EditNew.ItemView extends App.Views.ItemView
     template: "users/edit_new/edit_new_layout"
 
     tagName: "form"
 
-    triggers:
-      "click button" : "registerClicked"
+    onRender: ->
+      @binder = rivets.bind @$el, user: @model
 
-    registerClicked: ->
-      App.vent.trigger "user:register:clicked"
+    onClose: ->
+      if @binder
+        @binder.unbind()
+
+    templateHelpers:
+      pageTitle: ->
+        if @model.isNew() then "Register" else "Edit"
+
+      buttonText: ->
+        if @model.isNew() then "Register" else "Save"
+
+    triggers:
+      "submit form" : "user:register:clicked"

@@ -4,7 +4,7 @@
     appRoutes:
       "login" : "login"
       "user/new" : "_new"
-      "user/:id" : "edit"
+      "user" : "edit"
 
   API =
     login: ->
@@ -13,9 +13,9 @@
     _new: ->
       new UsersApp.EditNew.Controller
 
-    edit: (id) ->
+    edit: ->
       new UsersApp.EditNew.Controller
-        id: id
+        user: App.currentUser
 
   App.vent.on "user:login:clicked", ->
     App.navigate "login"
@@ -29,9 +29,9 @@
     App.navigate "user/new"
     API._new()
 
-  App.vent.on "user:edit:clicked", (id) ->
-    App.navigate "user/#{user.id}"
-    API.edit id
+  App.vent.on "user:edit:clicked", ->
+    App.navigate "user"
+    API.edit
     
   App.addInitializer ->
     new UsersApp.Router

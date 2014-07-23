@@ -11,10 +11,13 @@
       ]
 
     initialize: (options) ->
-      { id } = options
+      { user } = options
 
-      @layout = @getLayoutView()
+      user ?= new App.Entities.User
+      
+      @layout = @getLayoutView user
       @show @layout
 
-    getLayoutView: ->
+    getLayoutView: (user) ->
       new EditNew.ItemView
+        model: user
