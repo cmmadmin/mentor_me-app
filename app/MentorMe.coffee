@@ -16,13 +16,16 @@
 
     initEvents: ->
       @vent.bind "authentication:logged_in", ->
-        MentorMe.navigate('/', true)
+        MentorMe.navigate("mentees", true)
+
+      @vent.bind "authentication:logged_out", ->
+        MentorMe.navigate(MentorMe.rootRoute, true)
       # @vent.bind 'mentee:addJournalEntry' (e, mentee, data) ->
       #   Mentee = require 'models/Mentee'
       #   JournalEntry = require 'models/JournalEntry'
       #   je = new JournalEntry()
       #   
-  MentorMe.rootRoute = "#mentees"
+  MentorMe.rootRoute = "login"
 
   MentorMe.addRegions
     headerRegion: "#header-region"
@@ -36,7 +39,6 @@
   MentorMe.addInitializer ->
     # Import views
     HomePage = MentorMe.Views.HomePage
-    # LoginPanel = MentorMe.Views.LoginView
     
     AppController = MentorMe.Controllers.AppController
     AppLayout = MentorMe.Views.AppLayout

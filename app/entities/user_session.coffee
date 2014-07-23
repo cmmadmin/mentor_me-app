@@ -7,7 +7,7 @@
   class Entities.UserSessionCollection extends Entities.Collection
 
   class Entities.UserSession extends Entities.Model
-    urlRoot: Collection.serverUrl('users/sign_in.json')
+    urlRoot: Collection.serverUrl('users/session')
     paramRoot: 'user'
 
     defaults:
@@ -19,10 +19,11 @@
 
       deferred.then(
         # success
-        (user) -> 
+        (user) => 
           
           # TODO: Possibly move this to external handler
           App.currentUser = new User(user)
+          App.currentSession = @
           App.vent.trigger("authentication:logged_in", App.currentUser)
         # error
         (xhr) ->
@@ -31,13 +32,26 @@
 
       return deferred
 
+    logout: ->
+      deferred = @destroy()
+
+      deferred.then ->
+        App.currentSession = null
+        App.vent.trigger "authentication:logged_out"
+
+      return deferred
+
     toJSON: ->
       data = {}
       data[@paramRoot] = super
       return data
 
-  API = 
-    getNewUserSession: ->
-      
-  App.reqres.setHandler "usersession:entity", (id) ->
-    API.getJournalEntry id
+    methodUrl:
+      'delete': Collection.serverUrl('users/session')
+
+    sync: (method, model, options) ->
+      if (model.methodUrl && model.methodUrl[method.toLowerCase()])
+        options = options || {}
+        options.url = model.methodUrl[method.toLowerCase()]
+      Backbone.sync(method, model, options)
+    
