@@ -1,0 +1,43 @@
+@MM.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
+
+  Model = App.Models.Supers.Model
+  Collection = App.Collections.Supers.Collection
+  User = App.Entities.User
+
+  class Entities.UserSessionCollection extends Entities.Collection
+
+  class Entities.UserSession extends Entities.Model
+    urlRoot: Collection.serverUrl('users/sign_in.json')
+    paramRoot: 'user'
+
+    defaults:
+      "email": ""
+      "password": ""
+
+    login: ->
+      deferred = @save()
+
+      deferred.then(
+        # success
+        (user) -> 
+          
+          # TODO: Possibly move this to external handler
+          App.currentUser = new User(user)
+          App.vent.trigger("authentication:logged_in", App.currentUser)
+        # error
+        (xhr) ->
+          App.vent.trigger("authentication:logged_in_failed", xhr)
+      )
+
+      return deferred
+
+    toJSON: ->
+      data = {}
+      data[@paramRoot] = super
+      return data
+
+  API = 
+    getNewUserSession: ->
+      
+  App.reqres.setHandler "usersession:entity", (id) ->
+    API.getJournalEntry id

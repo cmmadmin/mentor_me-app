@@ -1,5 +1,5 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
-  UserSession = App.Models.UserSession
+  UserSession = App.Entities.UserSession
 
   class Views.LoginView extends Marionette.ItemView
     template: 'templates/Login'

@@ -41,7 +41,7 @@
   MentorMe.addInitializer ->
     # Import views
     HomePage = MentorMe.Views.HomePage
-    LoginPanel = MentorMe.Views.LoginView
+    # LoginPanel = MentorMe.Views.LoginView
     
     AppController = MentorMe.Controllers.AppController
     AppLayout = MentorMe.Views.AppLayout
@@ -80,7 +80,7 @@
     @collections._fetch = sync
 
     # Initialize views
-    @loginPanel = new LoginPanel()
+    # @loginPanel = new LoginPanel()
 
     @appLayout = new AppLayout(el: "#mentor_me_app")
     # @appLayout.on "render", ->
@@ -96,7 +96,8 @@
 
     $(document).ajaxError (e, xhr, settings, exception) ->
       if (xhr.status == 401)
-        application.router.login()
+        MentorMe.startHistory(silent:true)
+        MentorMe.vent.trigger "user:notauthenticated"
 
   MentorMe.addInitializer ->
     MentorMe.module("HeaderApp").start()
