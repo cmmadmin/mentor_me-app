@@ -42,7 +42,6 @@
     # Import views
     HomePage = MentorMe.Views.HomePage
     LoginPanel = MentorMe.Views.LoginView
-    Router = MentorMe.Routers.Router
     
     AppController = MentorMe.Controllers.AppController
     AppLayout = MentorMe.Views.AppLayout
@@ -82,7 +81,6 @@
 
     # Initialize views
     @loginPanel = new LoginPanel()
-    @router = new Router(controller: new AppController())
 
     @appLayout = new AppLayout(el: "#mentor_me_app")
     # @appLayout.on "render", ->

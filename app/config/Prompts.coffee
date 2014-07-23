@@ -26,3 +26,6 @@
     journal:
       title: "Journal"
       content: "Take notes about your meetings and thoughts"
+    login:
+      title: "Login"
+      content: "Login with your username and password"
