@@ -25,7 +25,7 @@
       #   JournalEntry = require 'models/JournalEntry'
       #   je = new JournalEntry()
       #   
-  MentorMe.rootRoute = "login"
+  MentorMe.rootRoute = ""
 
   MentorMe.addRegions
     headerRegion: "#header-region"
