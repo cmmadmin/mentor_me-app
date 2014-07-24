@@ -14,10 +14,19 @@
       { user } = options
 
       user ?= new App.Entities.User
-      
+
       @layout = @getLayoutView user
+      @listenTo @layout, "form:submit", =>
+        @formSubmit user
       @show @layout
 
     getLayoutView: (user) ->
       new EditNew.ItemView
         model: user
+
+    formSubmit: (user) ->
+      data = Backbone.Syphon.serialize @layout
+      user.save data,
+        wait: true
+        success: ->
+          Backbone.history.navigate "mentees"

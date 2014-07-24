@@ -15,7 +15,7 @@
 
       mentee ?= App.request "mentees:entity", id if id?
       mentee ?= new App.Models.Mentee
-      @layout = @getLayoutView(mentee)
+      @layout = @getLayoutView mentee
       @listenTo @layout, "form:submit", =>
         @formSubmit mentee, mentees
       @show @layout
@@ -30,4 +30,4 @@
         wait: true
         collection: mentees
         success: ->
-          Backbone.history.navigate('mentees', trigger: true)
+          App.navigate 'mentees'
