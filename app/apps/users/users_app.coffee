@@ -21,10 +21,6 @@
     App.navigate "login"
     API.login()
 
-  App.vent.on "user:notauthenticated", ->
-    App.navigate "login"
-    API.login()
-
   App.vent.on "user:new:clicked", ->
     App.navigate "user/new"
     API._new()

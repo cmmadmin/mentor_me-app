@@ -1,6 +1,8 @@
 @MM.module "HomeApp.Show", (Show, App, Backbone, Marionette, $, _) ->
 
   class Show.Controller extends App.Controllers.Application
+    
+    navItem: false
 
     initialize: (options) ->
 

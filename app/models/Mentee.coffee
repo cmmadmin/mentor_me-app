@@ -28,6 +28,11 @@
       inverse: 'mentee'
     )
 
+    Models.Mentee.has().one('mentor',
+      model: App.Entities.User
+      inverse: 'mentees'
+    )
+
     Models.Mentee.has().many('journal_entries', 
       collection: App.Entities.JournalEntryCollection
       inverse: 'mentee'

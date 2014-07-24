@@ -45,3 +45,4 @@
 
     signOutTapped: (e) ->
       App.currentSession.logout()
+      App.vent.trigger "user:notauthenticated"

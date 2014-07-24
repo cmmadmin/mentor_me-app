@@ -29,4 +29,4 @@
       user.save data,
         wait: true
         success: ->
-          Backbone.history.navigate "mentees"
+          App.commands.execute "user:login", user

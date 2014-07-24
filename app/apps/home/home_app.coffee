@@ -8,7 +8,7 @@
     show: ->
       new HomeApp.Show.Controller
 
-  App.vent.on "home:clicked", ->
+  App.vent.on "home:clicked user:notauthenticated authentication:logged_out", ->
     App.navigate ""
     API.show()
 
