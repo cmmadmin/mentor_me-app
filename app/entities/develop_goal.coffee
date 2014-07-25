@@ -8,6 +8,12 @@
 
     url: Entities.Collection.serverUrl('develop_goals')
 
+    @include "MultiChooser"
+
+  class Entities.ChosenDevelopGoalsCollection extends Backbone.Subset
+    liveupdate_keys: 'all'
+    sieve: (goal) ->
+      goal.isChosen()
 
   Entities.on "before:start", ->
     # Supermodel definitions

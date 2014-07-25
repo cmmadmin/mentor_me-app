@@ -4,6 +4,12 @@
     template: 'develop/lifelist/goal'
     className: 'item item-dark item-text-wrap item-checkbox'
 
+    onRender: ->
+      @binding = rivets.bind(@el, { model: @model })
+
+    onClose: ->
+      @binder.unbind() if @binder
+
   class LifeList.Category extends App.Views.CompositeView
     template: 'develop/lifelist/category'
     itemViewContainer: '.develop-goals'
@@ -21,6 +27,7 @@
       @collection = @model.develop_goals()
 
     toggleBody: ->
+      @trigger 'category:toggled'
       newHeight = if (@ui.accordionBody.height() > 0) then 0 else @ui.goals.height()
       @ui.accordionBody.height(newHeight)
 

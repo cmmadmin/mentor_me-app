@@ -8,6 +8,12 @@
 
     url: Entities.Collection.serverUrl('develop_items')
 
+    @include "MultiChooser"
+
+  class Entities.ChosenDevelopItemsCollection extends Backbone.Subset
+    liveupdate_keys: 'all'
+    sieve: (item) ->
+      item.isChosen()
 
   Entities.on "before:start", ->
     # Supermodel definitions
@@ -19,3 +25,10 @@
         model: Entities.DevelopGoal
         inverse: 'develop_items'
     )
+
+  API =
+    getItems: ->
+      Entities.DevelopItem.all()
+
+  App.reqres.setHandler "develop_item:entities", ->
+    API.getItems()

@@ -52,4 +52,5 @@
       'click #Assess' : 'snapshot:assess:clicked'
       'click #Explore' : 'snapshot:explore:clicked'
       'click #Observe' : 'snapshot:observe:clicked'
+      'click #menu-category-Develop' : 'develop:clicked'
       'click #Journal' : 'journal:clicked'

@@ -1,3 +1,12 @@
+/*
+  Forked copy from https://github.com/quri/Backbone.Subset
+  Make changes in that repo (for tracking purposes), and copy into pocket_change
+
+  PRs that we merged that upstream hasn't:
+    https://github.com/masylum/Backbone.Subset/pull/10
+    https://github.com/masylum/Backbone.Subset/pull/11
+*/
+
 /**
  * @class  Backbone.Subset
  * @name   Backbone Subset collections
@@ -55,6 +64,8 @@
       this.beforeInitialize.apply(this, arguments);
     }
 
+    this.models = [];
+
     if (!options.no_reset) {
       this._reset();
       this.reset(models || parent.models, {silent: true});
@@ -65,13 +76,26 @@
     this.initialize.apply(this, arguments);
   };
 
+  Subset.exclusiveSubset = false
+
   /**
-   * Default exclusiveSubset implementation
+   * Updates options to work with exclusive subsets
    *
-   * @return {Boolean}
+   * @return {Object}
    */
-  Subset.exclusiveSubset = function () {
-    return false;
+  Subset._asExclusive = function(options) {
+    var options = options || {};
+    options.exclusive_collection = this;
+    return options
+  };
+
+  /**
+   * Inspector to check if this is an exclusive subset
+   *
+   * @return {Object}
+   */
+  Subset._isExclusive = function() {
+   return  _.result(this, 'exclusiveSubset')
   };
 
   /**
@@ -105,7 +129,7 @@
     xored_ids = xor(ids, _.pluck(models, 'id'));
 
     parent.reset(parent_models, _.extend({silent: true}, options));
-    if (this.exclusiveSubset()) {
+    if (this._isExclusive()) {
       parent.trigger('reset', this, _.extend({model_ids: xored_ids, exclusive_collection: this}, options));
     } else {
       parent.trigger('reset', this, _.extend({model_ids: xored_ids}, options));
@@ -170,8 +194,8 @@
    * @return {Object} model
    */
   Subset.add = function (model, options) {
-    if (this.exclusiveSubset()) {
-      options = _.extend(options, {exclusive_collection: this});
+    if (this._isExclusive()) {
+      options = this._asExclusive(options);
     }
 
     return _.result(this, 'parent').add(model, options);
@@ -198,8 +222,8 @@
    * @return {Object} model
    */
   Subset.remove = function (model, options) {
-    if (this.exclusiveSubset()) {
-      options = _.extend(options, {exclusive_collection: this});
+    if (this._isExclusive()) {
+      options = this._asExclusive(options);
     }
 
     return _.result(this, 'parent').remove(model, options);
@@ -330,8 +354,7 @@
    * @return {Boolean} changed
    */
   Subset._updateModelMembership = function (model, options) {
-    var hasId = !model.id
-      , alreadyInSubset = this._byCid[model.cid] || (hasId && this._byId[model.id]);
+    var alreadyInSubset = !_.isUndefined(this.get(model));
 
     if (this.sieve(model)) {
       if (!alreadyInSubset) {
