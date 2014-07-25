@@ -9,6 +9,6 @@
       frag = Backbone.history.fragment
       if _.isEmpty(frag) then null else frag
 
-    startHistory: ->
-      if Backbone.history
-        Backbone.history.start()
+    startHistory: (options) ->
+      if Backbone.history and !Backbone.History.started
+        Backbone.history.start(options)

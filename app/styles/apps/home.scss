@@ -1,0 +1,29 @@
+/* === HOME === */
+
+#title-container {
+  width: rem(185);
+  margin: rem(145) auto;
+}
+
+#button-container{
+
+  width: rem(185);
+  margin: 0 auto;
+
+  .button-white {
+    background-color: #FFF;
+    border-color: #EC008C;
+    color: #EC008C;
+    width: rem(165); 
+    margin: 0 auto rem(15) auto;
+    display: block;
+    min-height: rem(35);
+    height: rem(35);
+    line-height: rem(34);
+    border-radius: rem(0);
+  }
+
+  p {
+    text-align: center;
+  }
+}

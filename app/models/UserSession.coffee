@@ -1,8 +1,8 @@
 @MM.module "Models", (Models, App, Backbone, Marionette, $, _) ->
 
-  Model = Models.Supers.Model
+  Model = App.Models.Supers.Model
   Collection = App.Collections.Supers.Collection
-  User = Models.User
+  User = App.Entities.User
 
   class Models.UserSession extends Model
     urlRoot: Collection.serverUrl('users/sign_in.json')

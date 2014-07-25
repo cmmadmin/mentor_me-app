@@ -44,4 +44,5 @@
       App.vent.trigger "new:mentee:clicked", @mentees
 
     signOutTapped: (e) ->
-      alert "Nah, you don't want to do that"
+      App.currentSession.logout()
+      App.vent.trigger "user:notauthenticated"

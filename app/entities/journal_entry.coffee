@@ -29,9 +29,6 @@
       journalEntry = App.Entities.JournalEntry._all.get(id)
       journalEntry
 
-    newJournalEntry: ->
-      new Entities.JournalEntry
-
   App.reqres.setHandler "journal:entities", (mentee) ->
     API.getJournalEntries mentee
 

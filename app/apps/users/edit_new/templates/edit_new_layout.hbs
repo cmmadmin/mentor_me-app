@@ -1,0 +1,24 @@
+<form>
+  <h2 class="title">{{pageTitle}}</h2>
+  <div class="list">
+    <label class="item item-input">
+      <input type="text" name="first_name" rv-value="user:first_name" placeholder="First">
+    </label>
+    <label class="item item-input">
+      <input type="text" name="last_name" rv-value="user:last_name" placeholder="Last">
+    </label>
+    <label class="item item-input">
+      <input type="text" name="email" rv-value="user:email" placeholder="Email">
+    </label>
+    <label class="item item-input">
+      <input type="password" name="password" placeholder="Password">
+    </label>
+    <label class="item item-input">
+      <input type="password" name="password_confirmation" placeholder="Confirm">
+    </label>
+  </div>
+  <div class="submit">
+    <button class="button button-pink">{{buttonText}}</button>
+  </div>
+  <p>By creating an account, I accept the Terms of Use and Privacy Policy.</p>
+</form>

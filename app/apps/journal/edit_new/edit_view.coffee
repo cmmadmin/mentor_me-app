@@ -13,4 +13,4 @@
         @binder.unbind()
 
     triggers:
-      "click .submit" : "form:submit"
+      "form submit" : "form:submit"

@@ -6,7 +6,7 @@
     tagName: "form"
 
     onRender: ->
-      @binder = rivets.bind @$el, model: @model
+      @binder = rivets.bind @$el, mentee: @model
 
     onClose: ->
       if @binder
@@ -17,4 +17,4 @@
         (if @model.isNew() then "New" else "Edit") + " Contact"
 
     triggers:
-      "click .submit" : "form:submit"
+      "submit form" : "form:submit"

@@ -16,18 +16,16 @@
 
     initEvents: ->
       @vent.bind "authentication:logged_in", ->
-        MentorMe.collections.mentees.fetch()
-        MentorMe.router.navigate('/', true)
-        $('#tbModal').one 'hidden', ->
-          MentorMe.loginPanel.remove()
-          MentorMe.loginOpen = false
-        $('#tbModal').modal('hide');
+        MentorMe.navigate("mentees", true)
+
+      @vent.bind "authentication:logged_out", ->
+        MentorMe.navigate(MentorMe.rootRoute, true)
       # @vent.bind 'mentee:addJournalEntry' (e, mentee, data) ->
       #   Mentee = require 'models/Mentee'
       #   JournalEntry = require 'models/JournalEntry'
       #   je = new JournalEntry()
       #   
-  MentorMe.rootRoute = "#mentees"
+  MentorMe.rootRoute = ""
 
   MentorMe.addRegions
     headerRegion: "#header-region"
@@ -41,8 +39,6 @@
   MentorMe.addInitializer ->
     # Import views
     HomePage = MentorMe.Views.HomePage
-    LoginPanel = MentorMe.Views.LoginView
-    Router = MentorMe.Routers.Router
     
     AppController = MentorMe.Controllers.AppController
     AppLayout = MentorMe.Views.AppLayout
@@ -81,8 +77,7 @@
     @collections._fetch = sync
 
     # Initialize views
-    @loginPanel = new LoginPanel()
-    @router = new Router(controller: new AppController())
+    # @loginPanel = new LoginPanel()
 
     @appLayout = new AppLayout(el: "#mentor_me_app")
     # @appLayout.on "render", ->
@@ -98,7 +93,8 @@
 
     $(document).ajaxError (e, xhr, settings, exception) ->
       if (xhr.status == 401)
-        application.router.login()
+        MentorMe.startHistory(silent:true)
+        MentorMe.vent.trigger "user:notauthenticated"
 
   MentorMe.addInitializer ->
     MentorMe.module("HeaderApp").start()
