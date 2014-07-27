@@ -1,4 +1,5 @@
 #!/bin/sh
 
 cp app/config/ApplicationConfig.coffee.example app/config/ApplicationConfig.coffee
-brunch build
+./node_modules/bower/bin/bower install
+./node_modules/.bin/brunch build
