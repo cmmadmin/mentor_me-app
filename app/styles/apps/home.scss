@@ -1,7 +1,7 @@
 /* === HOME === */
 
 #title-container {
-  width: rem(185);
+  width: rem(200);
   margin: rem(145) auto;
 }
 
@@ -26,4 +26,8 @@
   p {
     text-align: center;
   }
+}
+
+.sub-title {
+  font-size: rem(15)
 }

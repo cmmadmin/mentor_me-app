@@ -8,8 +8,13 @@
       {{/if}}
       <h2>{{name}}</h2>
       <p>{{major}}</p>
-      <i class="icon ion-ios7-telephone"></i>
-      <i class="icon ion-ios7-chatbubble"></i>
+      {{#if phone}}
+        <a href="tel:{{phone}}"><i class="icon ion-ios7-telephone"></i></a>
+        <a href="sms:{{phone}}"><i class="icon ion-ios7-chatbubble"></i></a>
+      {{/if}}
+      {{#if email}}
+        <a href="mailto:{{email}}"><i class="icon ion-ios7-email"></i></a>
+      {{/if}}
     </div>
     <div class="edit-delete-buttons clearfix">
       <p id="edit-button">Edit</p>

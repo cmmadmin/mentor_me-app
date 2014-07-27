@@ -7,7 +7,7 @@
       ]
       rightButtons: [        
         type: 'Info'
-        promptId: 'edit_new_journal'
+        promptId: 'journal'
       ]
 
     initialize: (options) ->

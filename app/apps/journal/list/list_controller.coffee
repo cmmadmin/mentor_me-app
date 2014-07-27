@@ -7,7 +7,7 @@
       ]
       rightButtons: [
         type: 'Info'
-        pageId: 'journal'
+        promptId: 'journal'
       ]
 
     initialize: (options) ->
