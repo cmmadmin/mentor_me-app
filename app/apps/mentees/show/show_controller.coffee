@@ -52,6 +52,9 @@
       @listenTo showView, "snapshot:observe:clicked", (args) ->
         App.vent.trigger "snapshot:observe:clicked", mentee
 
+      @listenTo showView, "develop:clicked", (args) ->
+        App.vent.trigger "develop:clicked", mentee
+
       @listenTo showView, "journal:clicked", (args) ->
         App.vent.trigger "journal:clicked", mentee
 

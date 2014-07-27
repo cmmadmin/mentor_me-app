@@ -58,8 +58,8 @@
       @swiper = new Swiper('.survey-swiper',
         mode:'horizontal'
         pagination: '.pagination-sd'
-        moveStartThreshold:100
       # preventClassNoSwiping: true
+        noSwiping: true
         autoResize: true
         releaseFormElements: true
         onSlideChangeEnd: @onSlideChange

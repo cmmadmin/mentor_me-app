@@ -61,12 +61,3 @@
       collection: App.Collections.Answers
       inverse: 'mentee_profile'
     )
-    Models.MenteeProfile.has().many('develop_goal_picks',
-      collection: App.Entities.DevelopGoalPicksCollection
-      inverse: 'mentee_profile'
-    )
-    Models.MenteeProfile.has().many('develop_item_picks',
-      collection: App.Entities.DevelopItemPicksCollection
-      inverse: 'mentee_profile'
-    )
-

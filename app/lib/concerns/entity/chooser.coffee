@@ -10,3 +10,9 @@
 
     initialize: ->
       new Backbone.SingleChooser @
+
+  Concerns.MultiChooser =
+    beforeIncluded: (klass, concern) ->
+      klass::model.include "Chooser"
+    initialize: ->
+      new Backbone.MultiChooser @

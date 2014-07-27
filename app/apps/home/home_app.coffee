@@ -2,14 +2,14 @@
 
   class HomeApp.Router extends Marionette.AppRouter
     appRoutes:
-      "" : "show"
+      "home" : "show"
 
   API = 
     show: ->
       new HomeApp.Show.Controller
 
   App.vent.on "home:clicked user:notauthenticated authentication:logged_out", ->
-    App.navigate ""
+    App.navigate "home"
     API.show()
 
   App.addInitializer ->

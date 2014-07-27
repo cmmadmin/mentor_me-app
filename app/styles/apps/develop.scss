@@ -1,0 +1,26 @@
+#develop-swiper {
+  height: 100%;
+  width: 100%;
+  .swiper-slide, .swiper-wrapper {
+    height: 100%;
+    width: 100%;
+  }
+  .scroll-content {
+    height: inherit;
+    width: inherit;
+    position: relative
+  }
+}
+
+.category-bar {
+  background-color: black;
+  height: $bar-height;
+  line-height: $bar-height;
+  margin: 3px 0 0 0;
+  h3 { line-height: inherit }
+}
+
+.develop-item-link {
+  font-size: rem(20);
+  line-height: rem(20);
+}

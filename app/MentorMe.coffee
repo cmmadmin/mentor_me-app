@@ -25,7 +25,10 @@
       #   JournalEntry = require 'models/JournalEntry'
       #   je = new JournalEntry()
       #   
-  MentorMe.rootRoute = ""
+    goHome: ->
+      MentorMe.startHistory()
+      MentorMe.navigate("mentees", trigger: true) unless MentorMe.getCurrentRoute()
+  MentorMe.rootRoute = "home"
 
   MentorMe.addRegions
     headerRegion: "#header-region"
@@ -73,7 +76,8 @@
       url: ApplicationConfig.SERVER_URL + 'users/data'
       context: @collections
     )
-    sync.done(@collections.bootstrap, @collections)
+    sync.then(@collections.bootstrap, @collections)
+    # sync.then(@goHome, MentorMe)
     @collections._fetch = sync
 
     # Initialize views
@@ -106,7 +110,7 @@
     # Start Backbone router after bootstrap
     MentorMe.execute "when:fetched", MentorMe.collections, =>
       @startHistory()
-      @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
+      @navigate("mentees", trigger: true) unless @getCurrentRoute()
 
   MentorMe.vent.on "header:shown", ->
     _.defer ->

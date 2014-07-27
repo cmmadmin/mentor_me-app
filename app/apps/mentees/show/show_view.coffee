@@ -2,7 +2,7 @@
 
   class Show.Layout extends App.Views.Layout
     template: "mentees/show/show_layout"
-    className: "with-banner"
+    className: "with-banner padded-page"
       
     regions:
       bannerRegion:  "#banner-region"
@@ -52,4 +52,5 @@
       'click #Assess' : 'snapshot:assess:clicked'
       'click #Explore' : 'snapshot:explore:clicked'
       'click #Observe' : 'snapshot:observe:clicked'
+      'click #menu-category-Develop' : 'develop:clicked'
       'click #Journal' : 'journal:clicked'
