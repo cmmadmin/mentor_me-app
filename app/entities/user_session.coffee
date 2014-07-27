@@ -37,6 +37,7 @@
 
       deferred.then ->
         App.currentSession = null
+        App.currentUser = null
         App.vent.trigger "authentication:logged_out"
 
       return deferred

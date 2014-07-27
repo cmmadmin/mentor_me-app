@@ -15,7 +15,15 @@
     loginOpen: false
 
     initEvents: ->
-      @vent.bind "authentication:logged_in", ->
+      # TODO: Implement proper bootstrap
+      @vent.bind "authentication:logged_in", =>
+        sync = $.ajax(
+          url: MentorMe.Config.ApplicationConfig.SERVER_URL + 'users/data'
+          context: @collections
+        )
+        sync.then(@collections.bootstrap, @collections)
+        # sync.then(@goHome, MentorMe)
+        @collections._fetch = sync
         MentorMe.navigate("mentees", true)
 
       @vent.bind "authentication:logged_out", ->
@@ -71,14 +79,7 @@
     # Bootstrap initial data
     # @collections.mentees.fetch();
     # @collections.questions.fetch();
-    ApplicationConfig = MentorMe.Config.ApplicationConfig
-    sync = $.ajax(
-      url: ApplicationConfig.SERVER_URL + 'users/data'
-      context: @collections
-    )
-    sync.then(@collections.bootstrap, @collections)
-    # sync.then(@goHome, MentorMe)
-    @collections._fetch = sync
+    
 
     # Initialize views
     # @loginPanel = new LoginPanel()
@@ -102,6 +103,15 @@
 
   MentorMe.addInitializer ->
     MentorMe.module("HeaderApp").start()
+
+  MentorMe.addInitializer ->
+    sync = $.ajax(
+      url: MentorMe.Config.ApplicationConfig.SERVER_URL + 'users/data'
+      context: @collections
+    )
+    sync.then(@collections.bootstrap, @collections)
+    # sync.then(@goHome, MentorMe)
+    @collections._fetch = sync
         
   MentorMe.reqres.setHandler "default:region", -> MentorMe.mainRegion
   MentorMe.reqres.setHandler "concern", (concern) -> MentorMe.Concerns[concern]
