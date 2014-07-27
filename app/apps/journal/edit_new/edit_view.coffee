@@ -12,5 +12,9 @@
       if @binder
         @binder.unbind()
 
-    triggers:
-      "form submit" : "form:submit"
+    events:
+      "submit" : "formSubmit"
+
+    formSubmit: (e) ->
+      e.preventDefault()
+      @trigger "journal:save"

@@ -30,4 +30,4 @@
         wait: true
         collection: mentees
         success: ->
-          App.navigate 'mentees'
+          App.navigate 'mentees', trigger: true

@@ -18,3 +18,15 @@
     
     $.when(xhrs...).done ->
       callback()
+
+  $.ajaxSetup
+    xhrFields:
+      withCredentials: true
+    crossDomain: true
+    contentType: 'application/json'
+    beforeSend: (xhr) ->
+      
+      xhr.setRequestHeader("Accept", "application/json")
+      xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest")
+      if App.currentUser
+        xhr.setRequestHeader("Authorization", "Token token=#{App.currentUser.get('authentication_token')}");

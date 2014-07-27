@@ -17,7 +17,7 @@
       journalEntry ?= new App.Entities.JournalEntry
 
       @layout = @getLayoutView(journalEntry)
-      @listenTo @layout, "form:submit", =>
+      @listenTo @layout, "journal:save", =>
         if journalEntries
           @formSubmit journalEntries, journalEntry 
         else 
@@ -35,5 +35,6 @@
         journalEntry.set('mentee_id', journalEntries.owner.id)
       else
         journalEntry.set('body': data.body, 'mentee_id': journalEntry.get('mentee_id'))
-      journalEntry.save()
+      
+      journalEntries.create(journalEntry)
       Backbone.history.navigate('mentees/' + journalEntry.get('mentee_id') + '/journal', trigger: true)

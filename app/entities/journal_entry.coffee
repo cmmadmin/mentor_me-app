@@ -4,13 +4,17 @@
     urlRoot: ->
       Entities.Collection.serverUrl('journal_entries')
 
+    initialize: ->
+      if !@has('logged_at')
+        currDate = new Date().now()
+        @set('logged_at', currDate)
+
+
   class Entities.JournalEntryCollection extends Entities.Collection
     model: Entities.JournalEntry
     url: ->
       Entities.Collection.serverUrl('mentees') + '/' + @owner.id + '/journal_entries'
 
-    initialize: ->
-      super
 
   Entities.on "before:start", ->
     Entities.JournalEntry.has().one('mentee', 

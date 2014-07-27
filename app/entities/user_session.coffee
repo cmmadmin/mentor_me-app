@@ -7,7 +7,7 @@
   class Entities.UserSessionCollection extends Entities.Collection
 
   class Entities.UserSession extends Entities.Model
-    urlRoot: Collection.serverUrl('users/session')
+    urlRoot: Collection.serverUrl('users/session.json')
     paramRoot: 'user'
 
     defaults:
@@ -47,7 +47,7 @@
       return data
 
     methodUrl:
-      'delete': Collection.serverUrl('users/session')
+      'delete': Collection.serverUrl('users/session.json')
 
     sync: (method, model, options) ->
       if (model.methodUrl && model.methodUrl[method.toLowerCase()])

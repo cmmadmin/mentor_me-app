@@ -17,5 +17,9 @@
       pageTitle: ->
         (if @model.isNew() then "New" else "Edit") + " Contact"
 
-    triggers:
-      "submit form" : "form:submit"
+    events:
+      "submit": 'preventSubmission'
+
+    preventSubmission: (e) ->
+      e.preventDefault()
+      @trigger "form:submit"
