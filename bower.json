@@ -22,7 +22,7 @@
     "rivets": "~0.6.8",
     "rivets-backbone-adapter": "~1.1.0",
     "backbone.syphon": "lapluviosilla/backbone.syphon#v0.5",
-    "machina": "541bbe7b43f18f4f079599d29df14fb8b063924f",
+    "machina": "0.3.8",
     "moment": "~2.6.0",
     "bourbon": "~3.2.1",
     "ionic": "1.0.0-beta.6"
