@@ -13,7 +13,8 @@
     "npm": "1.4.x"
   },
   "scripts": {
-    "start": "brunch watch --server"
+    "start": "brunch watch --server",
+    "postinstall": "./build.sh"
   },
   "dependencies": {
     "javascript-brunch": ">= 1.7.1 < 1.8",
