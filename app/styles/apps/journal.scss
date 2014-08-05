@@ -13,6 +13,9 @@
 
     .entry-container {
       float: left;
+      width: 70%;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     #delete-entry {

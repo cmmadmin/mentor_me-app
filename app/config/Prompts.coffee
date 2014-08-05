@@ -1,6 +1,11 @@
 @MM.module "Config", (Config, App, Backbone, Marionette, $, _) ->
 
   Config.Prompts =
+    assess:
+      title: "Assess"
+      content:  """
+                Assess the Student
+                """
     contact_list:
       title: "Contact List"
       content: """

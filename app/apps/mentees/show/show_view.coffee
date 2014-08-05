@@ -15,7 +15,7 @@
       "updated" : "render"
 
     triggers:
-      "click #edit-button"   : "edit:mentee:clicked"
+      "click .edit-button-container"   : "edit:mentee:clicked"
       "click #delete-button" : "delete:mentee:clicked"
 
   # Menu

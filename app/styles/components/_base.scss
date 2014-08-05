@@ -50,6 +50,14 @@ h1, h2 {
   font-family: "Helvetica W01 Light";
 }
 
+h2 {
+  font-size: rem(20);
+}
+
+p {
+  font-size: rem(12);
+}
+
 hr {
   margin: 0;
   border-top: none;
@@ -153,6 +161,7 @@ body > div {
 }
 
 .button-pink {
+  font-size: rem(16);
   background-color: #EC008C;
   border-color: #FFF;
   color: $text-color;
