@@ -17,8 +17,6 @@
     template: "journal/list/list_item"
     tagName: 'a'
     className: "item item-dark"
-    attributes: ->
-      href: "#mentees/" + @model.get('mentee_id') + "/journal/" + @model.id
       
     triggers: 
       "click #delete-entry" : "delete:journalentry:clicked"
