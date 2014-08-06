@@ -38,9 +38,10 @@
         { model } = args
         App.vent.trigger "edit:journalentry:clicked", model
 
-      @listenTo journalView, "childview:delete:journalentry:clicked", (args) ->
+      @listenTo journalView, "childview:delete:journalentry:clicked", (args) =>
         { model } = args
-        if confirm "Are you sure you want to delete this journal entry?" then model.destroy() else false
+        @showConfirmDelete model
+        # if confirm "Are you sure you want to delete this journal entry?" then model.destroy() else false
 
       scrollComp = App.request "ion:scroll:component", journalView
       @show scrollComp, region: @layout.mainRegion
@@ -51,3 +52,15 @@
     getJournalView: (journalEntries) ->
       new List.Journal
         collection: journalEntries
+
+    showConfirmDelete: (model) ->
+
+      message = 'Are you sure you want to delete this journal entry?'
+      title = 'Delete Journal Entry'
+      buttonLabels = 'Yes, Cancel'
+      _callback = (buttonIndex) ->
+        if buttonIndex == 1
+          model.destroy()
+
+      navigator.notification.confirm(message, _callback, title, buttonLabels)
+

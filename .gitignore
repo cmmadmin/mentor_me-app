@@ -27,6 +27,7 @@ bower_components/
 
 # Brunch folder for temporary files.
 public/
+www/
 tmp/
 
 # Temporary ignores
@@ -34,3 +35,4 @@ vendor/styles/cssflow
 app/styles/cssflow_and_overrides.scss
 vendor/scripts/prefixfree.min.js
 app/config/ApplicationConfig.coffee
+config.coffee
