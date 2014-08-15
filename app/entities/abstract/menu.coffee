@@ -25,7 +25,7 @@
     getMenus: ->
       new Entities.MenusCollection [
         { name: "Snap Shot", icon: "snapshot.png", items: [
-          { name: "Assess", description: "Self assessment performed by the mentee.", progress: "100%" }
+          { name: "Assess", description: "Self assessment performed by the mentee.", progress: "40%" }
           { name: "Explore", description: "Conversation ideas to explore together.", progress: "40%" }
           { name: "Observe", description: "Record long-term observations about the mentee here.", progress: "20%" }
         ] }
