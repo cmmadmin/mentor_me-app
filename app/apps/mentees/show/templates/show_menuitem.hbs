@@ -1,5 +1,7 @@
 <div id="{{name}}" class="menuitem row">
-  <img src="images/indicator.png">
+  {{#if isNotVisited}}
+    <img src="images/indicator.png">
+  {{/if}}
   <div class="mentee-info">
     <h2>{{name}}</h2>
     <p>{{description}}</p>

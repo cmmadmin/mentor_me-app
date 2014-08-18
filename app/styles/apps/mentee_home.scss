@@ -89,6 +89,7 @@
 
     .mentee-info {
       width: rem(208);
+      margin-left: rem(23);
     }
 
     .progress {
@@ -99,9 +100,9 @@
     }
 
     img {
+      position: absolute;
       height: rem(6);
       margin-top: rem(30);
-      margin-right: rem(17);
     }
 
     height: rem(75);

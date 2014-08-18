@@ -18,12 +18,3 @@
     formSubmit: (e) ->
       e.preventDefault()
       @trigger "journal:save"
-
-    templateHelpers:
-      date: ->
-        date = new Date
-        if @model.isNew()  
-          date = date.now()
-        else
-          date = @model.get "logged_at"
-        date

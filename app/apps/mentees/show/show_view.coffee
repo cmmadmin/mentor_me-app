@@ -22,6 +22,14 @@
   class Show.MenuItem extends App.Views.ItemView
     template: "mentees/show/show_menuitem"
 
+    templateHelpers:
+      isNotVisited: ->
+        if @model.get("progress") > 0
+          notVisited = false
+        else
+          notVisited = true
+        notVisited
+
   class Show.MenuCategory extends App.Views.CompositeView
     template: "mentees/show/show_menucategory"
     className: "accordion-group"
