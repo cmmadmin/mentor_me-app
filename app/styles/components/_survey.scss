@@ -20,6 +20,22 @@
   .pagination-sd { 
     flex: 1 
   }
+
+  .range-input-container {
+    position: relative;
+
+    .range-one {
+      position: absolute;
+      left: 0;
+      bottom: rem(7);
+    }
+    .range-ten {
+      position: absolute;
+      right: 0;
+      bottom: rem(7);
+    }
+  }
+
   .survey-bottom {
     position: absolute;
     bottom: 0;

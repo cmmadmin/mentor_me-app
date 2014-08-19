@@ -5,6 +5,8 @@ input[type="range"] {
   width: 85%;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00ACD6), color-stop(100%, #00ACD6));
   background-size: 99% rem(2);
+  display: block;
+  margin: 0 auto;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {

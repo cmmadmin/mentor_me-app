@@ -6,9 +6,11 @@
       {{#each questions}}
         <li>
             <p>{{body}}</p>
-            <span>1</span>
-            <input type="range" min="1" max="10" step="1" name="questions[{{id}}]">
-            <span>10</span>
+            <div class="range-input-container">
+              <span class="range-one">1</span>
+              <input type="range" min="1" max="10" step="1" name="questions[{{id}}]">
+              <span class="range-ten">10</span>
+            </div>
         </li>
       {{/each}}
       </ul>
