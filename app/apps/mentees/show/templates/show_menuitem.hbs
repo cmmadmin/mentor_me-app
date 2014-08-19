@@ -1,12 +1,19 @@
 <div id="{{name}}" class="menuitem row">
-  {{#if isNotVisited}}
+  {{#unless progress}}
     <img src="images/indicator.png">
-  {{/if}}
-  <div class="mentee-info">
-    <h2>{{name}}</h2>
-    <p>{{description}}</p>
+  {{/unless}}
+  <div class="menuitem-info">
+    <div class="menuitem-text">
+      <h2>{{name}}</h2>
+      <p>{{description}}</p>
+    </div>
+    {{#if notMax}}
+      <div class="menuitem-progress">
+        <p class="progress">{{progress}}%</p>
+      </div>
+    {{/if}}
   </div>
-  <div>
-    <p class="progress">{{progress}}</p>
+  <div class="progressbar-container">
+    <progress value="{{progress}}" max="100"></progress>
   </div>
 </div>

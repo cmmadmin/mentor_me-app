@@ -23,12 +23,13 @@
     template: "mentees/show/show_menuitem"
 
     templateHelpers:
-      isNotVisited: ->
-        if @model.get("progress") > 0
-          notVisited = false
+      notMax: ->
+        if @model.get("progress") != 100
+          notMax = true
         else
-          notVisited = true
-        notVisited
+          notMax = false
+        console.log @model.get("progress") + ": notMax = " + notMax
+        notMax
 
   class Show.MenuCategory extends App.Views.CompositeView
     template: "mentees/show/show_menucategory"

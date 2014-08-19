@@ -63,6 +63,7 @@
 
     h2 {
       width: rem(200);
+      margin-top: rem(6);
     }
   }
   .accordion-toggle {
@@ -78,7 +79,22 @@
 
 .accordion-inner {
 
+  padding-bottom: rem(9);
+
   .menuitem.row {
+
+    height: rem(75);
+    padding-left: rem(55);
+    padding-top: rem(6);
+    border-bottom: 1px solid #000;
+    position: relative;
+
+    img {
+      position: absolute;
+      height: rem(6);
+      margin-top: rem(30);
+    }
+
     .col {
       padding-left: 0;
     }
@@ -87,32 +103,58 @@
       width: rem(170);
     }
 
-    .mentee-info {
-      width: rem(208);
+    .menuitem-info {
+      width: 100%;
       margin-left: rem(23);
+      margin-top: rem(6);
+      
+      .menuitem-text {
+        float: left;
+        width: 75%;
+      }
+
+      .menuitem-progress {
+        float: right;
+        width: 20%;
+
+        .progress {
+          width: rem(50);
+          border: 1px solid #e5e5e5;
+          padding: rem(10);
+          float: right;
+        }
+      }
     }
 
-    .progress {
-      width: rem(50);
-      border: 1px solid #e5e5e5;
-      padding: rem(10);
-      float: right;
-    }
-
-    img {
+    .progressbar-container {
       position: absolute;
-      height: rem(6);
-      margin-top: rem(30);
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      progress[value] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: none;
+
+        height: rem(2);
+        margin: 0;
+        width: 100%;
+
+        color: #EC008C;
+      }
+      progress[value]::-webkit-progress-value {
+        background-color: #EC008C;
+      }
+      progress[value]::-webkit-progress-bar {
+        background-color: transparent;
+      }
+      progress[value]::-moz-progress-bar {
+        background-color: #EC008C;
+      }
     }
-
-    height: rem(75);
-    padding-left: rem(55);
-    padding-top: rem(6);
-
-    border-bottom: 1px solid #000;
   }
-
-  padding-bottom: rem(9);
 }
 
 .accordion-body {

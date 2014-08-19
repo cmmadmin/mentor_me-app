@@ -25,9 +25,9 @@
     getMenus: ->
       new Entities.MenusCollection [
         { name: "Snap Shot", icon: "snapshot.png", items: [
-          { name: "Assess", description: "Self assessment performed by the mentee.", progress: 40 }
-          { name: "Explore", description: "Conversation ideas to explore together.", progress: 0 }
-          { name: "Observe", description: "Record long-term observations about the mentee here.", progress: 40 }
+          { name: "Assess", description: "Self assessment performed by the mentee.", progress: 100 }
+          { name: "Explore", description: "Conversation ideas to explore together.", progress: 40 }
+          { name: "Observe", description: "Record long-term observations about the mentee here.", progress: 0 }
         ] }
         { name: "Develop", icon: "develop.png", items: [
           { name: "Life List", description: "Choose aisles and shelves", progress: 40 }
