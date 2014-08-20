@@ -77,7 +77,7 @@
       profile = @model.active_profile()
       # Chooose goals based on profile develop_goal_ids
       goals = (new App.Entities.DevelopGoalsCollection(App.Entities.DevelopGoal.all().models))
-      goals.chooseByIds profile.get('develop_goal_ids')
+      goals.chooseByIds profile.get('develop_goal_ids'), chooseNone: true
       # Choose items based on profile develop_item_ids
       items = (new App.Entities.DevelopItemsCollection(App.Entities.DevelopItem.all().models))
-      items.chooseByIds profile.get('develop_item_ids')
+      items.chooseByIds profile.get('develop_item_ids'), chooseNone: true
