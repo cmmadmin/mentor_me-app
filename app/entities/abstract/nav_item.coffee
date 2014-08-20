@@ -13,13 +13,18 @@
     model: Entities.NavItem
 
   class Entities.NavButton extends App.Models.Supers.Model
+    triggerMethod: Marionette.triggerMethod
     initialize: ->
       tapHandler = @get('tap')
       if(tapHandler)
         @tap = tapHandler
         @unset('tap')   
+      onTapHandler = @get('onTap')
+      if(onTapHandler)
+        @onTap = onTapHandler
+        @unset('onTap')
     tap: ->
-      # do nothing
+      @triggerMethod('tap')
 
   class Entities.NavBackButton extends Entities.NavButton
     defaults:
@@ -27,6 +32,7 @@
       className: 'button-icon icon ion-ios7-arrow-back'
     # TODO: Replace with proper history management and rewriting
     tap: ->
+      super
       window.history.back();
       # Backbone.history.history.back()
 
@@ -36,6 +42,7 @@
       className: 'button-icon icon ion-ios7-information-outline'
       promptId: null
     tap: ->
+      super
       if @get('promptId')?
         App.commands.execute "show:prompt", @get('promptId')
       $('#prompt-region').removeClass('hidden-visibility')

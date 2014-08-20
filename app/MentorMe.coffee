@@ -28,6 +28,11 @@
 
       @vent.bind "authentication:logged_out", ->
         MentorMe.navigate(MentorMe.rootRoute, true)
+
+      $(document).on "pause", =>
+        @vent.trigger "app:pause"
+      $(document).on "resume", =>
+        @vent.trigger "app:resume"
       # @vent.bind 'mentee:addJournalEntry' (e, mentee, data) ->
       #   Mentee = require 'models/Mentee'
       #   JournalEntry = require 'models/JournalEntry'

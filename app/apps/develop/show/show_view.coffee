@@ -17,8 +17,11 @@
         # noSwiping: true
         autoResize: true
         releaseFormElements: true
-        # onSlideChangeEnd: @onSlideChange
+        onSlideChangeEnd: @onSlideChange
       )
 
     onClose: ->
       @swiper.destroy(true)
+
+    onSlideChange: =>
+      @trigger "slidechanged", Show.Slides[@swiper.activeIndex]
