@@ -26,6 +26,13 @@
         @add model
       model.fetch()
       return model
+
+    getChosenModels: ->
+      @filter (m) ->
+        m.get('chosen')
+    getChosenIds: ->
+      @getChosenModels().map (m) ->
+        m.id
       
     ###//--------------------------------------
     //+ STATIC METHODS

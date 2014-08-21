@@ -8,7 +8,7 @@
     show: (id) ->
       # App.vent.trigger "nav:choose", "Admin"
       new DevelopApp.Show.Controller
-        mentee_id: id
+        id: id
 
   App.addInitializer ->
     new DevelopApp.Router

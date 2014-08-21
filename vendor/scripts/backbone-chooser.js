@@ -214,7 +214,7 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
       args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
       options = !(_.chain(args).flatten().last().value() instanceof Backbone.Model) ? args.pop() : {};
       eventShouldTrigger = false;
-      _ref1 = _([args]).flatten();
+      _ref1 = _([args]).flatten().value();
       for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
         model = _ref1[_i];
         if (this.modelInChosen(model)) {
@@ -233,7 +233,7 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
       args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
       options = !(_.chain(args).flatten().last().value() instanceof Backbone.Model) ? args.pop() : {};
       eventShouldTrigger = false;
-      _ref1 = _([args]).flatten();
+      _ref1 = _([args]).flatten().value();
       for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
         model = _ref1[_i];
         if (!this.modelInChosen(model)) {
@@ -288,7 +288,7 @@ var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; 
       if (options.chooseNone) {
         this.chooseNone(options);
       }
-      _ref1 = _([ids]).flatten();
+      _ref1 = _([ids]).flatten().value();
       _results = [];
       for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
         id = _ref1[_i];
