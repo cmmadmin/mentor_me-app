@@ -37,6 +37,11 @@
       questionCount = _.reduce(scores, (memo, score) -> (if memo.questions? then memo.questions else memo) + score.questions)
       return Math.round(100 * answeredCount / questionCount);
 
+    getSurveyProgress: (surveyKey) ->
+      key = surveyKey + '_survey_id'
+      survey = @edition().get(key)
+      @edition().surveys().get(survey).surveyProgress @
+
     saveAnswer: (question_id, value) ->
       Answer = Models.Answer
       answer = @answers().findWhere(question_id: parseInt(question_id))

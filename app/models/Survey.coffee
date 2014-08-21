@@ -14,6 +14,18 @@
         group.questions().models
       ))
 
+    surveyProgress: (profile) ->
+      questions = @questions()
+      progress = {}
+      progress.questions = questions.length
+      progress.answers = 0
+      _.each questions, (question) ->
+        if question.answers().length > 0
+          if question.answers().some((answer) -> answer.mentee_profile() is profile)
+            progress.answers += 1
+      progress.percentage = Math.round(100 * progress.answers / progress.questions)
+      return progress.percentage
+
     profileProgress: (profile) ->
       questions = @questions()
       progress = {}
@@ -22,9 +34,9 @@
       _.each questions, (question) ->
         if question.answers().length > 0
           if question.answers().some((answer) -> answer.mentee_profile() is profile)
-            progress.answers +=1
+            progress.answers += 1
       progress.percentage = Math.round(100 * progress.answers / progress.questions)
-      return progress
+      return progress.percentage
 
   Models.on "before:start", ->
     Models.Survey.has().one('edition', 

@@ -7,11 +7,11 @@
       <h2>{{name}}</h2>
       <p>{{description}}</p>
     </div>
-    {{#if notMax}}
+    {{#unless isMax}}
       <div class="menuitem-progress">
         <p class="progress">{{progress}}%</p>
       </div>
-    {{/if}}
+    {{/unless}}
   </div>
   <div class="progressbar-container">
     <progress value="{{progress}}" max="100"></progress>

@@ -41,7 +41,7 @@
       @show bannerView, region: @layout.bannerRegion
 
     menuRegion: (menus, mentee) ->
-      showView = @getShowView menus
+      showView = @getShowView menus, mentee
 
       @listenTo showView, "snapshot:assess:clicked", (args) ->
         App.vent.trigger "snapshot:assess:clicked", mentee
@@ -69,7 +69,7 @@
       new Show.Layout
         model: mentee
 
-    getShowView: (menus) ->
+    getShowView: (menus, mentee) ->
       new Show.MenteeMenu
         collection: menus
-
+        mentee: mentee

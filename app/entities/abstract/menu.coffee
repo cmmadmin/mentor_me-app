@@ -25,14 +25,14 @@
     getMenus: ->
       new Entities.MenusCollection [
         { name: "Snap Shot", icon: "snapshot.png", items: [
-          { name: "Assess", description: "Self assessment performed by the mentee.", progress: 100 }
-          { name: "Explore", description: "Conversation ideas to explore together.", progress: 40 }
-          { name: "Observe", description: "Record long-term observations about the mentee here.", progress: 0 }
+          { name: "Assess", description: "Self assessment performed by the mentee.", surveyKey: "snapshot_self_assessment" }
+          { name: "Explore", description: "Conversation ideas to explore together.", surveyKey: "snapshot_interactive" }
+          { name: "Observe", description: "Record long-term observations about the mentee here.", surveyKey: "snapshot_observations" }
         ] }
         { name: "Develop", icon: "develop.png", items: [
-          { name: "Life List", description: "Choose aisles and shelves", progress: 40 }
-          { name: "Suggested Steps", description: "Choose cans", progress: 40 }
-          { name: "Plan", description: "View your plan and add custom cans", progress: 40 }
+          { name: "Life List", description: "Choose aisles and shelves", surveyKey: "snapshot_self_assessment" }
+          { name: "Suggested Steps", description: "Choose cans", surveyKey: "snapshot_self_assessment" }
+          { name: "Plan", description: "View your plan and add custom cans", surveyKey: "snapshot_self_assessment" }
         ] }
       ]
 
