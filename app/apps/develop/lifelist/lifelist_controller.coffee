@@ -25,7 +25,7 @@
       accordionView = @getAccordionView categories
 
       scrollComp = App.request "ion:scroll:component", accordionView
-      @show accordionView, region: @layout.accordionRegion
+      @show scrollComp, region: @layout.accordionRegion
 
     getAccordionView: (categories) ->
       new LifeList.Categories

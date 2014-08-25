@@ -17,6 +17,7 @@
         noSwiping: true
         autoResize: true
         releaseFormElements: false
+        moveStartThreshold: 80
         onSlideChangeEnd: @onSlideChange
       )
 

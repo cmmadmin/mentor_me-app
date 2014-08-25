@@ -23,7 +23,9 @@
       
     itemsRegion: ->
       itemsView = @getItemsView()
-      @show itemsView, region: @layout.itemsRegion
+
+      scrollComp = App.request "ion:scroll:component", itemsView
+      @show scrollComp, region: @layout.itemsRegion
 
     customItemRegion: ->
 
