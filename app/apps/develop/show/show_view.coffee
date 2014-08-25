@@ -12,7 +12,7 @@
     onShow: ->
       @swiper = new Swiper('#develop-swiper',
         mode:'horizontal'
-        # pagination: '.pagination-sd'
+        pagination: '.pagination-sd'
       # preventClassNoSwiping: true
         noSwiping: true
         autoResize: true

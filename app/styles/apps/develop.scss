@@ -38,6 +38,18 @@
   }
 }
 
+.pagination-sd {
+  text-align: center;
+}
+
+.pagination-sd .swiper-pagination-switch {
+  border-radius: rem(5);
+  width: rem(5);
+  height: rem(5);
+  display: inline-block;
+  margin: 0 rem(5);
+}
+
 .category-bar {
   background-color: black;
   height: $bar-height;
