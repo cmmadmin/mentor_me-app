@@ -4,13 +4,15 @@
     initialize: (options) ->
       { categories } = options
       # @categories = App.request "develop_category:entities"
-      @collectionView = @getCollectionView(categories)
-      scrollComp = App.request "ion:scroll:component", @collectionView
+      @collectionView = @getCollectionView categories
 
       # @listenTo @collectionView, 'childview:category:toggled', ->
       #   scrollComp.getMainView().resize()
-      @show scrollComp, options
       # @show @collectionView
+
+      # @show @collectionView
+      scrollComp = App.request "ion:scroll:component", @collectionView
+      @show scrollComp, options
 
     getCollectionView: (categories) ->
       new LifeList.Categories

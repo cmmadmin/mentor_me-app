@@ -10,12 +10,12 @@
 
       @collectionView = @getCollectionView(chosenCategories)
 
-      scrollComp = App.request "ion:scroll:component", @collectionView
-
       # @listenTo @collectionView, 'childview:category:toggled', ->
       #   scrollComp.getMainView().resize()
-      @show scrollComp, options
+
       # @show @collectionView
+      scrollComp = App.request "ion:scroll:component", @collectionView
+      @show scrollComp, options
 
     getCollectionView: (categories) ->
       new SuggestedSteps.Categories

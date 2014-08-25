@@ -1,10 +1,17 @@
 #develop-swiper {
   height: 100%;
   width: 100%;
-  .swiper-slide, .swiper-wrapper {
+
+  .swiper-wrapper {
     height: 100%;
     width: 100%;
   }
+
+  .swiper-slide {
+    height: 100%;
+    width: 100%;
+  }
+
   .scroll-content {
     height: inherit;
     width: inherit;

@@ -1,4 +1,10 @@
 <label class="checkbox">
-  <input type="checkbox" value="{{id}}" rv-chosen="model:chosen">
+  <input class="swiper-no-swiping" type="checkbox" value="{{id}}" rv-chosen="model:chosen">
 </label>
-{{title}}
+
+<div>
+  <h4 class="description-toggle">{{title}} <i class="accordion-toggle icon ion-plus pull-right"></i></h4>
+</div>
+<div class="goal-description">
+  <p>{{description}}</p>
+</div>

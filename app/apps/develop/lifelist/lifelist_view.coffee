@@ -3,16 +3,28 @@
   class LifeList.Goal extends App.Views.ItemView
     template: 'develop/lifelist/goal'
     className: 'item item-dark item-text-wrap item-checkbox'
-
+    tagName: 'li'
+    
     onRender: ->
       @binding = rivets.bind(@el, { model: @model })
 
     onClose: ->
       @binder.unbind() if @binder
 
+    ui:
+      descriptionToggle: 'description-toggle'
+      description: '.goal-description'
+
+    events:
+      'click @ui.descriptionToggle' : 'toggleDescription'
+
+    toggleDescription: ->
+      newHeight = if (@ui.description.height() > 0) then 0 else @ui.description.height()
+      @ui.description.height(newHeight)
+
   class LifeList.Category extends App.Views.CompositeView
     template: 'develop/lifelist/category'
-    itemViewContainer: '.develop-goals'
+    itemViewContainer: 'ul.develop-goals'
     itemView: LifeList.Goal
 
     ui:

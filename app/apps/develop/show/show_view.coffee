@@ -14,9 +14,9 @@
         mode:'horizontal'
         # pagination: '.pagination-sd'
       # preventClassNoSwiping: true
-        # noSwiping: true
+        noSwiping: true
         autoResize: true
-        releaseFormElements: true
+        releaseFormElements: false
         onSlideChangeEnd: @onSlideChange
       )
 
