@@ -4,7 +4,7 @@
     template: 'develop/lifelist/goal'
     className: 'item item-dark item-text-wrap item-checkbox'
     tagName: 'li'
-    
+
     onRender: ->
       @binding = rivets.bind(@el, { model: @model })
 
@@ -46,3 +46,10 @@
   class LifeList.Categories extends App.Views.CollectionView
     itemView: LifeList.Category
     className: 'padded-page'
+
+  class LifeList.Layout extends App.Views.Layout
+    template: "develop/lifelist/layout"
+    className: 'full-page'
+
+    regions:
+      accordionRegion: "#accordion-region"

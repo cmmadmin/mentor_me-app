@@ -50,3 +50,10 @@
   class SuggestedSteps.Categories extends App.Views.CollectionView
     itemView: SuggestedSteps.Category
     className: 'padded-page'
+
+  class SuggestedSteps.Layout extends App.Views.Layout
+    template: 'develop/suggested_steps/layout'
+    className: 'full-page'
+
+    regions:
+      accordionRegion: '#accordion-region'

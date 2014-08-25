@@ -8,15 +8,30 @@
         categories
       chosenCategories = new App.Entities.ChosenDevelopCategoriesCollection(null, parent: parentFunc)
 
-      @collectionView = @getCollectionView(chosenCategories)
+      @layout = @getLayoutView()
+      # @collectionView = @getCollectionView(chosenCategories)
 
       # @listenTo @collectionView, 'childview:category:toggled', ->
       #   scrollComp.getMainView().resize()
 
-      # @show @collectionView
-      scrollComp = App.request "ion:scroll:component", @collectionView
-      @show scrollComp, options
+      @listenTo @layout, "show", =>
+        @accordionRegion chosenCategories
 
-    getCollectionView: (categories) ->
+      @show @layout
+      
+      # @show @collectionView
+      # scrollComp = App.request "ion:scroll:component", @collectionView
+      # @show scrollComp, options
+
+    accordionRegion: (categories) ->
+      accordionView = @getAccordionView categories
+
+      scrollComp = App.request "ion:scroll:component", accordionView
+      @show accordionView, region: @layout.accordionRegion
+
+    getAccordionView: (categories) ->
       new SuggestedSteps.Categories
         collection: categories
+
+    getLayoutView: ->
+      new SuggestedSteps.Layout
