@@ -195,3 +195,37 @@ html[xmlns] .clearfix {
 * html .clearfix {
     height: 1%;
 }
+
+.item-input {
+  padding: 6px 8px 5px 8px;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
+  textarea {
+    height: rem(200);
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
+  textarea {
+    height: rem(300);
+  }
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+  textarea {
+    height: rem(200);
+  }
+}
