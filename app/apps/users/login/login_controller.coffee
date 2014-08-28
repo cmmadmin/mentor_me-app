@@ -13,6 +13,9 @@
     initialize: ->
       @layout = @getLayoutView()
 
+      @listenTo App.vent, "session:notauthenticated", ->
+        navigator.notification.alert 'Invalid email or password' if navigator.notification?
+
       @show @layout
 
     getLayoutView: ->

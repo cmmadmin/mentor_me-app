@@ -15,32 +15,34 @@
     loginOpen: false
 
     initEvents: ->
-      # TODO: Implement proper bootstrap
-      @vent.bind "authentication:logged_in", =>
-        sync = $.ajax(
-          url: MentorMe.Config.ApplicationConfig.SERVER_URL + 'users/data'
-          context: @collections
-        )
-        sync.then(@collections.bootstrap, @collections)
-        # sync.then(@goHome, MentorMe)
-        @collections._fetch = sync
-        MentorMe.navigate("mentees", true)
+      # Check for not authenticated errors
+      $(document).ajaxError (e, xhr, settings, exception) ->
+        if (xhr.status == 401)
+          MentorMe.vent.trigger "session:notauthenticated"
 
-      @vent.bind "authentication:logged_out", ->
-        MentorMe.navigate(MentorMe.rootRoute, true)
+      @vent.bind "session:loaded", (sessionExists) =>
+        if sessionExists
+          @goHome()
+        else
+          @goRoot()
+
+      @vent.bind "authentication:logged_out session:notauthenticated", =>
+        MentorMe.navigate(MentorMe.rootRoute, true) unless @isCurrentRouteRoot()
 
       $(document).on "pause", =>
         @vent.trigger "app:pause"
       $(document).on "resume", =>
         @vent.trigger "app:resume"
-      # @vent.bind 'mentee:addJournalEntry' (e, mentee, data) ->
-      #   Mentee = require 'models/Mentee'
-      #   JournalEntry = require 'models/JournalEntry'
-      #   je = new JournalEntry()
-      #   
+  
     goHome: ->
-      MentorMe.startHistory()
-      MentorMe.navigate("mentees", trigger: true) unless MentorMe.getCurrentRoute()
+      # MentorMe.startHistory()
+      MentorMe.navigate("mentees", trigger: true)
+    goRoot: ->
+      MentorMe.navigate(MentorMe.rootRoute, true)
+    # Are we at home or login page already?
+    isCurrentRouteRoot: ->
+      Backbone.history.fragment == "home" or Backbone.history.fragment == "login"
+
   MentorMe.rootRoute = "home"
 
   MentorMe.addRegions
@@ -54,31 +56,31 @@
 
   MentorMe.addInitializer ->
     # Import views
-    HomePage = MentorMe.Views.HomePage
+    # HomePage = MentorMe.Views.HomePage
     
-    AppController = MentorMe.Controllers.AppController
+    # AppController = MentorMe.Controllers.AppController
     AppLayout = MentorMe.Views.AppLayout
 
-    #Import collections
-    Mentees = MentorMe.Collections.Mentees
-    Questions = MentorMe.Collections.Questions
-    Editions = MentorMe.Collections.Editions
-    Lifelists = MentorMe.Collections.Lifelists
-    LifelistCategories = MentorMe.Collections.LifelistCategories
+    # #Import collections
+    # Mentees = MentorMe.Collections.Mentees
+    # Questions = MentorMe.Collections.Questions
+    # Editions = MentorMe.Collections.Editions
+    # Lifelists = MentorMe.Collections.Lifelists
+    # LifelistCategories = MentorMe.Collections.LifelistCategories
 
-    # Initialize collections
-    @collections = 
-      mentees: new Mentees()
-      editions: new Editions()
-      develop_categories: new MentorMe.Entities.DevelopCategoriesCollection()
-      curriculums: new MentorMe.Entities.DevelopCurriculumsCollection()
+    # # Initialize collections
+    # @collections = 
+    #   mentees: new Mentees()
+    #   editions: new Editions()
+    #   develop_categories: new MentorMe.Entities.DevelopCategoriesCollection()
+    #   curriculums: new MentorMe.Entities.DevelopCurriculumsCollection()
 
-      bootstrap: (update) ->
-        MentorMe.vent.trigger('bootstrap:loaded')
-        @mentees.reset(update.mentees)
-        @editions.reset(update.editions)
-        @develop_categories.reset(update.develop_categories)
-        @curriculums.reset(update.develop_curriculums)
+    #   bootstrap: (update) ->
+    #     MentorMe.vent.trigger('bootstrap:loaded')
+    #     @mentees.reset(update.mentees)
+    #     @editions.reset(update.editions)
+    #     @develop_categories.reset(update.develop_categories)
+    #     @curriculums.reset(update.develop_curriculums)
 
     # TODO: Use proper server bootstrap
     # Bootstrap initial data
@@ -90,42 +92,27 @@
     # @loginPanel = new LoginPanel()
 
     @appLayout = new AppLayout(el: "#mentor_me_app")
-    # @appLayout.on "render", ->
-    #   @mainRegion.show(MentorMe.homePage)
-
-    # TODO: Listen in better place
     @initEvents()
-
-    # Object.freeze? this
-  MentorMe.addInitializer ->
-    # Load helper for use in views
-    MentorMe.Helpers.ViewHelper
-
-    $(document).ajaxError (e, xhr, settings, exception) ->
-      if (xhr.status == 401)
-        MentorMe.startHistory(silent:true)
-        MentorMe.vent.trigger "user:notauthenticated"
 
   MentorMe.addInitializer ->
     MentorMe.module("HeaderApp").start()
 
   MentorMe.addInitializer ->
-    sync = $.ajax(
-      url: MentorMe.Config.ApplicationConfig.SERVER_URL + 'users/data'
-      context: @collections
-    )
-    sync.then(@collections.bootstrap, @collections)
-    # sync.then(@goHome, MentorMe)
-    @collections._fetch = sync
+    # sync = $.ajax(
+    #   url: MentorMe.Config.ApplicationConfig.SERVER_URL + 'users/data'
+    #   context: @collections
+    # )
+    # sync.then(@collections.bootstrap, @collections)
+    # # sync.then(@goHome, MentorMe)
+    # @collections._fetch = sync
         
   MentorMe.reqres.setHandler "default:region", -> MentorMe.mainRegion
   MentorMe.reqres.setHandler "concern", (concern) -> MentorMe.Concerns[concern]
 
   MentorMe.on "initialize:after", ->
-    # Start Backbone router after bootstrap
-    MentorMe.execute "when:fetched", MentorMe.collections, =>
-      @startHistory()
-      @navigate("mentees", trigger: true) unless @getCurrentRoute()
+  #   # Start Backbone router after bootstrap
+  #   MentorMe.execute "when:fetched", MentorMe.collections, =>
+    @startHistory()
 
   MentorMe.vent.on "header:shown", ->
     _.defer ->

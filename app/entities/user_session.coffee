@@ -10,25 +10,20 @@
     urlRoot: Collection.serverUrl('users/session.json')
     paramRoot: 'user'
 
-    defaults:
-      "email": ""
-      "password": ""
-
     login: ->
+
       deferred = @save()
 
       deferred.then(
         # success
         (user) => 
-          
-          # TODO: Possibly move this to external handler
-          App.currentUser = new User(user)
-          App.currentSession = @
-          App.vent.trigger("authentication:logged_in", App.currentUser)
+          App.vent.trigger("authentication:logged_in", @)
         # error
         (xhr) ->
           App.vent.trigger("authentication:logged_in_failed", xhr)
       )
+      deferred.always =>
+        @unset 'password'
 
       return deferred
 
@@ -36,11 +31,12 @@
       deferred = @destroy()
 
       deferred.then ->
-        App.currentSession = null
-        App.currentUser = null
         App.vent.trigger "authentication:logged_out"
 
       return deferred
+
+    isNew: ->
+      !@get('auth_token')?
 
     toJSON: ->
       data = {}
@@ -54,5 +50,5 @@
       if (model.methodUrl && model.methodUrl[method.toLowerCase()])
         options = options || {}
         options.url = model.methodUrl[method.toLowerCase()]
-      Backbone.sync(method, model, options)
+      super
     

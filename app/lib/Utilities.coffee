@@ -28,5 +28,5 @@
       
       xhr.setRequestHeader("Accept", "application/json")
       xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest")
-      if App.currentUser
-        xhr.setRequestHeader("Authorization", "Token token=#{App.currentUser.get('authentication_token')}");
+      if App.currentSession
+        xhr.setRequestHeader("Authorization", "Token token=#{App.currentSession.get('auth_token')}");

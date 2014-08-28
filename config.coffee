@@ -4,8 +4,6 @@ exports.config =
   # Application build path.  Default is public
   #buildPath: ''
   #
-  paths:
-    public: 'www'
   conventions:
     ignored: [
       /bower_components\/angular/,

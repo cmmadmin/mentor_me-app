@@ -46,7 +46,7 @@
       mentees
 
     getMentee: (id) ->
-      App.collections.mentees.getOrFetch(id)
+      App.Models.Mentee.all().getOrFetch(id)
 
   App.reqres.setHandler "mentees:entities", ->
     API.getMentees()
