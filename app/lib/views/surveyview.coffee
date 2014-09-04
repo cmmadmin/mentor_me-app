@@ -1,5 +1,7 @@
 @MM.module "Views", (Views, App, Backbone, Marionette, $, _) ->
 
+  QUESTIONS_PER_PAGE = 4
+
   class Views.ToolLayout extends Marionette.Layout
     template: 'templates/ToolLayout'
     attributes:
@@ -29,7 +31,7 @@
         showCompleteBtn: true
       @survey = options.survey
 
-      @setCollection()
+      @setupCollection()
 
       super
 
@@ -100,5 +102,21 @@
       else
         @trigger 'savenclose'
 
-    setCollection: ->
-      @collection = (if @options.grouped then @survey.question_groups() else @survey.default_question_group().questions())
+    # TODO: Do proper setup in model or controller once refactored, instead of view
+    setupCollection: ->
+      if @options.grouped
+        groups = @survey.question_groups()
+        pages = new Backbone.Collection
+        # Paginate groups by QUESTIONS_PER_PAGE
+        groups.each (group) ->
+          size = group.questions().size()
+          pageCount = Math.ceil(size / QUESTIONS_PER_PAGE)
+          for page in [0...pageCount]
+            startIdx = page*QUESTIONS_PER_PAGE
+            questions = new Backbone.Collection(group.questions()[startIdx...startIdx+QUESTIONS_PER_PAGE])
+            # Create a new "QuestionPage" per page of questions within the same QuestionGroup
+            newPage = new App.Entities.QuestionPage(questions: questions, title: group.get('title'))
+            pages.add(newPage)
+        @collection = pages
+      else
+        @collection = @survey.default_question_group().questions()

@@ -27,6 +27,18 @@
       return new Date()
   )
 
+  Handlebars.registerHelper('paginate', (coll, pageSize, options) ->
+    ret = ""
+    i = 0
+    while i < coll.length
+      page = coll[i...i+pageSize]
+      data = Handlebars.createFrame(options.data || {})
+      data.pageItems = page
+      ret += options.fn(this, {data: data})
+      i+=pageSize
+    return ret
+  )
+
   Nav = JST['templates/partials/Navigation']
   Handlebars.registerPartial("navigation", Nav)
 

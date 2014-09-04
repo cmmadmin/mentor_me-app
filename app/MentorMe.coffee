@@ -22,7 +22,7 @@
 
       @vent.bind "session:loaded", (sessionExists) =>
         if sessionExists
-          @goHome()
+          @goHome() unless @getCurrentRoute()
         else
           @goRoot()
 

@@ -1,12 +1,12 @@
 <div class="survey-page">
   <p class="lead">{{title}}</p>
   {{! Form required for backbone.syphon serialization }}
-  <form class="swiper-no-swiping">
+  <form>
       <ul>
       {{#each questions}}
         <li>
             <p>{{body}}</p>
-            <div class="range-input-container">
+            <div class="range-input-container swiper-no-swiping">
               <span class="range-one">1</span>
               <input type="range" min="1" max="10" step="1" name="questions[{{id}}]">
               <span class="range-ten">10</span>

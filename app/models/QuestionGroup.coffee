@@ -12,6 +12,9 @@
         _.extend(serialized, question.serializeAnswer(profile))
       return serialized
 
+    size: ->
+      @questions().size()
+
   Models.on "before:start", ->
     Models.QuestionGroup.has().one('survey', 
       model: Models.Survey
