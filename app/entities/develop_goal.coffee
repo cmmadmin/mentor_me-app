@@ -10,6 +10,10 @@
 
     @include "MultiChooser"
 
+    clearChosen: ->
+      @each (goal) ->
+        goal.unchoose()
+
   class Entities.ChosenDevelopGoalsCollection extends Backbone.Subset
     liveupdate_keys: 'all'
     sieve: (goal) ->
