@@ -21,13 +21,17 @@
           MentorMe.vent.trigger "session:notauthenticated"
 
       @vent.bind "session:loaded", (sessionExists) =>
+        @sessionLoaded = true
         if sessionExists
           @goHome() unless @getCurrentRoute()
         else
           @goRoot()
+        @hideSplash()
 
       @vent.bind "authentication:logged_out session:notauthenticated", =>
+        @sessionLoaded = true
         MentorMe.navigate(MentorMe.rootRoute, true) unless @isCurrentRouteRoot()
+        @hideSplash()
 
       $(document).on "pause", =>
         @vent.trigger "app:pause"
@@ -42,6 +46,9 @@
     # Are we at home or login page already?
     isCurrentRouteRoot: ->
       Backbone.history.fragment == "home" or Backbone.history.fragment == "login"
+    hideSplash: ->
+      if @sessionLoaded && @deviceReady
+        navigator.splashscreen.hide() if navigator.splashscreen?
 
   MentorMe.rootRoute = "home"
 
@@ -120,5 +127,10 @@
   MentorMe.vent.on "header:hidden", ->
     _.defer ->
       MentorMe.mainRegion.$el.removeClass('with-header')
+
+  # Wait for device to be ready
+  $(document).on "deviceready", ->
+    MentorMe.deviceReady = true
+    MentorMe.hideSplash()
 
   MentorMe
