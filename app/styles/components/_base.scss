@@ -30,6 +30,10 @@ body{
   font: 100% $font-stack;
   color: $text-color;
   font-family: "Helvetica W02 Roman";
+
+  // Fixes white bar issue on right
+  // TODO: Make sure this doesn't mess up other things
+  position: fixed;
 }
 
 html, body, .app, {

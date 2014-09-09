@@ -40,8 +40,10 @@ input[type="range"]::-webkit-slider-thumb:after {
     padding-left: rem(15);
   }
 }
-
-.Assess {
+.Explore, .Observe {
+  .survey-page { padding: 0 rem(10) }
+}
+.Assess { 
   .lead {
     background-color: $section-bkgrnd-color;
     padding: rem(10);
