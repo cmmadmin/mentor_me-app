@@ -1,11 +1,13 @@
 <h2 class="title">{{ pageTitle }}</h2>
 <div class="list">
   <div class="name-image item-thumbnail-left">
-    {{#if avatar_mobile_url}}
-        <img src="{{avatar_mobile_url}}" />
-    {{else}}
-        <i class="icon-user" style="display: inline-block"></i>
-    {{/if}}
+    {{!-- <div class="avatar edit-avatar"> --}}
+      {{!-- {{#if avatar_mobile_url}} --}}
+          <img id="edit-avatar-img" class="hidden" src="{{avatar_mobile_url}}" />
+      {{!-- {{else}} --}}
+          <i class="icon-user hidden" style="display: inline-block"></i>
+      {{!-- {{/if}} --}}
+    {{!-- </div> --}}
     <label class="item item-input">
       <input type="text" name="name" rv-value="mentee:name" placeholder="Full Name">
     </label>
