@@ -15,5 +15,7 @@
     # Base URL
     #
     @BASE_URL = "/"
+    @EDITION_CODE = "college"
+
     @SERVER_URL = "http://cmtmentorme.herokuapp.com/"
     #@SERVER_URL = "http://localhost:3000/"
