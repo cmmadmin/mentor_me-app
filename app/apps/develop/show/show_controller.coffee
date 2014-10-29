@@ -20,7 +20,8 @@
       @layout = @getLayoutView()
 
       @model = App.request "mentees:entity", id 
-      @categories = App.request "develop_category:entities"
+      @categories = App.request("develop_category:entities").where(edition_id: @model.active_profile().get('edition_id'))
+      @categories = new App.Entities.DevelopCategoriesCollection @categories
 
       @setupChosen()
 

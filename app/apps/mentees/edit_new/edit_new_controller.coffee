@@ -14,7 +14,7 @@
       { mentees, mentee, id } = options
 
       mentee ?= App.request "mentees:entity", id if id?
-      mentee ?= new App.Models.Mentee
+      mentee ?= App.Models.Mentee.create()
       @layout = @getLayoutView mentee
       @listenTo @layout, "form:submit", =>
         @formSubmit mentee, mentees
@@ -26,6 +26,8 @@
 
     formSubmit: (mentee, mentees) ->
       data = Backbone.Syphon.serialize @layout
+      # Set Edition on profile created to current app's edition
+      if mentee.isNew() then data.profile_edition_code = App.Config.ApplicationConfig.EDITION_CODE 
       mentee.save data, 
         wait: true
         collection: mentees
