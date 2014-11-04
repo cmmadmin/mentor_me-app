@@ -23,7 +23,7 @@
       @vent.bind "session:loaded", (sessionExists) =>
         @sessionLoaded = true
         if sessionExists
-          @goHome() unless @getCurrentRoute()
+          @goHome() if @isCurrentRouteRoot() || !@getCurrentRoute()
         else
           @goRoot()
         @hideSplash()
@@ -45,7 +45,7 @@
       MentorMe.navigate(MentorMe.rootRoute, true)
     # Are we at home or login page already?
     isCurrentRouteRoot: ->
-      Backbone.history.fragment == "home" or Backbone.history.fragment == "login"
+      Backbone.history.fragment == "home" or Backbone.history.fragment == "login" or Backbone.history.fragment == "user/new"
     hideSplash: ->
       if @sessionLoaded && @deviceReady
         navigator.splashscreen.hide() if navigator.splashscreen?
